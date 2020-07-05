@@ -53,9 +53,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof  AuthenticationException) {
+       /* if ($exception instanceof  AuthenticationException) {
             return $this->apiResponse(null, 'Unauthenticated, you must be logged in to do this action', 401, 0);
-        }
+        }*/
         return parent::render($request, $exception);
 
     }

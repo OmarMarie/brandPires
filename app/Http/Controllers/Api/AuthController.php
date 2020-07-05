@@ -72,6 +72,7 @@ class AuthController extends Controller
             'status' => 1,
             'tank_pts' => 0
         ]);
+
         return $this->apiResponse(null, 'Successfully created player!', 201, 1);
         /*return response()->json([
             'message' => 'Successfully created player!'
@@ -104,10 +105,10 @@ class AuthController extends Controller
         }
 
         $credentials = request(['email', 'password']);
-        if (!Auth::attempt($credentials))
+        if (!Auth::guard('player')->attempt($credentials))
             return $this->apiResponse(null, 'Email or Password incorrect', 401, 0);
 
-        $user = $request->user();
+        $user = auth()->guard('player')->user();
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
@@ -122,6 +123,7 @@ class AuthController extends Controller
                 $tokenResult->token->expires_at
             )->toDateTimeString()
         ];
+
         return $this->apiResponse($response, null, 200, 1);
 
     }
@@ -134,7 +136,7 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        \auth()->guard('player')->user()->token()->revoke();
         return $this->apiResponse(null, 'Successfully logged out', 200, 1);
     }
 
@@ -146,7 +148,7 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-        $playerId = $request->user()->id;
+        $playerId = auth()->guard('player')->user()->id;
         $gifts = GiftAction::where('player_id', $playerId)->where('status', 0)->count();
         $friendsRequest = Friend::where('player_id', $playerId)->where('status', 0)->count();
         $chatting = Chatting::where('receiver_id', $playerId)->where('status', 0)->count();
@@ -154,11 +156,11 @@ class AuthController extends Controller
         $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $playerId)->first();
 
         $extraTank = 0;
-        $levelDetails = Levels::where('id', auth()->user()->level_id)->first(['extra', 'duration']);
+        $levelDetails = Levels::where('id', auth()->guard('player')->user()->level_id)->first(['extra', 'duration']);
         $extraLiveTime = $levelDetails->duration;
 
-        if (auth()->user()->level_updated_at != null) {
-            $expired_at = date('Y-m-d H:i:s', strtotime('+' . $extraLiveTime . ' hours', strtotime(auth()->user()->level_updated_at)));
+        if (auth()->guard('player')->user()->level_updated_at != null) {
+            $expired_at = date('Y-m-d H:i:s', strtotime('+' . $extraLiveTime . ' hours', strtotime(auth()->guard('player')->user()->level_updated_at)));
             if (now() < $expired_at) {
                 $extraTank = ($tankDetails['tanks']->size * ($levelDetails->extra / 100));
             }

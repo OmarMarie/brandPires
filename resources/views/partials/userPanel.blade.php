@@ -22,7 +22,6 @@
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                    {{-- auth()->user()->name --}}
                 </a>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
@@ -43,14 +42,14 @@
                         </span>
                     </a>
 
-                    {{--<a href="{{ route('logout') }}" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                    <a href="{{ route('logout') }}" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Sign Out
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                    </form>--}}
+                    </form>
                 </div>
             </div>
         </div>

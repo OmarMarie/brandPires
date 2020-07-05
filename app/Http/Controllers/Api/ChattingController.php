@@ -37,7 +37,7 @@ class ChattingController extends Controller
 
         // Change status to seen if the receiver see the message only
         foreach ($messages as $message) {
-            $message->receiver_id == auth()->user()->id && $message->status == 0 ? Chatting::where('id', $message->id)->update(['status' => 1]) : '';
+            $message->receiver_id == auth()->guard('player')->user()->id && $message->status == 0 ? Chatting::where('id', $message->id)->update(['status' => 1]) : '';
         }
         return $messages;
 
