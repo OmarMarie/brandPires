@@ -5,12 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable,HasRoles;
+    use HasApiTokens, Notifiable;
+    protected $guarded = [];
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'phone_number'
+        'name', 'email', 'password', 'type','phone_number', 'active'
     ];
 
     /**
@@ -38,4 +40,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function hasRole($role)
+    {
+        $roles = $this->roles()->where('name', $role)->count();
+        if ($roles == 1) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
 }

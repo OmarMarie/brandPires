@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <!--begin::Head-->
 
 <!-- Mirrored from keenthemes.com/metronic/preview/demo1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 14:21:59 GMT -->
@@ -31,14 +31,14 @@
     <!--begin::Layout Themes(used by all pages)-->
 
     <link href="{{ asset('assets/css/themes/layout/header/base/light7a4a.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('layouts') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('layouts') }}" rel="stylesheet" type="text/css"/>
+
     <link href="{{ asset('assets/css/themes/layout/aside/dark7a4a.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
+
     <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/header_logo.png') }}"/>
     @yield('css')
 
-    <link rel="shortcut icon"
-          href="https://keenthemes.com/metronic/themes/metronic/theme/html/demo1/dist/assets/media/logos/favicon.ico"/>
 
     <!-- Hotjar Tracking Code for keenthemes.com -->
     <script>
@@ -177,15 +177,18 @@
 
 <!--begin::Page Vendors(used by this page)-->
 <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle7a4a.js') }}"></script>
+<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.js') }}"></script>
+
 <!--end::Page Vendors-->
 
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('assets/js/pages/widgets7a4a.js') }}"></script>
+
 <!--end::Page Scripts-->
 @yield('script')
 
 </body>
-<!--end::Body-->
+<!--end::Body -->
 
 <!-- Mirrored from keenthemes.com/metronic/preview/demo1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2020 14:25:22 GMT -->
 </html>

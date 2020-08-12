@@ -38,16 +38,16 @@
         <circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5"/>
     </g>
 </svg><!--end::Svg Icon--></span>							</span>
-                            <span class="navi-text text-muted text-hover-primary"> {{-- auth()->user()->email --}}</span>
+                            <span class="navi-text text-muted text-hover-primary">{{ auth()->user()->email}}</span>
                         </span>
                     </a>
 
-                    <a href="{{ route('logout') }}" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                    <a href="{{ route('logout', app()->getLocale()) }}" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Sign Out
                     </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>

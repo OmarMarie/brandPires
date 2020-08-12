@@ -18,12 +18,30 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', 'HomeController@index')->name('home');
-   Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect(app()->getLocale());
 });
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => '[a-zA-Z]{2}'],
+    'middleware' => 'setlocale'], function () {
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/dashboard', 'HomeController@index')->name('home');
+        Route::get('/', 'HomeController@index')->name('home');
+
+        Route::resource('users', 'UserController');
+        Route::get('usersDatable', 'UserController@usersDatable')->name('usersDatable');
+
+        Route::resource('player', 'PlayerController');
+        Route::get('playersDatable', 'PlayerController@playersDatable')->name('playersDatable');
+
+        Route::resource('brands', 'BrandController');
+        Route::get('brandsDatable', 'BrandController@brandsDatable')->name('brandsDatable');
+
+    });
 
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+});

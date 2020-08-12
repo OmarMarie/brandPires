@@ -56,6 +56,28 @@
                     <h4 class="menu-text">Custom</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
+                <li class="menu-item " aria-haspopup="true">
+                    <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
+                        <i class="fa fa-university left-icon-menu"><span></span></i>
+                        <span class="menu-text"> Brands</span>
+                    </a>
+                </li>
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fa fa-users left-icon-menu"></i>
+                            <span class="menu-text"> Users</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('player.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-biking left-icon-menu"></i>
+                            <span class="menu-text"> Player's</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
                             href="javascript:;" class="menu-link menu-toggle"><span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -94,12 +116,14 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu-item " aria-haspopup="true"><a href="custom/apps/inbox.html"
-                                                                           class="menu-link "><i
-                                            class="menu-bullet menu-bullet-line"><span></span></i><span
-                                            class="menu-text">Inbox</span><span class="menu-label"><span
-                                                class="label label-danger label-inline">new</span></span></a>
-                            </li>
+                            @if(auth()->user()->hasRole('admin'))
+                                <li class="menu-item " aria-haspopup="true"><a href="custom/apps/inbox.html"
+                                                                               class="menu-link "><i
+                                                class="menu-bullet menu-bullet-line"><span></span></i><span
+                                                class="menu-text">Inbox</span><span class="menu-label"><span
+                                                    class="label label-danger label-inline">new</span></span></a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </li>

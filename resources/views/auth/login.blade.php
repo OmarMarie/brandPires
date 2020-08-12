@@ -76,7 +76,7 @@
     <!--begin::Login-->
     <div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
         <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid"
-             style="background-image: url({{ asset('') }}assets/media/bg/bg-2.jpg);">
+             style="background-image: url({{ asset('') }}assets/media/bg/bg-1.jpg);">
             <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
                 <!--begin::Login Header-->
                 <div class="d-flex flex-center mb-15">
@@ -93,7 +93,7 @@
                         <p class="opacity-40">Enter your details to login to your account:</p>
                     </div>
 
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login', app()->getLocale()) }}">
                         @csrf
 
                         <div class="form-group">
@@ -140,8 +140,8 @@
                 <div class="login-forgot">
                     <div class="mb-20">
                         <h3 class="opacity-40 font-weight-normal">
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                            @if (Route::has('password.request', app()->getLocale()))
+                                <a class="btn btn-link" href="{{ route('password.request', app()->getLocale()) }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif

@@ -197,6 +197,11 @@ svg {
 table {
     border-collapse: collapse
 }
+.left-icon-menu{
+    padding-right: 15px;
+    margin-top: 5px;
+    color: #3699ff;
+}
 
 caption {
     padding-top: .75rem;

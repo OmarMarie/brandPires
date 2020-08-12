@@ -26,7 +26,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -37,4 +41,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+
 }
