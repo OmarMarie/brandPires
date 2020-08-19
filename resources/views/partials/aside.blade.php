@@ -78,6 +78,22 @@
                         </a>
                     </li>
                 @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-level-up-alt left-icon-menu"></i>
+                            <span class="menu-text"> level's</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-level-up-alt left-icon-menu"></i>
+                            <span class="menu-text"> tank's </span>
+                        </a>
+                    </li>
+                @endif
                 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
                             href="javascript:;" class="menu-link menu-toggle"><span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
                                     xmlns="http://www.w3.org/2000/svg"

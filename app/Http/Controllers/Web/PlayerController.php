@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\Levels;
 use App\Models\Player;
+use App\Models\PlayerBubbles;
+use App\Models\PlayerTankAction;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -17,7 +19,9 @@ class PlayerController extends Controller
     public function index()
     {
 
+
         return view('brandpriers.player.index');
+
     }
 
     public function playersDatable(Request $request)
@@ -26,27 +30,55 @@ class PlayerController extends Controller
 
         if ($request->ajax()) {
             $data = Player::latest()->get();
-
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('level', function ($data) {
-                    $levelDetails= Levels::where('id', $data->level_id)->first();
+                    $levelDetails = Levels::where('id', $data->level_id)->first();
                     return $levelDetails->level_name;
                 })
                 ->editColumn('lvl_pts', function ($data) {
-                  if ($data->lvl_pts=='')
-                      return 0 ;
+                    if ($data->lvl_pts == '')
+                        return 0;
                     else
                         return $data->lvl_pts;
                 })
                 ->addColumn('level_points', function ($data) {
-                   $levelPts = Player::find($data->id)->level;
+                    $levelPts = Player::find($data->id)->level;
                     return $levelPts->to_pts;
+                })
+                ->addColumn('tank', function ($data) {
+                    $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
+                    return $tankDetails->tanks->name;
+                })
+                ->addColumn('tank_points', function ($data) {
+                    $numberOfTankBubbles = PlayerBubbles::where('player_id', $data->id)->where('status', 1)->count();
+                    if ($numberOfTankBubbles == '')
+                        return 0;
+                    else
+                        return $numberOfTankBubbles;
+                })
+                ->addColumn('tank_size', function ($data) {
+                    $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
+                    return $tankDetails->tanks->size;
+                })
+                ->addColumn('extraTank', function ($data) {
+                    $extraTank = 0;
+                    $levelDetails = Levels::where('id', $data->level_id)->first(['extra', 'duration']);
+                    $extraLiveTime = $levelDetails->duration;
+                    $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
+                    if ($data->level_updated_at != null) {
+                        $expired_at = date('Y-m-d H:i:s', strtotime('+' . $extraLiveTime . ' hours', strtotime($data->level_updated_at)));
+                        if (now() < $expired_at) {
+                            $extraTank = ($tankDetails['tanks']->size * ($levelDetails->extra / 100));
+                        }
+                    }
+                    return $extraTank;
                 })
                 ->make(true);
         }
 
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +92,7 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -71,7 +103,7 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,7 +114,7 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -93,8 +125,8 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -105,7 +137,7 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

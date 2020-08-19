@@ -27,6 +27,7 @@ Route::group([
     'middleware' => 'setlocale'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
+
         Route::get('/dashboard', 'HomeController@index')->name('home');
         Route::get('/', 'HomeController@index')->name('home');
 
@@ -38,6 +39,12 @@ Route::group([
 
         Route::resource('brands', 'BrandController');
         Route::get('brandsDatable', 'BrandController@brandsDatable')->name('brandsDatable');
+
+        Route::resource('levels', 'levelController');
+        Route::get('levelsDatable', 'levelController@levelsDatable')->name('levelsDatable');
+
+        Route::resource('tanks', 'TankController');
+        Route::get('tanksDatable', 'TankController@tanksDatable')->name('tanksDatable');
 
     });
 

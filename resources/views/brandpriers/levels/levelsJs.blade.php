@@ -7,8 +7,8 @@
         "columnDefs": [
 
 
-            /*//{"width": "160px", "targets": 7},
-            {"width": "50px", "targets": 4},*/
+            //{"width": "160px", "targets": 7},
+            {"width": "50px", "targets": 5},
         ],
         processing: true,
         serverSide: true,
@@ -28,43 +28,31 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('playersDatable', app()->getLocale()) }}",
+        ajax: "{{ route('levelsDatable', app()->getLocale()) }}",
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
+            {data: 'level_name', title: 'Name'},
             {
-                title: 'Name', "mRender": function (data, type, row) {
-                    return row.first_name +' '+ row.last_name;
-
-                }
-            },
-            {data: 'email', title: 'Email'},
-             {
-                title: 'Level', "mRender": function (data, type, row) {row.level
-                    var level_name= row.level + ' <br>'+ '<span style="font-weight: bold;color: #6da5a2;"> '+row.lvl_pts+' </span>'+ '/ ' +'<span style="font-weight: bold;"> '+row.level_points+' </span>';
-                    return level_name;
+                title: 'From', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-warning ">' + row.from_pts + '</span>'
 
                 }
             },
             {
-                title: 'Tank', "mRender": function (data, type, row) {
-                    var tank_name= row.tank + ' <br>'+ '<span style="font-weight: bold;color: #6da5a2;"> '+row.tank_points+' </span>'+ '/ ' +'<span style="font-weight: bold;"> '+row.tank_size+' </span>';
-                    return tank_name;
+                title: 'To', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.to_pts + '</span>'
 
                 }
             },
-            {data: 'extraTank', title: 'Extra Tank'},
-
-
-            /*{
-                title: 'logo', "mRender": function (data, type, row) {
-                    var imgeUrl = ' asset('images/') ';
-                    if (row.school_logo != '') {
-                        return '<img src="' + imgeUrl + '/' + row.name_en + '/' + row.school_logo + '" class="avatar" width="50" height="50"/>';
-                    } else
-                        return "Not Found Logo";
+            {
+                title: 'Duration', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-danger">' + row.duration + ' h</span>'
 
                 }
             },
+
+
+            /*
             {
                 data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
@@ -90,8 +78,8 @@
              },*/
             {
                 title: 'Actions', "mRender": function (data, type, row) {
-                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-user-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
-                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-School-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
+                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-user-btn action-btn" id="' + row.id + '"  title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
+                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-levels-btn"  id="' + row.id + '" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;
                     /*var show = '<button data-toggle="modal" data-target="#productModal" class="btn btn-success  showM" id="' + row.id + '"><i class="fa fa-eye"></i></button >';
                      return show;*/
@@ -101,14 +89,14 @@
     });
 
 
-    $('#addUser').on('click', function () {
+    $('#addLevel').on('click', function () {
 
         $.ajax({
-            url: '{{ route('users.create', app()->getLocale()) }}',
+            url: '{{ route('levels.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add User');
+                $('.modal-title').text('Add levels');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -159,11 +147,11 @@
     $(document).on('click', '.edit-user-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/users/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/levels/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit User');
+                $('.modal-title').text('Edit Levels');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -210,5 +198,37 @@
             }
         });
     });
+    $(document).on('click', '.remove-levels-btn', function () {
 
+        var id = $(this).attr('id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url: '/{{(app()->getLocale())}}/levels/' + id,
+                    method: 'delete',
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Your levels has been removed',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        table.ajax.reload();
+                    }
+                });
+            }
+        });
+
+    });
 </script>

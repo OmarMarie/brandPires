@@ -19,15 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       /*$data = User::latest()->get();
-        foreach ($data as $object) {
-            $object->roles;
-        }
-        foreach ($data as $object2) {
-            return($object2->roles);
-        }
 
-        return $data;*/
         return view('brandpriers.users.index');
     }
 
