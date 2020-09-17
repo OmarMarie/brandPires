@@ -156,7 +156,6 @@ class TankController extends Controller
      */
     public function destroy($local, Tanks $tank)
     {
-
         $tank->delete();
         if ($tank->tank_icon != null) {
             $file = 'images/tank/' . $tank->tank_icon;
