@@ -56,28 +56,24 @@
                     <h4 class="menu-text">Custom</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
+                @if(auth()->user()->hasRole('admin'))
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
                         <i class="fa fa-university left-icon-menu"><span></span></i>
                         <span class="menu-text"> Brands</span>
                     </a>
                 </li>
+                @endif
+
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fa fa-users left-icon-menu"></i>
-                            <span class="menu-text"> Users</span>
+                        <a href="{{ route('companyPackages.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-cubes left-icon-menu"><span></span></i>
+                            <span class="menu-text"> Company Packages</span>
                         </a>
                     </li>
                 @endif
-                @if(auth()->user()->hasRole('admin'))
-                    <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('player.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fas fa-biking left-icon-menu"></i>
-                            <span class="menu-text"> Player's</span>
-                        </a>
-                    </li>
-                @endif
+
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
@@ -89,8 +85,24 @@
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fas fa-level-up-alt left-icon-menu"></i>
+                            <i class="fas fa-hockey-puck left-icon-menu"></i>
                             <span class="menu-text"> tank's </span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-biking left-icon-menu"></i>
+                            <span class="menu-text"> Player's</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fa fa-users left-icon-menu"></i>
+                            <span class="menu-text"> Users</span>
                         </a>
                     </li>
                 @endif

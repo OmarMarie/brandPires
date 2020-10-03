@@ -4,10 +4,13 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 7},
+            {"width": "50px", "targets": 9},
         ],
         processing: true,
         serverSide: true,
+        data: {
+            "brand_id": $('#brand_id').val()
+        },
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -24,40 +27,54 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('brandsDatable', app()->getLocale()) }}",
+        ajax: {
+            url: "{{ route('campaignsDatable', app()->getLocale()) }}",
+            type: "get",
+            data: {
+                "brand_id": $('#brand_id').val()
+            }
+        },
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
-            {data: 'brand_name', title: 'Name'},
+            {data: 'name', title: 'Name'},
             {
-                title: 'Total Bubbles Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-warning ">' + row.total_bubbles_number + '</span>'
+                title: 'Mark Pts', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-warning ">' + row.mark_pts + '</span>'
 
                 }
             },
             {
-                title: 'Total Gifts Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.total_gifts_number + '</span>'
+                title: 'Gifts Numbers', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.gifts_numbers + '</span>'
 
                 }
             },
             {
-                title: 'Total Price', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-danger">' + row.total_price + ' </span>'
+                title: 'Speed', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-danger">' + row.speed + ' </span>'
+
+                }
+            },
+            {data: 'employee_id', title: 'Employee'},
+            {
+                title: 'From Time', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.from_time + ' </span>'
 
                 }
             },
             {
-                title: 'Services', "mRender": function (data, type, row) {
-                    return '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>';
-                }
+                title: 'To Time', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-danger">' + row.to_time + ' </span>'
 
+                }
             },
+
             {
-                data: 'status', title: 'Active', "mRender": function (data, type, row) {
-                    if (row.status == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
-                    } else if (row.status == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.status + '</span>'
+                data: 'status', title: 'Available', "mRender": function (data, type, row) {
+                    if (row.available == 'False') {
+                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.available + '</span>'
+                    } else if (row.available == 'True') {
+                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.available + '</span>'
                     }
                 }
             },
@@ -74,6 +91,7 @@
 
 
     });
+
     $('#add').on('click', function () {
 
         $.ajax({

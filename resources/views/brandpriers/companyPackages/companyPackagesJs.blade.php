@@ -2,9 +2,10 @@
 
 
     var table = $('.data-table').DataTable({
+
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 7},
+            {"width": "50px", "targets": 8},
         ],
         processing: true,
         serverSide: true,
@@ -24,64 +25,35 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('brandsDatable', app()->getLocale()) }}",
+        ajax: "{{ route('companyPackagesDatable', app()->getLocale()) }}",
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
-            {data: 'brand_name', title: 'Name'},
-            {
-                title: 'Total Bubbles Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-warning ">' + row.total_bubbles_number + '</span>'
-
-                }
-            },
-            {
-                title: 'Total Gifts Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.total_gifts_number + '</span>'
-
-                }
-            },
-            {
-                title: 'Total Price', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-danger">' + row.total_price + ' </span>'
-
-                }
-            },
-            {
-                title: 'Services', "mRender": function (data, type, row) {
-                    return '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>';
-                }
-
-            },
-            {
-                data: 'status', title: 'Active', "mRender": function (data, type, row) {
-                    if (row.status == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
-                    } else if (row.status == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.status + '</span>'
-                    }
-                }
-            },
-
+            {data: 'cost', title: 'Price'},
+            {data: 'number_bubbles', title: 'Number of bubbles'},
+            {data: 'distribution', title: 'Location Distribution'},
+            {data: 'bonus', title: 'Bonus'},
+            {data: 'bubble_expiry', title: 'Bubble Expiry'},
+            {data: 'top_up_cos', title: 'Top price'},
+            {data: 'average_players', title: 'Average players'},
             {
                 title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;
-
                 }
             }
         ]
-
-
     });
+
+
     $('#add').on('click', function () {
 
         $.ajax({
-            url: '{{ route('brands.create', app()->getLocale()) }}',
+            url: '{{ route('companyPackages.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add Brand');
+                $('.modal-title').text('Add Company Packages');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -100,7 +72,6 @@
 
                             if (data.status === 422) {
                                 var error_html = '';
-
                                 for (let value of Object.values(data.errors)) {
                                     error_html += '<div class="alert alert-danger">' + value + '</div>';
                                 }
@@ -118,7 +89,6 @@
                                 });
                                 table.ajax.reload();
                                 $('#modal').modal('hide');
-
                             }
                         }
                     });
@@ -131,11 +101,11 @@
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/brands/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/companyPackages/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit Brand');
+                $('.modal-title').text('Edit Company Packages');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -182,6 +152,7 @@
             }
         });
     });
+
     $(document).on('click', '.remove-btn', function () {
 
         var id = $(this).attr('id');
@@ -199,7 +170,7 @@
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    url: '/{{(app()->getLocale())}}/brands/' + id,
+                    url: '/{{(app()->getLocale())}}/companyPackages/' + id,
                     method: 'delete',
                     success: function (data) {
                         Swal.fire({

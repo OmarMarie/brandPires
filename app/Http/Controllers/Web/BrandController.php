@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -31,13 +33,11 @@ class BrandController extends Controller
                 ->editColumn('status', function ($data) {
                     return $data->status == 0 ? 'False' : 'True';
                 })
-
                 ->editColumn('created_at', function ($data) {
-                    if($data->created_at != '')
-                    $data->created_at->format('d m Y - g:i A');
+                    if ($data->created_at != '')
+                        $data->created_at->format('d m Y - g:i A');
                     return $data->created_at;
                 })
-
                 ->make(true);
         }
 
@@ -51,7 +51,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brandpriers.brands.create');
     }
 
     /**
@@ -62,7 +62,36 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validations = Validator::make($request->all(), [
+            'brand_name' => 'required',
+            'total_bubbles_number' => 'required|numeric',
+            'total_gifts_number' => 'required|numeric',
+            'total_price' => 'required|numeric',
+            'status' => 'required',
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+
+        if (isset($request->brand_icon)) {
+            $image = $request->file('brand_icon');
+            $icon = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/brand'), $icon);
+        } else {
+            $icon = null;
+        }
+
+        Brand::create([
+            'brand_name' => $request->brand_name,
+            'total_bubbles_number' => $request->total_bubbles_number,
+            'total_gifts_number' => $request->total_gifts_number,
+            'total_price' => $request->total_price,
+            'status' => $request->status,
+            'img' => $icon,
+        ]);
+
+        return response()->json(['message' => 'Added Brand successfully', 'status' => 200]);
     }
 
     /**
@@ -82,9 +111,9 @@ class BrandController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($local, Brand $brand)
     {
-        //
+        return view('brandpriers.brands.create', compact('brand'));
     }
 
     /**
@@ -94,9 +123,44 @@ class BrandController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($local, Request $request, Brand $brand)
     {
-        //
+        $validations = Validator::make($request->all(), [
+            'brand_name' => 'required',
+            'total_bubbles_number' => 'required|numeric',
+            'total_gifts_number' => 'required|numeric',
+            'total_price' => 'required|numeric',
+            'status' => 'required',
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+
+        $brand->update([
+            'brand_name' => $request->brand_name,
+            'total_bubbles_number' => $request->total_bubbles_number,
+            'total_gifts_number' => $request->total_gifts_number,
+            'total_price' => $request->total_price,
+            'status' => $request->status,
+        ]);
+
+        if (isset($request->brand_icon) && $request->brand_icon != $brand->img) {
+            /*--------------delete img old--------*/
+            $file = 'images/brand/' . $brand->img;
+            File::delete($file);
+
+            $image = $request->file('brand_icon');
+            $icon = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/brand'), $icon);
+
+            $brand->update([
+                'img' => $icon
+            ]);
+
+        }
+        return response()->json(['message' => 'Updated Brand successfully', 'status' => 200]);
+
+
     }
 
     /**
@@ -105,8 +169,13 @@ class BrandController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($local, Brand $brand)
     {
-        //
+        $brand->delete();
+        if ($brand->img != null) {
+            $file = 'images/tank/' . $brand->img;
+            File::delete($file);
+
+        }
     }
 }

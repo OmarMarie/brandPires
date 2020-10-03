@@ -7,6 +7,8 @@ use App\Models\Player;
 use App\Models\PlayerBubbles;
 use App\Models\PlayerTankAction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class PlayerController extends Controller
@@ -86,7 +88,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        return view('brandpriers.player.create');
     }
 
     /**
@@ -97,7 +99,42 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validations = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'username' => 'required|string|unique:players',
+            'email' => 'required|string|email|unique:players',
+            'phone_number' => 'required|unique:players',
+            'birth_day' => 'required',
+            'password' => 'required|string|min:8|max:20'
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+
+        $birth_day = Carbon::parse($request->birth_day)->format('Y-m-d');
+
+        $player = new Player([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'birth_day' => $birth_day,
+            'img' => 'default.jpg',
+            'password' => bcrypt($request->password),
+            'level_id' => 1,
+        ]);
+        $player->save();
+
+        PlayerTankAction::create([
+            'tank_id' => 1,
+            'player_id' => $player->id,
+            'action' => 0,
+            'status' => 1,
+            'tank_pts' => 0
+        ]);
+        return response()->json(['message' => 'Add Player successfully', 'status' => 200]);
     }
 
     /**
@@ -117,9 +154,9 @@ class PlayerController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($local, Player $player)
     {
-        //
+        return view('brandpriers.player.create', compact('player'));
     }
 
     /**
@@ -129,9 +166,28 @@ class PlayerController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($local, Request $request, Player $player)
     {
-        //
+        $validations = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|string|email|unique:players,email,'. $player->id,
+            'phone_number' => 'required|unique:players,phone_number,'.$player->id,
+            'birth_day' => 'required',
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+        $birth_day = Carbon::parse($request->birth_day)->format('Y-m-d');
+
+        $player->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'birth_day' => $birth_day,
+        ]);
+        return response()->json(['message' => 'Updated Player successfully', 'status' => 200]);
     }
 
     /**
@@ -140,8 +196,8 @@ class PlayerController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($local, Player $player)
     {
-        //
+        $player->delete();
     }
 }

@@ -11,7 +11,7 @@
                 <b>Brands</b>
                 <div class="card-toolbar" style="float: right">
 
-                    <a id="addBrand" class="btn btn-primary font-weight-bolder">
+                    <a id="add" class="btn btn-primary font-weight-bolder">
 	<span class="svg-icon svg-icon-md">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -30,7 +30,7 @@
                 <table class="table data-table" id="data-table"></table>
             </div>
         </div>
-
+        @include('brandpriers.modal')
 
 
     </div>

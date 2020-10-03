@@ -34,7 +34,7 @@ Route::group([
         Route::resource('users', 'UserController');
         Route::get('usersDatable', 'UserController@usersDatable')->name('usersDatable');
 
-        Route::resource('player', 'PlayerController');
+        Route::resource('players', 'PlayerController');
         Route::get('playersDatable', 'PlayerController@playersDatable')->name('playersDatable');
 
         Route::resource('brands', 'BrandController');
@@ -45,6 +45,13 @@ Route::group([
 
         Route::resource('tanks', 'TankController');
         Route::get('tanksDatable', 'TankController@tanksDatable')->name('tanksDatable');
+
+        Route::resource('companyPackages', 'CompanyPackagesController');
+        Route::get('companyPackagesDatable', 'CompanyPackagesController@companyPackagesDatable')->name('companyPackagesDatable');
+
+        Route::resource('campaigns', 'CampaignController');
+        Route::get('brand/campaigns/{id?}', 'CampaignController@index2')->name('BrandCampaigns');
+        Route::get('campaignsDatable', 'CampaignController@campaignsDatable')->name('campaignsDatable');
 
     });
 

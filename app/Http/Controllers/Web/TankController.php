@@ -23,10 +23,8 @@ class TankController extends Controller
     public function tanksDatable(Request $request)
     {
 
-
         if ($request->ajax()) {
             $data = Tanks::first()->get();
-
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->make(true);
