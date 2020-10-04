@@ -93,13 +93,12 @@
     });
 
     $('#add').on('click', function () {
-
         $.ajax({
-            url: '{{ route('brands.create', app()->getLocale()) }}',
+            url: '{{ route('campaigns.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add Brand');
+                $('.modal-title').text('Add Campaign');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -153,7 +152,7 @@
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit Brand');
+                $('.modal-title').text('Edit Campaign');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -222,7 +221,7 @@
                     success: function (data) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Your Brands has been removed',
+                            title: 'Your Campaign has been removed',
                             showConfirmButton: false,
                             timer: 1500
                         });

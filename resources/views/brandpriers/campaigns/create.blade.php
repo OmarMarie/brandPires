@@ -1,114 +1,235 @@
 <style>
-    .imagePreview {
-        width: 170px;
-        height: 150px;
-        background-position: center center;
-        background: url('{{asset('/assets/images/default/default-img.jpg')}}');
+    .controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #pac-input {
         background-color: #fff;
-        background-size: 100% 150px;
-        background-repeat: no-repeat;
-        border-radius: 10px;
-        display: inline-block;
-        webkit-box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, .075);
-        box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, .075);
-        border: 3px solid #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+        top: -6px !important;
+        z-index: 100000 !important;
     }
 
-    .btn_edit_img {
-        margin-top: -333px;
-        margin-left: 155px;
-
+    .modal {
+        z-index: 550 !important;
     }
 
-    .imgUp {
-        margin-bottom: 15px;
+    .modal-backdrop {
+        z-index: 10;
+    }
+
+    ​
+    #pac-input:focus {
+        border-color: #4d90fe;
+    }
+
+    #map-canvas {
+        height: 350px;
+        margin: 20px;
+        width: 780px;
+        padding: 0px;
     }
 
 </style>
 @if(isset($brand))
-    <form action="{{ route('brands.update', [app()->getLocale(),$brand]) }}" method="POST" id="userForm">
+    <form action="{{ route('campaigns.update', [app()->getLocale(),$brand]) }}" method="POST" id="userForm">
         {{ method_field('PUT') }}
         @else
-            <form action="{{ route('brands.store', app()->getLocale()) }}" method="POST" id="userForm">
+            <form action="{{ route('campaigns.store', app()->getLocale()) }}" method="POST" id="userForm">
                 @endif
                 @csrf
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label>Brand Name</label>
-                        <input type="text" class="form-control" name="brand_name" placeholder="Brand Name"
-                               @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Name"
+                               @if(isset($brand)) value="{{ $brand->name }}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Total Bubbles Number</label>
-                        <input type="text" class="form-control" name="total_bubbles_number"
-                               placeholder="Total Bubbles Number"
-                               @if(isset($brand)) value="{{ $brand->total_bubbles_number }}" @endif>
+                        <label>Mark Pts</label>
+                        <input type="text" class="form-control" name="mark_pts"
+                               placeholder="Mark Pts"
+                               @if(isset($brand)) value="{{ $brand->mark_pts }}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Total Gifts Number</label>
-                        <input type="text" class="form-control" name="total_gifts_number"
+                        <label>Gifts Numbers</label>
+                        <input type="text" class="form-control" name="gifts_numbers"
                                placeholder="Total Gifts Number"
-                               @if(isset($brand)) value="{{ $brand->total_gifts_number}}" @endif>
+                               @if(isset($brand)) value="{{ $brand->gifts_numbers}}" @endif>
                     </div>
-
                     <div class="col-md-6 form-group">
-                        <label>Total Price</label>
-                        <input type="text" class="form-control" name="total_price" placeholder="Total Price"
-                               @if(isset($brand)) value="{{ $brand->total_price}}" @endif>
+                        <label>From Time</label>
+                        <input type="text" id="timepicker" class="time-picker form-control" name="from_time"
+                               placeholder="From Time"
+                               @if(isset($brand)) value="{{ $brand->from_time}}" @endif>
                     </div>
-
                     <div class="col-md-6 form-group">
-                        <label>Active</label>
-                        <select name="status" class="form-control">
-                            <option value="0" @if(isset($brand) && $brand->status == 0) selected @endif>False</option>
-                            <option value="1" @if(isset($brand) && $brand->status == 1) selected @endif>True</option>
+                        <label>To Time</label>
+                        <input type="text" id="timepicker2" class="time-picker form-control" name="to_time"
+                               placeholder="To Time"
+                               @if(isset($brand)) value="{{ $brand->to_time}}" @endif>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Employee</label>
+                        <select name="employee_id" class="form-control">
+                            @if(!isset($instructor))
+                                <option value="" selected disabled>Select Employee</option>
+                            @endif
+                            @foreach($employees  as $employee)
+                                <option @if(isset($instructor) && $employee->id == $instructor->university_id) value="{{ $employee->id }}"
+                                        selected
+                                        @else value="{{ $employee->id }}" @endif>{{ $employee->name }}</option>
+                            @endforeach
                         </select>
                     </div>
-
-                    <div class="col-md-6 form-group"></div>
-
-                    <div class="col-sm-2 imgUp">
-                        <label>Brand Icon </label>
-                        <div class="imagePreview" style="@if( isset($brand))
-                                background:url('{{asset('/images/brand/'.$brand->img.'')}}');
-                                background-position: center center;
-                                background-color: #fff;
-                                background-size: 100% 150px;
-                                background-repeat: no-repeat;
-                        @endif"></div>
-                        <label class="btn_edit_img btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                               style="color: #262673 !important;">
-                            <i class="fa fa-pen icon-sm text-muted"></i>
-                            <input type="file" name="brand_icon" id="img" class="uploadFile img"
-                                   value="{{ isset($brand) ? $brand->img: '' }}"
-                                   style="width: 0px;height: 0px;overflow: hidden;">
-                        </label>
+                    <div class="col-md-6 form-group">
+                        <label>Bulk</label>
+                        <select name="bulk_id" class="form-control">
+                            @if(!isset($instructor))
+                                <option value="" selected disabled>Select Bulk</option>
+                            @endif
+                            @foreach($bulks  as $bulk)
+                                <option @if(isset($instructor) && $bulk->id == $instructor->university_id) value="{{ $bulk->id }}"
+                                        selected
+                                        @else value="{{ $bulk->id }}" @endif>{{ $bulk->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-
+                    <div class="col-md-6 form-group">
+                        <label>Available</label>
+                        <select name="available" class="form-control">
+                            <option value="0" @if(isset($brand) && $brand->available == 0) selected @endif>False
+                            </option>
+                            <option value="1" @if(isset($brand) && $brand->available == 1) selected @endif>True</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label>Location</label>
+                        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                        <div id="map-canvas"></div>
+                        <input type="hidden" name="lat" id="lat"
+                               value="{{ isset($school) ? $school->lat : 24.079352 }}"
+                               readonly="yes">
+                        <input type="hidden" name="lng" id="lng"
+                               value="{{ isset($school) ? $school->lng : 48.0031405 }}"
+                               readonly="yes">
+                    </div>
+                    <div class="col-md-6 form-group"></div>
                     <div class="col-md-12 form-group">
                         <input type="submit" value="Submit" class="btn btn-success" style="float: right">
                     </div>
                 </div>
             </form>
 
-            <script>
+            <script type="text/javascript">
+
                 $(function () {
-                    $(document).on("change", ".uploadFile", function () {
-                        var uploadFile = $(this);
-                        var files = !!this.files ? this.files : [];
-                        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-
-                        if (/^image/.test(files[0].type)) { // only image file
-                            var reader = new FileReader(); // instance of the FileReader
-                            reader.readAsDataURL(files[0]); // read the local file
-
-                            reader.onloadend = function () { // set image data as background of div
-                                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                                uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                            }
-                        }
-
-                    });
+                    $("#timepicker").timepicker();
+                    $("#timepicker2").timepicker();
                 });
+
+                // google maps
+                var map;
+                var marker = false;
+                var lat;
+                var lng;
+                initialize();
+                function initialize() {
+                    if ($("#map-canvas").length != 0) {
+                        @if(isset($school))
+                            lat = parseFloat(document.getElementById('lat').value);
+                        lng = parseFloat(document.getElementById('lng').value);
+
+                        var myLocationEdit = {
+                            lat: lat,
+                            lng: lng
+                        };
+                        map = new google.maps.Map(document.getElementById('map-canvas'), {
+                            center: myLocationEdit,
+                            zoom: 16,
+                            mapTypeId: 'roadmap'
+                        });
+                        marker = new google.maps.Marker({
+                            position: myLocationEdit,
+                            map: map,
+                            draggable: true
+                        });
+                                @else
+                        var markers = [];
+                        map = new google.maps.Map(document.getElementById('map-canvas'), {
+                            center: {lat: 24.079352, lng: 48.0031405},
+                            zoom: 5
+                        });
+                                @endif
+                        var input = /** @type {HTMLInputElement} */(
+                                document.getElementById('pac-input'));
+                        new google.maps.places.Autocomplete(input);
+                        google.maps.event.addDomListener(window, 'load', initialize);
+
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                        var searchBox = new google.maps.places.SearchBox((input));
+
+                        google.maps.event.addListener(searchBox, 'places_changed', function () {
+                            var places = searchBox.getPlaces();
+                            if (places.length == 0) {
+                                return;
+                            }
+                            markers = [];
+                            var mLatLng;
+                            var bounds = new google.maps.LatLngBounds();
+                            for (var i = 0, place; place = places[i]; i++) {
+                                if (marker === false) {
+                                    marker = new google.maps.Marker({
+                                        position: place.geometry.location,
+                                        map: map,
+                                    });
+                                    google.maps.event.addListener(marker, 'dragend', function () {
+                                        markerLocation();
+                                    });
+                                } else {
+                                    marker.setPosition(place.geometry.location);
+                                }
+                                mLatLng = place.geometry.location;
+                            }
+                            document.getElementById('lat').value = mLatLng.lat(); //latitude
+                            document.getElementById('lng').value = mLatLng.lng();
+                            map.setCenter(mLatLng);
+                            map.setZoom(18);
+                        });
+                        google.maps.event.addListener(map, 'click', function (event) {
+
+                            var clickedLocation = event.latLng;
+                            if (marker === false) {
+                                marker = new google.maps.Marker({
+                                    position: clickedLocation,
+                                    map: map,
+                                });
+                                google.maps.event.addListener(marker, 'dragend', function () {
+                                    markerLocation();
+                                });
+                            } else {
+                                marker.setPosition(clickedLocation);
+                            }
+                            markerLocation();
+                        });
+                    }
+                }
+
+                function markerLocation() {
+                    var currentLocation = marker.getPosition();
+                    document.getElementById('lat').value = currentLocation.lat(); //latitude
+                    document.getElementById('lng').value = currentLocation.lng(); //longitude
+                }
             </script>

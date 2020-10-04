@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-
 use App\Brand;
+use App\Models\Bulks;
 use App\Models\Campaign;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class CampaignController extends Controller
@@ -51,7 +52,9 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        //
+        $bulks = Bulks::all();
+        $employees = Employee::all();
+        return view('brandpriers.campaigns.create',compact('bulks','employees'));
     }
 
     /**
@@ -62,7 +65,37 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validations = Validator::make($request->all(), [
+            'name' => 'required',
+            'mark_pts' => 'required',
+            'gifts_numbers' => 'required',
+            'from_time' => 'required',
+            'to_time' => 'required',
+            'employee_id' => 'required',
+            'bulk_id' => 'required',
+            'available' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+
+        Campaign::create([
+            'name' => $request->name,
+            'mark_pts' => $request->mark_pts,
+            'gifts_numbers' => $request->gifts_numbers,
+            'from_time' => date("H:i:s", strtotime($request->from_time)),
+            'to_time' => date("H:i:s", strtotime($request->to_time)),
+            'employee_id' => $request->employee_id,
+            'bulk_id' => $request->bulk_id,
+            'available' => $request->available,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
+        ]);
+
+        return response()->json(['message' => 'Added Campaign successfully', 'status' => 200]);
     }
 
     /**
