@@ -36,7 +36,10 @@ class PlayerController extends Controller
                 ->addIndexColumn()
                 ->addColumn('level', function ($data) {
                     $levelDetails = Levels::where('id', $data->level_id)->first();
-                    return $levelDetails->level_name;
+                    if ($levelDetails != null)
+                        return $levelDetails->level_name;
+                    else
+                        return null;
                 })
                 ->editColumn('lvl_pts', function ($data) {
                     if ($data->lvl_pts == '')
@@ -46,7 +49,10 @@ class PlayerController extends Controller
                 })
                 ->addColumn('level_points', function ($data) {
                     $levelPts = Player::find($data->id)->level;
-                    return $levelPts->to_pts;
+                    if ($levelPts != null)
+                        return $levelPts->to_pts;
+                    else
+                        return null;
                 })
                 ->addColumn('tank', function ($data) {
                     $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
@@ -66,15 +72,19 @@ class PlayerController extends Controller
                 ->addColumn('extraTank', function ($data) {
                     $extraTank = 0;
                     $levelDetails = Levels::where('id', $data->level_id)->first(['extra', 'duration']);
-                    $extraLiveTime = $levelDetails->duration;
-                    $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
-                    if ($data->level_updated_at != null) {
-                        $expired_at = date('Y-m-d H:i:s', strtotime('+' . $extraLiveTime . ' hours', strtotime($data->level_updated_at)));
-                        if (now() < $expired_at) {
-                            $extraTank = ($tankDetails['tanks']->size * ($levelDetails->extra / 100));
+                    if ($levelDetails == '')
+                        return 0;
+                    else {
+                        $extraLiveTime = $levelDetails->duration;
+                        $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $data->id)->first();
+                        if ($data->level_updated_at != null) {
+                            $expired_at = date('Y-m-d H:i:s', strtotime('+' . $extraLiveTime . ' hours', strtotime($data->level_updated_at)));
+                            if (now() < $expired_at) {
+                                $extraTank = ($tankDetails['tanks']->size * ($levelDetails->extra / 100));
+                            }
                         }
+                        return $extraTank;
                     }
-                    return $extraTank;
                 })
                 ->make(true);
         }
@@ -171,8 +181,8 @@ class PlayerController extends Controller
         $validations = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|string|email|unique:players,email,'. $player->id,
-            'phone_number' => 'required|unique:players,phone_number,'.$player->id,
+            'email' => 'required|string|email|unique:players,email,' . $player->id,
+            'phone_number' => 'required|unique:players,phone_number,' . $player->id,
             'birth_day' => 'required',
         ]);
         if ($validations->fails()) {
@@ -199,5 +209,49 @@ class PlayerController extends Controller
     public function destroy($local, Player $player)
     {
         $player->delete();
+    }
+
+
+    public function addPoints($local, $player_id)
+    {
+        $player = Player::where('id', $player_id)->first();
+        return view('brandpriers.player.pointCreate', compact('player'));
+    }
+
+    public function pointsUpdate($local, Request $request)
+    {
+        $validations = Validator::make($request->all(), [
+            'point_add' => 'required|numeric'
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+        $player = Player::where('id', $request->player_id)->first();
+
+        $userLvlPts = $player->lvl_pts;
+
+        $calcLvlPts = $userLvlPts + $request->point_add;
+
+        $levelDetails = Levels::where('id', $player->level_id)->first();
+        $levelIdNew = Levels::where('to_pts', '>=', $calcLvlPts)
+            ->where('from_pts', '<=', $calcLvlPts)
+            ->value('id');
+        if ($levelIdNew == null) {
+            return response()->json(['message' => 'Not Found Upgrade level', 'status' => 423]);
+        }
+
+        if ($calcLvlPts > $levelDetails->to_pts) {
+            $player->update([
+                'level_id' => $levelIdNew,
+                'lvl_pts' => $calcLvlPts,
+                'level_updated_at' => now()
+            ]);
+        } else {
+            $player->update([
+                'lvl_pts' => $calcLvlPts
+            ]);
+        }
+
+        return response()->json(['message' => 'Add Player Points successfully', 'status' => 200]);
     }
 }

@@ -22,8 +22,6 @@ class levelController extends Controller
 
     public function levelsDatable(Request $request)
     {
-
-
         if ($request->ajax()) {
             $data = Levels::first()->get();
 

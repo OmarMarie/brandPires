@@ -39,56 +39,71 @@
     #map-canvas {
         height: 350px;
         margin: 20px;
-        width: 780px;
+        width: 900px;
         padding: 0px;
+        margin-bottom: 0px;
     }
 
 </style>
-@if(isset($brand))
-    <form action="{{ route('campaigns.update', [app()->getLocale(),$brand]) }}" method="POST" id="userForm">
+@if(isset($campaign))
+    <form action="{{ route('campaigns.update', [app()->getLocale(),$campaign]) }}" method="POST" id="userForm">
         {{ method_field('PUT') }}
         @else
             <form action="{{ route('campaigns.store', app()->getLocale()) }}" method="POST" id="userForm">
                 @endif
                 @csrf
+                @if(!isset($campaign))
+                    <input type="hidden" name="brand_id"  value="{{ $brand_id }}">
+                    @endif
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Name"
-                               @if(isset($brand)) value="{{ $brand->name }}" @endif>
+                               @if(isset($campaign)) value="{{ $campaign->name }}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Mark Pts</label>
                         <input type="text" class="form-control" name="mark_pts"
                                placeholder="Mark Pts"
-                               @if(isset($brand)) value="{{ $brand->mark_pts }}" @endif>
+                               @if(isset($campaign)) value="{{ $campaign->mark_pts }}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Gifts Numbers</label>
                         <input type="text" class="form-control" name="gifts_numbers"
                                placeholder="Total Gifts Number"
-                               @if(isset($brand)) value="{{ $brand->gifts_numbers}}" @endif>
+                               @if(isset($campaign)) value="{{ $campaign->gifts_numbers}}" @endif>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Speed</label>
+                        <input type="text" class="form-control" name="speed"
+                               placeholder="Speed"
+                               @if(isset($campaign)) value="{{ $campaign->speed}}" @endif>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="date">Date</label>
+                        <input name="date" id="datepicker" class="date-picker form-control" placeholder="Date"  autocomplete="off"
+                               @if(isset($campaign)) value="{{ $campaign->date}}" @endif/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>From Time</label>
                         <input type="text" id="timepicker" class="time-picker form-control" name="from_time"
-                               placeholder="From Time"
-                               @if(isset($brand)) value="{{ $brand->from_time}}" @endif>
+                               placeholder="From Time" autocomplete="off"
+                               @if(isset($campaign)) value="{{ $campaign->from_time}}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>To Time</label>
                         <input type="text" id="timepicker2" class="time-picker form-control" name="to_time"
-                               placeholder="To Time"
-                               @if(isset($brand)) value="{{ $brand->to_time}}" @endif>
+                               placeholder="To Time" autocomplete="off"
+                               @if(isset($campaign)) value="{{ $campaign->to_time}}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Employee</label>
                         <select name="employee_id" class="form-control">
-                            @if(!isset($instructor))
+                            @if(!isset($campaign))
                                 <option value="" selected disabled>Select Employee</option>
                             @endif
                             @foreach($employees  as $employee)
-                                <option @if(isset($instructor) && $employee->id == $instructor->university_id) value="{{ $employee->id }}"
+                                <option @if(isset($campaign) && $employee->id == $campaign->employee_id) value="{{ $employee->id }}"
                                         selected
                                         @else value="{{ $employee->id }}" @endif>{{ $employee->name }}</option>
                             @endforeach
@@ -97,11 +112,11 @@
                     <div class="col-md-6 form-group">
                         <label>Bulk</label>
                         <select name="bulk_id" class="form-control">
-                            @if(!isset($instructor))
+                            @if(!isset($campaign))
                                 <option value="" selected disabled>Select Bulk</option>
                             @endif
                             @foreach($bulks  as $bulk)
-                                <option @if(isset($instructor) && $bulk->id == $instructor->university_id) value="{{ $bulk->id }}"
+                                <option @if(isset($campaign) && $bulk->id == $campaign->bulk_id) value="{{ $bulk->id }}"
                                         selected
                                         @else value="{{ $bulk->id }}" @endif>{{ $bulk->name }}</option>
                             @endforeach
@@ -110,9 +125,9 @@
                     <div class="col-md-6 form-group">
                         <label>Available</label>
                         <select name="available" class="form-control">
-                            <option value="0" @if(isset($brand) && $brand->available == 0) selected @endif>False
+                            <option value="0" @if(isset($campaign) && $campaign->available == 0) selected @endif>False
                             </option>
-                            <option value="1" @if(isset($brand) && $brand->available == 1) selected @endif>True</option>
+                            <option value="1" @if(isset($campaign) && $campaign->available == 1) selected @endif>True</option>
                         </select>
                     </div>
                     <div class="col-md-12 form-group">
@@ -120,10 +135,10 @@
                         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                         <div id="map-canvas"></div>
                         <input type="hidden" name="lat" id="lat"
-                               value="{{ isset($school) ? $school->lat : 24.079352 }}"
+                               value="{{ isset($campaign) ? $campaign->lat : 24.079352 }}"
                                readonly="yes">
                         <input type="hidden" name="lng" id="lng"
-                               value="{{ isset($school) ? $school->lng : 48.0031405 }}"
+                               value="{{ isset($campaign) ? $campaign->lng : 48.0031405 }}"
                                readonly="yes">
                     </div>
                     <div class="col-md-6 form-group"></div>
@@ -140,15 +155,21 @@
                     $("#timepicker2").timepicker();
                 });
 
+                $("#datepicker").datepicker({
+                    format: "dd-mm-yyyy",
+                });
+
+
                 // google maps
                 var map;
                 var marker = false;
                 var lat;
                 var lng;
                 initialize();
+
                 function initialize() {
                     if ($("#map-canvas").length != 0) {
-                        @if(isset($school))
+                        @if(isset($campaign))
                             lat = parseFloat(document.getElementById('lat').value);
                         lng = parseFloat(document.getElementById('lng').value);
 
@@ -158,7 +179,7 @@
                         };
                         map = new google.maps.Map(document.getElementById('map-canvas'), {
                             center: myLocationEdit,
-                            zoom: 16,
+                            zoom: 10    ,
                             mapTypeId: 'roadmap'
                         });
                         marker = new google.maps.Marker({

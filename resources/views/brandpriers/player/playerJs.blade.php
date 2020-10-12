@@ -5,7 +5,7 @@
 
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 7},
+            {"width": "50px", "targets": 8},
         ],
         processing: true,
         serverSide: true,
@@ -30,27 +30,37 @@
             {data: 'DT_RowIndex', title: 'ID'},
             {
                 title: 'Name', "mRender": function (data, type, row) {
-                    return row.first_name +' '+ row.last_name;
+                    return row.first_name + ' ' + row.last_name;
 
                 }
             },
             {data: 'username', title: 'UserName'},
             {data: 'email', title: 'Email'},
-             {
-                title: 'Level', "mRender": function (data, type, row) {row.level
-                    var level_name= row.level + ' <br>'+ '<span style="font-weight: bold;color: #6da5a2;"> '+row.lvl_pts+' </span>'+ '/ ' +'<span style="font-weight: bold;"> '+row.level_points+' </span>';
-                    return level_name;
+            {
+                title: 'Level', "mRender": function (data, type, row) {
+                    if (row.level != null) {
+                        var level_name = '<span class="font-weight-bold text-warning" >'+row.level+' </span>  <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.lvl_pts + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.level_points + ' </span>';
+                        return level_name;
+                    } else {
+                        return null;
+                    }
 
                 }
             },
             {
                 title: 'Tank', "mRender": function (data, type, row) {
-                    var tank_name= row.tank + ' <br>'+ '<span style="font-weight: bold;color: #6da5a2;"> '+row.tank_points+' </span>'+ '/ ' +'<span style="font-weight: bold;"> '+row.tank_size+' </span>';
+                    var tank_name = '<span class="font-weight-bold text-danger" >'+row.tank + '</span> <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.tank_points + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.tank_size + ' </span>';
                     return tank_name;
 
                 }
             },
             {data: 'extraTank', title: 'Extra Tank'},
+            {
+                title: 'Services', "mRender": function (data, type, row) {
+                    return '<a href="#"  class="btn btn-sm btn-clean btn-icon action-btn add_points" id="' + row.id + '" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Add points"><i class="fas fa-plus-circle"></i></a>';
+                }
+
+            },
             {
                 title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
@@ -63,7 +73,6 @@
 
 
     $('#add').on('click', function () {
-
         $.ajax({
             url: '{{ route('players.create', app()->getLocale()) }}',
             method: 'get',
@@ -199,6 +208,67 @@
             }
         });
 
+    });
+    $(document).on('click', '.add_points', function () {
+        var id = $(this).attr('id');
+        $.ajax({
+            url: '/{{app()->getLocale()}}/player/' + id + '/points',
+            type: 'get',
+            success: function (data) {
+                $('.modal-body').html(data);
+                $('.modal-title').text('Add points');
+                $('#modal').modal('show');
+
+                $('#userForm').submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: new FormData(this),
+                        dataType: "json",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+
+                            if (data.status === 422) {
+                                console.log(data);
+                                var error_html = '';
+
+                                for (let value of Object.values(data.errors)) {
+                                    error_html += '<div class="alert alert-danger">' + value + '</div>';
+                                }
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    html: error_html,
+                                })
+                            }
+                            else if (data.status === 423) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    html: '<div class="alert alert-danger">' + data.message + '</div>',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: data.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+
+                                table.ajax.reload();
+                                $('#modal').modal('hide');
+                            }
+                        }
+                    });
+
+                });
+            }
+        });
     });
 
 </script>

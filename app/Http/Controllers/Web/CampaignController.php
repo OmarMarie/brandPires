@@ -7,6 +7,7 @@ use App\Models\Bulks;
 use App\Models\Campaign;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -17,7 +18,7 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index2($locale, $brand_id)
+    public function index($locale, $brand_id)
     {
         $brandName = Brand::where('id', $brand_id)->value('brand_name');
         return view('brandpriers.campaigns.index', compact('brand_id', 'brandName'));
@@ -50,11 +51,11 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local,$brand_id)
     {
         $bulks = Bulks::all();
         $employees = Employee::all();
-        return view('brandpriers.campaigns.create',compact('bulks','employees'));
+        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id'));
     }
 
     /**
@@ -72,9 +73,11 @@ class CampaignController extends Controller
             'gifts_numbers' => 'required',
             'from_time' => 'required',
             'to_time' => 'required',
+            'date' => 'required',
             'employee_id' => 'required',
             'bulk_id' => 'required',
             'available' => 'required',
+            'speed' => 'required',
             'lat' => 'required',
             'lng' => 'required',
         ]);
@@ -89,10 +92,13 @@ class CampaignController extends Controller
             'from_time' => date("H:i:s", strtotime($request->from_time)),
             'to_time' => date("H:i:s", strtotime($request->to_time)),
             'employee_id' => $request->employee_id,
+            'date' => Carbon::parse($request->date)->format('Y/m/d'),
             'bulk_id' => $request->bulk_id,
             'available' => $request->available,
+            'speed' => $request->speed,
             'lat' => $request->lat,
             'lng' => $request->lng,
+            'brand_id' => $request->brand_id,
         ]);
 
         return response()->json(['message' => 'Added Campaign successfully', 'status' => 200]);
@@ -115,9 +121,11 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($local,Campaign $campaign)
     {
-        //
+        $bulks = Bulks::all();
+        $employees = Employee::all();
+        return view('brandpriers.campaigns.create',compact('bulks','employees','campaign'));
     }
 
     /**
@@ -127,9 +135,43 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($local,Request $request, Campaign $campaign)
     {
-        //
+        $validations = Validator::make($request->all(), [
+            'name' => 'required',
+            'mark_pts' => 'required',
+            'gifts_numbers' => 'required',
+            'from_time' => 'required',
+            'to_time' => 'required',
+            'date' => 'required',
+            'employee_id' => 'required',
+            'bulk_id' => 'required',
+            'available' => 'required',
+            'speed' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+
+        $campaign->update([
+            'name' => $request->name,
+            'mark_pts' => $request->mark_pts,
+            'gifts_numbers' => $request->gifts_numbers,
+            'from_time' => date("H:i:s", strtotime($request->from_time)),
+            'to_time' => date("H:i:s", strtotime($request->to_time)),
+            'employee_id' => $request->employee_id,
+            'date' => Carbon::parse($request->date)->format('Y/m/d'),
+            'bulk_id' => $request->bulk_id,
+            'available' => $request->available,
+            'speed' => $request->speed,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
+        ]);
+
+        return response()->json(['message' => 'Update Campaign successfully', 'status' => 200]);
+
     }
 
     /**
@@ -138,8 +180,8 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($local,Campaign $campaign)
     {
-        //
+        $campaign->delete();
     }
 }

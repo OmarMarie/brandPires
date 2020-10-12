@@ -36,9 +36,17 @@ Route::group([
 
         Route::resource('players', 'PlayerController');
         Route::get('playersDatable', 'PlayerController@playersDatable')->name('playersDatable');
+        Route::get('player/{id?}/points', 'PlayerController@addPoints')->name('addPoints');
+        Route::post('player/pointsUpdate', 'PlayerController@pointsUpdate')->name('pointsUpdate');
 
         Route::resource('brands', 'BrandController');
         Route::get('brandsDatable', 'BrandController@brandsDatable')->name('brandsDatable');
+
+        Route::resource('bulks', 'BulkController');
+        Route::get('bulksDatable', 'BulkController@bulksDatable')->name('bulksDatable');
+
+        Route::resource('employees', 'EmployeeController');
+        Route::get('employeesDatable', 'EmployeeController@employeesDatable')->name('employeesDatable');
 
         Route::resource('levels', 'levelController');
         Route::get('levelsDatable', 'levelController@levelsDatable')->name('levelsDatable');
@@ -49,9 +57,21 @@ Route::group([
         Route::resource('companyPackages', 'CompanyPackagesController');
         Route::get('companyPackagesDatable', 'CompanyPackagesController@companyPackagesDatable')->name('companyPackagesDatable');
 
-        Route::resource('campaigns', 'CampaignController');
-        Route::get('brand/campaigns/{id?}', 'CampaignController@index2')->name('BrandCampaigns');
+        Route::resource('campaigns', 'CampaignController')->except(['index', 'create']);
+        Route::get('brand/campaigns/{id?}', 'CampaignController@index')->name('BrandCampaigns');
+        Route::get('campaign/{id?}/create', 'CampaignController@create')->name('campaignCreate');
         Route::get('campaignsDatable', 'CampaignController@campaignsDatable')->name('campaignsDatable');
+
+
+       /*********************************************************logs********************************************/
+        Route::resource('bubblesProcesses', 'BubblesProcessesController')->except(['show', 'create','store','update','edit','destroy']);
+        Route::get('bubblesProcessesDatable', 'BubblesProcessesController@bubblesProcessesDatable')->name('bubblesProcessesDatable');
+
+        Route::resource('bubblesTransferActions', 'BubblesTransferActionsController')->except(['show', 'create','store','update','edit','destroy']);
+        Route::get('bubblesTransferActionsDatable', 'BubblesTransferActionsController@bubblesTransferActionsDatable')->name('bubblesTransferActionsDatable');
+
+        Route::resource('logUsers', 'LogUsersController')->except(['show', 'create','store','update','edit','destroy']);
+        Route::get('logUsersDatable', 'LogUsersController@logUsersDatable')->name('logUsersDatable');
 
     });
 

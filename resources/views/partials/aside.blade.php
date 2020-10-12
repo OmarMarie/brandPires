@@ -38,8 +38,9 @@
                 data-menu-scroll="1" data-menu-dropdown-timeout="500">
             <!--begin::Menu Nav-->
             <ul class="menu-nav ">
-                <li class="menu-item  menu-item-active" aria-haspopup="true"><a href="index.html"
-                                                                                class="menu-link "><span
+                <li class="menu-item  menu-item-active" aria-haspopup="true"><a
+                            href="{{ route('home', app()->getLocale()) }}"
+                            class="menu-link "><span
                                 class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Design/Layers.svg--><svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -57,12 +58,12 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 @if(auth()->user()->hasRole('admin'))
-                <li class="menu-item " aria-haspopup="true">
-                    <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
-                        <i class="fa fa-university left-icon-menu"><span></span></i>
-                        <span class="menu-text"> Brands</span>
-                    </a>
-                </li>
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fa fa-university left-icon-menu"><span></span></i>
+                            <span class="menu-text"> Brands</span>
+                        </a>
+                    </li>
                 @endif
 
                 @if(auth()->user()->hasRole('admin'))
@@ -92,9 +93,25 @@
                 @endif
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('bulks.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-box left-icon-menu"></i>
+                            <span class="menu-text"> Bulk's</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-biking left-icon-menu"></i>
                             <span class="menu-text"> Player's</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('employees.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-users-cog left-icon-menu"></i>
+                            <span class="menu-text"> Employee's</span>
                         </a>
                     </li>
                 @endif
@@ -117,39 +134,36 @@
         <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
               fill="#000000" opacity="0.3"/>
     </g>
-</svg><!--end::Svg Icon--></span><span class="menu-text">Applications</span><i class="menu-arrow"></i></a>
+</svg><!--end::Svg Icon--></span><span class="menu-text">Logs</span><i class="menu-arrow"></i></a>
                     <div class="menu-submenu "><i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span
-                                        class="menu-link"><span class="menu-text">Applications</span></span>
-                            </li>
-                            <li class="menu-item  menu-item-submenu" aria-haspopup="true"
-                                data-menu-toggle="hover"><a href="javascript:;" class="menu-link menu-toggle"><i
-                                            class="menu-bullet menu-bullet-line"><span></span></i><span
-                                            class="menu-text">Todo</span><i class="menu-arrow"></i></a>
-                                <div class="menu-submenu "><i class="menu-arrow"></i>
-                                    <ul class="menu-subnav">
-                                        <li class="menu-item " aria-haspopup="true"><a
-                                                    href="custom/apps/todo/tasks.html" class="menu-link "><i
-                                                        class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                                        class="menu-text">Tasks</span></a></li>
-                                        <li class="menu-item " aria-haspopup="true"><a
-                                                    href="custom/apps/todo/docs.html" class="menu-link "><i
-                                                        class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                                        class="menu-text">Docs</span></a></li>
-                                        <li class="menu-item " aria-haspopup="true"><a
-                                                    href="custom/apps/todo/files.html" class="menu-link "><i
-                                                        class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                                        class="menu-text">Files</span></a></li>
-                                    </ul>
-                                </div>
-                            </li>
                             @if(auth()->user()->hasRole('admin'))
-                                <li class="menu-item " aria-haspopup="true"><a href="custom/apps/inbox.html"
-                                                                               class="menu-link "><i
+                                <li class="menu-item " aria-haspopup="true"><a
+                                            href="{{ route('bubblesProcesses.index', app()->getLocale()) }}"
+                                            class="menu-link "><i
                                                 class="menu-bullet menu-bullet-line"><span></span></i><span
-                                                class="menu-text">Inbox</span><span class="menu-label"><span
-                                                    class="label label-danger label-inline">new</span></span></a>
+                                                class="menu-text">Bubbles Processes</span><span class="menu-label">{{--<span
+                                                    class="label label-danger label-inline">new</span>--}}</span></a>
+                                </li>
+                            @endif
+                            @if(auth()->user()->hasRole('admin'))
+                                <li class="menu-item " aria-haspopup="true"><a
+                                            href="{{ route('bubblesTransferActions.index', app()->getLocale()) }}"
+                                            class="menu-link "><i
+                                                class="menu-bullet menu-bullet-line"><span></span></i><span
+                                                class="menu-text">Bubbles Transfer Actions</span><span
+                                                class="menu-label">{{--<span
+                                                    class="label label-danger label-inline">new</span>--}}</span></a>
+                                </li>
+                            @endif
+                            @if(auth()->user()->hasRole('admin'))
+                                <li class="menu-item " aria-haspopup="true"><a
+                                            href="{{ route('logUsers.index', app()->getLocale()) }}"
+                                            class="menu-link "><i
+                                                class="menu-bullet menu-bullet-line"><span></span></i><span
+                                                class="menu-text">Users</span><span
+                                                class="menu-label">{{--<span
+                                                    class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>
                             @endif
                         </ul>

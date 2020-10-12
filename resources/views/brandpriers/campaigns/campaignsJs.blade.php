@@ -93,8 +93,9 @@
     });
 
     $('#add').on('click', function () {
+       var brand_id= $('#brand_id').val()
         $.ajax({
-            url: '{{ route('campaigns.create', app()->getLocale()) }}',
+            url: '/{{app()->getLocale()}}/campaign/' + brand_id + '/create',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
@@ -148,7 +149,7 @@
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/brands/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/campaigns/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
@@ -216,7 +217,7 @@
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    url: '/{{(app()->getLocale())}}/brands/' + id,
+                    url: '/{{(app()->getLocale())}}/campaigns/' + id,
                     method: 'delete',
                     success: function (data) {
                         Swal.fire({

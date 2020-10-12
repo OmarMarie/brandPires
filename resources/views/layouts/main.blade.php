@@ -85,10 +85,8 @@
         <!--begin::Content-->
             <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
                 @include('partials.subHeader')
-
                 @yield('content')
             </div>
-
             <!--end::Content-->
 
             @include('partials.footer')
@@ -186,7 +184,6 @@
 
 <!--end::Page Scripts-->
 @yield('script')
-
 </body>
 <!--end::Body -->
 

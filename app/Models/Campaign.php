@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
+    protected $guarded = [];
    /* protected $fillable = [
         'bubbles_bulk', 'lat', 'lng',
         'mark_pts', 'customer_id', 'employee_id', 'from_time', 'to_time', 'date'

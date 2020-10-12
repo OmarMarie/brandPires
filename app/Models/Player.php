@@ -17,7 +17,6 @@ class Player extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -31,5 +30,4 @@ class Player extends Authenticatable
     {
         return $this->belongsTo(Levels::class, 'level_id');
     }
-
 }
