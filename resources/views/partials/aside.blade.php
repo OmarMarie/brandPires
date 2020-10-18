@@ -3,8 +3,8 @@
     <!--begin::Brand-->
     <div class="brand flex-column-auto " id="kt_brand">
         <!--begin::Logo-->
-        <a href="#" class="brand-logo">
-            <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}"/>
+        <a href="" class="brand-logo" style="padding: 17px 5px 0px 5px;">
+            <h1 class="text-warning font-italic"> Brand Pires</h1>
         </a>
         <!--end::Logo-->
 
@@ -61,7 +61,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-university left-icon-menu"><span></span></i>
-                            <span class="menu-text"> Brands</span>
+                            <span class="menu-text">Brands</span>
                         </a>
                     </li>
                 @endif
@@ -70,7 +70,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('companyPackages.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-cubes left-icon-menu"><span></span></i>
-                            <span class="menu-text"> Company Packages</span>
+                            <span class="menu-text">Company Packages</span>
                         </a>
                     </li>
                 @endif
@@ -78,8 +78,8 @@
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fas fa-level-up-alt left-icon-menu"></i>
-                            <span class="menu-text"> level's</span>
+                            <i class="fas fa-level-up-alt left-icon-menu" style="margin-right: 5px;"></i>
+                            <span class="menu-text">level's</span>
                         </a>
                     </li>
                 @endif
@@ -87,7 +87,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-hockey-puck left-icon-menu"></i>
-                            <span class="menu-text"> tank's </span>
+                            <span class="menu-text">tank's </span>
                         </a>
                     </li>
                 @endif
@@ -95,7 +95,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('bulks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-box left-icon-menu"></i>
-                            <span class="menu-text"> Bulk's</span>
+                            <span class="menu-text">Bulk's</span>
                         </a>
                     </li>
                 @endif
@@ -103,7 +103,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-biking left-icon-menu"></i>
-                            <span class="menu-text"> Player's</span>
+                            <span class="menu-text">Player's</span>
                         </a>
                     </li>
                 @endif
@@ -111,7 +111,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('employees.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-users-cog left-icon-menu"></i>
-                            <span class="menu-text"> Employee's</span>
+                            <span class="menu-text">Employee's</span>
                         </a>
                     </li>
                 @endif
@@ -119,7 +119,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-users left-icon-menu"></i>
-                            <span class="menu-text"> Users</span>
+                            <span class="menu-text">Users</span>
                         </a>
                     </li>
                 @endif

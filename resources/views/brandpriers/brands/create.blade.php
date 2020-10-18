@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('assets/smartwizard/css/smart_wizard_all.css') }}">
 <style>
     .imagePreview {
         width: 170px;
@@ -24,13 +25,124 @@
         margin-bottom: 15px;
     }
 
+    input-group-addon {
+
+    }
 </style>
+@if(!isset($brand))
+    <div class="container">
+        <div id="smartwizard">
+
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-1">
+                        <strong>Brand Basic Information</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-2">
+                        <strong>Brand Account Information</strong>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+
+            <form action="{{ route('brands.store', app()->getLocale()) }}" method="POST" id="userForm">
+                @csrf
+                <div class="tab-content">
+                    <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Brand Name</label>
+                                <input type="text" class="form-control" name="brand_name" autocomplete="off"
+                                       placeholder="Brand Name"
+                                       @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label> Company Packages</label>
+                                <select name="companyPackages_id" class="form-control">
+                                    <option value="" selected disabled>Select Company Packages</option>
+                                    @foreach($companyPackages  as $companyPackage)
+                                        <option value="{{ $companyPackage->id }}">{{ "Cost: ".$companyPackage->cost ." , Number Bubbles: ".$companyPackage->number_bubbles }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Active</label>
+                                <select name="status" class="form-control">
+                                    <option value="0"
+                                            @if(isset($brand) && $brand->status == 0) selected @endif>
+                                        False
+                                    </option>
+                                    <option value="1"
+                                            @if(isset($brand) && $brand->status == 1) selected @endif>
+                                        True
+                                    </option>
+                                </select>
+                            </div>
+                            @if(!isset($brand))
+                                <div class="col-md-6 form-group"></div>
+                            @endif
+                            <div class="col-sm-2 imgUp">
+                                <label>Brand Icon </label>
+                                <div class="imagePreview" style="@if( isset($brand))
+                                        background:url('{{asset('/images/brand/'.$brand->img.'')}}');
+                                        background-position: center center;
+                                        background-color: #fff;
+                                        background-size: 100% 150px;
+                                        background-repeat: no-repeat;
+                                @endif"></div>
+                                <label class="btn_edit_img btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                       style="color: #262673 !important;">
+                                    <i class="fa fa-pen icon-sm text-muted"></i>
+                                    <input type="file" name="brand_icon" id="img"
+                                           class="uploadFile img"
+                                           value="{{ isset($brand) ? $brand->img: '' }}"
+                                           style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="name_user" placeholder="Name"
+                                       @if(isset($user)) value="{{ $user->name }}" @endif>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="phone" placeholder="Phone">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label> Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       autocomplete="off"
+                                       placeholder="Email">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label> Password</label>
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" autocomplete="off" class="form-control"
+                                           name="password" placeholder="Password">
+                                    <div class="input-group-addon"
+                                         style="padding: .5rem .75rem; padding-top: 18px; width: 50px; margin-bottom: 0; font-size: 1rem; font-weight: 400; line-height: 10px; color: #495057 !important; text-align: center; background-color: #bec0c670; border: 1px solid rgba(0, 0, 0, .15); border-radius: 0px .25rem .25rem 0px;">
+                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endif
 @if(isset($brand))
     <form action="{{ route('brands.update', [app()->getLocale(),$brand]) }}" method="POST" id="userForm">
         {{ method_field('PUT') }}
-        @else
-            <form action="{{ route('brands.store', app()->getLocale()) }}" method="POST" id="userForm">
-                @endif
                 @csrf
                 <div class="row">
                     <div class="col-md-6 form-group">
@@ -39,33 +151,12 @@
                                @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Total Bubbles Number</label>
-                        <input type="text" class="form-control" name="total_bubbles_number"
-                               placeholder="Total Bubbles Number"
-                               @if(isset($brand)) value="{{ $brand->total_bubbles_number }}" @endif>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Total Gifts Number</label>
-                        <input type="text" class="form-control" name="total_gifts_number"
-                               placeholder="Total Gifts Number"
-                               @if(isset($brand)) value="{{ $brand->total_gifts_number}}" @endif>
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label>Total Price</label>
-                        <input type="text" class="form-control" name="total_price" placeholder="Total Price"
-                               @if(isset($brand)) value="{{ $brand->total_price}}" @endif>
-                    </div>
-
-                    <div class="col-md-6 form-group">
                         <label>Active</label>
                         <select name="status" class="form-control">
                             <option value="0" @if(isset($brand) && $brand->status == 0) selected @endif>False</option>
                             <option value="1" @if(isset($brand) && $brand->status == 1) selected @endif>True</option>
                         </select>
                     </div>
-
-                    <div class="col-md-6 form-group"></div>
 
                     <div class="col-sm-2 imgUp">
                         <label>Brand Icon </label>
@@ -91,24 +182,97 @@
                     </div>
                 </div>
             </form>
+@endif
+<script type="text/javascript" src="{{ asset('assets/smartwizard/js/jquery.smartWizard.js') }}"></script>
+<script>
+    $(function () {
 
-            <script>
-                $(function () {
-                    $(document).on("change", ".uploadFile", function () {
-                        var uploadFile = $(this);
-                        var files = !!this.files ? this.files : [];
-                        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+        $("#show_hide_password a").on('click', function (event) {
+            event.preventDefault();
+            if ($('#show_hide_password input').attr("type") == "text") {
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password i').addClass("fa-eye-slash");
+                $('#show_hide_password i').removeClass("fa-eye");
+            } else if ($('#show_hide_password input').attr("type") == "password") {
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password i').removeClass("fa-eye-slash");
+                $('#show_hide_password i').addClass("fa-eye");
+            }
+        });
 
-                        if (/^image/.test(files[0].type)) { // only image file
-                            var reader = new FileReader(); // instance of the FileReader
-                            reader.readAsDataURL(files[0]); // read the local file
+        $('#smartwizard').smartWizard({
+            selected: 0, // Initial selected step, 0 = first step
+            theme: 'dots', // theme for the wizard, related css need to include for other than default theme
+            justified: true, // Nav menu justification. true/false
+            autoAdjustHeight: true, // Automatically adjust content height
+            cycleSteps: false, // Allows to cycle the navigation of steps
+            backButtonSupport: true, // Enable the back button support
+            @if(isset($supplier))
+            enableURLhash: false, // Enable selection of the step based on url hash
+            @else
+            enableURLhash: true,
+            @endif
+            transition: {
+                animation: 'slide-swing', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+                speed: '400', // Transion animation speed
+                easing: '' // Transition animation easing. Not supported without a jQuery easing plugin
+            }, toolbarSettings: {
+                toolbarPosition: 'bottom', // none, top, bottom, both
+                toolbarButtonPosition: 'right', // left, right, center
+                showNextButton: true, // show/hide a Next button
+                showPreviousButton: true, // show/hide a Previous button
+                toolbarExtraButtons: [
+                    $('<button></button>').text('Finish')
+                        .addClass('btn btn-success sw-btn-group-extra')
+                        .attr('style', 'color: #fff;background-color: #5cb85c;border: 1px solid #5cb85c;')
+                        .attr('id', 'submitBtn')
+                        .attr('type', 'submit')
+                ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
+            },
+            anchorSettings: {
+                anchorClickable: true, // Enable/Disable anchor navigation
+                @if(isset($supplier))
+                enableAllAnchors: true, // Activates all anchors clickable all times
+                @else
+                enableAllAnchors: false, // Activates all anchors clickable all times
+                @endif
+                markDoneStep: true, // Add done css
+                markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+                removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
+                enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+            },
+        });
 
-                            reader.onloadend = function () { // set image data as background of div
-                                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                                uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                            }
-                        }
+        $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
+            if ($('button.sw-btn-next').hasClass('disabled')) {
+                $('button.sw-btn-next').hide();
+                $('.sw-btn-group-extra').show(); // show the button extra only in the last page
+            } else {
+                $('.sw-btn-group-extra').hide();
+                $('button.sw-btn-next').show();
+            }
 
-                    });
-                });
-            </script>
+        });
+
+        $(document).on("change", ".uploadFile", function () {
+            var uploadFile = $(this);
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+            if (/^image/.test(files[0].type)) { // only image file
+                var reader = new FileReader(); // instance of the FileReader
+                reader.readAsDataURL(files[0]); // read the local file
+
+                reader.onloadend = function () { // set image data as background of div
+                    //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                }
+            }
+
+        });
+    });
+</script>
+
+
+
+

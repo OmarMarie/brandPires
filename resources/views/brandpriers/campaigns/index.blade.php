@@ -27,7 +27,7 @@
             </div>
             <input type="hidden" id="brand_id" name="brand_id" value="{{ $brand_id }}">
             <div class="col-md-12">
-                <label class="" style="padding: 10px 0px 0px 19px;"> Course Name : <b
+                <label class="" style="padding: 10px 0px 0px 19px;"> Brand Name : <b
                             style="color:#ffa800;">{{$brandName}}</b> </label>
             </div>
             <div class="card-body">

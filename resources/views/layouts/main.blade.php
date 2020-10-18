@@ -8,7 +8,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8"/>
-    <title>Metronic | Dashboard</title>
+    <title>Brand Pires | Dashboard</title>
     <meta name="description" content="Updates and statistics"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
@@ -26,17 +26,17 @@
     <link href="{{ asset('assets/plugins/global/plugins.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/style.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
+
     <!--end::Global Theme Styles-->
-
     <!--begin::Layout Themes(used by all pages)-->
-
+    <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/themes/layout/header/base/light7a4a.css') }}" rel="stylesheet" type="text/css"/>
-
     <link href="{{ asset('assets/css/themes/layout/aside/dark7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('assets/media/logos/header_logo.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset('/assets/media/logos/header_logo.png') }}"/>
     @yield('css')
 
 
@@ -171,6 +171,9 @@
 <script src="{{ asset('assets/plugins/global/plugins.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle7a4a.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker7a4a.js') }}"></script>
+
 <!--end::Global Theme Bundle-->
 
 <!--begin::Page Vendors(used by this page)-->

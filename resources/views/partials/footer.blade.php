@@ -4,9 +4,10 @@
     <div class=" container-fluid  d-flex flex-column flex-md-row align-items-center justify-content-between">
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
-            <span class="text-muted font-weight-bold mr-2">2020&copy;</span>
-            <a href="http://keenthemes.com/metronic" target="_blank"
-               class="text-dark-75 text-hover-primary">Keenthemes</a>
+            <span class="text-muted font-weight-bold mr-2">{{date("Y") == 2020 ?date("Y") : '2020 - '. date("Y") }} &copy;</span>
+            <a href="#" target="_blank"
+               class="text-dark-75 text-hover-primary">Brand Pires
+            </a>
         </div>
         <!--end::Copyright-->
 

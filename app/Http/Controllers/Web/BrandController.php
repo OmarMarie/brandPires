@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Web;
 
 use App\Brand;
+use App\Models\BrandCampaign;
+use App\Models\CompanyPackage;
+use App\Models\CompanyPackageLogs;
+use App\Models\RoleUser;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -33,6 +39,20 @@ class BrandController extends Controller
                 ->editColumn('status', function ($data) {
                     return $data->status == 0 ? 'False' : 'True';
                 })
+                ->addColumn('company_packages', function ($data) {
+                    $lastPackage_id=CompanyPackageLogs::where('brand_id',$data->id) ->orderByRaw('created_at DESC') ->first();
+                    if($lastPackage_id != null)
+                    {
+                        $company_package = CompanyPackage::where('id',$lastPackage_id->package_id)->first();
+                        $company_package = 'Cost: '. $company_package->cost .' - Number Bubbles: '. $company_package->number_bubbles ;
+                        return $company_package;
+                    }
+                    else
+                    {
+                        return '';
+                    }
+
+                })
                 ->editColumn('created_at', function ($data) {
                     if ($data->created_at != '')
                         $data->created_at->format('d m Y - g:i A');
@@ -51,7 +71,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brandpriers.brands.create');
+        $companyPackages=CompanyPackage::get();
+        return view('brandpriers.brands.create',compact('companyPackages'));
     }
 
     /**
@@ -64,11 +85,12 @@ class BrandController extends Controller
     {
 
         $validations = Validator::make($request->all(), [
-            'brand_name' => 'required',
-            'total_bubbles_number' => 'required|numeric',
-            'total_gifts_number' => 'required|numeric',
-            'total_price' => 'required|numeric',
+            'brand_name' => 'required|unique:brands',
             'status' => 'required',
+            'companyPackages_id' => 'required',
+            'name_user' => 'required',
+            'email' => 'required|unique:users',
+            'phone' =>'required|min:9|numeric',
         ]);
         if ($validations->fails()) {
             return response()->json(['errors' => $validations->errors(), 'status' => 422]);
@@ -82,13 +104,29 @@ class BrandController extends Controller
             $icon = null;
         }
 
-        Brand::create([
+        $user = User::create([
+            'name' => $request->name_user,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'type' => 3,
+            'phone_number' => $request->phone
+        ]);
+
+        RoleUser::create([
+            'role_id' => 3,
+            'user_id' => $user->id
+        ]);
+
+        $Brand =Brand::create([
             'brand_name' => $request->brand_name,
-            'total_bubbles_number' => $request->total_bubbles_number,
-            'total_gifts_number' => $request->total_gifts_number,
-            'total_price' => $request->total_price,
             'status' => $request->status,
             'img' => $icon,
+            'user_id' => $user->id
+        ]);
+
+        CompanyPackageLogs::create([
+            'brand_id' => $Brand->id,
+            'package_id' =>  $request->companyPackages_id
         ]);
 
         return response()->json(['message' => 'Added Brand successfully', 'status' => 200]);
@@ -112,8 +150,10 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($local, Brand $brand)
+
     {
-        return view('brandpriers.brands.create', compact('brand'));
+        $companyPackages=CompanyPackage::get();
+        return view('brandpriers.brands.create', compact('brand','companyPackages'));
     }
 
     /**
@@ -126,10 +166,7 @@ class BrandController extends Controller
     public function update($local, Request $request, Brand $brand)
     {
         $validations = Validator::make($request->all(), [
-            'brand_name' => 'required',
-            'total_bubbles_number' => 'required|numeric',
-            'total_gifts_number' => 'required|numeric',
-            'total_price' => 'required|numeric',
+            'brand_name' => 'required|unique:brands,brand_name,'.$brand->id,
             'status' => 'required',
         ]);
         if ($validations->fails()) {
@@ -138,9 +175,6 @@ class BrandController extends Controller
 
         $brand->update([
             'brand_name' => $request->brand_name,
-            'total_bubbles_number' => $request->total_bubbles_number,
-            'total_gifts_number' => $request->total_gifts_number,
-            'total_price' => $request->total_price,
             'status' => $request->status,
         ]);
 

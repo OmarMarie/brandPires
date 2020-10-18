@@ -4,7 +4,7 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 7},
+            {"width": "50px", "targets": 5},
         ],
         processing: true,
         serverSide: true,
@@ -29,26 +29,16 @@
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'brand_name', title: 'Name'},
             {
-                title: 'Total Bubbles Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-warning ">' + row.total_bubbles_number + '</span>'
-
-                }
-            },
-            {
-                title: 'Total Gifts Number', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.total_gifts_number + '</span>'
-
-                }
-            },
-            {
-                title: 'Total Price', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-danger">' + row.total_price + ' </span>'
+                title: 'Packages', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-info">' + row.company_packages + ' </span>'
 
                 }
             },
             {
                 title: 'Services', "mRender": function (data, type, row) {
-                    return '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>';
+                     var campaigns= '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
+                     var packages= '<a href="/{{app()->getLocale()}}/brand/packages/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Packages"><i class="fas fa-box-open"></i></a>'
+                    return campaigns + packages;
                 }
 
             },
