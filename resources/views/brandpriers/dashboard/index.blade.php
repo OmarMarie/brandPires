@@ -75,8 +75,9 @@
             display: inline-block;
             border-radius: 5px;
         }
+
         .sub_titel2 {
-            background:#e75858;
+            background: #e75858;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
@@ -85,8 +86,9 @@
             display: inline-block;
             border-radius: 5px;
         }
+
         sub_titel2:hover {
-            background:#e87676 !important;
+            background: #e87676 !important;
         }
 
     </style>
@@ -96,7 +98,7 @@
         <div class="row">
             <div class="col-md-12"
                  style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5" style="text-align: left; background: #ffa800cf;">
+                <div class="card-header border-0  py-5" style="text-align: left; background: rgb(88 180 231);">
                     <h3 class="card-title font-weight-bolder text-white">Reports</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
@@ -108,10 +110,14 @@
                         <div class="divs_title">Brands</div>
                         <div class="divs_number">{{$brands}}</div>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$percentageBrands}}%; background:#4385f5;"
-                                 aria-valuenow="{{ abs($percentageBrands)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{$percentageBrands}}%; background:#4385f5;"
+                                 aria-valuenow="{{ abs($percentageBrands)}}" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                         </div>
-                        <div class="divs_text">{{($percentageBrands > 0 ? 'Best' : 'Better')}}  then last week ({{abs($percentageBrands)}}%)</div>
+                        <div class="divs_text">{{($percentageBrands > 0 ? 'Best' : 'Better')}} then last week
+                            ({{abs($percentageBrands)}}%)
+                        </div>
                     </div>
 
                     <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
@@ -121,10 +127,14 @@
                         <div class="divs_title">Campaigns</div>
                         <div class="divs_number">{{$campaigns}}</div>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$percentageCampaign}}%; background:#12827c;"
-                                 aria-valuenow="{{ abs($percentageCampaign)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{$percentageCampaign}}%; background:#12827c;"
+                                 aria-valuenow="{{ abs($percentageCampaign)}}" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                         </div>
-                        <div class="divs_text"> {{($percentageCampaign > 0 ? 'Best' : 'Better')}} then last week ({{ abs($percentageCampaign)}}%)</div>
+                        <div class="divs_text"> {{($percentageCampaign > 0 ? 'Best' : 'Better')}} then last week
+                            ({{ abs($percentageCampaign)}}%)
+                        </div>
                     </div>
 
                     <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
@@ -134,22 +144,30 @@
                         <div class="divs_title">Bubbles Transfer</div>
                         <div class="divs_number">{{$bubbles_transfer}}</div>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$percentageBubblesTransfer}}%; background:#f6555e;"
-                                 aria-valuenow="{{ abs($percentageBubblesTransfer)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{$percentageBubblesTransfer}}%; background:#f6555e;"
+                                 aria-valuenow="{{ abs($percentageBubblesTransfer)}}" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                         </div>
-                        <div class="divs_text"> {{($percentageBubblesTransfer > 0 ? 'Best' : 'Better')}} then last week ({{ abs($percentageBubblesTransfer)}}%)</div>
+                        <div class="divs_text"> {{($percentageBubblesTransfer > 0 ? 'Best' : 'Better')}} then last week
+                            ({{ abs($percentageBubblesTransfer)}}%)
+                        </div>
                     </div>
                     <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                        <div class="divs_fas" style=" background:#55bbea;">
+                        <div class="divs_fas" style=" background:#f9b32f;">
                             <i class="fas fa-biking "></i>
                         </div>
                         <div class="divs_title">Players</div>
                         <div class="divs_number">{{$players}}</div>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{$percentageBubblesPlayer}}%; background:#55bbea;"
-                                 aria-valuenow="{{ abs($percentageBubblesPlayer)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{$percentageBubblesPlayer}}%; background:#f9b32f;"
+                                 aria-valuenow="{{ abs($percentageBubblesPlayer)}}" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
                         </div>
-                        <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week ({{ abs($percentageBubblesPlayer)}}%)</div>
+                        <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week
+                            ({{ abs($percentageBubblesPlayer)}}%)
+                        </div>
                     </div>
 
                 </div>
@@ -158,7 +176,7 @@
                 <!--begin::Mixed Widget 1-->
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
-                    <div class="card-header border-0 bg-success py-5">
+                    <div class="card-header border-0  py-5" style="background: rgb(88 180 231);">
                         <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
                     </div>
                     <!--end::Header-->
@@ -166,8 +184,8 @@
                     <!--begin::Body-->
                     <div class="card-body p-0 position-relative overflow-hidden">
                         <!--begin::Chart-->
-                        <div class="card-rounded-bottom bg-success"
-                             style="height: 60px; min-height: 60px;">
+                        <div class="card-rounded-bottom "
+                             style="height: 60px; min-height: 60px; background: rgb(88 180 231);">
                         </div>
                         <!--end::Chart-->
 
@@ -197,16 +215,18 @@
                             <div class="row m-0">
                                 <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"><span
-                                                class="fa-count-chart"> {{ $stoppedCampaigns}}</span><i class="fa fa-phone fa-chart"
-                                                                                      style="color: #ec0c24 "></i></span>
+                                                class="fa-count-chart"> {{ $stoppedCampaigns}}</span><i
+                                                class="fa fa-phone fa-chart"
+                                                style="color: #ec0c24 "></i></span>
                                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
                                         Stopped
                                     </a>
                                 </div>
                                 <div class="col bg-light-success px-6 py-8 rounded-xl">
                                     <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2"><span
-                                                class="fa-count-chart"> {{$finishedCampaigns}}</span><i class="fa fa-check fa-chart"
-                                                                                      style="color: #1bc5bd "></i></span>
+                                                class="fa-count-chart"> {{$finishedCampaigns}}</span><i
+                                                class="fa fa-check fa-chart"
+                                                style="color: #1bc5bd "></i></span>
                                     <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
                                         Finished
                                     </a>
@@ -230,7 +250,7 @@
                 <!--begin::Mixed Widget 1-->
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
-                    <div class="card-header border-0 bg-danger py-5">
+                    <div class="card-header border-0 py-5" style="background: rgb(88 180 231);">
                         <h3 class="card-title font-weight-bolder text-white">Bubbles</h3>
                     </div>
                     <!--end::Header-->
@@ -238,8 +258,8 @@
                     <!--begin::Body-->
                     <div class="card-body p-0 position-relative overflow-hidden">
                         <!--begin::Chart-->
-                        <div class="card-rounded-bottom bg-danger"
-                             style="height: 60px; min-height: 60px;">
+                        <div class="card-rounded-bottom "
+                             style="height: 60px; min-height: 60px;background: rgb(88 180 231); ">
                         </div>
                         <!--end::Chart-->
 
@@ -324,9 +344,11 @@
                                 <div class="input-daterange input-group" id="kt_datepicker_5">
                                     <input type="text" class="form-control" name="start"
                                            placeholder="From Date" autocomplete="off">
-                                    <div class="input-group-append" >
-                                                    <span class="input-group-text" style="background: #f9b32f !important;"><i
-                                                                class="fa fa-ellipsis-h" style="color: #fff !important;"></i></span>
+                                    <div class="input-group-append">
+                                                    <span class="input-group-text"
+                                                          style="background: #f9b32f !important;"><i
+                                                                class="fa fa-ellipsis-h"
+                                                                style="color: #fff !important;"></i></span>
                                     </div>
                                     <input type="text" class="form-control" name="end"
                                            placeholder="To Date" autocomplete="off">
@@ -347,7 +369,7 @@
                 <div class="card card-custom card-stretch gutter-b">
                     <!--begin::Header-->
                     <div class="card-header border-0">
-                        <h3 class="card-title font-weight-bolder text-dark">Authors</h3>
+                        <h3 class="card-title font-weight-bolder text-dark">Representative</h3>
 
                     </div>
                     <!--end::Header-->
@@ -358,19 +380,22 @@
                             <!--begin::Symbol-->
                             <div class="symbol symbol-40 symbol-light-success mr-5">
 														<span class="symbol-label">
-															<img src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/009-boy-4.svg" class="h-75 align-self-end" alt="">
+															<img src="{{asset('assets/media/svg/009-boy-4.svg')}}"
+                                                                 class="h-75 align-self-end" alt="">
 														</span>
                             </div>
                             <!--end::Symbol-->
                             <!--begin::Text-->
                             <div class="d-flex flex-column flex-grow-1 font-weight-bold">
                                 <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Ricky Hunt</a>
-                                <span class="text-muted">PHP, SQLite, Artisan CLI</span>
+                                <span class="text-muted">Brand:brand1 ,brand2 </span>
                             </div>
                             <!--end::Text-->
                             <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
@@ -378,307 +403,9 @@
                                     <ul class="navi navi-hover">
                                         <li class="navi-header font-weight-bold py-4">
                                             <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
-                                        </li>
-                                        <li class="navi-separator mb-3 opacity-70"></li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-separator mt-3 opacity-70"></li>
-                                        <li class="navi-footer py-4">
-                                            <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Navigation-->
-                                </div>
-                            </div>
-                            <!--end::Dropdown-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center mb-10">
-                            <!--begin::Symbol-->
-                            <div class="symbol symbol-40 symbol-light-success mr-5">
-														<span class="symbol-label">
-															<img src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/006-girl-3.svg" class="h-75 align-self-end" alt="">
-														</span>
-                            </div>
-                            <!--end::Symbol-->
-                            <!--begin::Text-->
-                            <div class="d-flex flex-column flex-grow-1 font-weight-bold">
-                                <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Anne Clarc</a>
-                                <span class="text-muted">PHP, SQLite, Artisan CLI</span>
-                            </div>
-                            <!--end::Text-->
-                            <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ki ki-bold-more-hor"></i>
-                                </a>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                    <!--begin::Navigation-->
-                                    <ul class="navi navi-hover">
-                                        <li class="navi-header font-weight-bold py-4">
-                                            <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
-                                        </li>
-                                        <li class="navi-separator mb-3 opacity-70"></li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-separator mt-3 opacity-70"></li>
-                                        <li class="navi-footer py-4">
-                                            <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Navigation-->
-                                </div>
-                            </div>
-                            <!--end::Dropdown-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center mb-10">
-                            <!--begin::Symbol-->
-                            <div class="symbol symbol-40 symbol-light-success mr-5">
-														<span class="symbol-label">
-															<img src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/011-boy-5.svg" class="h-75 align-self-end" alt="">
-														</span>
-                            </div>
-                            <!--end::Symbol-->
-                            <!--begin::Text-->
-                            <div class="d-flex flex-column flex-grow-1 font-weight-bold">
-                                <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Kristaps Zumman</a>
-                                <span class="text-muted">PHP, SQLite, Artisan CLI</span>
-                            </div>
-                            <!--end::Text-->
-                            <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ki ki-bold-more-hor"></i>
-                                </a>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                    <!--begin::Navigation-->
-                                    <ul class="navi navi-hover">
-                                        <li class="navi-header font-weight-bold py-4">
-                                            <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
-                                        </li>
-                                        <li class="navi-separator mb-3 opacity-70"></li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-separator mt-3 opacity-70"></li>
-                                        <li class="navi-footer py-4">
-                                            <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Navigation-->
-                                </div>
-                            </div>
-                            <!--end:Dropdown-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center mb-10">
-                            <!--begin::Symbol-->
-                            <div class="symbol symbol-40 symbol-light-success mr-5">
-														<span class="symbol-label">
-															<img src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/015-boy-6.svg" class="h-75 align-self-end" alt="">
-														</span>
-                            </div>
-                            <!--end::Symbol-->
-                            <!--begin::Text-->
-                            <div class="d-flex flex-column flex-grow-1 font-weight-bold">
-                                <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Ricky Hunt</a>
-                                <span class="text-muted">PHP, SQLite, Artisan CLI</span>
-                            </div>
-                            <!--end::Text-->
-                            <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ki ki-bold-more-hor"></i>
-                                </a>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                    <!--begin::Navigation-->
-                                    <ul class="navi navi-hover">
-                                        <li class="navi-header font-weight-bold py-4">
-                                            <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
-                                        </li>
-                                        <li class="navi-separator mb-3 opacity-70"></li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-success">Customer</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-danger">Partner</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-warning">Suplier</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-primary">Member</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-dark">Staff</span>
-																		</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-separator mt-3 opacity-70"></li>
-                                        <li class="navi-footer py-4">
-                                            <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Navigation-->
-                                </div>
-                            </div>
-                            <!--end::Dropdown-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="d-flex align-items-center mb-2">
-                            <!--begin::Symbol-->
-                            <div class="symbol symbol-40 symbol-light-success mr-5">
-														<span class="symbol-label">
-															<img src="/metronic/theme/html/demo1/dist/assets/media/svg/avatars/016-boy-7.svg" class="h-75 align-self-end" alt="">
-														</span>
-                            </div>
-                            <!--end::Symbol-->
-                            <!--begin::Text-->
-                            <div class="d-flex flex-column flex-grow-1 font-weight-bold">
-                                <a href="#" class="text-dark text-hover-primary mb-1 font-size-lg">Carles Puyol</a>
-                                <span class="text-muted">PHP, SQLite, Artisan CLI</span>
-                            </div>
-                            <!--end::Text-->
-                            <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ki ki-bold-more-hor"></i>
-                                </a>
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
-                                    <!--begin::Navigation-->
-                                    <ul class="navi navi-hover">
-                                        <li class="navi-header font-weight-bold py-4">
-                                            <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
+                                               data-placement="right" title=""
+                                               data-original-title="Click to learn more..."></i>
                                         </li>
                                         <li class="navi-separator mb-3 opacity-70"></li>
                                         <li class="navi-item">
@@ -733,7 +460,7 @@
                 </div>
                 <!--end::List Widget 3-->
             </div>
-            <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
+           {{-- <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
                 <!--begin::List Widget 4-->
                 <div class="card card-custom card-stretch gutter-b">
                     <!--begin::Header-->
@@ -756,13 +483,16 @@
                             <!--end::Checkbox-->
                             <!--begin::Text-->
                             <div class="d-flex flex-column flex-grow-1">
-                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Create FireStone Logo</a>
+                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Create
+                                    FireStone Logo</a>
                                 <span class="text-muted font-weight-bold">Due in 2 Days</span>
                             </div>
                             <!--end::Text-->
                             <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
@@ -770,7 +500,9 @@
                                     <ul class="navi navi-hover">
                                         <li class="navi-header font-weight-bold py-4">
                                             <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
+                                               data-placement="right" title=""
+                                               data-original-title="Click to learn more..."></i>
                                         </li>
                                         <li class="navi-separator mb-3 opacity-70"></li>
                                         <li class="navi-item">
@@ -833,13 +565,16 @@
                             <!--end::Checkbox-->
                             <!--begin::Text-->
                             <div class="d-flex flex-column flex-grow-1">
-                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Stakeholder Meeting</a>
+                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Stakeholder
+                                    Meeting</a>
                                 <span class="text-muted font-weight-bold">Due in 3 Days</span>
                             </div>
                             <!--end::Text-->
                             <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
@@ -847,7 +582,9 @@
                                     <ul class="navi navi-hover">
                                         <li class="navi-header font-weight-bold py-4">
                                             <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
+                                               data-placement="right" title=""
+                                               data-original-title="Click to learn more..."></i>
                                         </li>
                                         <li class="navi-separator mb-3 opacity-70"></li>
                                         <li class="navi-item">
@@ -910,13 +647,17 @@
                             <!--end::Checkbox-->
                             <!--begin::Text-->
                             <div class="d-flex flex-column flex-grow-1">
-                                <a href="#" class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">Scoping &amp; Estimations</a>
+                                <a href="#"
+                                   class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">Scoping
+                                    &amp; Estimations</a>
                                 <span class="text-muted font-weight-bold">Due in 5 Days</span>
                             </div>
                             <!--end::Text-->
                             <!--begin: Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
@@ -924,7 +665,9 @@
                                     <ul class="navi navi-hover">
                                         <li class="navi-header font-weight-bold py-4">
                                             <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
+                                               data-placement="right" title=""
+                                               data-original-title="Click to learn more..."></i>
                                         </li>
                                         <li class="navi-separator mb-3 opacity-70"></li>
                                         <li class="navi-item">
@@ -987,13 +730,16 @@
                             <!--end::Checkbox-->
                             <!--begin::Text-->
                             <div class="d-flex flex-column flex-grow-1">
-                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Sprint Showcase</a>
+                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Sprint
+                                    Showcase</a>
                                 <span class="text-muted font-weight-bold">Due in 1 Day</span>
                             </div>
                             <!--end::Text-->
                             <!--begin::Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
@@ -1082,13 +828,16 @@
                             <!--end::Checkbox:-->
                             <!--begin::Title-->
                             <div class="d-flex flex-column flex-grow-1">
-                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Project Retro</a>
+                                <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Project
+                                    Retro</a>
                                 <span class="text-muted font-weight-bold">Due in 12 Days</span>
                             </div>
                             <!--end::Text-->
                             <!--begin: Dropdown-->
-                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
-                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
+                                 data-placement="left" data-original-title="Quick actions">
+                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     <i class="ki ki-bold-more-hor"></i>
                                 </a>
                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
@@ -1096,7 +845,9 @@
                                     <ul class="navi navi-hover">
                                         <li class="navi-header font-weight-bold py-4">
                                             <span class="font-size-lg">Choose Label:</span>
-                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+                                            <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
+                                               data-placement="right" title=""
+                                               data-original-title="Click to learn more..."></i>
                                         </li>
                                         <li class="navi-separator mb-3 opacity-70"></li>
                                         <li class="navi-item">
@@ -1150,69 +901,13 @@
                     <!--end::Body-->
                 </div>
                 <!--end:List Widget 4-->
-            </div>
+            </div>--}}
             <div class="col-lg-12 col-xxl-4 order-1 order-xxl-2">
                 <!--begin::List Widget 8-->
                 <div class="card card-custom card-stretch gutter-b">
                     <!--begin::Header-->
                     <div class="card-header border-0">
-                        <h3 class="card-title font-weight-bolder text-dark">Trends</h3>
-                        <div class="card-toolbar">
-                            <div class="dropdown dropdown-inline">
-                                <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ki ki-bold-more-ver"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                    <!--begin::Navigation-->
-                                    <ul class="navi navi-hover">
-                                        <li class="navi-header pb-1">
-                                            <span class="text-primary text-uppercase font-weight-bold font-size-sm">Add new:</span>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-icon">
-																			<i class="flaticon2-shopping-cart-1"></i>
-																		</span>
-                                                <span class="navi-text">Order</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-icon">
-																			<i class="flaticon2-calendar-8"></i>
-																		</span>
-                                                <span class="navi-text">Event</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-icon">
-																			<i class="flaticon2-graph-1"></i>
-																		</span>
-                                                <span class="navi-text">Report</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-icon">
-																			<i class="flaticon2-rocket-1"></i>
-																		</span>
-                                                <span class="navi-text">Post</span>
-                                            </a>
-                                        </li>
-                                        <li class="navi-item">
-                                            <a href="#" class="navi-link">
-																		<span class="navi-icon">
-																			<i class="flaticon2-writing"></i>
-																		</span>
-                                                <span class="navi-text">File</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Navigation-->
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="card-title font-weight-bolder text-dark">Brands</h3>
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->
@@ -1224,68 +919,24 @@
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-45 symbol-light mr-5">
 															<span class="symbol-label">
-																<img src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/006-plurk.svg" class="h-50 align-self-center" alt="">
+																<img src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/006-plurk.svg"
+                                                                     class="h-50 align-self-center" alt="">
 															</span>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Text-->
                                 <div class="d-flex flex-column flex-grow-1">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Top Authors</a>
+                                    <a href="#"
+                                       class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Top
+                                        Authors</a>
                                     <span class="text-muted font-weight-bold">5 day ago</span>
                                 </div>
                                 <!--end::Text-->
                             </div>
                             <!--end::Section-->
                             <!--begin::Desc-->
-                            <p class="text-dark-50 m-0 pt-5 font-weight-normal">A brief write up about the top Authors that fits within this section</p>
-                            <!--end::Desc-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="mb-10">
-                            <!--begin::Section-->
-                            <div class="d-flex align-items-center">
-                                <!--begin::Symbol-->
-                                <div class="symbol symbol-45 symbol-light mr-5">
-															<span class="symbol-label">
-																<img src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/015-telegram.svg" class="h-50 align-self-center" alt="">
-															</span>
-                                </div>
-                                <!--end::Symbol-->
-                                <!--begin::Text-->
-                                <div class="d-flex flex-column flex-grow-1">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Popular Authors</a>
-                                    <span class="text-muted font-weight-bold">5 day ago</span>
-                                </div>
-                                <!--end::Text-->
-                            </div>
-                            <!--end::Section-->
-                            <!--begin::Desc-->
-                            <p class="text-dark-50 m-0 pt-5 font-weight-normal">A brief write up about the Popular Authors that fits within this section</p>
-                            <!--end::Desc-->
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="">
-                            <!--begin::Section-->
-                            <div class="d-flex align-items-center">
-                                <!--begin::Symbol-->
-                                <div class="symbol symbol-45 symbol-light mr-5">
-															<span class="symbol-label">
-																<img src="/metronic/theme/html/demo1/dist/assets/media/svg/misc/014-kickstarter.svg" class="h-50 align-self-center" alt="">
-															</span>
-                                </div>
-                                <!--end::Symbol-->
-                                <!--begin::Text-->
-                                <div class="d-flex flex-column flex-grow-1">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">New Users</a>
-                                    <span class="text-muted font-weight-bold">5 day ago</span>
-                                </div>
-                                <!--end::Text-->
-                            </div>
-                            <!--end::Section-->
-                            <!--begin::Desc-->
-                            <p class="text-dark-50 m-0 pt-5 font-weight-normal">A brief write up about the New Users that fits within this section</p>
+                            <p class="text-dark-50 m-0 pt-5 font-weight-normal">A brief write up about the top Authors
+                                that fits within this section</p>
                             <!--end::Desc-->
                         </div>
                         <!--end::Item-->
@@ -1295,7 +946,6 @@
                 <!--end: Card-->
                 <!--end::List Widget 8-->
             </div>
-
         </div>
         <!--end::Row-->
 

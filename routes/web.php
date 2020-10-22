@@ -79,6 +79,9 @@ Route::group([
         Route::resource('logUsers', 'LogUsersController')->except(['show', 'create','store','update','edit','destroy']);
         Route::get('logUsersDatable', 'LogUsersController@logUsersDatable')->name('logUsersDatable');
 
+        Route::resource('logCampaigns', 'LogCampaignsController')->except(['show', 'create','store','update','edit','destroy']);
+        Route::get('LogCampaignsDatable', 'LogCampaignsController@logCampaignsDatable')->name('LogCampaignsDatable');
+
     });
 
 

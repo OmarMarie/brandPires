@@ -4,7 +4,7 @@
     <div class="brand flex-column-auto " id="kt_brand">
         <!--begin::Logo-->
         <a href="" class="brand-logo" style="padding: 17px 5px 0px 5px;">
-            <h1 class="text-warning font-italic"> Brand Pires</h1>
+            <h1 class="text-warning font-italic"> BrandPires</h1>
         </a>
         <!--end::Logo-->
 
@@ -162,6 +162,16 @@
                                             class="menu-link "><i
                                                 class="menu-bullet menu-bullet-line"><span></span></i><span
                                                 class="menu-text">Users</span><span
+                                                class="menu-label">{{--<span
+                                                    class="label label-danger label-inline">new</span>--}}</span></a>
+                                </li>
+                            @endif
+                            @if(auth()->user()->hasRole('admin'))
+                                <li class="menu-item " aria-haspopup="true"><a
+                                            href="{{ route('logCampaigns.index', app()->getLocale()) }}"
+                                            class="menu-link "><i
+                                                class="menu-bullet menu-bullet-line"><span></span></i><span
+                                                class="menu-text">Campaigns</span><span
                                                 class="menu-label">{{--<span
                                                     class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>

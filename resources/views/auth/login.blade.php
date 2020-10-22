@@ -6,7 +6,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8"/>
-    <title> Brand Pires| Login Page</title>
+    <title> BrandPires| Login Page</title>
     <meta name="description" content="Login page example"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
@@ -239,7 +239,7 @@
         <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
             <!--begin::Title-->
             <div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Brand Pires</h3>
+                <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">BrandPires</h3>
                 <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">Experience marketing in an innovative way
                     <br />Web Application </p>
             </div>
