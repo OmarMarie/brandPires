@@ -4,7 +4,7 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 5},
+            {"width": "50px", "targets": 4},
         ],
         processing: true,
         serverSide: true,
@@ -28,12 +28,12 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'brand_name', title: 'Name'},
-            {
+         /*   {
                 title: 'Packages', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-info">' + row.company_packages + ' </span>'
 
                 }
-            },
+            },*/
             {
                 title: 'Services', "mRender": function (data, type, row) {
                      var campaigns= '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
@@ -43,7 +43,7 @@
 
             },
             {
-                data: 'status', title: 'Active', "mRender": function (data, type, row) {
+                data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
                     } else if (row.status == 'True') {

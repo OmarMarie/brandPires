@@ -58,7 +58,7 @@
                                        placeholder="Brand Name"
                                        @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
                             </div>
-                            <div class="col-md-6 form-group">
+                        {{--    <div class="col-md-6 form-group">
                                 <label> Company Packages</label>
                                 <select name="companyPackages_id" class="form-control">
                                     <option value="" selected disabled>Select Company Packages</option>
@@ -66,7 +66,7 @@
                                         <option value="{{ $companyPackage->id }}">{{ "Cost: ".$companyPackage->cost ." , Number Bubbles: ".$companyPackage->number_bubbles }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>--}}
                             <div class="col-md-6 form-group">
                                 <label>Active</label>
                                 <select name="status" class="form-control">
@@ -80,9 +80,6 @@
                                     </option>
                                 </select>
                             </div>
-                            @if(!isset($brand))
-                                <div class="col-md-6 form-group"></div>
-                            @endif
                             <div class="col-sm-2 imgUp">
                                 <label>Brand Icon </label>
                                 <div class="imagePreview" style="@if( isset($brand))

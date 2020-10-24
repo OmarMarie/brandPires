@@ -64,4 +64,37 @@
         Chart.defaults.global.responsive = true;
     }
 
+
+    var campaigns_logs_map;
+    map_campaigns_logs()
+    function map_campaigns_logs()
+    {
+
+        if ($("#map_campaigns_logs").length != 0) {
+            eval($("#map_campaigns_logs").attr('marker_code'))
+            campaigns_logs_map = new google.maps.Map(document.getElementById('map_campaigns_logs'), {
+                zoom: 6,
+                center: new google.maps.LatLng(24.079352, 48.0031405),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+          console.log(locations);
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: campaigns_logs_map,
+                    icon: '{{asset('assets/media/logos/pin.png')}}'
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(campaigns_logs_map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+    }
+
+
 </script>

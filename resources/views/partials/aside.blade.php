@@ -70,7 +70,7 @@
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('companyPackages.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-cubes left-icon-menu"><span></span></i>
-                            <span class="menu-text">Company Packages</span>
+                            <span class="menu-text">Packages</span>
                         </a>
                     </li>
                 @endif
@@ -146,16 +146,16 @@
                                                     class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>
                             @endif
-                            @if(auth()->user()->hasRole('admin'))
-                                <li class="menu-item " aria-haspopup="true"><a
-                                            href="{{ route('bubblesTransferActions.index', app()->getLocale()) }}"
-                                            class="menu-link "><i
-                                                class="menu-bullet menu-bullet-line"><span></span></i><span
-                                                class="menu-text">Bubbles Transfer Actions</span><span
-                                                class="menu-label">{{--<span
-                                                    class="label label-danger label-inline">new</span>--}}</span></a>
-                                </li>
-                            @endif
+                             {{--   @if(auth()->user()->hasRole('admin'))
+                                    <li class="menu-item " aria-haspopup="true"><a
+                                                href="{{ route('bubblesTransferActions.index', app()->getLocale()) }}"
+                                                class="menu-link "><i
+                                                    class="menu-bullet menu-bullet-line"><span></span></i><span
+                                                    class="menu-text">Bubbles Transfer Actions</span><span
+                                                    class="menu-label">--}}{{--<span
+                                                        class="label label-danger label-inline">new</span>--}}{{--</span></a>
+                                    </li>
+                                @endif--}}
                             @if(auth()->user()->hasRole('admin'))
                                 <li class="menu-item " aria-haspopup="true"><a
                                             href="{{ route('logUsers.index', app()->getLocale()) }}"
