@@ -34,6 +34,10 @@ Route::group([
         Route::resource('companies', 'CompanyController');
         Route::get('CompanyDatable', 'CompanyController@CompanyDatable')->name('CompanyDatable');
 
+        Route::get('brand/attachments/{id?}', 'AttachmentsController@indexBrand')->name('indexBrandAttachments');
+        Route::get('brand/attachments/{id?}/edit', 'AttachmentsController@editBrand')->name('editBrandAttachments');
+        Route::post('brand/attachments/update', 'AttachmentsController@updateBrand')->name('updateBrandAttachments');
+
         Route::get('company/attachments/{id?}', 'AttachmentsController@index')->name('indexCompanyAttachments');
         Route::get('attachments/{id?}/edit', 'AttachmentsController@edit')->name('editCompanyAttachments');
         Route::post('attachments/update', 'AttachmentsController@update')->name('updateCompanyAttachments');

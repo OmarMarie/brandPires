@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Brand;
 use App\Models\Attachments;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -24,6 +25,12 @@ class AttachmentsController extends Controller
         return view('brandpriers.companyAttachments.index', compact('company_id', 'companyName', 'attachments'));
     }
 
+    public function indexBrand($locale, $brand_id)
+    {
+
+        $attachments = Brand::where('id', $brand_id)->first();
+        return view('brandpriers.brandAttachments.index', compact('brand_id', 'attachments'));
+    }
 
     /**
      * Display the specified resource.
@@ -35,6 +42,12 @@ class AttachmentsController extends Controller
     {
         $attachments = Attachments::where('company_id', $company_id)->first();
         return view('brandpriers.companyAttachments.create', compact('company_id', 'attachments'));
+    }
+
+    public function editBrand($locale, $brand_id)
+    {
+        $attachments = Brand::where('id', $brand_id)->first();
+        return view('brandpriers.brandAttachments.create', compact('brand_id', 'attachments'));
     }
 
 
@@ -186,5 +199,49 @@ class AttachmentsController extends Controller
         return response()->json(['message' => 'update Attachment successfully', 'status' => 200]);
     }
 
+    public function updateBrand(Request $request, $id)
+    {
+        $attachments = Brand::where('id', $request->brand_id)->first();
+        if (isset($attachments)) {
+            if (isset($request->contract) && $request->contract != $attachments->contract) {
+                $validations = Validator::make($request->all(), [
+                    'contract' => 'mimes:jpeg,png,jpg,pdf',
+                ]);
 
+                if ($validations->fails()) {
+                    return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+                }
+                $file = 'attachments/brand/' . $attachments->contract;
+                File::delete($file);
+                $image = $request->file('contract');
+                $contract = 'contract_' . time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('attachments/brand'), $contract);
+                $attachments->update([
+                    'contract' => $contract
+                ]);
+            }
+
+            if (isset($request->ad_approval) && $request->ad_approval != $attachments->ad_approval) {
+                $validations = Validator::make($request->all(), [
+                    'ad_approval' => 'mimes:jpeg,png,jpg,gif,svg,pdf',
+                ]);
+
+                if ($validations->fails()) {
+                    return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+                }
+                $file = 'attachments/brand/' . $attachments->ad_approval;
+                File::delete($file);
+                $image = $request->file('ad_approval');
+                $ad_approval = 'ad_approval_' . time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('attachments/brand'), $ad_approval);
+                $attachments->update([
+                    'ad_approval' => $ad_approval
+                ]);
+            }
+
+
+
+        }
+        return response()->json(['message' => 'update Attachment successfully', 'status' => 200]);
+    }
 }

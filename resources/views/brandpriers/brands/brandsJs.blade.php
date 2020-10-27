@@ -28,7 +28,7 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'brand_name', title: 'Name'},
-           {
+            {
                 title: 'Company Name', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-success">' + row.company_id + ' </span>'
 
@@ -36,9 +36,10 @@
             },
             {
                 title: 'Services', "mRender": function (data, type, row) {
-                     var campaigns= '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
-                     var packages= '<a href="/{{app()->getLocale()}}/brand/packages/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Packages"><i class="fas fa-box-open"></i></a>'
-                    return campaigns + packages;
+                    var campaigns = '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
+                    var packages = '<a href="/{{app()->getLocale()}}/brand/packages/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Packages"><i class="fas fa-box-open"></i></a>'
+                    var attachments = '<a href="/{{app()->getLocale()}}/brand/attachments/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Attachments"><i class="fas fa-paperclip"></i></a>'
+                    return campaigns + packages + attachments;
                 }
 
             },
