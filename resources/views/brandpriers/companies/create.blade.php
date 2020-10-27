@@ -29,77 +29,78 @@
 
     }
 </style>
-@if(!isset($brand))
+@if(!isset($company))
+
     <div class="container">
         <div id="smartwizard">
 
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#step-1">
-                        <strong>Brand Basic Information</strong>
+                        <strong>Company Basic Information</strong>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#step-2">
-                        <strong>Brand Account Information</strong>
+                        <strong>Company Attachments</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-3">
+                        <strong>Company Account Information</strong>
                     </a>
                 </li>
             </ul>
             <hr>
 
-            <form action="{{ route('brands.store', app()->getLocale()) }}" method="POST" id="userForm">
+            <form action="{{ route('companies.store', app()->getLocale()) }}" method="POST" id="userForm">
                 @csrf
                 <div class="tab-content">
                     <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>Brand Name</label>
-                                <input type="text" class="form-control" name="brand_name" autocomplete="off"
-                                       placeholder="Brand Name"
-                                       @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" name="name" autocomplete="off"
+                                       placeholder="Company Name">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label> Company </label>
-                                <select name="company_id" class="form-control">
-                                    <option value="" selected disabled>Select Company</option>
-                                    @foreach($companies  as $company)
-                                        <option value="{{ $company->id }}">{{ $company->name }}</option>
-                                    @endforeach
-                                </select>
+                                <label>Commercial Registration No</label>
+                                <input type="text" class="form-control" name="commercial_registration_no" placeholder="Commercial Registration No">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>Active</label>
+                                <label for="date">Expiry Date Commercial Registration</label>
+                                <input name="expiry_date_commercial_registration" id="datepicker" class="date-picker form-control" placeholder="Date"  autocomplete="off"/>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>IBAN</label>
+                                <input type="text" class="form-control" name="iban" placeholder="IBAN">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Phone</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label> Email</label>
+                                    <input type="email" class="form-control" id="email" name="email_company"
+                                       autocomplete="off"
+                                       placeholder="Email">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Status</label>
                                 <select name="status" class="form-control">
-                                    <option value="0"
-                                            @if(isset($brand) && $brand->status == 0) selected @endif>
+                                    <option value="0"  >
                                         False
                                     </option>
-                                    <option value="1"
-                                            @if(isset($brand) && $brand->status == 1) selected @endif>
+                                    <option value="1">
                                         True
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-6 form-group">
-                                <label>Contract</label>
-                                <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="1" name="contract">
-                                    <label class="custom-file-label" for="1">Choose file</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <label>Ad Approval</label>
-                                <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="2" name="ad_approval">
-                                    <label class="custom-file-label" for="2">Choose file</label>
-                                </div>
-                            </div>
-
+                            <div class="col-md-6 form-group"></div>
                             <div class="col-sm-2 imgUp">
-                                <label>Brand Icon </label>
-                                <div class="imagePreview" style="@if( isset($brand))
-                                        background:url('{{asset('/images/brand/'.$brand->img.'')}}');
+                                <label>Company Icon </label>
+                                <div class="imagePreview" style="@if( isset($company))
+                                        background:url('{{asset('/images/company/'.$company->img.'')}}');
                                         background-position: center center;
                                         background-color: #fff;
                                         background-size: 100% 150px;
@@ -108,17 +109,51 @@
                                 <label class="btn_edit_img btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                        style="color: #262673 !important;">
                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                    <input type="file" name="brand_icon" id="img"
+                                    <input type="file" name="icon" id="img"
                                            class="uploadFile img"
-                                           value="{{ isset($brand) ? $brand->img: '' }}"
+                                           value=""
                                            style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
 
                         </div>
-
                     </div>
                     <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Commercial Registration</label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input"  id="1" name="commercial_registration"  >
+                                    <label class="custom-file-label" for="1">Choose file</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label>Identity</label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="2"  name="Identity"  >
+                                    <label class="custom-file-label" for="2">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Bank Account</label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="3"  name="bank_account"  >
+                                    <label class="custom-file-label" for="3">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Privacy Policy</label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="4"  name="privacy_policy"  >
+                                    <label class="custom-file-label" for="4">Choose file</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Name</label>
@@ -127,13 +162,11 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Phone</label>
-                                <input type="text" class="form-control" name="phone" placeholder="Phone">
+                                <input type="text" class="form-control" name="phone_user" placeholder="Phone">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label> Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                       autocomplete="off"
-                                       placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label> Password</label>
@@ -153,48 +186,80 @@
         </div>
     </div>
 @endif
-@if(isset($brand))
-    <form action="{{ route('brands.update', [app()->getLocale(),$brand]) }}" method="POST" id="userForm">
+
+@if(isset($company))
+    <form action="{{ route('companies.update', [app()->getLocale(),$company]) }}" method="POST" id="userForm">
         {{ method_field('PUT') }}
-        @csrf
+                @csrf
         <div class="row">
             <div class="col-md-6 form-group">
-                <label>Brand Name</label>
-                <input type="text" class="form-control" name="brand_name" placeholder="Brand Name"
-                       @if(isset($brand)) value="{{ $brand->brand_name }}" @endif>
+                <label>Company Name</label>
+                <input type="text" class="form-control" name="name" autocomplete="off"
+                       placeholder="Company Name" value="{{ $company->name }}" >
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Commercial Registration No</label>
+                <input type="text" class="form-control" name="commercial_registration_no" placeholder="Commercial Registration No"
+                       value="{{ $company->commercial_registration_no }}" >
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="date">Expiry Date Commercial Registration</label>
+                <input name="expiry_date_commercial_registration" id="datepicker" class="date-picker form-control" placeholder="Date"  autocomplete="off"
+                      value="{{ date("d-m-yy", strtotime($company->expiry_date_CR)) }}"/>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>IBAN</label>
+                <input type="text" class="form-control" name="iban" placeholder="IBAN"
+                value="{{$company->iban}}" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Phone</label>
+                <input type="text" class="form-control" name="phone" placeholder="Phone"
+                      value="{{ $company->phone}}" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label> Email</label>
+                <input type="email" class="form-control" id="email" name="email" autocomplete="off" placeholder="Email"
+                      value="{{ $company->email}}" />
             </div>
             <div class="col-md-6 form-group">
                 <label>Status</label>
                 <select name="status" class="form-control">
-                    <option value="0" @if(isset($brand) && $brand->status == 0) selected @endif>False</option>
-                    <option value="1" @if(isset($brand) && $brand->status == 1) selected @endif>True</option>
+                    <option value="0"
+                            @if( $company->status == 0) selected @endif>
+                        False
+                    </option>
+                    <option value="1"
+                            @if( $company->status == 1) selected @endif>
+                        True
+                    </option>
                 </select>
             </div>
-
+            <div class="col-md-6 form-group"></div>
             <div class="col-sm-2 imgUp">
-                <label>Brand Icon </label>
-                <div class="imagePreview" style="@if( isset($brand))
-                        background:url('{{asset('/images/brand/'.$brand->img.'')}}');
+                <label>Company Icon </label>
+                <div class="imagePreview" style="
+                        background:url('{{asset('/images/company/'.$company->logo.'')}}');
                         background-position: center center;
                         background-color: #fff;
                         background-size: 100% 150px;
                         background-repeat: no-repeat;
-                @endif"></div>
+                "></div>
                 <label class="btn_edit_img btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                        style="color: #262673 !important;">
                     <i class="fa fa-pen icon-sm text-muted"></i>
-                    <input type="file" name="brand_icon" id="img" class="uploadFile img"
-                           value="{{ isset($brand) ? $brand->img: '' }}"
+                    <input type="file" name="icon" id="img"
+                           class="uploadFile img"
+                           value="{{$company->logo}}"
                            style="width: 0px;height: 0px;overflow: hidden;">
                 </label>
             </div>
-
-
             <div class="col-md-12 form-group">
                 <input type="submit" value="Submit" class="btn btn-success" style="float: right">
             </div>
+
         </div>
-    </form>
+            </form>
 @endif
 <script type="text/javascript" src="{{ asset('assets/smartwizard/js/jquery.smartWizard.js') }}"></script>
 <script>
@@ -204,17 +269,8 @@
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
 
-        $("#show_hide_password a").on('click', function (event) {
-            event.preventDefault();
-            if ($('#show_hide_password input').attr("type") == "text") {
-                $('#show_hide_password input').attr('type', 'password');
-                $('#show_hide_password i').addClass("fa-eye-slash");
-                $('#show_hide_password i').removeClass("fa-eye");
-            } else if ($('#show_hide_password input').attr("type") == "password") {
-                $('#show_hide_password input').attr('type', 'text');
-                $('#show_hide_password i').removeClass("fa-eye-slash");
-                $('#show_hide_password i').addClass("fa-eye");
-            }
+        $("#datepicker").datepicker({
+            format: "dd-mm-yyyy",
         });
 
         $('#smartwizard').smartWizard({
@@ -224,11 +280,7 @@
             autoAdjustHeight: true, // Automatically adjust content height
             cycleSteps: false, // Allows to cycle the navigation of steps
             backButtonSupport: true, // Enable the back button support
-            @if(isset($supplier))
-            enableURLhash: false, // Enable selection of the step based on url hash
-            @else
-            enableURLhash: true,
-            @endif
+            enableURLhash: false,
             transition: {
                 animation: 'slide-swing', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
                 speed: '400', // Transion animation speed
@@ -248,11 +300,7 @@
             },
             anchorSettings: {
                 anchorClickable: true, // Enable/Disable anchor navigation
-                @if(isset($supplier))
-                enableAllAnchors: true, // Activates all anchors clickable all times
-                @else
                 enableAllAnchors: false, // Activates all anchors clickable all times
-                @endif
                 markDoneStep: true, // Add done css
                 markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
                 removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared

@@ -31,6 +31,19 @@ Route::group([
         Route::get('/dashboard', 'HomeController@index')->name('home');
         Route::get('/', 'HomeController@index')->name('home');
 
+        Route::resource('companies', 'CompanyController');
+        Route::get('CompanyDatable', 'CompanyController@CompanyDatable')->name('CompanyDatable');
+
+        Route::get('company/attachments/{id?}', 'AttachmentsController@index')->name('indexCompanyAttachments');
+        Route::get('attachments/{id?}/edit', 'AttachmentsController@edit')->name('editCompanyAttachments');
+        Route::post('attachments/update', 'AttachmentsController@update')->name('updateCompanyAttachments');
+
+        Route::get('company/contacts/{id?}', 'ContactController@index')->name('indexCompanyContacts');
+        Route::get('contacts/{id?}/create', 'ContactController@create')->name('createCompanyContacts');
+        Route::post('contacts/store', 'ContactController@store')->name('storeCompanyContacts');
+        Route::get('contactsDatable', 'ContactController@contactsDatable')->name('contactsDatable');
+        Route::delete('contacts/{id?}', 'ContactController@destroy')->name('destroyCompanyContacts');
+
         Route::resource('users', 'UserController');
         Route::get('usersDatable', 'UserController@usersDatable')->name('usersDatable');
 

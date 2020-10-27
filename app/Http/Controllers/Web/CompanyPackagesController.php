@@ -224,6 +224,6 @@ class CompanyPackagesController extends Controller
     public function destroyBrandPackages($locale, $packages_id)
     {
 
-        CompanyPackageLogs::where('id',$packages_id)->delete();
+            CompanyPackageLogs::where('id',$packages_id)->delete();
     }
 }

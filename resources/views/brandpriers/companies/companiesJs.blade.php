@@ -1,10 +1,9 @@
 <script type="text/javascript">
 
-
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 5},
+            {"width": "30px", "targets": 6},
         ],
         processing: true,
         serverSide: true,
@@ -24,24 +23,12 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('brandsDatable', app()->getLocale()) }}",
+        ajax: "{{ route('CompanyDatable', app()->getLocale()) }}",
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
-            {data: 'brand_name', title: 'Name'},
-           {
-                title: 'Company Name', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.company_id + ' </span>'
-
-                }
-            },
-            {
-                title: 'Services', "mRender": function (data, type, row) {
-                     var campaigns= '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
-                     var packages= '<a href="/{{app()->getLocale()}}/brand/packages/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Packages"><i class="fas fa-box-open"></i></a>'
-                    return campaigns + packages;
-                }
-
-            },
+            {data: 'name', title: 'Name'},
+            {data: 'email', title: 'email'},
+            {data: 'phone', title: 'Phone'},
             {
                 data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
@@ -51,12 +38,19 @@
                     }
                 }
             },
+            {
+                title: 'Services', "mRender": function (data, type, row) {
+                    var contacts= '<a href="/{{app()->getLocale()}}/company/contacts/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Contacts"><i class="fas fa-id-card-alt"></i></a>'
+                    var attachments= '<a href="/{{app()->getLocale()}}/company/attachments/' + row.id +'"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Attachments"><i class="fas fa-paperclip"></i></a>'
+                    return contacts + attachments;
+                }
 
+            },
             {
                 title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
-                    return edit + remove;
+                    return edit ;
 
                 }
             }
@@ -67,11 +61,11 @@
     $('#add').on('click', function () {
 
         $.ajax({
-            url: '{{ route('brands.create', app()->getLocale()) }}',
+            url: '{{ route('companies.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add Brand');
+                $('.modal-title').text('Add Company');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -117,15 +111,14 @@
             }
         });
     });
-
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/brands/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/companies/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit Brand');
+                $('.modal-title').text('Edit Company');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -194,7 +187,7 @@
                     success: function (data) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Your Brands has been removed',
+                            title: 'Your Company has been removed',
                             showConfirmButton: false,
                             timer: 1500
                         });

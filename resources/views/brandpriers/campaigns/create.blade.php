@@ -82,7 +82,7 @@
                     <div class="col-md-6 form-group">
                         <label for="date">Date</label>
                         <input name="date" id="datepicker" class="date-picker form-control" placeholder="Date"  autocomplete="off"
-                               @if(isset($campaign)) value="{{ $campaign->date}}" @endif/>
+                               @if(isset($campaign)) value="{{ date("d-m-yy", strtotime($campaign->date))}}" @endif/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>From Time</label>
