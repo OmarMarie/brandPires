@@ -4,7 +4,7 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 3},
+            {"width": "50px", "targets": 4},
         ],
         processing: true,
         serverSide: true,
@@ -43,15 +43,13 @@
                 }
             },
 
-            /*{
-                data: 'status', title: 'Available', "mRender": function (data, type, row) {
-                    if (row.available == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.available + '</span>'
-                    } else if (row.available == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.available + '</span>'
-                    }
+            {
+                title: 'Services', "mRender": function (data, type, row) {
+                    var campaigns = '<a href="/{{app()->getLocale()}}/brand/campaigns/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
+                    return campaigns ;
                 }
-            },*/
+
+            },
             {data: 'created_at', title: 'Created at'},
             {
                 title: 'Actions', "mRender": function (data, type, row) {

@@ -48,20 +48,6 @@ class BrandController extends Controller
                        return null;
 
                 })
-                ->addColumn('company_packages', function ($data) {
-                    $lastPackage_id=CompanyPackageLogs::where('brand_id',$data->id) ->orderByRaw('created_at DESC') ->first();
-                    if($lastPackage_id != null)
-                    {
-                        $company_package = CompanyPackage::where('id',$lastPackage_id->package_id)->first();
-                        $company_package = 'Cost: '. $company_package->cost .' - Number Bubbles: '. $company_package->number_bubbles ;
-                        return $company_package;
-                    }
-                    else
-                    {
-                        return '';
-                    }
-
-                })
                 ->editColumn('created_at', function ($data) {
                     if ($data->created_at != '')
                         $data->created_at->format('d m Y - g:i A');
