@@ -25,7 +25,7 @@ class BrandController extends Controller
         {
             $brand['img'] = env('APP_URL').'/brand/'.$brand['img'];
         }
-        return $brands;
+        return $this->apiResponse($brands, null, 200);
     }
 
     public function campaigns(Request $request)
@@ -37,7 +37,7 @@ class BrandController extends Controller
         if (count($campaigns) == 0) {
             return $this->apiResponse(null, 'Campaign not found', 200, 1);
         } else {
-            return $campaigns;
+            return $this->apiResponse($campaigns, null, 200);
         }
     }
 
