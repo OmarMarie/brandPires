@@ -15,13 +15,24 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::where('status', 1)->paginate(10);
+        $brands = Brand::with(array('campaigns' => function ($query) {
+            return $query->where('available', 1);
+        }))
+            ->where('status', 1)
+            ->paginate(10);
+
+        foreach ($brands as $brand)
+        {
+            $brand['img'] = env('APP_URL').'/brand/'.$brand['img'];
+        }
         return $brands;
     }
 
-    public function campaigns($id)
+    public function campaigns(Request $request)
     {
-        $campaigns = Campaign::whereHas('brands')->where('brand_id', $id)->paginate(10, ['id', 'name', 'mark_pts', 'from_time', 'to_time']);
+        $campaigns = Campaign::whereHas('brands')
+            ->where('brand_id', $request->campaign_id)
+            ->paginate(10, ['id', 'name', 'mark_pts', 'from_time', 'to_time']);
 
         if (count($campaigns) == 0) {
             return $this->apiResponse(null, 'Campaign not found', 200, 1);
@@ -30,12 +41,11 @@ class BrandController extends Controller
         }
     }
 
-    public function campaignDetails($id)
+    public function campaignDetails(Request $request)
     {
         try {
-            $campaign = Campaign::findOrFail($id);
-        }
-        catch (ModelNotFoundException $e) {
+            $campaign = Campaign::findOrFail($request->campaing_id);
+        } catch (ModelNotFoundException $e) {
             return $this->apiResponse(null, 'Campaign not found', 200, 1);
         }
         $day = Carbon::parse($campaign->date)->format('l');

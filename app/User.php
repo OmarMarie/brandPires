@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
+use Cache;
 
 
 class User extends Authenticatable
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type','phone_number', 'active'
+        'name', 'email', 'password', 'type','phone_number', 'active', 'is_online'
     ];
 
     /**
@@ -54,7 +55,10 @@ class User extends Authenticatable
         }
         return false;
     }
-
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
 
 
 

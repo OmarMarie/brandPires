@@ -43,7 +43,7 @@ return [
         ],
 
         'player' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'players'
         ],
 

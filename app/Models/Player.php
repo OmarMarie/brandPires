@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Cache;
 
 class Player extends Authenticatable
 {
@@ -15,7 +16,7 @@ class Player extends Authenticatable
     protected $guarded = [];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'is_online', 'deleted_at', 'last_activity'
     ];
     /**
      * The attributes that should be cast to native types.
@@ -29,5 +30,10 @@ class Player extends Authenticatable
     public function level()
     {
         return $this->belongsTo(Levels::class, 'level_id');
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }

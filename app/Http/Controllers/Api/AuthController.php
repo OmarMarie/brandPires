@@ -168,8 +168,10 @@ class AuthController extends Controller
 
         $numberOfTankBubbles = PlayerBubbles::where('player_id', $request->user()->id)->where('status', 1)->count();
 
+        $request->user()->img = env('APP_URL').'/'.$request->user()->img;
         $response = [
             'player' => $request->user(),
+            'is_online' => auth('player')->user()->isOnline(),
             'gifts' => $gifts == 0 ? null : $gifts,
             'friends_response' => $friendsRequest == 0 ? null : $friendsRequest,
             'chatting' => $chatting == 0 ? null : $chatting,
@@ -180,7 +182,7 @@ class AuthController extends Controller
                 'tank_id' => $tankDetails->tank_id,
                 'size' => $tankDetails['tanks']['size'],
                 'extra_tank_pts' => $extraTank,
-                'img' => $tankDetails['tanks']['img']
+                'img' => $tankDetails['tanks']['img'] == null ? null : env('APP_URL').'/tank/'.$tankDetails['tanks']['img']
             ]
         ];
         return $this->apiResponse($response, null, 200, 1);

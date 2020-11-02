@@ -10,13 +10,13 @@ Route::group([
     Route::post('signup', 'AuthController@signup');
 
     Route::group([
-        'middleware' => 'auth:api'
+        'middleware' => ['auth:api', 'LastUserActivity']
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
         Route::get('brands', 'BrandController@index');
-        Route::get('campaigns/{id}', 'BrandController@campaigns');
-        Route::get('campaignDetails/{id}', 'BrandController@campaignDetails');
+        Route::post('campaigns', 'BrandController@campaigns');
+        Route::post('campaignDetails', 'BrandController@campaignDetails');
         Route::get('tanks/{id}', 'TankController@tanks');
         Route::post('updateTank', 'TankController@updateTank');
         Route::get('infoTank/{id}', 'TankController@infoTank');

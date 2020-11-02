@@ -8,4 +8,5 @@ class BrandCampaign extends Model
 {
     protected $table = 'brand_campaign';
     protected $guarded = [];
+    protected $hidden = ['pivot'];
 }
