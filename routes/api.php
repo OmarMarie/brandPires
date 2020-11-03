@@ -17,19 +17,21 @@ Route::group([
         Route::get('brands', 'BrandController@index');
         Route::post('campaigns', 'BrandController@campaigns');
         Route::post('campaignDetails', 'BrandController@campaignDetails');
-        Route::get('tanks/{id}', 'TankController@tanks');
+        Route::post('tanks', 'TankController@tanks');
         Route::post('updateTank', 'TankController@updateTank');
-        Route::get('infoTank/{id}', 'TankController@infoTank');
+        Route::post('infoTank', 'TankController@infoTank');
         Route::get('gifts/{player_id}', 'BubbleController@gifts');
         Route::get('giftDetails/{id}', 'BubbleController@giftDetails');
         Route::get('playerChatting/{player_id}', 'ChattingController@playerChatting');
         Route::get('chatDetails', 'ChattingController@chatDetails');
-        Route::get('friends/{id}', 'ChattingController@friends');
+        Route::get('friends', 'ChattingController@friends');
         Route::post('sendFriendRequest', 'ChattingController@sendFriendRequest');
         Route::post('sendMessage', 'ChattingController@sendMessage');
         Route::post('contacts', 'AuthController@contacts');
         Route::post('getBubblesInLocation', 'FishingController@getBubblesInLocation');
         Route::get('hook/{id}', 'FishingController@hook');
+        Route::get('levels', 'LevelController@levels');
+        Route::post('infoLevel', 'LevelController@infoLevel');
     });
 });
 

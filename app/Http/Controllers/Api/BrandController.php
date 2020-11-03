@@ -8,6 +8,7 @@ use App\Traits\ApiResponser;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
 {
@@ -21,9 +22,8 @@ class BrandController extends Controller
             ->where('status', 1)
             ->paginate(10);
 
-        foreach ($brands as $brand)
-        {
-            $brand['img'] = env('APP_URL').'/brand/'.$brand['img'];
+        foreach ($brands as $brand) {
+            $brand['img'] = env('APP_URL') . '/images/brand/' . $brand['img'];
         }
         return $this->apiResponse($brands, null, 200);
     }
@@ -43,6 +43,18 @@ class BrandController extends Controller
 
     public function campaignDetails(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'campaing_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
         try {
             $campaign = Campaign::findOrFail($request->campaing_id);
         } catch (ModelNotFoundException $e) {
@@ -60,15 +72,6 @@ class BrandController extends Controller
             'date' => $campaign->date
         ];
         return $this->apiResponse($arr, '', 200, 1);
-        /*return response()->json([
-            'name' => $campaign->name,
-            'lat' => $campaign->lat,
-            'lng' => $campaign->lng,
-            'from_time' => $campaign->from_time,
-            'to_time' => $campaign->to_time,
-            'mark_pts' => $campaign->mark_pts,
-            'day' => $day,
-            'date' => $campaign->date
-        ]);*/
+
     }
 }

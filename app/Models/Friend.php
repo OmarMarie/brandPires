@@ -19,4 +19,5 @@ class Friend extends Model
     {
         return $this->belongsTo(Player::class, 'friend_id');
     }
+
 }

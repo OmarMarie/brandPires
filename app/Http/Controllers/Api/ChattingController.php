@@ -69,8 +69,9 @@ class ChattingController extends Controller
         return $this->apiResponse(null, 'Message sent successfully', 200, 1);
     }
 
-    public function friends($player_id)
+    public function friends(Request $request)
     {
+        $player_id = auth()->guard('player')->user()->id;
         $friends = Friend::with('friends:id,first_name,last_name')
             ->where('player_id', $player_id)
             ->where('status', 1)
