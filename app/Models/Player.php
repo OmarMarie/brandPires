@@ -11,7 +11,7 @@ use Cache;
 
 class Player extends Authenticatable
 {
-    use HasApiTokens, Notifiable,SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     protected $guarded = [];
 
