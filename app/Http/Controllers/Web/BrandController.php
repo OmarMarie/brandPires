@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Brand;
+
+use App\Models\Brand;
 use App\Models\BrandCampaign;
 use App\Models\Company;
 use App\Models\CompanyPackage;

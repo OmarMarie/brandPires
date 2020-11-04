@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 
-use App\Brand;
+
+use App\Models\Brand;
 use App\Models\CompanyPackage;
 use App\Models\CompanyPackageLogs;
 use Illuminate\Http\Request;

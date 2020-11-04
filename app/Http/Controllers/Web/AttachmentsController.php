@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 
-use App\Brand;
+
 use App\Models\Attachments;
+use App\Models\Brand;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
