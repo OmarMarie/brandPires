@@ -1,0 +1,21 @@
+<?php
+return [
+    'positionAr' => 'الوظيفة باللغة العربية',
+    'positionEn' => 'الوظيفة باللغة الإنجليزية',
+    'descriptionEn' => 'وصف باللغة الإنجليزية',
+    'descriptionAr' => 'وصف باللغة العربية',
+    'addedBy' => 'تمت إضافتها بواسطة',
+    'updatedBy' => 'تم تعديلها بواسطة',
+    'showCareer' => 'مشاهدة المهن',
+    'createNewCareer' => 'إنشاء وظيفة جديدة',
+    'id' => 'رقم الهوية',
+    'action' => 'العملية',
+    'careersManagement' => 'ادارة الوظائف',
+    'updatedDate' => 'تاريخ التعديل',
+    'addedDate' => 'تاريخ الإضافة',
+    'viewHeader' => 'مشاهدة الوظيفة',
+    'editHeader' => 'تعديل الوظيفة',
+    'addHeader' => 'إضافة وظيفة',
+    'updateCareer' => 'تعديل الوظيفة',
+    'addCareer' => 'إضافة وظيفة',
+];

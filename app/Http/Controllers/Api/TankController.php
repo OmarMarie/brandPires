@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Models\PlayerTankAction;
 use App\Models\Tanks;
 use App\Traits\ApiResponser;
+use App\Traits\MessageLanguage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class TankController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser ,MessageLanguage;
 
     public function tanks(Request $request)
     {
+        $this->checkLang($request);
         $validator = Validator::make($request->all(), [
             'tank_id' => 'required|integer',
         ]);
@@ -35,13 +37,25 @@ class TankController extends Controller
             }
             return $this->apiResponse($tanks, null, 200, 0);
         } else {
-            return $this->apiResponse(null, 'Tanks not found!', 200, 0);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Tanks not found!';
+                    break;
+                case 'ar':
+                    $message ="لم يتم العثور على الخزانات!";
+                    break;
+                default:
+                    $message = 'Tanks not found!';
+                    break;
+            }
+            return $this->apiResponse(null,$message , 200, 0);
         }
 
     }
 
     public function updateTank(Request $request)
     {
+        $this->checkLang($request);
         try {
             $tankToName = Tanks::findOrFail($request->tank_id);
 
@@ -56,14 +70,40 @@ class TankController extends Controller
                 'tank_id' => $request->tank_id,
                 'updated_at' => now()
             ]);
-            return $this->apiResponse(null, 'Upgraded to ' . $tankToName['name'] . ' successfully', 200, 1);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Upgraded to ' ;
+                    $successfully=' Successfully';
+                    break;
+                case 'ar':
+                    $message ="ترقية إلى";
+                    $successfully=' بنجاح';
+                    break;
+                default:
+                    $message = 'Upgraded to ' ;
+                    $successfully=' Successfully';
+                    break;
+            }
+            return $this->apiResponse(null,$message . $tankToName['name'] .$successfully, 200, 1);
         } else {
-            return $this->apiResponse(null, 'Failed to upgrade to ' . $tankToName['name'] . '', 200, 1);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Failed to upgrade to ';
+                    break;
+                case 'ar':
+                    $message = "فشل الترقية إلى";
+                    break;
+                default:
+                    $message = 'Failed to upgrade to ';
+                    break;
+            }
+            return $this->apiResponse(null,$message  . $tankToName['name'] . '', 200, 1);
         }
     }
 
     public function infoTank(Request $request)
     {
+        $this->checkLang($request);
         $validator = Validator::make($request->all(), [
             'tank_id' => 'required|integer',
         ]);

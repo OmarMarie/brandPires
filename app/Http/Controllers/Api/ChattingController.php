@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Models\Chatting;
 use App\Models\Friend;
 use App\Traits\ApiResponser;
+use App\Traits\MessageLanguage;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ChattingController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser,MessageLanguage;
 
-    public function playerChatting($player_id)
+    public function playerChatting($player_id,Request $request)
     {
+        $this->checkLang($request);
         $messages = Chatting::with(['sender:id,first_name', 'receiver:id,first_name'])
             ->where('sender_id', $player_id)
             ->orderBy('created_at', 'desc')
@@ -25,6 +27,7 @@ class ChattingController extends Controller
 
     public function chatDetails(Request $request)
     {
+        $this->checkLang($request);
         $receiver_id = $request->header('receiver_id');
         $sender_id = $request->header('sender_id');
 
@@ -45,6 +48,7 @@ class ChattingController extends Controller
 
     public function sendMessage(Request $request)
     {
+        $this->checkLang($request);
         $validator = Validator::make($request->all(), [
             'receiver_id' => 'required',
             'message' => 'required',
@@ -66,11 +70,23 @@ class ChattingController extends Controller
             'content_type' => $request->content_type,
             'status' => 0
         ]);
-        return $this->apiResponse(null, 'Message sent successfully', 200, 1);
+        switch ($request->header('lang')) {
+            case 'en':
+                $message = 'Message sent successfully';
+                break;
+            case 'ar':
+                $message = "تم إرسال الرسالة بنجاح";
+                break;
+            default:
+                $message = 'Message sent successfully';
+                break;
+        }
+        return $this->apiResponse(null,$message , 200, 1);
     }
 
     public function friends(Request $request)
     {
+        $this->checkLang($request);
         $player_id = auth()->guard('player')->user()->id;
         $friends = Friend::with('friends:id,first_name,last_name')
             ->where('player_id', $player_id)
@@ -83,10 +99,22 @@ class ChattingController extends Controller
 
     public function sendFriendRequest(Request $request)
     {
+        $this->checkLang($request);
         $player = Friend::where('player_id', $request->user()->id)->where('friend_id', $request->friend_id)->get();
 
         if (count($player) > 0 || $request->user()->id == $request->friend_id) {
-            return $this->apiResponse(null, 'You were already friends', 200, 0);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'You were already friends';
+                    break;
+                case 'ar':
+                    $message = " أنتما صديقان بالفعل";
+                    break;
+                default:
+                    $message = 'You were already friends';
+                    break;
+            }
+            return $this->apiResponse(null,$message , 200, 0);
         } else {
             try {
                 Friend::create([
@@ -95,9 +123,31 @@ class ChattingController extends Controller
                     'status' => 0
                 ]);
             } catch (QueryException $exception) {
-                return $this->apiResponse(null, 'Something went wrong', 200, 0);
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Something went wrong';
+                        break;
+                    case 'ar':
+                        $message = 'هناك خطأ ما';
+                        break;
+                    default:
+                        $message = 'Something went wrong';
+                        break;
+                }
+                return $this->apiResponse(null,$message , 200, 0);
             }
-            return $this->apiResponse(null, 'Request sent successfully', 200, 1);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Request sent successfully';
+                    break;
+                case 'ar':
+                    $message = "تم إرسال الطلب بنجاح";
+                    break;
+                default:
+                    $message = 'Request sent successfully';
+                    break;
+            }
+            return $this->apiResponse(null, $message, 200, 1);
         }
     }
 }

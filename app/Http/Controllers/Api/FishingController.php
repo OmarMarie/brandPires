@@ -10,15 +10,17 @@ use App\Models\Player;
 use App\Models\PlayerBubbles;
 use App\Models\PlayerTankAction;
 use App\Traits\ApiResponser;
+use App\Traits\MessageLanguage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class FishingController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser,MessageLanguage;
 
     public function getBubblesInLocation(Request $request)
     {
+        $this->checkLang($request);
         $campaigns = Campaign::where('lat', $request->lat)->where('lng', $request->lng)->pluck('id');
         $bubbles = Bubbles::whereIn('campaign_id', $campaigns)->get();
         return $this->apiResponse($bubbles, null, 200, 1);
@@ -32,8 +34,9 @@ class FishingController extends Controller
      * Else ->
      */
 
-    public function hook($id)
+    public function hook($id,Request $request)
     {
+        $this->checkLang($request);
         $levelDetails = Levels::where('id', auth()->guard('player')->user()->level_id)->first(['extra', 'to_pts', 'speed', 'duration']);
         $tankDetails = PlayerTankAction::with('tanks')->where('player_id', auth()->guard('player')->user()->id)->first();
 
@@ -95,7 +98,18 @@ class FishingController extends Controller
 
             if ($calcLvlPts > $levelDetails->to_pts) {
                 if ($levelIdNew > $lastLevelId) {
-                    return $this->apiResponse(null, 'Unable to upgrade to next level', 200, 1);
+                    switch ($request->header('lang')) {
+                        case 'en':
+                            $message = 'Unable to upgrade to next level';
+                            break;
+                        case 'ar':
+                            $message = "غير قادر على الترقية إلى المستوى التالي";
+                            break;
+                        default:
+                            $message = 'Unable to upgrade to next level';
+                            break;
+                    }
+                    return $this->apiResponse(null,$message , 200, 1);
                 } else {
                     Player::where('id', auth()->guard('player')->user()->id)->update([
                         'level_id' => $levelIdNew,
@@ -111,8 +125,21 @@ class FishingController extends Controller
             }
 
         }
-
-        return $this->apiResponse(null, 'Player hooked bubble number ' . $id . ' successfully', 200, 1);
+        switch ($request->header('lang')) {
+            case 'en':
+                $message = 'Player hooked bubble number ';
+                $successfully=' successfully';
+                break;
+            case 'ar':
+                $message = "تم اصطياد الفقاعة ";
+                $successfully=' بنجاح';
+                break;
+            default:
+                $message = 'Player hooked bubble number ';
+                $successfully=' successfully';
+                break;
+        }
+        return $this->apiResponse(null, $message . $id . $successfully , 200, 1);
     }
 
     public function test()

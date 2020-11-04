@@ -11,17 +11,20 @@ use App\Models\Player;
 use App\Models\PlayerBubbles;
 use App\Models\PlayerTankAction;
 use App\Traits\ApiResponser;
+use App\Traits\MessageLanguage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use function Sodium\compare;
 
 class AuthController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser, MessageLanguage;
+
 
     /**
      * Create user
@@ -33,8 +36,9 @@ class AuthController extends Controller
      * @internal param $ [string] password
      * @internal param $ [string] password_confirmation
      */
-    public function signup(Request $request)
+    public function signUp(Request $request)
     {
+        $this->checkLang($request);
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -42,6 +46,7 @@ class AuthController extends Controller
             'email' => 'required|string|email|unique:players',
             'phone_number' => 'required|unique:players',
             'birth_day' => 'required',
+            'gender' => 'required|integer|in:1,2',
             'password' => 'required|string|confirmed|min:8|max:20'
         ]);
         if ($validator->fails()) {
@@ -58,9 +63,10 @@ class AuthController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'gender' => $request->gender,
             'birth_day' => $request->birth_day,
             'img' => 'default.jpg',
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
             'level_id' => 1,
         ]);
         $player->save();
@@ -72,11 +78,19 @@ class AuthController extends Controller
             'status' => 1,
             'tank_pts' => 0
         ]);
+        switch ($request->header('lang')) {
+            case 'en':
+                $message = 'Registered successfully';
+                break;
+            case 'ar':
+                $message = 'تم تسجيل بنجاح';
+                break;
+            default:
+                $message = 'Registered successfully';
+                break;
+        }
 
-        return $this->apiResponse(null, 'Successfully created player!', 201, 1);
-        /*return response()->json([
-            'message' => 'Successfully created player!'
-        ], 201);*/
+        return $this->apiResponse(null,$message , 201, 1);
     }
 
     /**
@@ -90,8 +104,10 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $this->checkLang($request);
+        $message = null;
         $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
+            'email' => 'required',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
@@ -104,9 +120,62 @@ class AuthController extends Controller
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
-        $credentials = request(['email', 'password']);
-        if (!auth('player')->attempt($credentials))
-            return $this->apiResponse(null, 'Email or Password incorrect', 401, 0);
+        $input = $request->email;
+        $password = $request->password;
+
+        if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+            //user sent their email
+            $credentials = ['email' => $input, 'password' => $password];
+        } elseif (is_numeric($input)) {
+
+            $credentials = ['phone_number' => $input, 'password' => $password];
+        } else {
+            //they sent their username instead
+            $credentials = ['username' => $input, 'password' => $password];
+        }
+
+
+        if (!auth('player')->attempt($credentials)) {
+            if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Email or Password Incorrect';
+                        break;
+                    case 'ar':
+                        $message = 'البريد الالكتروني او كلمة المرور غير صحيحة';
+                        break;
+                    default:
+                        $message = 'Email or Password Incorrect';
+                        break;
+                }
+            } elseif (is_numeric($input)) {
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Phone or Password Incorrect';
+                        break;
+                    case 'ar':
+                        $message = 'رقم الهاتف او كلمة المرور غير صحيحة';
+                        break;
+                    default:
+                        $message = 'Phone or Password Incorrect';
+                        break;
+                }
+            } else {
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Username or Password Incorrect';
+                        break;
+                    case 'ar':
+                        $message = 'اسم المستخدم او كلمة المرور غير صحيحة';
+                        break;
+                    default:
+                        $message = 'Username or Password Incorrect';
+                        break;
+                }
+            }
+
+            return $this->apiResponse(null, $message, 401, 0);
+        }
 
         $user = auth()->guard('player')->user();
 
@@ -136,8 +205,20 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
+        $this->checkLang($request);
         \auth()->user()->token()->revoke();
-        return $this->apiResponse(null, 'Successfully logged out', 200, 1);
+        switch ($request->header('lang')) {
+            case 'en':
+                $message = 'Successfully logged out';
+                break;
+            case 'ar':
+                $message = "تم تسجيل الخروج بنجاح";
+                break;
+            default:
+                $message = 'Successfully logged out';
+                break;
+        }
+        return $this->apiResponse(null,$message , 200, 1);
     }
 
     /**
@@ -148,6 +229,7 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
+        $this->checkLang($request);
         //$playerId = auth()->guard('player')->user()->id;
         $playerId = $request->user()->id;
         $gifts = GiftAction::where('player_id', $playerId)->where('status', 0)->count();
@@ -191,13 +273,16 @@ class AuthController extends Controller
 
     public function contacts(Request $request)
     {
+        $this->checkLang($request);
         $contacts_number = $request->contacts;
         $contacts_found = Player::whereIn('phone_number', $contacts_number)->pluck('phone_number')->toArray();
-
         $allContacts = [];
         foreach ($contacts_number as $key => $value) {
+
             if (in_array($value, $contacts_found)) {
+                $player = Player::where('phone_number', $value)->first();
                 $allContacts[$key]['phone_number'] = $value;
+                $allContacts[$key]['image'] = env('APP_URL') . '/' . $player->img;;
                 $allContacts[$key]['status'] = true;
             } else {
                 $allContacts[$key]['phone_number'] = $value;
@@ -205,8 +290,141 @@ class AuthController extends Controller
             }
 
         }
+
         return $this->apiResponse($allContacts, null, 200, 1);
     }
+
+    public function validatePhone(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'required|numeric|unique:players',
+
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        return $this->apiResponse(null, 'Phone Number is available', 201, 1);
+
+    }
+
+    public function validateEmail(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|unique:players',
+
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        return $this->apiResponse(null, 'Email is available', 201, 1);
+
+    }
+
+    public function validateUsername(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|unique:players',
+
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        return $this->apiResponse(null, 'Username is available', 201, 1);
+
+    }
+
+    public function reset(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+            'password' => 'required|min:6|max:20|confirmed',
+            'code' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+        $player = Player::where('phone_number', $request->phone)->where('verification_code', $request->code)->first();
+
+        if ($player) {
+            $player->update([
+                'password' => Hash::make($request->password)
+            ]);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Password has been changed successfully';
+                    break;
+                case 'ar':
+                    $message = 'تم تغيير كلمة المرور بنجاح';
+                    break;
+                default:
+                    $message = 'Password has been changed successfully';
+                    break;
+            }
+            return $this->apiResponse(null, $message, 200, 1);
+        } else {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'The verification code is incorrect';
+                    break;
+                case 'ar':
+                    $message = 'رمز التحقق غير صحيح';
+                    break;
+                default:
+                    $message = 'The verification code is incorrect';
+                    break;
+            }
+            return $this->apiResponse(null, $message, 422);
+        }
+    }
+
+    public function requestVerificationCode(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $verificationCode = rand(1000, 9999);
+        $request->phone = '962' . ltrim($request->phone, 0);
+        $this->sms('The verification code is ' . $verificationCode, $request->phone);
+        $data = [
+            'verification_code' => $verificationCode
+        ];
+        return $this->apiResponse($data, null, 200, 1);
+    }
+
 
     /*public function generateVerificationCode($id)
     {

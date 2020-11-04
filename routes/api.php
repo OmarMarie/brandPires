@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){
    return 'BrandPiers';
@@ -7,7 +8,12 @@ Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
+    Route::post('signup', 'AuthController@signUp');
+    Route::post('reset', 'AuthController@reset');
+    Route::post('requestVerificationCode', 'AuthController@requestVerificationCode');
+    Route::post('validatePhone', 'AuthController@validatePhone');
+    Route::post('validateEmail', 'AuthController@validateEmail');
+    Route::post('validateUsername', 'AuthController@validateUsername');
 
     Route::group([
         'middleware' => ['auth:api', 'LastUserActivity']
