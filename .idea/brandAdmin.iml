@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/colinodell/json5" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dipeshsukhia/laravel-country-state-city-data" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/caching" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/coollection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/countries" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/ia-arr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/ia-collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/ia-str" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

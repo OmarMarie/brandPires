@@ -20,4 +20,5 @@ class Chatting extends Model
     {
         return $this->belongsTo(Player::class,'receiver_id');
     }
+
 }

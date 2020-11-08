@@ -8,13 +8,14 @@ use App\Traits\ApiResponser;
 use App\Traits\MessageLanguage;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class ChattingController extends Controller
 {
-    use ApiResponser,MessageLanguage;
+    use ApiResponser, MessageLanguage;
 
-    public function playerChatting($player_id,Request $request)
+    public function playerChatting($player_id, Request $request)
     {
         $this->checkLang($request);
         $messages = Chatting::with(['sender:id,first_name', 'receiver:id,first_name'])
@@ -81,18 +82,26 @@ class ChattingController extends Controller
                 $message = 'Message sent successfully';
                 break;
         }
-        return $this->apiResponse(null,$message , 200, 1);
+        return $this->apiResponse(null, $message, 200, 1);
     }
 
     public function friends(Request $request)
     {
+
         $this->checkLang($request);
-        $player_id = auth()->guard('player')->user()->id;
+        $player_id = auth()->user()->id;
         $friends = Friend::with('friends:id,first_name,last_name')
             ->where('player_id', $player_id)
             ->where('status', 1)
             ->get()
             ->pluck(['friends']);
+
+        foreach ($friends as $friend) {
+
+            $friend['online'] =$this->isOnline($friend->id);
+
+        }
+
 
         return $this->apiResponse($friends, null, 200, 1);
     }
@@ -114,7 +123,7 @@ class ChattingController extends Controller
                     $message = 'You were already friends';
                     break;
             }
-            return $this->apiResponse(null,$message , 200, 0);
+            return $this->apiResponse(null, $message, 200, 0);
         } else {
             try {
                 Friend::create([
@@ -134,7 +143,7 @@ class ChattingController extends Controller
                         $message = 'Something went wrong';
                         break;
                 }
-                return $this->apiResponse(null,$message , 200, 0);
+                return $this->apiResponse(null, $message, 200, 0);
             }
             switch ($request->header('lang')) {
                 case 'en':
@@ -149,5 +158,10 @@ class ChattingController extends Controller
             }
             return $this->apiResponse(null, $message, 200, 1);
         }
+    }
+
+    public function isOnline($id)
+    {
+        return Cache::has('user-is-online-' . $id) ;
     }
 }

@@ -17,11 +17,13 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "laravelcollective/html": "^6.1",
+        "pragmarx/countries": "^0.7.2",
         "spatie/laravel-permission": "^3.13",
         "stevebauman/location": "^5.2",
         "yajra/laravel-datatables-oracle": "^9.10"
     },
     "require-dev": {
+        "dipeshsukhia/laravel-country-state-city-data": "^1.0",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",

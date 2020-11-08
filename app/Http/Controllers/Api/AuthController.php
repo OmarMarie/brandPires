@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PragmaRX\Countries\Package\Countries;
 use function Sodium\compare;
 
 class AuthController extends Controller
@@ -205,6 +206,10 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
+        $countries = new Countries();
+
+        return $countries->all()->toArray();
+
         $this->checkLang($request);
         \auth()->user()->token()->revoke();
         switch ($request->header('lang')) {
