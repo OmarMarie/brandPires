@@ -85,6 +85,9 @@ Route::group([
         Route::get('campaign/{id?}/create', 'CampaignController@create')->name('campaignCreate');
         Route::get('campaignsDatable', 'CampaignController@campaignsDatable')->name('campaignsDatable');
 
+        Route::resource('countries', 'CountryController');
+        Route::get('countriesDatable', 'CountryController@countriesDatable')->name('countriesDatable');
+
 
        /*********************************************************logs********************************************/
         Route::resource('bubblesProcesses', 'BubblesProcessesController')->except(['show', 'create','store','update','edit','destroy']);

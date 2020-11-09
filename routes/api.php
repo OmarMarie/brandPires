@@ -14,6 +14,10 @@ Route::group([
     Route::post('validatePhone', 'AuthController@validatePhone');
     Route::post('validateEmail', 'AuthController@validateEmail');
     Route::post('validateUsername', 'AuthController@validateUsername');
+    Route::post('validateEmail', 'AuthController@validateEmail');
+    Route::post('validateUsername', 'AuthController@validateUsername');
+    Route::get('countries', 'AuthController@getCountries');
+    Route::post('cities', 'AuthController@getCities');
 
     Route::group([
         'middleware' => ['auth:api', 'LastUserActivity']

@@ -177,7 +177,8 @@ return [
         'username' => 'اسم المستخدم',
         'phone_number' => 'الهاتف',
         'birth_day' => 'تاريخ الميلاد',
-        'campaing_id'=> 'رقم الحملة'
+        'campaing_id'=> 'رقم الحملة',
+        'country_id'=> 'رقم الدولة'
 
     ],
 ];

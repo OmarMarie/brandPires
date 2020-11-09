@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Chatting;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Friend;
 use App\Models\GiftAction;
 use App\Models\Levels;
@@ -430,6 +432,32 @@ class AuthController extends Controller
         return $this->apiResponse($data, null, 200, 1);
     }
 
+    public function getCountries(Request $request)
+    {
+        $data = Country::where('status','1')->get();
+        foreach ($data as $datum) {
+            $datum['flag'] = env('APP_URL') . '/flags/' . $datum['flag'];
+        }
+        return $this->apiResponse($data, null, 200, 1);
+    }
+
+    public function getCities(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'country_id' => 'required|integer',
+
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+        $data = City::where('country_id',$request->country_id)->get(['id','name']);
+        return $this->apiResponse($data, null, 200, 1);
+    }
 
     /*public function generateVerificationCode($id)
     {
