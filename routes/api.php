@@ -7,6 +7,11 @@ Route::get('/', function (){
 Route::group([
     'prefix' => 'auth'
 ], function () {
+    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'ResetPasswordController@reset');
+    Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
+    Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signUp');
     Route::post('reset', 'AuthController@reset');

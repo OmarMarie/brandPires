@@ -208,9 +208,6 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        $countries = new Countries();
-
-        return $countries->all()->toArray();
 
         $this->checkLang($request);
         \auth()->user()->token()->revoke();
