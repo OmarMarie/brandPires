@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Providers\RouteServiceProvider;
+use App\Traits\ApiResponser;
+use App\Traits\MessageLanguage;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
@@ -22,7 +24,7 @@ class VerificationController extends Controller
     |
     */
 
-    use VerifiesEmails;
+    use VerifiesEmails,ApiResponser, MessageLanguage;
 
     /**
      * Where to redirect users after verification.
@@ -51,15 +53,38 @@ class VerificationController extends Controller
      */
     public function resend(Request $request)
     {
-        if ($request->user()->hasVerifiedEmail()) {
 
-            return response(['message'=>'Already verified']);
+         $this->checkLang($request);
+        if ($request->user()->hasVerifiedEmail()) {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Already verified';
+                    break;
+                case 'ar':
+                    $message = 'تم التحقق بالفعل';
+                    break;
+                default:
+                    $message = 'Already verified';
+                    break;
+            }
+            return $this->apiResponse(null,$message , 201, 1);
         }
 
         $request->user()->sendEmailVerificationNotification();
 
         if ($request->wantsJson()) {
-            return response(['message' => 'Email Sent']);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = "We've sent a confirmation to your e-mail for verification.";
+                    break;
+                case 'ar':
+                    $message = "لقد أرسلنا تأكيدًا إلى بريدك الإلكتروني للتحقق.";
+                    break;
+                default:
+                    $message = "We've sent a confirmation to your e-mail for verification.";
+                    break;
+            }
+            return $this->apiResponse(null,$message , 201, 1);
         }
 
         return back()->with('resent', true);
@@ -83,16 +108,17 @@ class VerificationController extends Controller
 
         if (auth('player')->user()->hasVerifiedEmail()) {
 
-            return response(['message'=>'Already verified']);
-
+            //return response(['message'=>'Already verified']);
             // return redirect($this->redirectPath());
+            return view('email.alreadyVerified');
         }
 
         if (auth('player')->user()->markEmailAsVerified()) {
             event(new Verified(auth('player')->user()));
         }
 
-        return response(['message'=>'Successfully verified']);
+       //return response(['message'=>'Successfully verified']);
+        return view('email.successfullyVerified');
 
     }
 }

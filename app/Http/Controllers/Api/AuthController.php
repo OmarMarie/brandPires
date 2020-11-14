@@ -14,6 +14,7 @@ use App\Models\PlayerBubbles;
 use App\Models\PlayerTankAction;
 use App\Traits\ApiResponser;
 use App\Traits\MessageLanguage;
+use App\Traits\SendCodeSMS;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ use function Sodium\compare;
 
 class AuthController extends Controller
 {
-    use ApiResponser, MessageLanguage;
+    use ApiResponser, MessageLanguage,SendCodeSMS;
 
 
     /**
@@ -286,7 +287,8 @@ class AuthController extends Controller
             if (in_array($value, $contacts_found)) {
                 $player = Player::where('phone_number', $value)->first();
                 $allContacts[$key]['phone_number'] = $value;
-                $allContacts[$key]['image'] = env('APP_URL') . '/' . $player->img;;
+                $allContacts[$key]['name'] = $player->first_name.' '.$player->last_name;
+                $allContacts[$key]['image'] = env('APP_URL') . '/' . $player->img;
                 $allContacts[$key]['status'] = true;
             } else {
                 $allContacts[$key]['phone_number'] = $value;
@@ -355,6 +357,30 @@ class AuthController extends Controller
 
     }
 
+    public function requestVerificationCode(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $verificationCode = rand(1000, 9999);
+        $request->phone = '962' . ltrim($request->phone, 0);
+        $this->sms('The verification code is ' . $verificationCode, $request->phone);
+        $data = [
+            'verification_code' => $verificationCode
+        ];
+        return $this->apiResponse($data, null, 200, 1);
+    }
+
     public function reset(Request $request)
     {
         $this->checkLang($request);
@@ -405,13 +431,13 @@ class AuthController extends Controller
         }
     }
 
-    public function requestVerificationCode(Request $request)
+    public function verify(Request $request)
     {
         $this->checkLang($request);
         $validator = Validator::make($request->all(), [
             'phone' => 'required',
+            'code' => 'required'
         ]);
-
         if ($validator->fails()) {
             $errors = collect([]);
             foreach ($validator->messages()->all() as $item) {
@@ -420,13 +446,38 @@ class AuthController extends Controller
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
-        $verificationCode = rand(1000, 9999);
-        $request->phone = '962' . ltrim($request->phone, 0);
-        $this->sms('The verification code is ' . $verificationCode, $request->phone);
-        $data = [
-            'verification_code' => $verificationCode
-        ];
-        return $this->apiResponse($data, null, 200, 1);
+        $player = Player::where('phone', $request->phone)->where('verification_code', $request->code)->first();
+        if ($player) {
+            if ($request->verification_code == $player->verification_code) {
+                $player->update([
+                    'is_verified' => 1
+                ]);
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $massage = 'User verified successfully';
+                        break;
+                    case 'ar':
+                        $massage = 'تم التحقق من المستخدم بنجاح';
+                        break;
+                    default:
+                        $massage = 'User verified successfully';
+                        break;
+                }
+                return $this->apiResponse(null, $massage, 200, 1);
+            }
+        }
+        switch ($request->header('lang')) {
+            case 'en':
+                $massage = 'The verification code incorrect!';
+                break;
+            case 'ar':
+                $massage = 'رمز التحقق غير صحيح!';
+                break;
+            default:
+                $massage = 'The verification code incorrect!';
+                break;
+        }
+        return $this->apiResponse(null, $massage, 422, 0);
     }
 
     public function getCountries(Request $request)
@@ -456,37 +507,6 @@ class AuthController extends Controller
         return $this->apiResponse($data, null, 200, 1);
     }
 
-    /*public function generateVerificationCode($id)
-    {
-        try
-        {
-            $player = Player::findOrFail($id);
-        }
 
-        catch(ModelNotFoundException $e)
-        {
-            return response()->json([
-                'message' => 'Player not found'
-            ]);
-        }
 
-        $player->verify_code = 1234;
-        $player->save;
-        return $player;
-
-        return response()->json([
-           'message' => 'Congratulations, Your account has been verified'
-        ]);
-    }*/
-
-    /*public function verify(Request $request){
-
-        $player_id = $request->id;
-        $player_code = $request->code;
-
-        if ($player_code == $plyer_verification_code){
-            //update
-        }
-        // if code same as the code in db make is_verify = 1
-    }*/
 }

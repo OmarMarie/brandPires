@@ -107,5 +107,5 @@ Route::group([
 
     Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('reset/password', 'HomeController@resetPassword')->name('resetPassword');
+    Route::get('/reset/password/{token?}', 'HomeController@resetPassword')->name('resetPassword');
 });

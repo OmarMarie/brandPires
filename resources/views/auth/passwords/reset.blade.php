@@ -8,10 +8,10 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') , app()->getLocale()}}">
+                    <form method="POST" action="http://127.0.0.1:8000/api/auth/password/reset">
                         @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" name="token" value="<?php echo $_GET['token'];?>" />
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

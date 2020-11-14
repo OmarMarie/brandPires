@@ -11,10 +11,11 @@ Route::group([
     Route::post('password/reset', 'ResetPasswordController@reset');
     Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
     Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
-
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signUp');
     Route::post('reset', 'AuthController@reset');
+    Route::post('verify', 'AuthController@verify');
+    Route::post('validatePhone', 'AuthController@validateNumber');
     Route::post('requestVerificationCode', 'AuthController@requestVerificationCode');
     Route::post('validatePhone', 'AuthController@validatePhone');
     Route::post('validateEmail', 'AuthController@validateEmail');

@@ -45,13 +45,12 @@ class PasswordResetNotification extends Notification
     public function toMail($notifiable)
     {
 
-        $urlToResetForm = env('APP_URL')."/reset-password/?token=" . $this->token;
+        $urlToResetForm = env('APP_URL').'/'.app()->getLocale()."/reset/password/?token=" . $this->token;
         return (new MailMessage)
             ->subject('Hey! Reset Password Notification')
             ->line('You requested here you go!')
             ->action('Reset Password', $urlToResetForm)
-            ->line('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.users.expire')])
-            ->line('If you did not request a password reset, no further action is required. Token: ==>' . $this->token);
+            ->line('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.players.expire')]);
 
     }
 
