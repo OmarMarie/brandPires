@@ -11,14 +11,11 @@ class Brand extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
-    public function campaigns()
-    {
-        return $this->belongsToMany(Campaign::class, 'brand_campaign');
-    }
+
 
     public function brandCampaigns()
     {
-        return $this->hasMany(BrandCampaign::class, 'brand_id', 'id');
+        return $this->hasMany(Campaign::class, 'brand_id', 'id');
     }
 
 }

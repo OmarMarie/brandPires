@@ -31,7 +31,8 @@
             url: "{{ route('campaignsDatable', app()->getLocale()) }}",
             type: "get",
             data: {
-                "brand_id": $('#brand_id').val()
+                "brand_id": $('#brand_id').val(),
+                "package_id": $('#package_id').val(),
             }
         },
         columns: [
@@ -70,7 +71,7 @@
             },
 
             {
-                data: 'status', title: 'Available', "mRender": function (data, type, row) {
+                data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.available == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.available + '</span>'
                     } else if (row.available == 'True') {
@@ -94,8 +95,9 @@
 
     $('#add').on('click', function () {
        var brand_id= $('#brand_id').val()
+       var package_id= $('#package_id').val()
         $.ajax({
-            url: '/{{app()->getLocale()}}/campaign/' + brand_id + '/create',
+            url: '/{{app()->getLocale()}}/campaign/' + brand_id +'/'+ package_id+ '/create',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);

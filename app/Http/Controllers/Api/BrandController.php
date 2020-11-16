@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Brand;
+
+use App\Models\Brand;
 use App\Models\Campaign;
 use App\Traits\ApiResponser;
 use App\Traits\MessageLanguage;
@@ -18,7 +19,7 @@ class BrandController extends Controller
     public function index(Request $request)
     {
         $this->checkLang($request);
-        $brands = Brand::with(array('campaigns' => function ($query) {
+        $brands = Brand::with(array('brandCampaigns' => function ($query) {
             return $query->where('available', 1);
         }))
             ->where('status', 1)

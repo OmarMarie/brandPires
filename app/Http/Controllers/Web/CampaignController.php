@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Web;
 use App\Models\Brand;
 use App\Models\Bulks;
 use App\Models\Campaign;
+use App\Models\CompanyPackage;
+use App\Models\CompanyPackageLogs;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -19,17 +21,21 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($locale, $brand_id)
+    public function index($locale, $brand_id,$package_logs_id)
     {
+
         $brandName = Brand::where('id', $brand_id)->value('brand_name');
-        return view('brandpriers.campaigns.index', compact('brand_id', 'brandName'));
+        $package_id = CompanyPackageLogs::where('id', $package_logs_id)->value('package_id');
+        $package = CompanyPackage::where('id', $package_id)->first();
+        return view('brandpriers.campaigns.index', compact('brand_id', 'brandName','package_logs_id','package'));
     }
 
     public function campaignsDatable(Request $request)
     {
-
         if ($request->ajax()) {
-            $data = Campaign::Where('brand_id', $request->brand_id)->latest()->get();
+            $data=Campaign::Where('brand_id', $request->brand_id)
+                ->Where('package_logs_id', $request->package_id)
+                ->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('available', function ($data) {
@@ -52,11 +58,11 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($local,$brand_id)
+    public function create($local,$brand_id,$package_logs_id)
     {
         $bulks = Bulks::all();
         $employees = Employee::all();
-        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id'));
+        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id','package_logs_id'));
     }
 
     /**

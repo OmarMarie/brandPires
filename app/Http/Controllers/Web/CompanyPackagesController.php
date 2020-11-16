@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 
-
 use App\Models\Brand;
+use App\Models\Campaign;
 use App\Models\CompanyPackage;
 use App\Models\CompanyPackageLogs;
 use Illuminate\Http\Request;
@@ -34,6 +34,7 @@ class CompanyPackagesController extends Controller
         }
 
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,7 +48,7 @@ class CompanyPackagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -84,7 +85,7 @@ class CompanyPackagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -95,22 +96,22 @@ class CompanyPackagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($local,CompanyPackage $companyPackage)
+    public function edit($local, CompanyPackage $companyPackage)
     {
-        return view('brandpriers.companyPackages.create',compact('companyPackage'));
+        return view('brandpriers.companyPackages.create', compact('companyPackage'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update($local,Request $request, CompanyPackage $companyPackage)
+    public function update($local, Request $request, CompanyPackage $companyPackage)
     {
         $validations = Validator::make($request->all(), [
             'cost' => 'required',
@@ -144,10 +145,10 @@ class CompanyPackagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($local,CompanyPackage $companyPackage)
+    public function destroy($local, CompanyPackage $companyPackage)
     {
         $companyPackage->delete();
     }
@@ -155,6 +156,7 @@ class CompanyPackagesController extends Controller
 
     public function indexBrandPackages($locale, $brand_id)
     {
+
         $brandName = Brand::where('id', $brand_id)->value('brand_name');
         return view('brandpriers.brandPackages.index', compact('brand_id', 'brandName'));
     }
@@ -167,25 +169,46 @@ class CompanyPackagesController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('brand_id', function ($data) {
-                    $company_package = CompanyPackage::where('id',$data->package_id)->first();
-                    if($company_package != null)
-                    {
+                    $company_package = CompanyPackage::where('id', $data->package_id)->first();
+                    if ($company_package != null) {
                         return $company_package->id;
-                    }
-                    else
-                    {
+                    } else {
                         return '';
                     }
                 })
-                ->addColumn('package', function ($data) {
-                    $company_package = CompanyPackage::where('id',$data->package_id)->first();
-                    if($company_package != null)
-                    {
-                        $company_package = 'Cost: '. $company_package->cost .' - Number Bubbles: '. $company_package->number_bubbles ;
-                        return $company_package;
+                ->addColumn('expiry_date', function ($data) {
+                    $first_campaign = Campaign::Where('package_logs_id', $data->id)
+                        ->orderBy('created_at', 'ASC')
+                        ->first(['created_at']);
+
+                    if ($first_campaign != null) {
+                        $company_expiry = CompanyPackage::Where('id', $data->package_id)->value('bubble_expiry');
+                        $expiry_date = $first_campaign->created_at->addDays($company_expiry);
+                        return $expiry_date->format('d/m/Y - g:i A');
+                    } else
+                        return null;
+                })
+                ->addColumn('expiry', function ($data) {
+                    $first_campaign = Campaign::Where('package_logs_id', $data->id)
+                        ->orderBy('created_at', 'ASC')
+                        ->first(['created_at']);
+
+                    if ($first_campaign != null) {
+                        $company_expiry = CompanyPackage::Where('id', $data->package_id)->value('bubble_expiry');
+                        $expiry_date = $first_campaign->created_at->addDays($company_expiry);
+                        if($expiry_date <= now())
+                        return 'True';
+                        else
+                            return 'False';
                     }
-                    else
-                    {
+                })
+
+                ->addColumn('package', function ($data) {
+                    $company_package = CompanyPackage::where('id', $data->package_id)->first();
+                    if ($company_package != null) {
+                        $company_package = 'Cost: ' . $company_package->cost . ' - Number Bubbles: ' . $company_package->number_bubbles;
+                        return $company_package;
+                    } else {
                         return '';
                     }
                 })
@@ -199,8 +222,8 @@ class CompanyPackagesController extends Controller
 
     public function createBrandPackages($locale, $brand_id)
     {
-        $companyPackages=CompanyPackage::get();
-        return view('brandpriers.brandPackages.create',compact('companyPackages','brand_id'));
+        $companyPackages = CompanyPackage::get();
+        return view('brandpriers.brandPackages.create', compact('companyPackages', 'brand_id'));
     }
 
     public function storeBrandPackages(Request $request)
@@ -216,7 +239,7 @@ class CompanyPackagesController extends Controller
 
         CompanyPackageLogs::create([
             'brand_id' => $request->brand_id,
-            'package_id' =>  $request->companyPackages_id
+            'package_id' => $request->companyPackages_id
         ]);
 
         return response()->json(['message' => 'Added Package successfully', 'status' => 200]);
@@ -225,6 +248,6 @@ class CompanyPackagesController extends Controller
     public function destroyBrandPackages($locale, $packages_id)
     {
 
-            CompanyPackageLogs::where('id',$packages_id)->delete();
+        CompanyPackageLogs::where('id', $packages_id)->delete();
     }
 }

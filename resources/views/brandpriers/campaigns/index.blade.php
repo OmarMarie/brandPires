@@ -26,9 +26,14 @@
 
             </div>
             <input type="hidden" id="brand_id" name="brand_id" value="{{ $brand_id }}">
+            <input type="hidden" id="package_id" name="package_id" value="{{ $package_logs_id}}">
             <div class="col-md-12">
                 <label class="" style="padding: 10px 0px 0px 19px;"> Brand Name : <b
                             style="color:#ffa800;">{{$brandName}}</b> </label>
+            </div>
+            <div class="col-md-12">
+                <label class="" style="padding: 10px 0px 0px 19px;"> package : <b
+                            style="color:#ffa800;">Cost: {{$package->cost}} - Number Bubbles: {{$package->number_bubbles}}</b> </label>
             </div>
             <div class="card-body">
 
