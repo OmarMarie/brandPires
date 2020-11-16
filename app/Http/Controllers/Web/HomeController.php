@@ -53,7 +53,7 @@ class HomeController extends Controller
         $stoppedCampaigns = Campaign::where('deleted_at', '!=', null)->count();
 
 
-        $mapCampaigns = Campaign::Where('date', '>=', date('Y-m-d'))->where('available', 1)->get(['id', 'name', 'lat', 'lng']);
+        $mapCampaigns = Campaign::Where('end_date', '>=', date('Y-m-d'))->where('available', 1)->get(['id', 'name', 'lat', 'lng']);
         $marker_code = '';
         foreach ($mapCampaigns as $value) {
             $marker_code .= '[' . '"' . $value->name . '"' . ',' . $value->lat . ',' . $value->lng . ',' . $value->id . '],';

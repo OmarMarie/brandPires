@@ -26,19 +26,11 @@ class LogCampaignsController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = BrandCampaign::get();
+            $data = Campaign::get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('brand_id', function ($data) {
                     $Name = Brand::where('id', $data->brand_id)->value('brand_name');
-                    if ($Name == null)
-                        return null;
-                    else
-                        return $Name;
-
-                })
-                ->editColumn('campaign_id', function ($data) {
-                    $Name = Campaign::where('id', $data->campaign_id)->value('name');
                     if ($Name == null)
                         return null;
                     else

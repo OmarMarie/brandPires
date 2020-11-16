@@ -78,7 +78,7 @@
 
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('companyPackages.index', app()->getLocale()) }}" class="menu-link ">
+                        <a href="{{ route('packages.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-cubes left-icon-menu"><span></span></i>
                             <span class="menu-text">Packages</span>
                         </a>

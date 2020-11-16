@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Web;
 use App\Models\Brand;
 use App\Models\Bulks;
 use App\Models\Campaign;
-use App\Models\CompanyPackage;
 use App\Models\CompanyPackageLogs;
 use App\Models\Employee;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +26,7 @@ class CampaignController extends Controller
 
         $brandName = Brand::where('id', $brand_id)->value('brand_name');
         $package_id = CompanyPackageLogs::where('id', $package_logs_id)->value('package_id');
-        $package = CompanyPackage::where('id', $package_id)->first();
+        $package = Package::where('id', $package_id)->first();
         return view('brandpriers.campaigns.index', compact('brand_id', 'brandName','package_logs_id','package'));
     }
 

@@ -26,7 +26,7 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('companyPackagesDatable', app()->getLocale()) }}",
+        ajax: "{{ route('packagesDatable', app()->getLocale()) }}",
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'cost', title: 'Price'},
@@ -50,7 +50,7 @@
     $('#add').on('click', function () {
 
         $.ajax({
-            url: '{{ route('companyPackages.create', app()->getLocale()) }}',
+            url: '{{ route('packages.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
@@ -102,7 +102,7 @@
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/companyPackages/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/packages/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
@@ -171,7 +171,7 @@
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    url: '/{{(app()->getLocale())}}/companyPackages/' + id,
+                    url: '/{{(app()->getLocale())}}/packages/' + id,
                     method: 'delete',
                     success: function (data) {
                         Swal.fire({

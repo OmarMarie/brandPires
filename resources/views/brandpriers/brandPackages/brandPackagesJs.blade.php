@@ -28,7 +28,7 @@
             {'extend': 'pdf'}
         ],
         ajax: {
-            url: "{{ route('packagesDatable', app()->getLocale()) }}",
+            url: "{{ route('companyPackagesDatable', app()->getLocale()) }}",
             type: "get",
             data: {
                 "brand_id": $('#brand_id').val()

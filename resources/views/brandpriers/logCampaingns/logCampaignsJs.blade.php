@@ -30,7 +30,7 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'brand_id', title: 'Brand'},
-            {data: 'campaign_id', title: 'Campaign'},
+            {data: 'name', title: 'Campaign'},
             {data: 'added_by', title: 'Added By'},
             {data: 'created_at', title: 'Created at'},
         ]
