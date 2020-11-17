@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7fb3ab-f500-4d29-8495-5ec68eb7044e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,55 +21,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="1729">
               <caret line="101" column="63" selection-start-line="101" selection-start-column="41" selection-end-line="101" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/LogCampaignsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/logCampaignsJs.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="103" column="167" selection-start-line="103" selection-start-column="167" selection-end-line="103" selection-end-column="167" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.env.example">
+        <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/CompanyPackagesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="-5247">
+              <caret line="350" column="47" selection-start-line="350" selection-start-column="47" selection-end-line="350" selection-end-column="47" />
               <folding>
-                <element signature="e#45#66#0#PHP" expanded="true" />
+                <element signature="e#3042#3096#0#HTML" expanded="true" />
+                <element signature="e#7804#7858#0#HTML" expanded="true" />
+                <element signature="e#8965#9033#0#HTML" expanded="true" />
+                <element signature="e#13526#13594#0#HTML" expanded="true" />
+                <element signature="e#17748#18131#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,10 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/BubblesProcessesController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/AttachmentsController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Chatting.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/ChattingController.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/countries/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php" />
@@ -159,6 +125,10 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/.env.example" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" />
       </list>
     </option>
   </component>
@@ -320,6 +290,32 @@
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
+              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
+              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
+              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
+              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -330,6 +326,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../BrandPiers_old" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -389,18 +386,17 @@
       <workItem from="1605444094645" duration="727000" />
       <workItem from="1605446763039" duration="2617000" />
       <workItem from="1605522053559" duration="108000" />
-      <workItem from="1605522190773" duration="6327000" />
+      <workItem from="1605522190773" duration="12719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89690000" />
+    <option name="totallyTimeSpent" value="96082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1990" y="27" width="1850" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25278395" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25278395" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -412,7 +408,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32963374" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3307436" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3307436" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -449,18 +445,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/vendor/mail/html/footer.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Notifications/Messages/MailMessage.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Mail/Markdown.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/email">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/mail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2071">
@@ -754,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="101" column="63" selection-start-line="101" selection-start-column="41" selection-end-line="101" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/LogCampaignsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -796,10 +773,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
+        <state relative-caret-position="874">
           <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="154" column="26" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="154" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="e#0#17730#0#Blade" />
+            <element signature="e#14227#16426#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="174" column="19" lean-forward="true" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="101" column="63" selection-start-line="101" selection-start-column="41" selection-end-line="101" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5247">
+          <caret line="350" column="47" selection-start-line="350" selection-start-column="47" selection-end-line="350" selection-end-column="47" />
+          <folding>
+            <element signature="e#3042#3096#0#HTML" expanded="true" />
+            <element signature="e#7804#7858#0#HTML" expanded="true" />
+            <element signature="e#8965#9033#0#HTML" expanded="true" />
+            <element signature="e#13526#13594#0#HTML" expanded="true" />
+            <element signature="e#17748#18131#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

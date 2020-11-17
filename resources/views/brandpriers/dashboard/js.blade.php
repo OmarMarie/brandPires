@@ -69,8 +69,6 @@
     map_campaigns_logs()
     function map_campaigns_logs()
     {
-
-        if ($("#map_campaigns_logs").length != 0) {
             eval($("#map_campaigns_logs").attr('marker_code'))
             campaigns_logs_map = new google.maps.Map(document.getElementById('map_campaigns_logs'), {
                 zoom: 6,
@@ -93,7 +91,7 @@
                     }
                 })(marker, i));
             }
-        }
+
     }
 
 

@@ -98,6 +98,11 @@
             box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05);
             border-radius: 5px;
         }
+        .background
+        {
+            background: rgb(50,79,169);
+            background: linear-gradient(160deg, rgba(50,79,169,1) 0%, rgba(57,128,199,0.9724264705882353) 35%, rgba(64,180,236,0.7903536414565826) 100%);
+        }
 
     </style>
     <div class="container">
@@ -106,7 +111,7 @@
         <div class="row">
             <div class="col-md-12"
                  style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5" style="text-align: left; background: rgb(88 180 231);">
+                <div class="card-header border-0  py-5 background" style="text-align: left;">
                     <h3 class="card-title font-weight-bolder text-white">Reports</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
@@ -182,7 +187,7 @@
             </div>
             <div class="col-md-12"
                  style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5" style="text-align: left; background: rgb(88 180 231);">
+                <div class="card-header border-0  py-5 background" style="text-align: left;">
                     <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
@@ -197,7 +202,7 @@
                 <!--begin::Mixed Widget 1-->
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
-                    <div class="card-header border-0  py-5" style="background: rgb(88 180 231);">
+                    <div class="card-header border-0  py-5 background">
                         <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
                     </div>
                     <!--end::Header-->
@@ -205,8 +210,8 @@
                     <!--begin::Body-->
                     <div class="card-body p-0 position-relative overflow-hidden">
                         <!--begin::Chart-->
-                        <div class="card-rounded-bottom "
-                             style="height: 60px; min-height: 60px; background: rgb(88 180 231);">
+                        <div class="card-rounded-bottom background"
+                             style="height: 60px; min-height: 60px;">
                         </div>
                         <!--end::Chart-->
 
@@ -271,7 +276,7 @@
                 <!--begin::Mixed Widget 1-->
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
-                    <div class="card-header border-0 py-5" style="background: rgb(88 180 231);">
+                    <div class="card-header border-0 py-5 background" style="">
                         <h3 class="card-title font-weight-bolder text-white">Bubbles</h3>
                     </div>
                     <!--end::Header-->
@@ -279,8 +284,8 @@
                     <!--begin::Body-->
                     <div class="card-body p-0 position-relative overflow-hidden">
                         <!--begin::Chart-->
-                        <div class="card-rounded-bottom "
-                             style="height: 60px; min-height: 60px;background: rgb(88 180 231); ">
+                        <div class="card-rounded-bottom background"
+                             style="height: 60px; min-height: 60px; ">
                         </div>
                         <!--end::Chart-->
 
@@ -343,7 +348,7 @@
                  style=" margin: 30px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 20px !important; background: white;  ">
                 <div class="row">
                     <div class="col-md-6 ">
-                        <div style="width:75%; display:block; background: rgb(88 180 231); color: #fff;
+                        <div class=" background" style="width:75%; display:block;  color: #fff;
                          font-size: 20px; padding: 25px 0px; border-radius:5px;
                          -webkit-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
                          -moz-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
