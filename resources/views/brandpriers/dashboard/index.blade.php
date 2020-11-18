@@ -98,14 +98,14 @@
             box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05);
             border-radius: 5px;
         }
-        .background
-        {
-            background: rgb(50,79,169);
-            background: linear-gradient(160deg, rgba(50,79,169,1) 0%, rgba(57,128,199,0.9724264705882353) 35%, rgba(64,180,236,0.7903536414565826) 100%);
+
+        .background {
+            background: rgb(50, 79, 169);
+            background: linear-gradient(160deg, rgba(50, 79, 169, 1) 0%, rgba(57, 128, 199, 0.9724264705882353) 35%, rgba(64, 180, 236, 0.7903536414565826) 100%);
         }
 
     </style>
-    <div class="container">
+    <div class="container animate__animated animate__fadeIn animate__slow">
         <!--begin::Dashboard-->
         <!--begin::Row-->
         <div class="row">
@@ -150,7 +150,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
+                    {{--<div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
                         <div class="divs_fas" style=" background:#f6555e;">
                             <i class="fas fa-soap"></i>
                         </div>
@@ -165,8 +165,10 @@
                         <div class="divs_text"> {{($percentageBubblesTransfer > 0 ? 'Best' : 'Better')}} then last week
                             ({{ abs($percentageBubblesTransfer)}}%)
                         </div>
-                    </div>
-                    <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
+                    </div>--}}
+
+                    <div id="add" class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info "
+                         style="cursor: pointer">
                         <div class="divs_fas" style=" background:#f9b32f;">
                             <i class="fas fa-biking "></i>
                         </div>
@@ -181,7 +183,7 @@
                         <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week
                             ({{ abs($percentageBubblesPlayer)}}%)
                         </div>
-                    </div>
+                    </div >
 
                 </div>
             </div>
@@ -977,7 +979,7 @@
 
         <!--end::Dashboard-->
     </div>
-
+    @include('brandpriers.modal')
 @endsection
 
 @section('script')

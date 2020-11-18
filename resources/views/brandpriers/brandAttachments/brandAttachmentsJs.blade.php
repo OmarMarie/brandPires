@@ -24,6 +24,7 @@
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
+                    $(".btn").attr("disabled", true);
                     e.preventDefault();
                     var form = $(this);
                     var url = form.attr('action');
@@ -38,6 +39,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {

@@ -4,7 +4,7 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 9},
+            {"width": "50px", "targets": 6},
         ],
         processing: true,
         serverSide: true,
@@ -38,37 +38,21 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
-            {
-                title: 'Mark Pts', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-warning ">' + row.mark_pts + '</span>'
-
-                }
-            },
-            {
-                title: 'Gifts Numbers', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.gifts_numbers + '</span>'
-
-                }
-            },
-            {
-                title: 'Speed', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-danger">' + row.speed + ' </span>'
-
-                }
-            },
             {data: 'employee_id', title: 'Employee'},
             {
-                title: 'From Time', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.from_time + ' </span>'
+                title: 'Date', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.start_date +' - '+row.end_date+ ' </span>'
 
                 }
             },
+
             {
-                title: 'To Time', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-danger">' + row.to_time + ' </span>'
+                title: 'Time', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.from_time +' - '+row.to_time+ ' </span>'
 
                 }
             },
+
 
             {
                 data: 'status', title: 'Status', "mRender": function (data, type, row) {
@@ -106,6 +90,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $("#submitBtn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -119,6 +104,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
+                                $("#submitBtn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {
@@ -160,6 +146,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $(".btn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -173,9 +160,8 @@
                         success: function (data) {
 
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
-
                                 for (let value of Object.values(data.errors)) {
                                     error_html += '<div class="alert alert-danger">' + value + '</div>';
                                 }

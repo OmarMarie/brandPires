@@ -1,9 +1,9 @@
 var KTBootstrapDatepicker = function () {
     var t;
     t = KTUtil.isRTL() ? {
-        leftArrow: '<i class="la la-angle-right"></i>',
-        rightArrow: '<i class="la la-angle-left"></i>'
-    } : {leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'};
+        leftArrow: '<i class="fa la-angle-right"></i>',
+        rightArrow: '<i class="fa la-angle-left"></i>'
+    } : {leftArrow: '<i class="fa la-angle-left"></i>', rightArrow: '<i class="fa la-angle-right"></i>'};
     return {
         init: function () {
             $("#kt_datepicker_1, #kt_datepicker_1_validate").datepicker({

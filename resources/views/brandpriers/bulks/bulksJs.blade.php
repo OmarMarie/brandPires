@@ -84,6 +84,7 @@
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
+                    $(".btn").attr("disabled", true);
                     e.preventDefault();
                     var form = $(this);
                     var url = form.attr('action');
@@ -96,9 +97,8 @@
                         cache: false,
                         processData: false,
                         success: function (data) {
-
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {
@@ -140,6 +140,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $(".btn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -153,7 +154,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {

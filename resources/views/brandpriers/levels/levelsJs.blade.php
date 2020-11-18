@@ -75,6 +75,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $(".btn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -88,7 +89,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {
@@ -130,6 +131,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $(".btn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -143,7 +145,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {

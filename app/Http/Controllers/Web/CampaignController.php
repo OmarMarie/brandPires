@@ -48,6 +48,21 @@ class CampaignController extends Controller
                     else
                         return 'Not Found';
                 })
+                ->editColumn('from_time', function ($data) {
+                    return Carbon::parse($data->from_time)->format('g:i A');
+                })
+                ->editColumn('to_time', function ($data) {
+                    return Carbon::parse($data->to_time)->format('g:i A');
+                })
+
+                ->editColumn('start_date', function ($data) {
+                    return Carbon::parse($data->start_date)->format('d/m/Y');
+                })
+
+                ->editColumn('end_date', function ($data) {
+                    return Carbon::parse($data->end_date)->format('d/m/Y');
+                })
+
                 ->make(true);
         }
 
@@ -58,11 +73,11 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($local,$brand_id,$package_logs_id)
+    public function create($local,$brand_id,$package_id)
     {
         $bulks = Bulks::all();
         $employees = Employee::all();
-        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id','package_logs_id'));
+        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id','package_id'));
     }
 
     /**
@@ -77,10 +92,10 @@ class CampaignController extends Controller
         $validations = Validator::make($request->all(), [
             'name' => 'required',
             'mark_pts' => 'required',
-            'gifts_numbers' => 'required',
             'from_time' => 'required',
             'to_time' => 'required',
-            'date' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'employee_id' => 'required',
             'bulk_id' => 'required',
             'available' => 'required',
@@ -92,20 +107,23 @@ class CampaignController extends Controller
             return response()->json(['errors' => $validations->errors(), 'status' => 422]);
         }
 
+
         Campaign::create([
             'name' => $request->name,
             'mark_pts' => $request->mark_pts,
-            'gifts_numbers' => $request->gifts_numbers,
             'from_time' => date("H:i:s", strtotime($request->from_time)),
             'to_time' => date("H:i:s", strtotime($request->to_time)),
+            'start_date' => Carbon::parse($request->start)->format('Y/m/d'),
+            'end_date' => Carbon::parse($request->end)->format('Y/m/d'),
             'employee_id' => $request->employee_id,
-            'date' => Carbon::parse($request->date)->format('Y/m/d'),
             'bulk_id' => $request->bulk_id,
             'available' => $request->available,
             'speed' => $request->speed,
             'lat' => $request->lat,
             'lng' => $request->lng,
             'brand_id' => $request->brand_id,
+            'package_logs_id' => $request->package_id,
+            'added_by'=>auth()->user()->id,
         ]);
 
         return response()->json(['message' => 'Added Campaign successfully', 'status' => 200]);

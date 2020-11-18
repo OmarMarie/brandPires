@@ -78,7 +78,7 @@ Route::group([
         Route::get('packages/{id?}/create', 'CompanyPackagesController@createBrandPackages')->name('createBrandPackages');
         Route::post('packages/store', 'CompanyPackagesController@storeBrandPackages')->name('storeBrandPackages');
         Route::get('companyPackagesDatable', 'CompanyPackagesController@companyPackagesDatable')->name('companyPackagesDatable');
-        Route::delete('packages/{id?}', 'CompanyPackagesController@destroyBrandPackages')->name('destroyBrandPackages');
+        Route::delete('brand/packages/{id?}', 'CompanyPackagesController@destroyBrandPackages')->name('destroyBrandPackages');
 
         Route::resource('campaigns', 'CampaignController')->except(['index', 'create']);
         Route::get('campaigns/{brand_id?}/{package_id?}', 'CampaignController@index')->name('BrandCampaigns');

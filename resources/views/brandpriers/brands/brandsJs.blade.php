@@ -65,7 +65,6 @@
 
     });
     $('#add').on('click', function () {
-
         $.ajax({
             url: '{{ route('brands.create', app()->getLocale()) }}',
             method: 'get',
@@ -76,6 +75,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
+                    $("#submitBtn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -89,6 +89,7 @@
                         success: function (data) {
 
                             if (data.status === 422) {
+                                $("#submitBtn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {
@@ -117,7 +118,6 @@
             }
         });
     });
-
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
@@ -129,6 +129,7 @@
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
+                    $(".btn").attr("disabled", true);
                     e.preventDefault();
                     var form = $(this);
                     var url = form.attr('action');
@@ -141,9 +142,8 @@
                         cache: false,
                         processData: false,
                         success: function (data) {
-
                             if (data.status === 422) {
-                                console.log(data);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {

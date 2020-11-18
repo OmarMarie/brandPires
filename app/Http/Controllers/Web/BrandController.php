@@ -8,6 +8,7 @@ use App\Models\BrandCampaign;
 use App\Models\Company;
 use App\Models\CompanyPackage;
 use App\Models\CompanyPackageLogs;
+use App\Models\Package;
 use App\Models\RoleUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        $companyPackages=CompanyPackage::get();
+        $companyPackages=Package::get();
         $companies=Company::get();
         return view('brandpriers.brands.create',compact('companyPackages','companies'));
     }
@@ -163,7 +164,7 @@ class BrandController extends Controller
     public function edit($local, Brand $brand)
 
     {
-        $companyPackages=CompanyPackage::get();
+        $companyPackages=Package::get();
         return view('brandpriers.brands.create', compact('brand','companyPackages'));
     }
 

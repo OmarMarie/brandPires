@@ -53,7 +53,23 @@
               fill="#000000" opacity="0.3"/>
     </g>
 </svg><!--end::Svg Icon--></span><span class="menu-text">Dashboard</span></a></li>
-                <li class="menu-section ">
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('companies.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-building left-icon-menu"><span></span></i>
+                            <span class="menu-text">Companies</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fa fa-university left-icon-menu"><span></span></i>
+                            <span class="menu-text">Brands</span>
+                        </a>
+                    </li>
+                @endif
+                <li class="menu-section menu-item-active">
                     <h4 class="menu-text">Custom</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
@@ -67,14 +83,7 @@
                     </li>
                 @endif
 
-                @if(auth()->user()->hasRole('admin'))
-                    <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fa fa-university left-icon-menu"><span></span></i>
-                            <span class="menu-text">Brands</span>
-                        </a>
-                    </li>
-                @endif
+
 
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
@@ -109,6 +118,10 @@
                         </a>
                     </li>
                 @endif
+                <li class="menu-section menu-item-active">
+                    <h4 class="menu-text"> Manage Users</h4>
+                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                </li>
                 @if(auth()->user()->hasRole('admin'))
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
@@ -133,14 +146,7 @@
                         </a>
                     </li>
                 @endif
-                @if(auth()->user()->hasRole('admin'))
-                    <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('countries.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fas fa-globe left-icon-menu"></i>
-                            <span class="menu-text">Countries</span>
-                        </a>
-                    </li>
-                @endif
+
                 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
                             href="javascript:;" class="menu-link menu-toggle"><span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -197,6 +203,15 @@
                         </ul>
                     </div>
                 </li>
+
+                @if(auth()->user()->hasRole('admin'))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('countries.index', app()->getLocale()) }}" class="menu-link ">
+                            <i class="fas fa-globe left-icon-menu"></i>
+                            <span class="menu-text">Countries</span>
+                        </a>
+                    </li>
+                @endif
 
             </ul>
             <!--end::Menu Nav-->
