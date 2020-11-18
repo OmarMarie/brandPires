@@ -101,11 +101,6 @@
 
 @include('partials.userPanel')
 
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnpiNImmRHQBxmLIn5o_zTBufGgXzZBko&language=en&region=SA&libraries=places&callback=initialize"></script>
-
-<script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
-<!--begin::Global Config(global config for global JS scripts)-->
 <script>
     var KTAppSettings = {
         "breakpoints": {
@@ -169,6 +164,7 @@
 <!--end::Global Config-->
 
 <!--begin::Global Theme Bundle(used by all pages)-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnpiNImmRHQBxmLIn5o_zTBufGgXzZBko&language=en&region=SA&libraries=places"></script>
 <script src="{{ asset('assets/plugins/global/plugins.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle7a4a.js') }}"></script>
