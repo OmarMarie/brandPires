@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c7fb3ab-f500-4d29-8495-5ec68eb7044e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/CampaignController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CampaignController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/crud/forms/widgets/bootstrap-datepicker7a4a.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/crud/forms/widgets/bootstrap-datepicker7a4a.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/brandAttachmentsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/brandAttachmentsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brands/brandsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brands/brandsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/companyAttachmentsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/companyAttachmentsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="108" column="20" lean-forward="true" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+            <state relative-caret-position="285">
+              <caret line="985" column="40" lean-forward="true" selection-start-line="985" selection-start-column="40" selection-end-line="985" selection-end-column="40" />
               <folding>
                 <element signature="e#49#2896#0#HTML" />
                 <element signature="e#2991#61245#0#HTML" />
@@ -66,14 +41,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="169">
+              <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
               <folding>
                 <element signature="e#322#1931#0#HTML" />
-                <element signature="e#2025#3140#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -130,9 +104,9 @@
       <find>Custom Date</find>
       <find>input-daterange</find>
       <find>datepicker</find>
-      <find>col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info</find>
       <find>.aside-menu .menu-nav &gt; .menu-section</find>
       <find>Dashboard</find>
+      <find>col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -194,11 +168,11 @@
         <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Web/CampaignController.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/aside.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" />
       </list>
     </option>
   </component>
@@ -358,24 +332,6 @@
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -389,12 +345,15 @@
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -405,7 +364,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MadaresonaAdmin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -468,12 +427,12 @@
       <workItem from="1605446763039" duration="2617000" />
       <workItem from="1605522053559" duration="108000" />
       <workItem from="1605522190773" duration="20175000" />
-      <workItem from="1605683187094" duration="10168000" />
+      <workItem from="1605683187094" duration="10934000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113706000" />
+    <option name="totallyTimeSpent" value="114472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1990" y="27" width="1850" height="1053" extended-state="6" />
@@ -946,17 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding>
-            <element signature="e#322#1931#0#HTML" />
-            <element signature="e#2025#3140#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -988,8 +936,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="108" column="20" lean-forward="true" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+        <state relative-caret-position="285">
+          <caret line="985" column="40" lean-forward="true" selection-start-line="985" selection-start-column="40" selection-end-line="985" selection-end-column="40" />
           <folding>
             <element signature="e#49#2896#0#HTML" />
             <element signature="e#2991#61245#0#HTML" />
@@ -997,6 +945,16 @@
             <element signature="e#4549#5575#0#HTML" />
             <element signature="e#5597#6662#0#Blade" />
             <element signature="e#6770#6793#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+          <folding>
+            <element signature="e#322#1931#0#HTML" />
           </folding>
         </state>
       </provider>
