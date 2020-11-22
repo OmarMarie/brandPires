@@ -30,9 +30,13 @@ Route::group([
 
         Route::get('/dashboard', 'HomeController@index')->name('home');
         Route::get('/', 'HomeController@index')->name('home');
+        Route::get('getCities/{country_id?}', 'HomeController@getCities')->name('getCities');
+        Route::get('report/players', 'HomeController@players')->name('reportPlayers');
+        Route::get('report/sales', 'HomeController@sales')->name('reportSales');
 
         Route::resource('companies', 'CompanyController');
         Route::get('CompanyDatable', 'CompanyController@CompanyDatable')->name('CompanyDatable');
+
 
         Route::get('brand/attachments/{id?}', 'AttachmentsController@indexBrand')->name('indexBrandAttachments');
         Route::get('brand/attachments/{id?}/edit', 'AttachmentsController@editBrand')->name('editBrandAttachments');
@@ -84,6 +88,12 @@ Route::group([
         Route::get('campaigns/{brand_id?}/{package_id?}', 'CampaignController@index')->name('BrandCampaigns');
         Route::get('campaign/{id?}/{package_id?}/create', 'CampaignController@create')->name('campaignCreate');
         Route::get('campaignsDatable', 'CampaignController@campaignsDatable')->name('campaignsDatable');
+
+        Route::get('gifts/{id?}', 'GiftController@index')->name('indexGifts');
+        Route::get('gifts/create/{campaign_id?}', 'GiftController@create')->name('createGifts');
+        Route::resource('gifts', 'GiftController')->except(['index' ,'create']);
+        Route::get('giftsDatable', 'GiftController@giftsDatable')->name('giftsDatable');
+
 
         Route::resource('countries', 'CountryController');
         Route::get('countriesDatable', 'CountryController@countriesDatable')->name('countriesDatable');

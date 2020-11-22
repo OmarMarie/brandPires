@@ -74,14 +74,6 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
 
-                @if(auth()->user()->hasRole('admin'))
-                    <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('companies.index', app()->getLocale()) }}" class="menu-link ">
-                            <i class="fas fa-building left-icon-menu"><span></span></i>
-                            <span class="menu-text">Companies</span>
-                        </a>
-                    </li>
-                @endif
 
 
 

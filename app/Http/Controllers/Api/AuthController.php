@@ -27,7 +27,7 @@ use function Sodium\compare;
 
 class AuthController extends Controller
 {
-    use ApiResponser, MessageLanguage,SendCodeSMS;
+    use ApiResponser, MessageLanguage, SendCodeSMS;
 
 
     /**
@@ -94,7 +94,7 @@ class AuthController extends Controller
                 break;
         }
 
-        return $this->apiResponse(null,$message , 201, 1);
+        return $this->apiResponse(null, $message, 201, 1);
     }
 
     /**
@@ -223,7 +223,7 @@ class AuthController extends Controller
                 $message = 'Successfully logged out';
                 break;
         }
-        return $this->apiResponse(null,$message , 200, 1);
+        return $this->apiResponse(null, $message, 200, 1);
     }
 
     /**
@@ -287,7 +287,7 @@ class AuthController extends Controller
             if (in_array($value, $contacts_found)) {
                 $player = Player::where('phone_number', $value)->first();
                 $allContacts[$key]['phone_number'] = $value;
-                $allContacts[$key]['name'] = $player->first_name.' '.$player->last_name;
+                $allContacts[$key]['name'] = $player->first_name . ' ' . $player->last_name;
                 $allContacts[$key]['image'] = env('APP_URL') . '/' . $player->img;
                 $allContacts[$key]['status'] = true;
             } else {
@@ -482,7 +482,7 @@ class AuthController extends Controller
 
     public function getCountries(Request $request)
     {
-        $data = Country::where('status','1')->get();
+        $data = Country::where('status', '1')->get();
         foreach ($data as $datum) {
             $datum['flag'] = env('APP_URL') . '/flags/' . $datum['flag'];
         }
@@ -503,10 +503,32 @@ class AuthController extends Controller
             }
             return $this->apiResponse(null, $errors, 422, 0);
         }
-        $data = City::where('country_id',$request->country_id)->get(['id','name']);
+        $data = City::where('country_id', $request->country_id)->get(['id', 'name']);
         return $this->apiResponse($data, null, 200, 1);
     }
 
+    public function online(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|numeric|min:0|max:1',
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $playerId = $request->user()->id;
+        $player = Player::where('id', $playerId)->first();
+
+        $player->update([
+            'is_online' => $request->type
+        ]);
+        return $this->apiResponse(null, 'Done', 201, 1);
+    }
 
 
 }

@@ -2,6 +2,7 @@
 
 
     var table = $('.data-table').DataTable({
+
         dom: 'Bfrtip',
         "columnDefs": [
             {"width": "50px", "targets": 7},
@@ -9,7 +10,7 @@
         processing: true,
         serverSide: true,
         data: {
-            "brand_id": $('#brand_id').val()
+            "campaign_id": $('#campaign_id').val()
         },
         lengthMenu: [
             [10, 25, 50, 100, -1],
@@ -28,76 +29,60 @@
             {'extend': 'pdf'}
         ],
         ajax: {
-            url: "{{ route('campaignsDatable', app()->getLocale()) }}",
+            url: "{{ route('giftsDatable', app()->getLocale()) }}",
             type: "get",
             data: {
-                "brand_id": $('#brand_id').val(),
-                "package_id": $('#package_id').val(),
+                "campaign_id": $('#campaign_id').val()
             }
         },
+
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
-            {data: 'employee_id', title: 'Employee'},
             {
-                title: 'Date', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.start_date +' - '+row.end_date+ ' </span>'
+                title: 'Code Number', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-warning ">' + row.code_number + '</span>'
 
                 }
             },
-
             {
-                title: 'Time', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.from_time +' - '+row.to_time+ ' </span>'
+                title: 'Gift From', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.gift_from + '</span>'
 
                 }
             },
-
-
             {
-                data: 'status', title: 'Status', "mRender": function (data, type, row) {
-                    if (row.available == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.available + '</span>'
-                    } else if (row.available == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.available + '</span>'
-                    }
+                title: 'Center', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-danger">' + row.center + ' </span>'
+
                 }
             },
-            {
-                title: 'Services', "mRender": function (data, type, row) {
-                    var gift = '<a href="/{{app()->getLocale()}}/gifts/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Gift"><i class="fa fa-gift"></i></a>'
-                    return gift ;
-                }
-
-            },
-
+            {data: 'country_id', title: 'Country'},
+            {data: 'city_id', title: 'City'},
             {
                 title: 'Actions', "mRender": function (data, type, row) {
-                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
-                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
-                    return edit + remove;
+                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-user-btn action-btn" id="' + row.id + '"  title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
+                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-levels-btn"  id="' + row.id + '" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
+                    return edit ;
 
                 }
             }
         ]
-
-
     });
 
+
     $('#add').on('click', function () {
-       var brand_id= $('#brand_id').val()
-       var package_id= $('#package_id').val()
+        campaign_id = $('#campaign_id').val()
         $.ajax({
-            url: '/{{app()->getLocale()}}/campaign/' + brand_id +'/'+ package_id+ '/create',
+            url: '/{{app()->getLocale()}}/gifts/create/' + campaign_id ,
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add Campaign');
+                $('.modal-title').text('Add Gift');
                 $('#modal').modal('show');
-
-                $('#userForm').submit(function (e) {
+                $('#form').submit(function (e) {
                     e.preventDefault();
-                    $("#submitBtn").attr("disabled", true);
+                   // $(".btn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({
@@ -109,9 +94,8 @@
                         cache: false,
                         processData: false,
                         success: function (data) {
-
                             if (data.status === 422) {
-                                $("#submitBtn").attr("disabled", false);
+                                $(".btn").attr("disabled", false);
                                 var error_html = '';
 
                                 for (let value of Object.values(data.errors)) {
@@ -123,6 +107,8 @@
                                     html: error_html,
                                 })
                             } else {
+
+
                                 Swal.fire({
                                     icon: 'success',
                                     title: data.message,
@@ -131,7 +117,6 @@
                                 });
                                 table.ajax.reload();
                                 $('#modal').modal('hide');
-
                             }
                         }
                     });
@@ -140,18 +125,17 @@
             }
         });
     });
-
-    $(document).on('click', '.edit-btn', function () {
+    $(document).on('click', '.edit-user-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/campaigns/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/gifts/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit Campaign');
+                $('.modal-title').text('Edit Gift');
                 $('#modal').modal('show');
 
-                $('#userForm').submit(function (e) {
+                $('#form').submit(function (e) {
                     e.preventDefault();
                     $(".btn").attr("disabled", true);
                     var form = $(this);
@@ -169,6 +153,7 @@
                             if (data.status === 422) {
                                 $(".btn").attr("disabled", false);
                                 var error_html = '';
+
                                 for (let value of Object.values(data.errors)) {
                                     error_html += '<div class="alert alert-danger">' + value + '</div>';
                                 }
@@ -195,7 +180,7 @@
             }
         });
     });
-    $(document).on('click', '.remove-btn', function () {
+    $(document).on('click', '.remove-levels-btn', function () {
 
         var id = $(this).attr('id');
         Swal.fire({
@@ -212,12 +197,12 @@
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    url: '/{{(app()->getLocale())}}/campaigns/' + id,
+                    url: '/{{(app()->getLocale())}}/levels/' + id,
                     method: 'delete',
                     success: function (data) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Your Campaign has been removed',
+                            title: 'Your levels has been removed',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -228,5 +213,4 @@
         });
 
     });
-
 </script>

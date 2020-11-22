@@ -30,14 +30,15 @@ Route::group([
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
+        Route::post('user/online', 'AuthController@online');
         Route::get('brands', 'BrandController@index');
         Route::post('campaigns', 'BrandController@campaigns');
         Route::post('campaignDetails', 'BrandController@campaignDetails');
         Route::post('tanks', 'TankController@tanks');
         Route::post('updateTank', 'TankController@updateTank');
         Route::post('infoTank', 'TankController@infoTank');
-        Route::get('gifts/{player_id}', 'BubbleController@gifts');
-        Route::get('giftDetails/{id}', 'BubbleController@giftDetails');
+        Route::get('gifts/player', 'BubbleController@gifts');
+        Route::post('giftDetails', 'BubbleController@giftDetails');
         Route::get('playerChatting/{player_id}', 'ChattingController@playerChatting');
         Route::get('chatDetails', 'ChattingController@chatDetails');
         Route::get('friends', 'ChattingController@friends');
