@@ -37,8 +37,7 @@
     <link href="{{ asset('assets/css/themes/layout/aside/dark7a4a.css?v=7.0.4') }}" rel="stylesheet" type="text/css"/>
     <!--end::Layout Themes-->
 
-    <link rel="shortcut icon"
-          href="{{ asset('assets/media/logos/header_logo.png') }}"/>
+   {{-- <link rel="shortcut icon" href="{{ asset('assets/media/logos/header_logo.png') }}"/>--}}
 
     <!-- Hotjar Tracking Code for keenthemes.com -->
     <script>

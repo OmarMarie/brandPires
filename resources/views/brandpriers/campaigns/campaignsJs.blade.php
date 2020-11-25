@@ -84,6 +84,8 @@
 
     });
 
+
+
     $('#add').on('click', function () {
        var brand_id= $('#brand_id').val()
        var package_id= $('#package_id').val()
@@ -97,45 +99,69 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
-                    $("#submitBtn").attr("disabled", true);
                     var form = $(this);
                     var url = form.attr('action');
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: new FormData(this),
-                        dataType: "json",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function (data) {
-
-                            if (data.status === 422) {
-                                $("#submitBtn").attr("disabled", false);
-                                var error_html = '';
-
-                                for (let value of Object.values(data.errors)) {
-                                    error_html += '<div class="alert alert-danger">' + value + '</div>';
-                                }
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    html: error_html,
-                                })
-                            } else {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: data.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                table.ajax.reload();
-                                $('#modal').modal('hide');
-
-                            }
+                    var bulk_ids='';
+                    var select_id='';
+                    var error_html_select='';
+                     $("#submitBtn").attr("disabled", true);
+                    $(".div_bulk").each(function (index) {
+                        select_id=$(this).find(" select").children("option:selected").val();
+                        if(select_id == '')
+                        {
+                            error_html_select += '<div class="alert alert-danger">Please  Select All Bulks  </div>';
                         }
-                    });
+                        else
+                        {
+                            bulk_ids += select_id + ",";
+                        }
 
+                    });
+                    if (error_html_select != "")
+                    {
+                        $("#submitBtn").attr("disabled", false);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            html: error_html_select,
+                        })
+                    }else {
+                        $("#bulk_ids").val(bulk_ids);
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: new FormData(this),
+                            dataType: "json",
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            success: function (data) {
+                                if (data.status === 422) {
+                                    $("#submitBtn").attr("disabled", false);
+                                    var error_html = '';
+
+                                    for (let value of Object.values(data.errors)) {
+                                        error_html += '<div class="alert alert-danger">' + value + '</div>';
+                                    }
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        html: error_html,
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: data.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    table.ajax.reload();
+                                    $('#modal').modal('hide');
+
+                                }
+                            }
+                        });
+                    }
                 });
             }
         });

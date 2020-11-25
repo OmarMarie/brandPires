@@ -33,20 +33,21 @@
     <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/themes/layout/header/base/light7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/themes/layout/aside/dark7a4a.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.css') }}" rel="stylesheet"
+          type="text/css"/>
     <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('/assets/media/logos/header_logo.png') }}"/>
-    @yield('css')
+    {{--<link rel="shortcut icon" href="{{ asset('/assets/media/logos/header_logo.png') }}"/>--}}
+@yield('css')
 
 
-    <!-- Hotjar Tracking Code for keenthemes.com -->
+<!-- Hotjar Tracking Code for keenthemes.com -->
     <script>
         (function (h, o, t, j, a, r) {
             h.hj = h.hj || function () {
-                    (h.hj.q = h.hj.q || []).push(arguments)
-                };
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
             h._hjSettings = {hjid: 1070954, hjsv: 6};
             a = o.getElementsByTagName('head')[0];
             r = o.createElement('script');
@@ -59,9 +60,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37564768-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
         gtag('config', 'UA-37564768-1');
     </script>
@@ -164,10 +167,12 @@
 <!--end::Global Config-->
 
 <!--begin::Global Theme Bundle(used by all pages)-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnpiNImmRHQBxmLIn5o_zTBufGgXzZBko&language=en&region=SA&libraries=places"></script>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnpiNImmRHQBxmLIn5o_zTBufGgXzZBko&language=en&region=SA&libraries=places"></script>
 <script src="{{ asset('assets/plugins/global/plugins.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle7a4a.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.bundle7a4a.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/pages/crud/forms/widgets/select27a4a.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker7a4a.js') }}"></script>
 

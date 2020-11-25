@@ -60,11 +60,11 @@
                     <strong>campaigns Location</strong>
                 </a>
             </li>
-         {{--   <li class="nav-item">
-                <a class="nav-link" href="#step-3">
-                    <strong>campaigns Gifts</strong>
-                </a>
-            </li>--}}
+            {{--   <li class="nav-item">
+                   <a class="nav-link" href="#step-3">
+                       <strong>campaigns Gifts</strong>
+                   </a>
+               </li>--}}
         </ul>
         <hr>
         @if(isset($campaign))
@@ -77,8 +77,9 @@
                         @if(!isset($campaign))
                             <input type="hidden" name="brand_id" value="{{ $brand_id }}">
                             <input type="hidden" name="package_id" value="{{ $package_id }}">
+                            <input type="hidden" id="bulk_ids" name="bulk_ids" value="">
                         @endif
-                        <div class="tab-content">
+                        <div class="tab-content" style="height: auto !important;">
                             <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
@@ -86,20 +87,15 @@
                                         <input type="text" class="form-control" name="name" placeholder="Name"
                                                @if(isset($campaign)) value="{{ $campaign->name }}" @endif>
                                     </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Mark Pts</label>
-                                        <input type="text" class="form-control" name="mark_pts"
-                                               placeholder="Mark Pts"
-                                               @if(isset($campaign)) value="{{ $campaign->mark_pts }}" @endif>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Speed</label>
-                                        <input type="text" class="form-control" name="speed"
-                                               placeholder="Speed"
-                                               @if(isset($campaign)) value="{{ $campaign->speed}}" @endif>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Bulk</label>
+
+                                    <div class="col-md-6 form-group div_bulk" id="div_bulk">
+                                        <div id="btn_add_bulk"
+                                             style="position: absolute; top: -3px; right: 15px; z-index: 1000;">
+                                            <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm"
+                                               style="padding: 5px; font-size: 9px;">
+                                                <i class="fas fa-plus icon-sm"></i> Add bulk</a>
+                                        </div>
+                                        <label style="width:30px;">Bulk</label>
                                         <select name="bulk_id" class="form-control">
                                             @if(!isset($campaign))
                                                 <option value="" selected disabled>Select Bulk</option>
@@ -111,10 +107,24 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div style="display: none" id="div_bulk_copy">
+                                        <select name="bulk_id" class="form-control">
+                                            @if(!isset($campaign))
+                                                <option value="" selected disabled>Select Bulk</option>
+                                            @endif
+                                            @foreach($bulks  as $bulk)
+                                                <option @if(isset($campaign) && $bulk->id == $campaign->bulk_id) value="{{ $bulk->id }}"
+                                                        selected
+                                                        @else value="{{ $bulk->id }}" @endif>{{ $bulk->name .' , '.$bulk->number_of_bubbles .' Bubbles'}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="col-md-12 form-group">
                                         <label>Date</label>
                                         <div class="input-daterange input-group" id="kt_datepicker_5">
-                                            <input type="text" class="form-control" name="start" placeholder="From Date">
+                                            <input type="text" class="form-control" name="start"
+                                                   placeholder="From Date">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="fa fa-ellipsis-h"></i></span>
                                             </div>
@@ -135,20 +145,6 @@
                                                placeholder="To Time" autocomplete="off"
                                                @if(isset($campaign)) value="{{ $campaign->to_time}}" @endif>
                                     </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Employee</label>
-                                        <select name="employee_id" class="form-control">
-                                            @if(!isset($campaign))
-                                                <option value="" selected disabled>Select Employee</option>
-                                            @endif
-                                            @foreach($employees  as $employee)
-                                                <option @if(isset($campaign) && $employee->id == $campaign->employee_id) value="{{ $employee->id }}"
-                                                        selected
-                                                        @else value="{{ $employee->id }}" @endif>{{ $employee->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
                                     <div class="col-md-6 form-group">
                                         <label>Available</label>
                                         <select name="available" class="form-control">
@@ -190,29 +186,48 @@
 
 </div>
 
-
+<script type="text/javascript" src="{{ asset('assets/js/pages/crud/forms/widgets/select27a4a.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/smartwizard/js/jquery.smartWizard.js') }}"></script>
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker7a4a.js') }}"></script>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $("#btn_add_bulk").click(function () {
+            $('.tab-content').height($(".tab-content").height() + 60);
+            div_add = '<div id="div_bulk' + '" class="col-md-6 form-group div_bulk"> ' +
+                '<div id="btn_add_delete" style="position: absolute; top: -8px; right: 15px; z-index: 1000;">' +
+                ' <a href="#" class="btn btn-light-danger font-weight-bolder btn-sm"\n' +
+                ' style="padding: 5px; font-size: 9px;">' +
+                ' <i class="fas fa-trash-alt icon-sm"></i> Delete bulk</a>' +
+                ' </div>' + ' <label style="width:30px;">Bulk</label>'
+                + $("#div_bulk_copy").html() + '</div>';
+            $('#div_bulk').after(div_add);
+        });
+
+        $(document).on("click", "#btn_add_delete", function () {
+            ($(this).parent()).remove();
+            $('.tab-content').height($(".tab-content").height() - 35);
+        });
+
+        $('.multiple-select').select2();
         $("#timepicker").timepicker();
         $("#timepicker2").timepicker();
 
         $('#datepicker').datepicker({
             format: 'mm-dd-yyyy',
-            daysOfWeekDisabled: [0,6],
+            daysOfWeekDisabled: [0, 6],
             multidate: true,
             clearBtn: true,
             todayHighlight: true,
-            daysOfWeekHighlighted: [0,6],
+            daysOfWeekHighlighted: [0, 6],
         });
 
         $('#smartwizard').smartWizard({
             selected: 0, // Initial selected step, 0 = first step
             theme: 'dots', // theme for the wizard, related css need to include for other than default theme
             justified: true, // Nav menu justification. true/false
-            autoAdjustHeight: true, // Automatically adjust content height
+            /* autoAdjustHeight: true, // Automatically adjust content height*/
             cycleSteps: false, // Allows to cycle the navigation of steps
             backButtonSupport: true, // Enable the back button support
             enableURLhash: false,
@@ -255,7 +270,6 @@
         });
 
     });
-
 
 
     // google maps
@@ -351,5 +365,6 @@
         document.getElementById('lat').value = currentLocation.lat(); //latitude
         document.getElementById('lng').value = currentLocation.lng(); //longitude
     }
+
 
 </script>

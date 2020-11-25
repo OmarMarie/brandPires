@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 
 use App\Models\Brand;
+use App\Models\Bubbles;
 use App\Models\Bulks;
 use App\Models\Campaign;
+use App\Models\CampaignBulks;
 use App\Models\CompanyPackageLogs;
 use App\Models\Employee;
 use App\Models\Package;
@@ -21,19 +23,19 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($locale, $brand_id,$package_logs_id)
+    public function index($locale, $brand_id, $package_logs_id)
     {
 
         $brandName = Brand::where('id', $brand_id)->value('brand_name');
         $package_id = CompanyPackageLogs::where('id', $package_logs_id)->value('package_id');
         $package = Package::where('id', $package_id)->first();
-        return view('brandpriers.campaigns.index', compact('brand_id', 'brandName','package_logs_id','package'));
+        return view('brandpriers.campaigns.index', compact('brand_id', 'brandName', 'package_logs_id', 'package'));
     }
 
     public function campaignsDatable(Request $request)
     {
         if ($request->ajax()) {
-            $data=Campaign::Where('brand_id', $request->brand_id)
+            $data = Campaign::Where('brand_id', $request->brand_id)
                 ->Where('package_logs_id', $request->package_id)
                 ->get();
             return Datatables::of($data)
@@ -54,15 +56,12 @@ class CampaignController extends Controller
                 ->editColumn('to_time', function ($data) {
                     return Carbon::parse($data->to_time)->format('g:i A');
                 })
-
                 ->editColumn('start_date', function ($data) {
                     return Carbon::parse($data->start_date)->format('d/m/Y');
                 })
-
                 ->editColumn('end_date', function ($data) {
                     return Carbon::parse($data->end_date)->format('d/m/Y');
                 })
-
                 ->make(true);
         }
 
@@ -73,11 +72,11 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($local,$brand_id,$package_id)
+    public function create($local, $brand_id, $package_id)
     {
         $bulks = Bulks::all();
         $employees = Employee::all();
-        return view('brandpriers.campaigns.create',compact('bulks','employees','brand_id','package_id'));
+        return view('brandpriers.campaigns.create', compact('bulks', 'employees', 'brand_id', 'package_id'));
     }
 
     /**
@@ -91,15 +90,12 @@ class CampaignController extends Controller
 
         $validations = Validator::make($request->all(), [
             'name' => 'required',
-            'mark_pts' => 'required',
             'from_time' => 'required',
             'to_time' => 'required',
             'start' => 'required',
             'end' => 'required',
-            'employee_id' => 'required',
             'bulk_id' => 'required',
             'available' => 'required',
-            'speed' => 'required',
             'lat' => 'required',
             'lng' => 'required',
         ]);
@@ -107,24 +103,39 @@ class CampaignController extends Controller
             return response()->json(['errors' => $validations->errors(), 'status' => 422]);
         }
 
-
-        Campaign::create([
+        $campaign = Campaign::create([
             'name' => $request->name,
-            'mark_pts' => $request->mark_pts,
             'from_time' => date("H:i:s", strtotime($request->from_time)),
             'to_time' => date("H:i:s", strtotime($request->to_time)),
             'start_date' => Carbon::parse($request->start)->format('Y/m/d'),
             'end_date' => Carbon::parse($request->end)->format('Y/m/d'),
-            'employee_id' => $request->employee_id,
-            'bulk_id' => $request->bulk_id,
             'available' => $request->available,
-            'speed' => $request->speed,
             'lat' => $request->lat,
             'lng' => $request->lng,
             'brand_id' => $request->brand_id,
             'package_logs_id' => $request->package_id,
-            'added_by'=>auth()->user()->id,
+            'added_by' => auth()->user()->id,
         ]);
+
+        $bulk_ids = rtrim($request->bulk_ids, ", ");
+        $bulk_ids = explode(",", $bulk_ids);
+
+        $bulksNumber = Bulks::whereIn('id', $bulk_ids)->sum('number_of_bubbles');
+        $bulksNumber=(intval($bulksNumber));
+        foreach ($bulk_ids as $bulk_id)
+            CampaignBulks::create([
+                'campaign_id' => $campaign->id,
+                'bulk_id' => $bulk_id,
+            ]);
+        $bubble_value=.10;
+        $i=1;
+        while($i <= $bulksNumber) {
+            Bubbles::create([
+                'bubble_weight' => $bubble_value,
+                'campaign_id' => $campaign->id,
+            ]);
+            $i++;
+        }
 
         return response()->json(['message' => 'Added Campaign successfully', 'status' => 200]);
     }
@@ -146,11 +157,11 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($local,Campaign $campaign)
+    public function edit($local, Campaign $campaign)
     {
         $bulks = Bulks::all();
         $employees = Employee::all();
-        return view('brandpriers.campaigns.create',compact('bulks','employees','campaign'));
+        return view('brandpriers.campaigns.create', compact('bulks', 'employees', 'campaign'));
     }
 
     /**
@@ -160,7 +171,7 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update($local,Request $request, Campaign $campaign)
+    public function update($local, Request $request, Campaign $campaign)
     {
         $validations = Validator::make($request->all(), [
             'name' => 'required',
@@ -205,7 +216,7 @@ class CampaignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($local,Campaign $campaign)
+    public function destroy($local, Campaign $campaign)
     {
         $campaign->delete();
     }

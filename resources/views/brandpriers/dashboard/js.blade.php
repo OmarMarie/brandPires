@@ -22,6 +22,7 @@
         });
     });
 
+
     var ctx = $('#myChart');
     if ($("#myChart").length != 0) {
         $.ajax({
@@ -94,7 +95,7 @@
         Chart.defaults.global.responsive = true;
     }
 
-
+    prev_infowindow =false;
     var campaigns_logs_map;
     map_campaigns_logs()
 
@@ -115,9 +116,26 @@
                 icon: '{{asset('assets/media/logos/pin.png')}}'
             });
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                if( prev_infowindow ) {
+                    prev_infowindow.close();
+                    alert(1);
+                }
+
                 return function () {
-                    infowindow.setContent(locations[i][0]);
-                    infowindow.open(campaigns_logs_map, marker);
+                    $.ajax({
+                        url: ' {{route('reportPlayers', app()->getLocale())}}',
+                        method: 'get',
+                        success: function (data) {
+
+                             infowindow = new google.maps.InfoWindow({
+                                content:  data ,
+                                maxWidth: 500,
+                            });
+                            prev_infowindow = infowindow;
+                        }
+                    });
+                    setTimeout(function() { infowindow.open(campaigns_logs_map, marker) },200);
+
                 }
             })(marker, i));
         }
