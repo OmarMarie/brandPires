@@ -264,7 +264,7 @@ class AuthController extends Controller
             'friends_response' => $friendsRequest == 0 ? null : $friendsRequest,
             'chatting' => $chatting == 0 ? null : $chatting,
             'level_points' => $levelPts->to_pts,
-            'level_icon' => $levelPts->level_icon,
+            'level_icon' => null ? null : env('APP_URL') . '/level/' . $levelPts->level_icon,
             'tank_details' => [
                 'player_tank_pts' => $numberOfTankBubbles,
                 'tank_id' => $tankDetails->tank_id,
@@ -372,13 +372,48 @@ class AuthController extends Controller
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
-        $verificationCode = rand(1000, 9999);
-        $request->phone = '962' . ltrim($request->phone, 0);
-        $this->sms('The verification code is ' . $verificationCode, $request->phone);
-        $data = [
-            'verification_code' => $verificationCode
-        ];
-        return $this->apiResponse($data, null, 200, 1);
+        $player=Player::where('phone_number',$request->phone)->first();
+        if ($player) {
+
+            $verificationCode = rand(1000, 9999);
+            $request->phone = '962' . ltrim($request->phone, 0);
+            $this->sms('The Verification code is ' . $verificationCode, $request->phone);
+
+            $player->update([
+                'verification_code' => $verificationCode
+            ]);
+
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Verification code send successfully';
+                    break;
+                case 'ar':
+                    $message = 'تم إرسال رمز التحقق بنجاح';
+                    break;
+                default:
+                    $message = 'Verification code send successfully';
+                    break;
+            }
+        }else
+        {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Please verify the phone number';
+                    break;
+                case 'ar':
+                    $message = 'الرجاء التأكد من رقم الهاتف ';
+                    break;
+                default:
+                    $message = 'Please verify the phone number';
+                    break;
+            }
+        }
+
+
+
+
+
+        return $this->apiResponse(null, $message, 200, 1);
     }
 
     public function reset(Request $request)

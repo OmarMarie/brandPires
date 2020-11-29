@@ -33,6 +33,7 @@ Route::group([
         Route::get('getCities/{country_id?}', 'HomeController@getCities')->name('getCities');
         Route::get('report/players', 'HomeController@players')->name('reportPlayers');
         Route::get('report/sales', 'HomeController@sales')->name('reportSales');
+        Route::get('map/{lat?}/{lng?}', 'HomeController@mapCampaign')->name('getMapCampaign');
 
         Route::resource('companies', 'CompanyController');
         Route::get('CompanyDatable', 'CompanyController@CompanyDatable')->name('CompanyDatable');

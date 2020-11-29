@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Models\Brand;
+use App\Models\Bubbles;
 use App\Models\BubblesTransferAction;
 use App\Models\Campaign;
 use App\Models\City;
@@ -134,6 +135,24 @@ class HomeController extends Controller
             'sales' => $data,
         ];
         return $array;
+    }
+
+    public function mapCampaign($local, $lat, $lng)
+    {
+
+        $campaigns = Campaign::where('available', 1)
+            ->Where('end_date', '>=', date('Y-m-d'))
+            ->where('lat', $lat)
+            ->where('lng', $lng)
+            ->get();
+        foreach ($campaigns as $campaign) {
+            $campaign['count_bubbles'] = Bubbles::where('campaign_id', $campaign->id)->count();
+            $campaign['count_bubbles_not_hooked'] = Bubbles::where('campaign_id', $campaign->id)
+                ->where('status', 0)->count();
+            $campaign['count_bubbles_hooked'] = $campaign['count_bubbles'] - $campaign['count_bubbles_not_hooked'];
+        }
+        return view('brandpriers.dashboard.map', compact('campaigns'));
+
     }
 
     public function getCities($local, $country_id)

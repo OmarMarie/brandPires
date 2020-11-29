@@ -123,13 +123,13 @@
 
                 return function () {
                     $.ajax({
-                        url: ' {{route('reportPlayers', app()->getLocale())}}',
+                        url: '/{{(app()->getLocale())}}/map/' + locations[i][1] + '/'+locations[i][2] ,
                         method: 'get',
                         success: function (data) {
-
                              infowindow = new google.maps.InfoWindow({
                                 content:  data ,
-                                maxWidth: 500,
+                                maxWidth: 1000,
+                                maxHeight:300,
                             });
                             prev_infowindow = infowindow;
                         }

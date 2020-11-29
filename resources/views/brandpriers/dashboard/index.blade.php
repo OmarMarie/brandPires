@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <style>
+
         .card_info {
             display: inline-block !important;
             height: 140px !important;
@@ -9,6 +10,11 @@
             margin-bottom: 0px;
             background: white !important;
 
+        }
+
+        .gm-style-iw-d {
+            overflow-y: auto;
+            overflow-x: hidden !important;
         }
 
         .fa-count-chart {
@@ -116,40 +122,42 @@
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
 
-                    <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                        <div class="divs_fas" style=" background:#4385f5;">
-                            <i class="far fa-copyright"></i>
+                    <a href="{{ route('brands.index', app()->getLocale()) }}">
+                        <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
+                            <div class="divs_fas" style=" background:#4385f5;">
+                                <i class="far fa-copyright"></i>
+                            </div>
+                            <div class="divs_title">Brands</div>
+                            <div class="divs_number">{{$brands}}</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"
+                                     style="width: {{$percentageBrands}}%; background:#4385f5;"
+                                     aria-valuenow="{{ abs($percentageBrands)}}" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="divs_text">{{($percentageBrands > 0 ? 'Best' : 'Better')}} then last week
+                                ({{abs($percentageBrands)}}%)
+                            </div>
                         </div>
-                        <div class="divs_title">Brands</div>
-                        <div class="divs_number">{{$brands}}</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar"
-                                 style="width: {{$percentageBrands}}%; background:#4385f5;"
-                                 aria-valuenow="{{ abs($percentageBrands)}}" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
+                    </a>
+                    <a href="#campaigns">
+                        <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
+                            <div class="divs_fas" style=" background:#12827c;">
+                                <i class="fas fa-volleyball-ball"></i>
+                            </div>
+                            <div class="divs_title">Campaigns</div>
+                            <div class="divs_number">{{$campaigns}}</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"
+                                     style="width: {{$percentageCampaign}}%; background:#12827c;"
+                                     aria-valuenow="{{ abs($percentageCampaign)}}" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="divs_text"> {{($percentageCampaign > 0 ? 'Best' : 'Better')}} then last week
+                                ({{ abs($percentageCampaign)}}%)
+                            </div>
                         </div>
-                        <div class="divs_text">{{($percentageBrands > 0 ? 'Best' : 'Better')}} then last week
-                            ({{abs($percentageBrands)}}%)
-                        </div>
-                    </div>
-
-                    <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                        <div class="divs_fas" style=" background:#12827c;">
-                            <i class="fas fa-volleyball-ball"></i>
-                        </div>
-                        <div class="divs_title">Campaigns</div>
-                        <div class="divs_number">{{$campaigns}}</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar"
-                                 style="width: {{$percentageCampaign}}%; background:#12827c;"
-                                 aria-valuenow="{{ abs($percentageCampaign)}}" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
-                        </div>
-                        <div class="divs_text"> {{($percentageCampaign > 0 ? 'Best' : 'Better')}} then last week
-                            ({{ abs($percentageCampaign)}}%)
-                        </div>
-                    </div>
-
+                    </a>
                     {{--<div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
                         <div class="divs_fas" style=" background:#f6555e;">
                             <i class="fas fa-soap"></i>
@@ -183,11 +191,11 @@
                         <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week
                             ({{ abs($percentageBubblesPlayer)}}%)
                         </div>
-                    </div >
+                    </div>
 
                 </div>
             </div>
-            <div class="col-md-12"
+            <div class="col-md-12" id="campaigns"
                  style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
                 <div class="card-header border-0  py-5 background" style="text-align: left;">
                     <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
@@ -362,7 +370,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div style="padding-left: 10px; font-size: 16px;">Total Sales: <span
-                                            style="font-weight: bold;"><i class="fas fa-dollar-sign" style="color: #82c91e;"></i> {{number_format($salesSum, 2)}} </span></div>
+                                            style="font-weight: bold;"><i class="fas fa-dollar-sign"
+                                                                          style="color: #82c91e;"></i> {{number_format($salesSum, 2)}} </span>
+                                </div>
                             </div>
                         </div>
                         <div class="row" style="text-align: left; padding: 40px 30px;">
