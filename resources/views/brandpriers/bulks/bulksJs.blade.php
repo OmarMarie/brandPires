@@ -10,6 +10,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -30,39 +31,33 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
-            {
-                title: 'Cost', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Cost', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-warning ">' + row.cost + '</span>'
 
                 }
             },
-            {
-                title: 'Number Bubbles', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Number Bubbles', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-success">' + row.number_of_bubbles + '</span>'
 
                 }
             },
-            {
-                title: 'Duration', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Duration', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-danger">' + row.duration + ' h</span>'
 
                 }
             },
-            {
-                title: 'Top Up Cost', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Top Up Cost', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-info">' + row.top_up_cost + ' </span>'
 
                 }
             },
-            {
-                title: 'Average Players', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Average Players', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-primary">' + row.average_players + ' </span>'
 
                 }
             },
 
-            {
-                title: 'Actions', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;

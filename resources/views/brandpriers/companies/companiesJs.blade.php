@@ -7,6 +7,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -29,8 +30,7 @@
             {data: 'name', title: 'Name'},
             {data: 'email', title: 'email'},
             {data: 'phone', title: 'Phone'},
-            {
-                data: 'status', title: 'Status', "mRender": function (data, type, row) {
+            {data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
                     } else if (row.status == 'True') {
@@ -38,23 +38,22 @@
                     }
                 }
             },
-            {
-                title: 'Services', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Services', "mRender": function (data, type, row) {
                     var contacts= '<a href="/{{app()->getLocale()}}/company/contacts/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Contacts"><i class="fas fa-id-card-alt"></i></a>'
                     var attachments= '<a href="/{{app()->getLocale()}}/company/attachments/' + row.id +'"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Attachments"><i class="fas fa-paperclip"></i></a>'
                     return contacts + attachments;
                 }
 
             },
-            {
-                title: 'Actions', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit ;
 
                 }
-            }
-        ]
+            },
+        ],
+
 
 
     });

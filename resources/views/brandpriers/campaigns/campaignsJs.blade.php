@@ -7,6 +7,7 @@
             {"width": "50px", "targets": 7},
         ],
         processing: true,
+        responsive: true,
         serverSide: true,
         data: {
             "brand_id": $('#brand_id').val()
@@ -40,15 +41,15 @@
             {data: 'name', title: 'Name'},
             {data: 'employee_id', title: 'Employee'},
             {
-                title: 'Date', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.start_date +' - '+row.end_date+ ' </span>'
+                data: 'id', title: 'Date', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.start_date + ' - ' + row.end_date + ' </span>'
 
                 }
             },
 
             {
-                title: 'Time', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.from_time +' - '+row.to_time+ ' </span>'
+                data: 'id', title: 'Time', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold text-success">' + row.from_time + ' - ' + row.to_time + ' </span>'
 
                 }
             },
@@ -64,15 +65,15 @@
                 }
             },
             {
-                title: 'Services', "mRender": function (data, type, row) {
+                data: 'id', title: 'Services', "mRender": function (data, type, row) {
                     var gift = '<a href="/{{app()->getLocale()}}/gifts/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Gift"><i class="fa fa-gift"></i></a>'
-                    return gift ;
+                    return gift;
                 }
 
             },
 
             {
-                title: 'Actions', "mRender": function (data, type, row) {
+                data: 'id',title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;
@@ -85,12 +86,11 @@
     });
 
 
-
     $('#add').on('click', function () {
-       var brand_id= $('#brand_id').val()
-       var package_id= $('#package_id').val()
+        var brand_id = $('#brand_id').val()
+        var package_id = $('#package_id').val()
         $.ajax({
-            url: '/{{app()->getLocale()}}/campaign/' + brand_id +'/'+ package_id+ '/create',
+            url: '/{{app()->getLocale()}}/campaign/' + brand_id + '/' + package_id + '/create',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
@@ -101,31 +101,27 @@
                     e.preventDefault();
                     var form = $(this);
                     var url = form.attr('action');
-                    var bulk_ids='';
-                    var select_id='';
-                    var error_html_select='';
-                     $("#submitBtn").attr("disabled", true);
+                    var bulk_ids = '';
+                    var select_id = '';
+                    var error_html_select = '';
+                    $("#submitBtn").attr("disabled", true);
                     $(".div_bulk").each(function (index) {
-                        select_id=$(this).find(" select").children("option:selected").val();
-                        if(select_id == '')
-                        {
+                        select_id = $(this).find(" select").children("option:selected").val();
+                        if (select_id == '') {
                             error_html_select += '<div class="alert alert-danger">Please  Select All Bulks  </div>';
-                        }
-                        else
-                        {
+                        } else {
                             bulk_ids += select_id + ",";
                         }
 
                     });
-                    if (error_html_select != "")
-                    {
+                    if (error_html_select != "") {
                         $("#submitBtn").attr("disabled", false);
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
                             html: error_html_select,
                         })
-                    }else {
+                    } else {
                         $("#bulk_ids").val(bulk_ids);
                         $.ajax({
                             type: "POST",

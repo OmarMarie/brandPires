@@ -9,6 +9,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         data: {
             "campaign_id": $('#campaign_id').val()
         },
@@ -40,19 +41,19 @@
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
             {
-                title: 'Code Number', "mRender": function (data, type, row) {
+                data: 'id',title: 'Code Number', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-warning ">' + row.code_number + '</span>'
 
                 }
             },
             {
-                title: 'Gift From', "mRender": function (data, type, row) {
+                data: 'id',title: 'Gift From', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-success">' + row.gift_from + '</span>'
 
                 }
             },
             {
-                title: 'Center', "mRender": function (data, type, row) {
+                data: 'id',title: 'Center', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-danger">' + row.center + ' </span>'
 
                 }

@@ -8,6 +8,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -28,22 +29,19 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'brand_name', title: 'Name'},
-            {
-                title: 'Company Name', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Company Name', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-success">' + row.company_id + ' </span>'
 
                 }
             },
-            {
-                title: 'Services', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Services', "mRender": function (data, type, row) {
                     var packages = '<a href="/{{app()->getLocale()}}/brand/packages/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Packages"><i class="fas fa-box-open"></i></a>'
                     var attachments = '<a href="/{{app()->getLocale()}}/brand/attachments/' + row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Attachments"><i class="fas fa-paperclip"></i></a>'
                     return packages + attachments;
                 }
 
             },
-            {
-                data: 'status', title: 'Status', "mRender": function (data, type, row) {
+            {data: 'id',data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
                     } else if (row.status == 'True') {
@@ -52,8 +50,7 @@
                 }
             },
 
-            {
-                title: 'Actions', "mRender": function (data, type, row) {
+            {data: 'id',title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;

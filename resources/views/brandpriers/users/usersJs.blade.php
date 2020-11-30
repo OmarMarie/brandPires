@@ -12,6 +12,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -34,7 +35,7 @@
             {data: 'name', title: 'Name'},
             {data: 'email', title: 'Email'},
             {
-                title: 'Type', "mRender": function (data, type, row) {
+                data: 'id', title: 'Type', "mRender": function (data, type, row) {
                     return row.type;
 
                 }

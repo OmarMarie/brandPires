@@ -9,6 +9,7 @@
         ],
         processing: true,
         serverSide: true,
+        responsive: true,
         lengthMenu: [
             [10, 25, 50, 100, -1],
             ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
@@ -37,7 +38,7 @@
             {data: 'username', title: 'UserName'},
             {data: 'email', title: 'Email'},
             {
-                title: 'Level', "mRender": function (data, type, row) {
+                data: 'id', title: 'Level', "mRender": function (data, type, row) {
                     if (row.level != null) {
                         var level_name = '<span class="font-weight-bold text-warning" >'+row.level+' </span>  <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.lvl_pts + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.level_points + ' </span>';
                         return level_name;
@@ -48,7 +49,7 @@
                 }
             },
             {
-                title: 'Tank', "mRender": function (data, type, row) {
+                data: 'id', title: 'Tank', "mRender": function (data, type, row) {
                     var tank_name = '<span class="font-weight-bold text-danger" >'+row.tank + '</span> <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.tank_points + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.tank_size + ' </span>';
                     return tank_name;
 
@@ -56,13 +57,13 @@
             },
             {data: 'extraTank', title: 'Extra Tank'},
             {
-                title: 'Services', "mRender": function (data, type, row) {
+                data: 'id', title: 'Services', "mRender": function (data, type, row) {
                     return '<a href="#"  class="btn btn-sm btn-clean btn-icon action-btn add_points" id="' + row.id + '" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Add points"><i class="fas fa-plus-circle"></i></a>';
                 }
 
             },
             {
-                title: 'Actions', "mRender": function (data, type, row) {
+                data: 'id', title: 'Actions', "mRender": function (data, type, row) {
                     var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;
