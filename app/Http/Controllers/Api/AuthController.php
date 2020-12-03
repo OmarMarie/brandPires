@@ -235,7 +235,6 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         $this->checkLang($request);
-        //$playerId = auth()->guard('player')->user()->id;
         $playerId = $request->user()->id;
         $gifts = GiftAction::where('player_id', $playerId)->where('status', 0)->count();
         $friendsRequest = Friend::where('player_id', $playerId)->where('status', 0)->count();

@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
-Route::get('/', function () {
+HomeController:Route::get('/', function () {
     return redirect(app()->getLocale());
 });
+
 Route::group([
     'prefix' => '{locale}',
     'where' => ['locale' => '[a-zA-Z]{2}'],
