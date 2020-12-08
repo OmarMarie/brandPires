@@ -8,11 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 use Cache;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable ,HasRoles;
     protected $guarded = [];
 
     /**
@@ -42,19 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role');
-    }
 
-    public function hasRole($role)
-    {
-        $roles = $this->roles()->where('name', $role)->count();
-        if ($roles == 1) {
-            return true;
-        }
-        return false;
-    }
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

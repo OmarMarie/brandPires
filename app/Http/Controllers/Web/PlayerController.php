@@ -254,4 +254,41 @@ class PlayerController extends Controller
 
         return response()->json(['message' => 'Add Player Points successfully', 'status' => 200]);
     }
+
+    public function replaceBubbles($local, Request $request)
+    {
+        $validations = Validator::make($request->all(), [
+            'point_add' => 'required|numeric'
+        ]);
+        if ($validations->fails()) {
+            return response()->json(['errors' => $validations->errors(), 'status' => 422]);
+        }
+        $player = Player::where('id', $request->player_id)->first();
+
+        $userLvlPts = $player->lvl_pts;
+
+        $calcLvlPts = $userLvlPts + $request->point_add;
+
+        $levelDetails = Levels::where('id', $player->level_id)->first();
+        $levelIdNew = Levels::where('to_pts', '>=', $calcLvlPts)
+            ->where('from_pts', '<=', $calcLvlPts)
+            ->value('id');
+        if ($levelIdNew == null) {
+            return response()->json(['message' => 'Not Found Upgrade level', 'status' => 423]);
+        }
+
+        if ($calcLvlPts > $levelDetails->to_pts) {
+            $player->update([
+                'level_id' => $levelIdNew,
+                'lvl_pts' => $calcLvlPts,
+                'level_updated_at' => now()
+            ]);
+        } else {
+            $player->update([
+                'lvl_pts' => $calcLvlPts
+            ]);
+        }
+
+        return response()->json(['message' => 'Add Player Points successfully', 'status' => 200]);
+    }
 }

@@ -70,7 +70,7 @@
 
                 $('#userForm').submit(function (e) {
                     e.preventDefault();
-                    $("#submitBtn").attr("disabled", true);
+                    /*$("#submitBtn").attr("disabled", true);*/
                     var form = $(this);
                     var url = form.attr('action');
                     $.ajax({

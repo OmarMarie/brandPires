@@ -22,15 +22,20 @@
                                @if(isset($user)) value="{{ $user->phone_number}}" @endif>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Type</label>
-                        <select class="form-control" name="role" {{isset($user) ?'disabled':''}}>
+                            <label>Role</label>
+                            @if (!isset($user))
+                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
+                            @else
+                            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
+                            @endif
+                       {{-- <select class="form-control" name="role" {{isset($user) ?'disabled':''}}>
                             @if(!isset($user))
                                 <option value="" selected disabled>Select User Type</option>
                             @endif
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}" {{isset($user) ? ($role->id == $id_role_user) ? 'selected ' : '' : ''}}>{{ $role->name }}</option>
                             @endforeach
-                        </select>
+                        </select>--}}
 
                     </div>
 

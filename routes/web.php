@@ -61,6 +61,7 @@ Route::group([
         Route::get('playersDatable', 'PlayerController@playersDatable')->name('playersDatable');
         Route::get('player/{id?}/points', 'PlayerController@addPoints')->name('addPoints');
         Route::post('player/pointsUpdate', 'PlayerController@pointsUpdate')->name('pointsUpdate');
+        Route::get('player/{id?}/replaceBubbles', 'PlayerController@replaceBubbles')->name('replaceBubbles');
 
         Route::resource('brands', 'BrandController');
         Route::get('brandsDatable', 'BrandController@brandsDatable')->name('brandsDatable');

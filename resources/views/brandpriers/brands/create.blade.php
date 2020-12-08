@@ -39,11 +39,6 @@
                         <strong>Brand Basic Information</strong>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#step-2">
-                        <strong>Brand Account Information</strong>
-                    </a>
-                </li>
             </ul>
             <hr>
 
@@ -118,7 +113,7 @@
                         </div>
 
                     </div>
-                    <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                   {{-- <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Name</label>
@@ -147,7 +142,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="submit" value="Submit" class="btn btn-success" style="float: right">
                 </div>
             </form>
         </div>
@@ -236,15 +234,15 @@
             }, toolbarSettings: {
                 toolbarPosition: 'bottom', // none, top, bottom, both
                 toolbarButtonPosition: 'right', // left, right, center
-                showNextButton: true, // show/hide a Next button
-                showPreviousButton: true, // show/hide a Previous button
-                toolbarExtraButtons: [
+                showNextButton: false, // show/hide a Next button
+                showPreviousButton: false, // show/hide a Previous button
+               /* toolbarExtraButtons: [
                     $('<button></button>').text('Finish')
                         .addClass('btn btn-success sw-btn-group-extra')
                         .attr('style', 'color: #fff;background-color: #5cb85c;border: 1px solid #5cb85c;')
                         .attr('id', 'submitBtn')
                         .attr('type', 'submit')
-                ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
+                ]*/ // Extra buttons to show on toolbar, array of jQuery input/buttons elements
             },
             anchorSettings: {
                 anchorClickable: true, // Enable/Disable anchor navigation
@@ -259,7 +257,6 @@
                 enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
             },
         });
-
         $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
             if ($('button.sw-btn-next').hasClass('disabled')) {
                 $('button.sw-btn-next').hide();

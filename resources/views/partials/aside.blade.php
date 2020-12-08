@@ -7,7 +7,6 @@
             <h1 class="text-warning font-italic"> BrandPires</h1>
         </a>
         <!--end::Logo-->
-
         <!--begin::Toggle-->
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
 				<span class="svg-icon svg-icon svg-icon-xl"><!--begin::Svg Icon | path:/metronic/themes/metronic/theme/html/demo1/dist/assets/media/svg/icons/Navigation/Angle-double-left.svg--><svg
@@ -53,22 +52,22 @@
               fill="#000000" opacity="0.3"/>
     </g>
 </svg><!--end::Svg Icon--></span><span class="menu-text">Dashboard</span></a></li>
-                @if(auth()->user()->hasRole('admin'))
+                @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('companies.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-building left-icon-menu"><span></span></i>
                             <span class="menu-text">Companies</span>
                         </a>
                     </li>
-                @endif
-                @if(auth()->user()->hasRole('admin'))
+               @endcan
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-university left-icon-menu"><span></span></i>
                             <span class="menu-text">Brands</span>
                         </a>
                     </li>
-                @endif
+               @endcan
                 <li class="menu-section menu-item-active">
                     <h4 class="menu-text">Custom</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -77,67 +76,67 @@
 
 
 
-                @if(auth()->user()->hasRole('admin'))
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('packages.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-cubes left-icon-menu"><span></span></i>
                             <span class="menu-text">Packages</span>
                         </a>
                     </li>
-                @endif
+               @endcan
 
-                @if(auth()->user()->hasRole('admin'))
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-level-up-alt left-icon-menu" style="margin-right: 5px;"></i>
                             <span class="menu-text">level's</span>
                         </a>
                     </li>
-                @endif
-                @if(auth()->user()->hasRole('admin'))
+               @endcan
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-hockey-puck left-icon-menu"></i>
                             <span class="menu-text">tank's </span>
                         </a>
                     </li>
-                @endif
-                @if(auth()->user()->hasRole('admin'))
+               @endcan
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('bulks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-box left-icon-menu"></i>
                             <span class="menu-text">Bulk's</span>
                         </a>
                     </li>
-                @endif
+               @endcan
                 <li class="menu-section menu-item-active">
                     <h4 class="menu-text"> Manage Users</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
-                @if(auth()->user()->hasRole('admin'))
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-biking left-icon-menu"></i>
                             <span class="menu-text">Player's</span>
                         </a>
                     </li>
-                @endif
-                @if(auth()->user()->hasRole('admin'))
+               @endcan
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('employees.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-users-cog left-icon-menu"></i>
                             <span class="menu-text">Employee's</span>
                         </a>
                     </li>
-                @endif
-                @if(auth()->user()->hasRole('admin'))
+               @endcan
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-users left-icon-menu"></i>
                             <span class="menu-text">Users</span>
                         </a>
                     </li>
-                @endif
+               @endcan
 
                 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
                             href="javascript:;" class="menu-link menu-toggle"><span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
@@ -153,7 +152,7 @@
 </svg><!--end::Svg Icon--></span><span class="menu-text">Logs</span><i class="menu-arrow"></i></a>
                     <div class="menu-submenu "><i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                            @if(auth()->user()->hasRole('admin'))
+                           @can('access')
                                 <li class="menu-item " aria-haspopup="true"><a
                                             href="{{ route('bubblesProcesses.index', app()->getLocale()) }}"
                                             class="menu-link "><i
@@ -161,8 +160,8 @@
                                                 class="menu-text">Bubbles Processes</span><span class="menu-label">{{--<span
                                                     class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>
-                            @endif
-                             {{--   @if(auth()->user()->hasRole('admin'))
+                           @endcan
+                             {{--  @can('access')
                                     <li class="menu-item " aria-haspopup="true"><a
                                                 href="{{ route('bubblesTransferActions.index', app()->getLocale()) }}"
                                                 class="menu-link "><i
@@ -171,8 +170,8 @@
                                                     class="menu-label">--}}{{--<span
                                                         class="label label-danger label-inline">new</span>--}}{{--</span></a>
                                     </li>
-                                @endif--}}
-                            @if(auth()->user()->hasRole('admin'))
+                               @endcan--}}
+                           @can('access')
                                 <li class="menu-item " aria-haspopup="true"><a
                                             href="{{ route('logUsers.index', app()->getLocale()) }}"
                                             class="menu-link "><i
@@ -181,8 +180,8 @@
                                                 class="menu-label">{{--<span
                                                     class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>
-                            @endif
-                            @if(auth()->user()->hasRole('admin'))
+                           @endcan
+                           @can('access')
                                 <li class="menu-item " aria-haspopup="true"><a
                                             href="{{ route('logCampaigns.index', app()->getLocale()) }}"
                                             class="menu-link "><i
@@ -191,19 +190,19 @@
                                                 class="menu-label">{{--<span
                                                     class="label label-danger label-inline">new</span>--}}</span></a>
                                 </li>
-                            @endif
+                           @endcan
                         </ul>
                     </div>
                 </li>
 
-                @if(auth()->user()->hasRole('admin'))
+               @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('countries.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-globe left-icon-menu"></i>
                             <span class="menu-text">Countries</span>
                         </a>
                     </li>
-                @endif
+               @endcan
 
             </ul>
             <!--end::Menu Nav-->

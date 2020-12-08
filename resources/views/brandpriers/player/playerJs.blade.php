@@ -30,7 +30,7 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {
-                title: 'Name', "mRender": function (data, type, row) {
+                data: 'first_name', title: 'Name', "mRender": function (data, type, row) {
                     return row.first_name + ' ' + row.last_name;
 
                 }
@@ -40,7 +40,7 @@
             {
                 data: 'id', title: 'Level', "mRender": function (data, type, row) {
                     if (row.level != null) {
-                        var level_name = '<span class="font-weight-bold text-warning" >'+row.level+' </span>  <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.lvl_pts + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.level_points + ' </span>';
+                        var level_name = '<span class="font-weight-bold text-warning" >' + row.level + ' </span>  <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.lvl_pts + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.level_points + ' </span>';
                         return level_name;
                     } else {
                         return null;
@@ -50,7 +50,7 @@
             },
             {
                 data: 'id', title: 'Tank', "mRender": function (data, type, row) {
-                    var tank_name = '<span class="font-weight-bold text-danger" >'+row.tank + '</span> <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.tank_points + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.tank_size + ' </span>';
+                    var tank_name = '<span class="font-weight-bold text-danger" >' + row.tank + '</span> <br>' + '<span style="font-weight: bold;color: #6da5a2;"> ' + row.tank_points + ' </span>' + '/ ' + '<span style="font-weight: bold;"> ' + row.tank_size + ' </span>';
                     return tank_name;
 
                 }
@@ -58,7 +58,14 @@
             {data: 'extraTank', title: 'Extra Tank'},
             {
                 data: 'id', title: 'Services', "mRender": function (data, type, row) {
-                    return '<a href="#"  class="btn btn-sm btn-clean btn-icon action-btn add_points" id="' + row.id + '" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Add points"><i class="fas fa-plus-circle"></i></a>';
+
+                    var services = '<a href="#"  class="btn btn-sm btn-clean btn-icon action-btn add_points"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Add points"><i class="fas fa-plus-circle"></i></a>';
+                    var replace = '';
+                    if (row.tank_points >= row.tank_size) {
+                        replace = '<a href="#"  class="btn btn-sm btn-clean btn-icon action-btn replace_points"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title=" Bubbles Replace"><i class="fas fa-fist-raised"></i></a>';
+                    }
+
+                    return services + replace;
                 }
 
             },
@@ -248,8 +255,7 @@
                                     title: 'Oops...',
                                     html: error_html,
                                 })
-                            }
-                            else if (data.status === 423) {
+                            } else if (data.status === 423) {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -272,6 +278,62 @@
                 });
             }
         });
+    });
+    $(document).on('click', '.replace_points', function () {
+        var id = $(this).attr('id');
+        swal.fire({
+                title: "Are you sure?",
+                text: " Replace the Bubbles",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Replace it!",
+                closeOnConfirm: false
+            },
+            function () {
+                $.ajax({
+                    type: "get",
+                    url: '/{{app()->getLocale()}}/player/' + id + '/replaceBubbles',
+                    data: new FormData(this),
+                    dataType: "json",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+
+                        if (data.status === 422) {
+                            console.log(data);
+                            var error_html = '';
+
+                            for (let value of Object.values(data.errors)) {
+                                error_html += '<div class="alert alert-danger">' + value + '</div>';
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                html: error_html,
+                            })
+                        } else if (data.status === 423) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                html: '<div class="alert alert-danger">' + data.message + '</div>',
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
+                            table.ajax.reload();
+                            $('#modal').modal('hide');
+                        }
+                    }
+                });
+            });
+
     });
 
 </script>

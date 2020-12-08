@@ -75,8 +75,8 @@ class CompanyController extends Controller
             'privacy_policy' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf',
             'name_user' => 'required',
             'email' => 'required|email|unique:users',
-            'phone_user' =>'required|min:9|numeric',
-            'password' =>'required|min:8'
+            'phone_user' => 'required|min:9|numeric',
+            'password' => 'required|min:8'
 
 
         ]);
@@ -90,19 +90,18 @@ class CompanyController extends Controller
             $icon = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images/company'), $icon);
         }
+        $type= ["Company"];
 
         $user = User::create([
             'name' => $request->name_user,
             'email' => $request->email,
+            'type' =>json_encode($type) ,
             'password' => Hash::make($request->password),
-            'type' => 4,
             'phone_number' => $request->phone_user
         ]);
 
-        RoleUser::create([
-            'role_id' => 4,
-            'user_id' => $user->id
-        ]);
+        $user->assignRole([2]);
+
 
         $company = Company::create([
             'name' => $request->name,
@@ -118,22 +117,22 @@ class CompanyController extends Controller
 
         if (isset($request->commercial_registration)) {
             $image = $request->file('commercial_registration');
-            $commercial_registration = 'CR_'.time() . '.' . $image->getClientOriginalExtension();
+            $commercial_registration = 'CR_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/company'), $commercial_registration);
         }
         if (isset($request->Identity)) {
             $image = $request->file('Identity');
-            $Identity = 'id_'.time() . '.' . $image->getClientOriginalExtension();
+            $Identity = 'id_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/company'), $Identity);
         }
         if (isset($request->bank_account)) {
             $image = $request->file('bank_account');
-            $bank_account = 'bank_'.time() . '.' . $image->getClientOriginalExtension();
+            $bank_account = 'bank_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/company'), $bank_account);
         }
         if (isset($request->privacy_policy)) {
             $image = $request->file('privacy_policy');
-            $privacy_policy = 'privacy_policy_'.time() . '.' . $image->getClientOriginalExtension();
+            $privacy_policy = 'privacy_policy_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/company'), $privacy_policy);
         }
 
@@ -143,7 +142,7 @@ class CompanyController extends Controller
             'commercial_registration' => $commercial_registration,
             'Identity' => $Identity,
             'bank_account' => $bank_account,
-            'privacy_policy' =>$privacy_policy,
+            'privacy_policy' => $privacy_policy,
         ]);
 
         return response()->json(['message' => 'Added Campaign successfully', 'status' => 200]);
@@ -166,9 +165,9 @@ class CompanyController extends Controller
      * @param  \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function edit($local,Company $company)
+    public function edit($local, Company $company)
     {
-        return view('brandpriers.companies.create',compact('company'));
+        return view('brandpriers.companies.create', compact('company'));
     }
 
     /**
@@ -178,10 +177,10 @@ class CompanyController extends Controller
      * @param  \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update($local,Request $request, Company $company)
+    public function update($local, Request $request, Company $company)
     {
         $validations = Validator::make($request->all(), [
-            'name' => 'required|unique:companies,name,'.$company->id,
+            'name' => 'required|unique:companies,name,' . $company->id,
             'status' => 'required',
             'commercial_registration_no' => 'required',
             'expiry_date_commercial_registration' => 'required',

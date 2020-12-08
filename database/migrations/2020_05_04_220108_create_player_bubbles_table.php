@@ -13,7 +13,7 @@ class CreatePlayerBubblesTable extends Migration
      */
     public function up()
     {
-        // status -> | 0- expired/removed | 1- active
+        // status -> | 0- expired/removed | 1- active | 2- replaced
         Schema::create('player_bubbles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('player_id')->unsigned();

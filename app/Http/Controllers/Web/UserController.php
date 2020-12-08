@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\web;
 
 use App\User;
-use App\Models\Role;
-use App\Models\RoleUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
@@ -33,9 +33,9 @@ class UserController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('type', function ($data) {
-                    $type = $data->roles;
+                    $type = $data->getRoleNames();
                     foreach ($type as $object) {
-                        return $object->name;
+                        return $object;
                     }
                 })
                 ->make(true);
@@ -50,7 +50,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::latest()->get();
+        $roles = Role::pluck('name','name')->all();
+        $roles = collect($roles);
+        $roles =$roles->except(['Company']);
         return view('brandpriers.users.create', compact('roles'));
     }
 
@@ -62,10 +64,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $validations = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'role' => 'required',
+            'roles' => 'required'
         ]);
 
         if ($validations->fails()) {
@@ -78,14 +81,11 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($password),
-            'type' => $request->role,
+            'type' => $request->input('roles'),
             'phone_number' => $request->phone
         ]);
 
-        RoleUser::create([
-            'role_id' => $request->role,
-            'user_id' => $user->id
-        ]);
+        $user->assignRole($request->input('roles'));
 
         return response()->json(['message' => 'Added successfully', 'status' => 200]);
     }
@@ -110,12 +110,9 @@ class UserController extends Controller
      */
     public function edit( $requst, User $user)
     {
-      $role_user= $user->roles;
-        foreach ($role_user as $object) {
-            $id_role_user =$object->id;
-        }
-        $roles = Role::latest()->get();
-        return view('brandpriers.users.create', compact('user','roles','id_role_user'));
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        return view('brandpriers.users.create', compact('user','roles', 'userRole'));
     }
 
     /**
@@ -131,7 +128,7 @@ class UserController extends Controller
         $validations = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'role' => 'required',
+            'roles' => 'required'
         ]);
 
         if ($validations->fails()) {
@@ -141,13 +138,13 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'type' => $request->role,
+            'type' => $request->input('roles'),
             'phone_number' => $request->phone
         ]);
 
-        $roleUser=RoleUser::where('user_id', $user->id)->first();
-        $user->roles($roleUser)->save();
+         DB::table('model_has_roles')->where('model_id',$user->id)->delete();
 
+        $user->assignRole($request->input('roles'));
 
         return response()->json(['message' => 'Updated successfully', 'status' => 200]);
     }

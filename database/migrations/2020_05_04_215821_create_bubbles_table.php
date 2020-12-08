@@ -16,8 +16,7 @@ class CreateBubblesTable extends Migration
         // bubble_type -> | 0- points | 1- gift | 2- gifts & points
         // status ->
         // 0 - not hooked
-        // 1 - replaced
-        // 2 - expired
+        // 1 - hooked
         Schema::create('bubbles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('bubble_type');

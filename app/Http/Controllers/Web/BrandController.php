@@ -43,11 +43,11 @@ class BrandController extends Controller
                     return $data->status == 0 ? 'False' : 'True';
                 })
                 ->editColumn('company_id', function ($data) {
-                   $companyName=Company::where('id',$data->company_id)->value('name');
-                   if($companyName != '')
-                    return $companyName;
-                   else
-                       return null;
+                    $companyName = Company::where('id', $data->company_id)->value('name');
+                    if ($companyName != '')
+                        return $companyName;
+                    else
+                        return null;
 
                 })
                 ->editColumn('created_at', function ($data) {
@@ -68,9 +68,9 @@ class BrandController extends Controller
      */
     public function create()
     {
-        $companyPackages=Package::get();
-        $companies=Company::get();
-        return view('brandpriers.brands.create',compact('companyPackages','companies'));
+        $companyPackages = Package::get();
+        $companies = Company::get();
+        return view('brandpriers.brands.create', compact('companyPackages', 'companies'));
     }
 
     /**
@@ -88,10 +88,6 @@ class BrandController extends Controller
             'status' => 'required',
             'contract' => 'required|mimes:jpeg,png,jpg,pdf',
             'ad_approval' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf',
-            'name_user' => 'required',
-            'email' => 'required|unique:users',
-            'phone' =>'required|min:9|numeric',
-            'password' =>'required|min:8'
         ]);
         if ($validations->fails()) {
             return response()->json(['errors' => $validations->errors(), 'status' => 422]);
@@ -107,34 +103,20 @@ class BrandController extends Controller
 
         if (isset($request->contract)) {
             $image = $request->file('contract');
-            $contract = 'contract_'.time() . '.' . $image->getClientOriginalExtension();
+            $contract = 'contract_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/brand'), $contract);
         }
         if (isset($request->ad_approval)) {
             $image = $request->file('ad_approval');
-            $ad_approval = 'ad_approval_'.time() . '.' . $image->getClientOriginalExtension();
+            $ad_approval = 'ad_approval_' . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('attachments/brand'), $ad_approval);
         }
 
-
-        $user = User::create([
-            'name' => $request->name_user,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'type' => 3,
-            'phone_number' => $request->phone
-        ]);
-
-        RoleUser::create([
-            'role_id' => 3,
-            'user_id' => $user->id
-        ]);
-
-         Brand::create([
+        Brand::create([
             'brand_name' => $request->brand_name,
             'status' => $request->status,
             'img' => $icon,
-            'user_id' => $user->id,
+            'user_id' => "",
             'company_id' => $request->company_id,
             'contract' => $contract,
             'ad_approval' => $ad_approval
@@ -164,8 +146,8 @@ class BrandController extends Controller
     public function edit($local, Brand $brand)
 
     {
-        $companyPackages=Package::get();
-        return view('brandpriers.brands.create', compact('brand','companyPackages'));
+        $companyPackages = Package::get();
+        return view('brandpriers.brands.create', compact('brand', 'companyPackages'));
     }
 
     /**
@@ -178,7 +160,7 @@ class BrandController extends Controller
     public function update($local, Request $request, Brand $brand)
     {
         $validations = Validator::make($request->all(), [
-            'brand_name' => 'required|unique:brands,brand_name,'.$brand->id,
+            'brand_name' => 'required|unique:brands,brand_name,' . $brand->id,
             'status' => 'required',
         ]);
         if ($validations->fails()) {
