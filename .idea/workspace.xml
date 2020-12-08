@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c7fb3ab-f500-4d29-8495-5ec68eb7044e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/PlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/RoleUser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_04_215821_create_bubbles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_215821_create_bubbles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_04_220108_create_player_bubbles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_220108_create_player_bubbles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brands/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brands/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="1c7fb3ab-f500-4d29-8495-5ec68eb7044e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -488,12 +466,12 @@
       <workItem from="1607157451016" duration="30000" />
       <workItem from="1607247543697" duration="631000" />
       <workItem from="1607259808662" duration="4970000" />
-      <workItem from="1607328534985" duration="16505000" />
+      <workItem from="1607328534985" duration="16839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271449000" />
+    <option name="totallyTimeSpent" value="271783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="27" width="1848" height="1053" extended-state="6" />
