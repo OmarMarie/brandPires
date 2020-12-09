@@ -121,14 +121,14 @@
                         </a>
                     </li>
                @endcan
-               @can('access')
+              {{-- @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('employees.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-users-cog left-icon-menu"></i>
                             <span class="menu-text">Employee's</span>
                         </a>
                     </li>
-               @endcan
+               @endcan--}}
                @can('access')
                     <li class="menu-item " aria-haspopup="true">
                         <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">

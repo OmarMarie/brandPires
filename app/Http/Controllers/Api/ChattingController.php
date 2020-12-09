@@ -15,11 +15,23 @@ class ChattingController extends Controller
 {
     use ApiResponser, MessageLanguage;
 
-    public function playerChatting($player_id, Request $request)
+    public function playerChatting(Request $request)
     {
         $this->checkLang($request);
+
+        $validator = Validator::make($request->all(), [
+            'player_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
         $messages = Chatting::with(['sender:id,first_name', 'receiver:id,first_name'])
-            ->where('sender_id', $player_id)
+            ->where('sender_id', $request->player_id)
             ->orderBy('created_at', 'desc')
             ->get()
             ->unique('receiver_id');

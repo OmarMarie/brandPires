@@ -39,7 +39,7 @@ Route::group([
         Route::post('infoTank', 'TankController@infoTank');
         Route::get('gifts/player', 'BubbleController@gifts');
         Route::post('giftDetails', 'BubbleController@giftDetails');
-        Route::get('playerChatting/{player_id}', 'ChattingController@playerChatting');
+        Route::post('playerChatting', 'ChattingController@playerChatting');
         Route::get('chatDetails', 'ChattingController@chatDetails');
         Route::get('friends', 'ChattingController@friends');
         Route::post('sendFriendRequest', 'ChattingController@sendFriendRequest');

@@ -101,8 +101,9 @@
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
-                                table.ajax.reload();
                                 $('#modal').modal('hide');
+                                table.ajax.reload();
+
 
                             }
                         }
