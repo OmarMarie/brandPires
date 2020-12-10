@@ -74,7 +74,6 @@ class Handler extends ExceptionHandler
             return $this->apiResponse(null, 'Method is not allowed for the requested route', 405, 0);
         }
 
-
         if (Config::get('app.debug')) {
             return parent::render($request, $exception);
         }else

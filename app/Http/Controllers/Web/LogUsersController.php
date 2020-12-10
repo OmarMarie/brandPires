@@ -22,7 +22,7 @@ class LogUsersController extends Controller
     public function logUsersDatable(Request $request)
     {
         if ($request->ajax()) {
-            $data = LogUser::get();
+            $data = LogUser::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('user_id', function ($data) {

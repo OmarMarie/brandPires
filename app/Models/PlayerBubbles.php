@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PlayerBubbles extends Model
 {
     protected $fillable = [
-      'player_id', 'bubble_id'
+      'player_id', 'bubble_id','status','replaced_by'
     ];
 
     public function bubbles()

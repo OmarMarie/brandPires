@@ -279,60 +279,40 @@
             }
         });
     });
+   // url: '/{{--{{app()->getLocale()}}--}}/player/' + id + '/replaceBubbles',
+
     $(document).on('click', '.replace_points', function () {
+
         var id = $(this).attr('id');
-        swal.fire({
-                title: "Are you sure?",
-                text: " Replace the Bubbles",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes, Replace it!",
-                closeOnConfirm: false
-            },
-            function () {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Replace it!',
+
+        }).then(function (result) {
+            if (result.value) {
                 $.ajax({
-                    type: "get",
-                    url: '/{{app()->getLocale()}}/player/' + id + '/replaceBubbles',
-                    data: new FormData(this),
-                    dataType: "json",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                     url: '/{{app()->getLocale()}}/player/' + id + '/replaceBubbles',
+                    method: 'get',
                     success: function (data) {
-
-                        if (data.status === 422) {
-                            console.log(data);
-                            var error_html = '';
-
-                            for (let value of Object.values(data.errors)) {
-                                error_html += '<div class="alert alert-danger">' + value + '</div>';
-                            }
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                html: error_html,
-                            })
-                        } else if (data.status === 423) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                html: '<div class="alert alert-danger">' + data.message + '</div>',
-                            })
-                        } else {
-                            Swal.fire({
-                                icon: 'success',
-                                title: data.message,
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-
-                            table.ajax.reload();
-                            $('#modal').modal('hide');
-                        }
+                        Swal.fire({
+                            icon: 'success',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        table.ajax.reload();
                     }
                 });
-            });
+            }
+        });
 
     });
 
