@@ -36,7 +36,7 @@ class PermissionTableSeeder extends Seeder
 
         /*$role->syncPermissions($permissions);*/
 
-       // $user = User::Where('name','admin')->first();
+        $user = User::Where('name','admin')->first();
 
        /* $role = Role::create(['name' => 'Admin']);
 
@@ -44,6 +44,6 @@ class PermissionTableSeeder extends Seeder
 
         $role->syncPermissions($permissions);*/
 
-        /*$user->assignRole([1]);*/
+        $user->assignRole([1]);
     }
 }
