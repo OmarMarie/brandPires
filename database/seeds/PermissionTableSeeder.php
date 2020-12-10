@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
     use Spatie\Permission\Models\Role;
@@ -13,22 +14,36 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $permissions = [
-            'Financial-Employee-access',
-            'Financial-Employee-list',
-            'Financial-Employee-create',
-            'Financial-Employee-edit',
-            'Financial-Employee-delete',
+       /* $permissions = [
+            'admin',
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'company-list',
+            'company-create',
+            'company-edit',
+            'company-delete'
         ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
-        $role = Role::create(['name' => 'Financial Employee']);
+        /*$role = Role::create(['name' => 'Financial Employee']);*/
+
+       // $permissions = Permission::pluck('id','id')->all();
+
+        /*$role->syncPermissions($permissions);*/
+
+       // $user = User::Where('name','admin')->first();
+
+       /* $role = Role::create(['name' => 'Admin']);
 
         $permissions = Permission::pluck('id','id')->all();
 
-        $role->syncPermissions($permissions);
+        $role->syncPermissions($permissions);*/
+
+        /*$user->assignRole([1]);*/
     }
 }

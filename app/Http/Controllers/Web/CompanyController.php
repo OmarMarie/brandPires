@@ -16,6 +16,13 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:company-list|company-create|company-edit|company-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:company-create', ['only' => ['create','store']]);
+        $this->middleware('permission:company-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:company-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -90,12 +97,10 @@ class CompanyController extends Controller
             $icon = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images/company'), $icon);
         }
-        $type= ["Company"];
 
         $user = User::create([
             'name' => $request->name_user,
             'email' => $request->email,
-            'type' =>json_encode($type) ,
             'password' => Hash::make($request->password),
             'phone_number' => $request->phone_user
         ]);

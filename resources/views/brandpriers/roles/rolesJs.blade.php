@@ -8,7 +8,8 @@
 
 
             //{"width": "160px", "targets": 7},
-            {"width": "50px", "targets": 4},
+            {"width": "50px", "targets": 2},
+            {"width": "50px", "targets": 0},
         ],
         processing: true,
         serverSide: true,
@@ -29,17 +30,10 @@
             {'extend': 'print'},
             {'extend': 'pdf'}
         ],
-        ajax: "{{ route('usersDatable', app()->getLocale()) }}",
+        ajax: "{{ route('rolesDatable', app()->getLocale()) }}",
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
-            {data: 'email', title: 'Email'},
-            {
-                data: 'id', title: 'Type', "mRender": function (data, type, row) {
-
-                    return' <label class="badge badge-success">' +   row.type + '</label>';
-                }
-            },
 
             /*{
                 title: 'logo', "mRender": function (data, type, row) {
@@ -76,8 +70,8 @@
              },*/
             {
                 data: 'id',title: 'Actions', "mRender": function (data, type, row) {
-                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-user-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
-                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-School-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
+                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
+                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
                     return edit + remove;
                     /*var show = '<button data-toggle="modal" data-target="#productModal" class="btn btn-success  showM" id="' + row.id + '"><i class="fa fa-eye"></i></button >';
                      return show;*/
@@ -90,11 +84,11 @@
     $('#addUser').on('click', function () {
 
         $.ajax({
-            url: '{{ route('users.create', app()->getLocale()) }}',
+            url: '{{ route('roles.create', app()->getLocale()) }}',
             method: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Add User');
+                $('.modal-title').text('Add Role');
                 $('#modal').modal('show');
 
                 $('#userForm').submit(function (e) {
@@ -140,17 +134,17 @@
             }
         });
     });
-    $(document).on('click', '.edit-user-btn', function () {
+
+    $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({
-            url: '/{{app()->getLocale()}}/users/' + id + '/edit',
+            url: '/{{app()->getLocale()}}/roles/' + id + '/edit',
             type: 'get',
             success: function (data) {
                 $('.modal-body').html(data);
-                $('.modal-title').text('Edit User');
+                $('.modal-title').text('Edit Role');
                 $('#modal').modal('show');
-
-                $('#userForm').submit(function (e) {
+                $('#Form').submit(function (e) {
                     e.preventDefault();
                     var form = $(this);
                     var url = form.attr('action');
@@ -184,8 +178,8 @@
                                     timer: 1500
                                 });
 
-                                table.ajax.reload();
                                 $('#modal').modal('hide');
+                                location.reload(true);
                             }
                         }
                     });
@@ -193,6 +187,41 @@
                 });
             }
         });
+    });
+
+
+    $(document).on('click', '.remove-btn', function () {
+
+        var id = $(this).attr('id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url: '/{{(app()->getLocale())}}/roles/' + id,
+                    method: 'delete',
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Your Role has been removed',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        table.ajax.reload();
+                    }
+                });
+            }
+        });
+
     });
 
 </script>

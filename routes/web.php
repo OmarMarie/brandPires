@@ -101,6 +101,8 @@ Route::group([
         Route::resource('countries', 'CountryController');
         Route::get('countriesDatable', 'CountryController@countriesDatable')->name('countriesDatable');
 
+        Route::resource('roles', 'RoleController');
+        Route::get('rolesDatable', 'RoleController@rolesDatable')->name('rolesDatable');
 
        /*********************************************************logs********************************************/
         Route::resource('bubblesProcesses', 'BubblesProcessesController')->except(['show', 'create','store','update','edit','destroy']);

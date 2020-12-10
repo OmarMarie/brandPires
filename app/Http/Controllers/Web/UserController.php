@@ -26,7 +26,6 @@ class UserController extends Controller
     public function usersDatable(Request $request)
     {
 
-
         if ($request->ajax()) {
             $data = User::latest()->get();
 
@@ -77,11 +76,11 @@ class UserController extends Controller
 
         $password = mt_rand(100000, 999999);
 
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($password),
-            'type' => $request->input('roles'),
             'phone_number' => $request->phone
         ]);
 
@@ -111,6 +110,8 @@ class UserController extends Controller
     public function edit( $requst, User $user)
     {
         $roles = Role::pluck('name','name')->all();
+        $roles = collect($roles);
+        $roles =$roles->except(['Company']);
         $userRole = $user->roles->pluck('name','name')->all();
         return view('brandpriers.users.create', compact('user','roles', 'userRole'));
     }
@@ -138,7 +139,6 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'type' => $request->input('roles'),
             'phone_number' => $request->phone
         ]);
 

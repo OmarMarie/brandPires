@@ -43,19 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
- /*   public function roles()
-    {
-        return $this->belongsToMany('Spatie\Permission\Models\Role');
-    }*/
 
-   /* public function hasRole($role)
-    {
-        $roles = $this->roles()->where('name', $role)->count();
-        if ($roles == 1) {
-            return true;
-        }
-        return false;
-    }*/
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);
