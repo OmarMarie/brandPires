@@ -20,7 +20,8 @@
         "pragmarx/countries": "^0.7.2",
         "spatie/laravel-permission": "^3.18",
         "stevebauman/location": "^5.2",
-        "yajra/laravel-datatables-oracle": "^9.10"
+        "yajra/laravel-datatables-oracle": "^9.10",
+        "ext-curl": "*"
     },
     "require-dev": {
         "dipeshsukhia/laravel-country-state-city-data": "^1.0",

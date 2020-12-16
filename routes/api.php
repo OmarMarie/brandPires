@@ -16,6 +16,7 @@ Route::group([
     Route::post('reset', 'AuthController@reset');
     Route::post('verify', 'AuthController@verify');
     Route::post('validatePhone', 'AuthController@validateNumber');
+    Route::post('requestVerificationCodeSignUp', 'AuthController@requestVerificationCodeSignUp');
     Route::post('requestVerificationCode', 'AuthController@requestVerificationCode');
     Route::post('validatePhone', 'AuthController@validatePhone');
     Route::post('validateEmail', 'AuthController@validateEmail');

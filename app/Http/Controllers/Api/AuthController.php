@@ -42,17 +42,11 @@ class AuthController extends Controller
      */
     public function signUp(Request $request)
     {
-        $this->checkLang($request);
+
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'username' => 'required|string|unique:players',
-            'email' => 'required|string|email|unique:players',
-            'phone_number' => 'required|unique:players',
-            'birth_day' => 'required',
-            'gender' => 'required|integer|in:1,2',
-            'password' => 'required|string|confirmed|min:8|max:20'
+            'phone_number' => 'required',
         ]);
+
         if ($validator->fails()) {
             $errors = collect([]);
             foreach ($validator->messages()->all() as $item) {
@@ -60,39 +54,72 @@ class AuthController extends Controller
             }
             return $this->apiResponse(null, $errors, 422, 0);
         }
+        $this->checkLang($request);
+        $player = Player::Where('phone_number', $request->phone_number)->Where('is_verified', 1)->first();
 
-        $player = new Player([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'gender' => $request->gender,
-            'birth_day' => $request->birth_day,
-            'img' => 'default.jpg',
-            'password' => Hash::make($request->password),
-            'level_id' => 1,
-        ]);
-        $player->save();
+        if ($player != null) {
+            $validator = Validator::make($request->all(), [
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'username' => 'required|string|unique:players',
+                'email' => 'required|string|email|unique:players',
+                'birth_day' => 'required',
+                'gender' => 'required|integer|in:1,2',
+                'password' => 'required|string|confirmed|min:8|max:20'
+            ]);
 
-        PlayerTankAction::create([
-            'tank_id' => 1,
-            'player_id' => $player->id,
-            'action' => 0,
-            'status' => 1,
-            'tank_pts' => 0
-        ]);
-        switch ($request->header('lang')) {
-            case 'en':
-                $message = 'Registered successfully';
-                break;
-            case 'ar':
-                $message = 'تم تسجيل بنجاح';
-                break;
-            default:
-                $message = 'Registered successfully';
-                break;
+            if ($validator->fails()) {
+                $errors = collect([]);
+                foreach ($validator->messages()->all() as $item) {
+                    $errors->push($item);
+                }
+                return $this->apiResponse(null, $errors, 422, 0);
+            }
+            $player->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'gender' => $request->gender,
+                'birth_day' => $request->birth_day,
+                'img' => 'default.jpg',
+                'password' => Hash::make($request->password),
+                'level_id' => 1,
+            ]);
+            $player->save();
+            PlayerTankAction::create([
+                'tank_id' => 1,
+                'player_id' => $player->id,
+                'action' => 0,
+                'status' => 1,
+                'tank_pts' => 0
+            ]);
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Registered successfully';
+                    break;
+                case 'ar':
+                    $message = 'تم تسجيل بنجاح';
+                    break;
+                default:
+                    $message = 'Registered successfully';
+                    break;
+            }
+        } else {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Inactive phone number';
+                    break;
+                case 'ar':
+                    $message = '  رقم الهاتف  غير فعال ';
+                    break;
+                default:
+                    $message = 'Inactive phone number';
+                    break;
+            }
         }
+
 
         return $this->apiResponse(null, $message, 201, 1);
     }
@@ -129,13 +156,13 @@ class AuthController extends Controller
 
         if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
             //user sent their email
-            $credentials = ['email' => $input, 'password' => $password];
+            $credentials = ['email' => $input, 'password' => $password, 'status' => 1];
         } elseif (is_numeric($input)) {
 
-            $credentials = ['phone_number' => $input, 'password' => $password];
+            $credentials = ['phone_number' => $input, 'password' => $password, 'status' => 1];
         } else {
             //they sent their username instead
-            $credentials = ['username' => $input, 'password' => $password];
+            $credentials = ['username' => $input, 'password' => $password, 'status' => 1];
         }
 
 
@@ -407,9 +434,63 @@ class AuthController extends Controller
                     break;
             }
         }
+        return $this->apiResponse(null, $message, 200, 1);
+    }
 
+    public function requestVerificationCodeSignUp(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'required|unique:players',
+        ]);
 
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
 
+        $player = new Player([
+            'phone_number' => $request->phone_number,
+        ]);
+        $player->save();
+
+        if ($player) {
+            $verificationCode = rand(1000, 9999);
+            $request->phone_number = '962' . ltrim($request->phone_number, 0);
+
+            $this->sms('The Verification code is ' . $verificationCode, $request->phone_number);
+
+            $player->update([
+                'verification_code' => $verificationCode
+            ]);
+
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Verification code send successfully';
+                    break;
+                case 'ar':
+                    $message = 'تم إرسال رمز التحقق بنجاح';
+                    break;
+                default:
+                    $message = 'Verification code send successfully';
+                    break;
+            }
+        } else {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Please verify the phone number';
+                    break;
+                case 'ar':
+                    $message = 'الرجاء التأكد من رقم الهاتف ';
+                    break;
+                default:
+                    $message = 'Please verify the phone number';
+                    break;
+            }
+        }
 
 
         return $this->apiResponse(null, $message, 200, 1);
@@ -480,9 +561,10 @@ class AuthController extends Controller
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
-        $player = Player::where('phone', $request->phone)->where('verification_code', $request->code)->first();
+        $player = Player::where('phone_number', $request->phone)->where('verification_code', $request->code)->first();
+
         if ($player) {
-            if ($request->verification_code == $player->verification_code) {
+            if ($request->code == $player->verification_code) {
                 $player->update([
                     'is_verified' => 1
                 ]);

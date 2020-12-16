@@ -11,6 +11,7 @@ use App\Models\CampaignBulks;
 use App\Models\CompanyPackageLogs;
 use App\Models\Employee;
 use App\Models\Package;
+use App\Models\PlayerBubbles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -43,12 +44,26 @@ class CampaignController extends Controller
                 ->editColumn('available', function ($data) {
                     return $data->available == 0 ? 'False' : 'True';
                 })
-                ->editColumn('employee_id', function ($data) {
-                    $employee = Employee::where('id', $data->employee_id)->value('name');
-                    if ($employee != null)
-                        return $employee;
+                ->addColumn('number_bubbles', function ($data) {
+                    $campaignBulk = CampaignBulks::where('campaign_id',$data->id)->pluck('bulk_id');
+                    $number_bubbles = null;
+                    $sum_number_bubbles = 0;
+                    if (count($campaignBulk) > 0) {
+                        foreach ($campaignBulk as $item) {
+                            $number_bubbles = Bulks::where('id', $item)->first('number_of_bubbles');
+                            $sum_number_bubbles += $number_bubbles->number_of_bubbles;
+                        }
+                        return $sum_number_bubbles;
+                    } else
+                        return 0;
+                })
+                ->addColumn('number_bubbles_hooked', function ($data) {
+                    $bubbles = Bubbles::where('campaign_id',$data->id)->pluck('id');
+                    $number_bubbles_hooked = PlayerBubbles::whereIn('bubble_id',$bubbles)->count();
+                    if ($number_bubbles_hooked != null)
+                        return $number_bubbles_hooked;
                     else
-                        return 'Not Found';
+                        return 0;
                 })
                 ->editColumn('from_time', function ($data) {
                     return Carbon::parse($data->from_time)->format('g:i A');
@@ -175,15 +190,12 @@ class CampaignController extends Controller
     {
         $validations = Validator::make($request->all(), [
             'name' => 'required',
-            'mark_pts' => 'required',
-            'gifts_numbers' => 'required',
             'from_time' => 'required',
             'to_time' => 'required',
-            'date' => 'required',
-            'employee_id' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'bulk_id' => 'required',
             'available' => 'required',
-            'speed' => 'required',
             'lat' => 'required',
             'lng' => 'required',
         ]);

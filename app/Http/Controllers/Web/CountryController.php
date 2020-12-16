@@ -17,9 +17,8 @@ class CountryController extends Controller
     public function index()
     {
         $data = Country::get();
-        foreach ( $data as $datum)
-        {
-            $journalName= $datum->flag;
+        foreach ($data as $datum) {
+            $journalName = $datum->flag;
             $journalName = str_replace('_', '-', $journalName);
             $datum->update([
                 'flag' => $journalName,
@@ -31,9 +30,8 @@ class CountryController extends Controller
 
     public function countriesDatable(Request $request)
     {
-
         if ($request->ajax()) {
-            $data = Country::get();
+            $data = Country::orderByDesc('status')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('status', function ($data) {
@@ -51,13 +49,13 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,7 +66,7 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +77,7 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,8 +88,8 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -102,11 +100,27 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
+
+    public function statusChange($local, $id)
+    {
+        $country = Country::where('id', $id)->first();
+        if ($country->status == 0) {
+            $country->update([
+                'status' => 1,
+            ]);
+        } else {
+            $country->update([
+                'status' => 0,
+            ]);
+        }
+
+    }
+
 }

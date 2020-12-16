@@ -42,6 +42,12 @@
 
                 }
             },
+            {
+                data: 'id', title: 'Count Bubbles', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold">'  + row.number_bubbles + ' </span>'
+
+                }
+            },
 
             {data: 'id',title: 'Services', "mRender": function (data, type, row) {
                     var campaigns = '<a href="/{{app()->getLocale()}}/campaigns/' + $('#brand_id').val() +'/'+ row.id + '"  class="btn btn-sm btn-clean btn-icon action-btn" id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Campaigns"><i class="fas fa-volleyball-ball"></i></a>'
@@ -62,7 +68,13 @@
             },
             {data: 'id',title: 'Actions', "mRender": function (data, type, row) {
                     var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
-                    return   remove;
+                    if ( row.expiry != 'True')
+                    {
+                        return   remove;
+                    }else
+                    {
+                        return   null;
+                    }
 
                 }
             }

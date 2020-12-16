@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Web;
 
 
 use App\Models\Brand;
+use App\Models\Bulks;
 use App\Models\Campaign;
+use App\Models\CampaignBulks;
 use App\Models\CompanyPackageLogs;
 use App\Models\Package;
 use Illuminate\Http\Request;
@@ -22,6 +24,7 @@ class CompanyPackagesController extends Controller
         return view('brandpriers.brandPackages.index', compact('brand_id', 'brandName'));
     }
 
+
     public function companyPackagesDatable(Request $request)
     {
         if ($request->ajax()) {
@@ -35,6 +38,20 @@ class CompanyPackagesController extends Controller
                     } else {
                         return '';
                     }
+                })
+                ->addColumn('number_bubbles', function ($data) {
+                    $company_package = Campaign::Where('brand_id', $data->brand_id)->Where('package_logs_id', $data->id)->pluck('id');
+                    $campaignBulk = CampaignBulks::whereIn('campaign_id', $company_package)->pluck('bulk_id');
+                    $number_bubbles = null;
+                    $sum_number_bubbles = 0;
+                    if (count($campaignBulk) > 0) {
+                        foreach ($campaignBulk as $item) {
+                            $number_bubbles = Bulks::where('id', $item)->first('number_of_bubbles');
+                            $sum_number_bubbles += $number_bubbles->number_of_bubbles;
+                        }
+                        return $sum_number_bubbles;
+                    } else
+                        return 0;
                 })
                 ->addColumn('expiry_date', function ($data) {
                     $first_campaign = Campaign::Where('package_logs_id', $data->id)
@@ -52,17 +69,15 @@ class CompanyPackagesController extends Controller
                     $first_campaign = Campaign::Where('package_logs_id', $data->id)
                         ->orderBy('start_date', 'ASC')
                         ->first(['start_date']);
-
                     if ($first_campaign != null) {
                         $company_expiry = Package::Where('id', $data->package_id)->value('bubble_expiry');
                         $expiry_date = Carbon::parse($first_campaign->start_date)->addDays($company_expiry);
-                        if($expiry_date <= now())
-                        return 'True';
+                        if ($expiry_date <= now())
+                            return 'True';
                         else
                             return 'False';
                     }
                 })
-
                 ->addColumn('package', function ($data) {
                     $company_package = Package::where('id', $data->package_id)->first();
                     if ($company_package != null) {

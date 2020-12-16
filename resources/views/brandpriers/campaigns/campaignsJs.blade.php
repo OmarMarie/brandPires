@@ -4,7 +4,7 @@
     var table = $('.data-table').DataTable({
         dom: 'Bfrtip',
         "columnDefs": [
-            {"width": "50px", "targets": 7},
+            {"width": "50px", "targets": 8},
         ],
         processing: true,
         responsive: true,
@@ -39,7 +39,18 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {data: 'name', title: 'Name'},
-            {data: 'employee_id', title: 'Employee'},
+            {
+                data: 'id', title: 'Count Bubbles', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold">'  + row.number_bubbles + ' </span>'
+
+                }
+            },
+            {
+                data: 'id', title: 'Count Bubbles Hooked', "mRender": function (data, type, row) {
+                    return '<span class="font-weight-bold">' + row.number_bubbles_hooked + ' </span>'
+
+                }
+            },
             {
                 data: 'id', title: 'Date', "mRender": function (data, type, row) {
                     return '<span class="font-weight-bold text-success">' + row.start_date + ' - ' + row.end_date + ' </span>'
@@ -49,14 +60,14 @@
 
             {
                 data: 'id', title: 'Time', "mRender": function (data, type, row) {
-                    return '<span class="font-weight-bold text-success">' + row.from_time + ' - ' + row.to_time + ' </span>'
+                    return '<span class="font-weight-bold text-info">' + row.from_time + ' - ' + row.to_time + ' </span>'
 
                 }
             },
 
 
             {
-                data: 'status', title: 'Status', "mRender": function (data, type, row) {
+                data: 'id', title: 'Status', "mRender": function (data, type, row) {
                     if (row.available == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.available + '</span>'
                     } else if (row.available == 'True') {
@@ -84,7 +95,6 @@
 
 
     });
-
 
     $('#add').on('click', function () {
         var brand_id = $('#brand_id').val()
@@ -162,7 +172,6 @@
             }
         });
     });
-
     $(document).on('click', '.edit-btn', function () {
         var id = $(this).attr('id');
         $.ajax({

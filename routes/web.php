@@ -100,6 +100,7 @@ Route::group([
 
         Route::resource('countries', 'CountryController');
         Route::get('countriesDatable', 'CountryController@countriesDatable')->name('countriesDatable');
+        Route::get('country/status/{id?}', 'CountryController@statusChange')->name('statusChange');
 
         Route::resource('roles', 'RoleController');
         Route::get('rolesDatable', 'RoleController@rolesDatable')->name('rolesDatable');

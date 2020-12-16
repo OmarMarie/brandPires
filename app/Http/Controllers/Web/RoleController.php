@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = Role::latest()->get();
+            $data = Role::get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->make(true);

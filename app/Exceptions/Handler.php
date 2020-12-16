@@ -58,6 +58,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException && !($request->wantsJson())) {
+            return response()->view('error.403', [], 403);
+        }
+
+        if ($exception instanceof NotFoundHttpException && !($request->wantsJson())) {
+            return response()->view('error.404', [], 404);
+        }
+
         if ($exception instanceof AuthenticationException && $request->wantsJson()) {
             return $this->apiResponse(null, 'Unauthenticated, you must be logged in to do this action', 401, 0);
         }
@@ -76,11 +84,9 @@ class Handler extends ExceptionHandler
 
         if (Config::get('app.debug')) {
             return parent::render($request, $exception);
-        }else
-        {
+        } else {
             return $this->apiResponse(null, 'Unexpected Exception. Try later', 500, 0);
         }
-
 
 
     }

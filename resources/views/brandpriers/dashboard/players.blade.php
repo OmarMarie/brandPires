@@ -1,4 +1,4 @@
-<div class="row animate__animated animate__fadeInLeftBig animate__slow " style="font-size: 16px;">
+<div class="row animate__animated animate__fadeInDown  " style="font-size: 16px;">
     <div class="col-md-4 form-group">
         <div class="shadow rounded sub_titel" style="background:whitesmoke; font-weight:normal; color: #000">
             <i class="fas fa-users icon-sm" style="color: #15aabf; padding: 0px 5px"></i> Totale :

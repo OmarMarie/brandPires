@@ -29,7 +29,7 @@
         columns: [
             {data: 'DT_RowIndex', title: 'ID'},
             {
-                title: 'Flag', "mRender": function (data, type, row) {
+                data: 'id', title: 'Flag', "mRender": function (data, type, row) {
                     var imgeUrl = '/flags';
                     return '<img src="' + imgeUrl + '/' + row.flag + '" class="avatar" width="50" height="50"/>';
 
@@ -46,9 +46,9 @@
             {
                 data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
+                        return '<span class="btn btn-light-danger font-weight-bolder btn-sm status_change " id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Status Change">' + row.status +  ' </span>'
                     } else if (row.status == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.status + '</span>'
+                        return '<span class="btn btn-light-success font-weight-bolder btn-sm status_change "  id="' + row.id + ' " data-toggle="tooltip" data-placement="bottom" title="Status Change">' + row.status + '</span>'
                     }
                 }
             },
@@ -65,116 +65,8 @@
 
 
     });
-    $('#add').on('click', function () {
 
-        $.ajax({
-            url: '{{ route('brands.create', app()->getLocale()) }}',
-            method: 'get',
-            success: function (data) {
-                $('.modal-body').html(data);
-                $('.modal-title').text('Add Brand');
-                $('#modal').modal('show');
-
-                $('#userForm').submit(function (e) {
-                    e.preventDefault();
-                    var form = $(this);
-                    var url = form.attr('action');
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: new FormData(this),
-                        dataType: "json",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function (data) {
-
-                            if (data.status === 422) {
-                                var error_html = '';
-
-                                for (let value of Object.values(data.errors)) {
-                                    error_html += '<div class="alert alert-danger">' + value + '</div>';
-                                }
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    html: error_html,
-                                })
-                            } else {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: data.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                table.ajax.reload();
-                                $('#modal').modal('hide');
-
-                            }
-                        }
-                    });
-
-                });
-            }
-        });
-    });
-
-    $(document).on('click', '.edit-btn', function () {
-        var id = $(this).attr('id');
-        $.ajax({
-            url: '/{{app()->getLocale()}}/brands/' + id + '/edit',
-            type: 'get',
-            success: function (data) {
-                $('.modal-body').html(data);
-                $('.modal-title').text('Edit Brand');
-                $('#modal').modal('show');
-
-                $('#userForm').submit(function (e) {
-                    e.preventDefault();
-                    var form = $(this);
-                    var url = form.attr('action');
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: new FormData(this),
-                        dataType: "json",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function (data) {
-
-                            if (data.status === 422) {
-                                console.log(data);
-                                var error_html = '';
-
-                                for (let value of Object.values(data.errors)) {
-                                    error_html += '<div class="alert alert-danger">' + value + '</div>';
-                                }
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    html: error_html,
-                                })
-                            } else {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: data.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-
-                                table.ajax.reload();
-                                $('#modal').modal('hide');
-                            }
-                        }
-                    });
-
-                });
-            }
-        });
-    });
-    $(document).on('click', '.remove-btn', function () {
-
+    $(document).on('click', '.status_change', function () {
         var id = $(this).attr('id');
         Swal.fire({
             title: 'Are you sure?',
@@ -183,15 +75,15 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, Status change it!'
         }).then(function (result) {
             if (result.value) {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    url: '/{{(app()->getLocale())}}/brands/' + id,
-                    method: 'delete',
+                    url: '/{{(app()->getLocale())}}/country/status/' + id,
+                    method: 'get',
                     success: function (data) {
                         Swal.fire({
                             icon: 'success',

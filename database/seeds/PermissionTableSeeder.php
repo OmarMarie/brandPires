@@ -14,6 +14,8 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        $role = Role::create(['name' => 'Company']);
+
        /* $permissions = [
             'admin',
             'role-list',
@@ -30,13 +32,13 @@ class PermissionTableSeeder extends Seeder
             Permission::create(['name' => $permission]);
         }
 
-        /*$role = Role::create(['name' => 'Financial Employee']);*/
+        $role = Role::create(['name' => 'Financial Employee']);
 
        // $permissions = Permission::pluck('id','id')->all();
 
         /*$role->syncPermissions($permissions);*/
 
-        $user = User::Where('name','admin')->first();
+       // $user = User::Where('name','admin')->first();
 
        /* $role = Role::create(['name' => 'Admin']);
 
@@ -44,6 +46,6 @@ class PermissionTableSeeder extends Seeder
 
         $role->syncPermissions($permissions);*/
 
-        $user->assignRole([1]);
+       // $user->assignRole([1]);
     }
 }

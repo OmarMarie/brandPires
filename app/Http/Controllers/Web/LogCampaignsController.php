@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\BrandCampaign;
 use App\Models\Campaign;
 use App\Models\CompanyPackageLogs;
+use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -31,6 +32,14 @@ class LogCampaignsController extends Controller
                 ->addIndexColumn()
                 ->editColumn('brand_id', function ($data) {
                     $Name = Brand::where('id', $data->brand_id)->value('brand_name');
+                    if ($Name == null)
+                        return null;
+                    else
+                        return $Name;
+
+                })
+                ->editColumn('added_by', function ($data) {
+                    $Name = User::where('id', $data->added_by)->value('name');
                     if ($Name == null)
                         return null;
                     else

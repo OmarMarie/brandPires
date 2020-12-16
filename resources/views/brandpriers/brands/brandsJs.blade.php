@@ -41,7 +41,7 @@
                 }
 
             },
-            {data: 'id',data: 'status', title: 'Status', "mRender": function (data, type, row) {
+            {data: 'status', title: 'Status', "mRender": function (data, type, row) {
                     if (row.status == 'False') {
                         return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
                     } else if (row.status == 'True') {
