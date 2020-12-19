@@ -16,6 +16,7 @@ class TankController extends Controller
 
     public function tanks(Request $request)
     {
+
         $this->checkLang($request);
         $playerId = $request->user()->id;
         $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $playerId)->first();
