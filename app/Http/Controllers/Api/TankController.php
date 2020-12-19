@@ -17,19 +17,9 @@ class TankController extends Controller
     public function tanks(Request $request)
     {
         $this->checkLang($request);
-        $validator = Validator::make($request->all(), [
-            'tank_id' => 'required|integer',
-        ]);
-
-        if ($validator->fails()) {
-            $errors = collect([]);
-            foreach ($validator->messages()->all() as $item) {
-                $errors->push($item);
-            }
-            return $this->apiResponse(null, $errors, 422, 0);
-        }
-        $tanks = Tanks::where('id', '>=', $request->tank_id)->get();
-
+        $playerId = $request->user()->id;
+        $tankDetails = PlayerTankAction::with('tanks')->where('player_id', $playerId)->first();
+        $tanks = Tanks::where('id', '>=', $tankDetails->tank_id)->get();
         if (count($tanks) > 0) {
             foreach ($tanks as $tank)
             {
