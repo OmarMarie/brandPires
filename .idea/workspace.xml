@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="442" column="53" lean-forward="true" selection-start-line="442" selection-start-column="53" selection-end-line="442" selection-end-column="53" />
+            <state relative-caret-position="261">
+              <caret line="623" column="5" lean-forward="true" selection-start-line="623" selection-start-column="5" selection-end-line="623" selection-end-column="5" />
               <folding>
                 <element signature="e#44#84#0#PHP" expanded="true" />
                 <element signature="e#1165#4182#0#PHP" />
@@ -36,6 +36,7 @@
                 <element signature="e#12605#13162#0#PHP" />
                 <element signature="e#13168#13728#0#PHP" />
                 <element signature="e#13734#15537#0#PHP" />
+                <element signature="e#15539#17687#0#PHP" />
                 <element signature="e#17447#19232#0#PHP" />
                 <element signature="e#19238#20987#0#PHP" />
                 <element signature="e#20993#21281#0#PHP" />
@@ -50,7 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info</find>
       <find>datepicker</find>
       <find>demo1/dist/assets/media/svg/misc/006-plurk.svg</find>
       <find>COU</find>
@@ -79,6 +79,7 @@
       <find>co</find>
       <find>font-size-h3</find>
       <find>requestVerificationCode</find>
+      <find>|max:12</find>
       <find>'phone_number' =&gt; 'required</find>
     </findStrings>
     <replaceStrings>
@@ -463,12 +464,12 @@
       <workItem from="1608457328251" duration="998000" />
       <workItem from="1608653804307" duration="1900000" />
       <workItem from="1608729690402" duration="284000" />
-      <workItem from="1608729999537" duration="2130000" />
+      <workItem from="1608729999537" duration="2666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347865000" />
+    <option name="totallyTimeSpent" value="348401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="983" extended-state="6" />
@@ -877,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="442" column="53" lean-forward="true" selection-start-line="442" selection-start-column="53" selection-end-line="442" selection-end-column="53" />
+        <state relative-caret-position="261">
+          <caret line="623" column="5" lean-forward="true" selection-start-line="623" selection-start-column="5" selection-end-line="623" selection-end-column="5" />
           <folding>
             <element signature="e#44#84#0#PHP" expanded="true" />
             <element signature="e#1165#4182#0#PHP" />
@@ -890,6 +891,7 @@
             <element signature="e#12605#13162#0#PHP" />
             <element signature="e#13168#13728#0#PHP" />
             <element signature="e#13734#15537#0#PHP" />
+            <element signature="e#15539#17687#0#PHP" />
             <element signature="e#17447#19232#0#PHP" />
             <element signature="e#19238#20987#0#PHP" />
             <element signature="e#20993#21281#0#PHP" />

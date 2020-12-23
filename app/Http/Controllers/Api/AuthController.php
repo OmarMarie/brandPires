@@ -44,7 +44,7 @@ class AuthController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'phone_number' => 'required|numeric|min:10|max:12',
+            'phone_number' => 'required|numeric|min:10',
         ]);
 
         if ($validator->fails()) {
@@ -330,7 +330,7 @@ class AuthController extends Controller
     {
         $this->checkLang($request);
         $validator = Validator::make($request->all(), [
-            'phone_number' => 'required|numeric|unique:players|min:10|max:12',
+            'phone_number' => 'required|numeric|unique:players|min:10',
 
         ]);
         if ($validator->fails()) {
@@ -440,7 +440,7 @@ class AuthController extends Controller
     {
         $this->checkLang($request);
         $validator = Validator::make($request->all(), [
-            'phone_number' => 'required|numeric|min:10|max:12',
+            'phone_number' => 'required|numeric|min:10',
         ]);
 
         if ($validator->fails()) {
