@@ -398,70 +398,12 @@ class AuthController extends Controller
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
-        $player=Player::where('phone_number',$request->phone)->first();
+        $player = Player::where('phone_number', $request->phone)->first();
         if ($player) {
 
             $verificationCode = rand(1000, 9999);
             $request->phone = '962' . ltrim($request->phone, 0);
             $this->sms('The Verification code is ' . $verificationCode, $request->phone);
-
-            $player->update([
-                'verification_code' => $verificationCode
-            ]);
-
-            switch ($request->header('lang')) {
-                case 'en':
-                    $message = 'Verification code send successfully';
-                    break;
-                case 'ar':
-                    $message = 'تم إرسال رمز التحقق بنجاح';
-                    break;
-                default:
-                    $message = 'Verification code send successfully';
-                    break;
-            }
-        }else
-        {
-            switch ($request->header('lang')) {
-                case 'en':
-                    $message = 'Please verify the phone number';
-                    break;
-                case 'ar':
-                    $message = 'الرجاء التأكد من رقم الهاتف ';
-                    break;
-                default:
-                    $message = 'Please verify the phone number';
-                    break;
-            }
-        }
-        return $this->apiResponse(null, $message, 200, 1);
-    }
-
-    public function requestVerificationCodeSignUp(Request $request)
-    {
-        $this->checkLang($request);
-        $validator = Validator::make($request->all(), [
-            'phone_number' => 'required|unique:players',
-        ]);
-
-        if ($validator->fails()) {
-            $errors = collect([]);
-            foreach ($validator->messages()->all() as $item) {
-                $errors->push($item);
-            }
-            return $this->apiResponse(null, $errors, 422, 0);
-        }
-
-        $player = new Player([
-            'phone_number' => $request->phone_number,
-        ]);
-        $player->save();
-
-        if ($player) {
-            $verificationCode = rand(1000, 9999);
-            $request->phone_number = '962' . ltrim($request->phone_number, 0);
-
-            $this->sms('The Verification code is ' . $verificationCode, $request->phone_number);
 
             $player->update([
                 'verification_code' => $verificationCode
@@ -488,6 +430,91 @@ class AuthController extends Controller
                     break;
                 default:
                     $message = 'Please verify the phone number';
+                    break;
+            }
+        }
+        return $this->apiResponse(null, $message, 200, 1);
+    }
+
+    public function requestVerificationCodeSignUp(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'required|numeric|min:10|max:12',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $playerValidate = Player::where('phone_number', $request->phone_number)->first();
+
+        if ($playerValidate != null) {
+            if ($playerValidate->email == null) {
+                $verificationCode = rand(1000, 9999);
+                $request->phone_number = '962' . ltrim($request->phone_number, 0);
+
+                $this->sms('The Verification code is ' . $verificationCode, $request->phone_number);
+
+                $playerValidate->update([
+                    'verification_code' => $verificationCode
+                ]);
+
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Verification code send successfully';
+                        break;
+                    case 'ar':
+                        $message = 'تم إرسال رمز التحقق بنجاح';
+                        break;
+                    default:
+                        $message = 'Verification code send successfully';
+                        break;
+                }
+
+            } else {
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'User is already registered';
+                        break;
+                    case 'ar':
+                        $message = 'المستخدم مسجل مسبقا';
+                        break;
+                    default:
+                        $message = 'User is already registered';
+                        break;
+                }
+            }
+
+        }
+        else {
+            $player = new Player([
+                'phone_number' => $request->phone_number,
+            ]);
+            $player->save();
+
+            $verificationCode = rand(1000, 9999);
+            $request->phone_number = '962' . ltrim($request->phone_number, 0);
+
+            $this->sms('The Verification code is ' . $verificationCode, $request->phone_number);
+
+            $player->update([
+                'verification_code' => $verificationCode
+            ]);
+
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Verification code send successfully';
+                    break;
+                case 'ar':
+                    $message = 'تم إرسال رمز التحقق بنجاح';
+                    break;
+                default:
+                    $message = 'Verification code send successfully';
                     break;
             }
         }
