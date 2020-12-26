@@ -197,10 +197,34 @@ svg {
 table {
     border-collapse: collapse
 }
+.menu-item
+{
+    color: #000 !important;
+}
 .left-icon-menu{
     padding-right: 15px;
     margin-top: 5px;
-    color: #3699ff;
+    color: #000;
+    font-weight: 900;
+}
+.menu-item:hover .left-icon-menu
+{
+    color:red !important;
+}
+
+.menu-item-active .left-icon-menu
+{
+    color:red !important;
+}
+.menu-item-active::before {
+    content: "";
+    width: 5px;
+    height: 34px;
+    position: absolute;
+    z-index: 1;
+    bottom: 6px;
+    background: red;
+    border-radius: 0px 10px 10px 0px;
 }
 
 caption {
@@ -4777,7 +4801,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     position: relative;
     z-index: 2;
     width: 100%;
-    height: calc(1.5em + 1.3rem + 2px);
+    height: calc(1.5em + 1.3rem + 10px);
     margin: 0;
     opacity: 0
 }
@@ -4793,7 +4817,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .custom-file-input:lang(en) ~ .custom-file-label::after {
-    content: "Browse"
+    content: "\f0c6"
 }
 
 .custom-file-input ~ .custom-file-label[data-browse]::after {
@@ -4806,13 +4830,13 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     right: 0;
     left: 0;
     z-index: 1;
-    height: calc(1.5em + 1.3rem + 2px);
-    padding: .65rem 1rem;
+    height: calc(2em + 1.3rem + 10px);
+    padding: 1.1rem 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #464e5f;
-    background-color: #fff;
-    border: 1px solid #e5eaee;
+    background-color: #f4f4f4;
+    border: 2px dashed #e5eaee;
     border-radius: .42rem;
     -webkit-box-shadow: none;
     box-shadow: none
@@ -4825,14 +4849,13 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     bottom: 0;
     z-index: 3;
     display: block;
-    height: calc(1.5em + 1.3rem);
-    padding: .65rem 1rem;
+    padding: .95rem 1rem;
     line-height: 1.5;
-    color: #464e5f;
-    content: "Browse";
-    background-color: #f3f6f9;
-    border-left: inherit;
-    border-radius: 0 .42rem .42rem 0
+    color: #747474;
+    font-size:20px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    background-color: #f4f4f4;
 }
 
 .custom-range {
@@ -82418,7 +82441,7 @@ body {
     }
 
     .header.header-fixed {
-        height: 65px;
+        height: 75px;
         position: fixed;
         top: 0;
         right: 0;
@@ -82427,7 +82450,8 @@ body {
     }
 
     .aside-enabled .header.header-fixed {
-        left: 265px
+        left: 0px;
+        background: #000;
     }
 
     .header-fixed.aside-minimize .header, .header-fixed.aside-minimize-hover .header {
@@ -84054,7 +84078,7 @@ body {
 
     .header-menu.header-menu-layout-tab .menu-nav > .menu-item.menu-item-active > .menu-link, .header-menu.header-menu-layout-tab .menu-nav > .menu-item.menu-item-here > .menu-link {
         background-color: transparent !important;
-        border-bottom: 1px solid #3699ff !important
+        border-bottom: 1px solid red !important
     }
 }
 
@@ -84176,7 +84200,7 @@ body {
 @media (min-width: 992px) {
     .aside-fixed .aside {
         position: fixed;
-        top: 0;
+        top: 75px;
         bottom: 0;
         left: 0;
         z-index: 98

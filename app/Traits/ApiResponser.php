@@ -15,7 +15,7 @@ trait ApiResponser
         $array = [
             'data' => $data,
             'error' => $status == 0?in_array($code,$this->successCode()) ? true : false:false,
-            'message' => $message,
+            'message' => [$message],
         ];
 
         return response($array,$code);

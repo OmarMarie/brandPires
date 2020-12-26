@@ -30,11 +30,11 @@
             method: 'get',
             success: function (data) {
                 var i;
-                var month =new Array();
-                var value =new Array();
+                var month = new Array();
+                var value = new Array();
                 for (i = 0; i < data.sales.length; ++i) {
-                    month[i]=data.sales[i].month
-                    value[i]=data.sales[i].value
+                    month[i] = data.sales[i].month
+                    value[i] = data.sales[i].value
                 }
                 var date = new Date();
                 var year = date.getFullYear();
@@ -49,7 +49,7 @@
                             borderColor: '#ffffff',
                             pointBackgroundColor: '#ffffff',
                             lineTension: '0.4',
-                            label: 'Sales - ' + year ,
+                            label: 'Sales - ' + year,
                             data: value,
 
                         }],
@@ -95,7 +95,7 @@
         Chart.defaults.global.responsive = true;
     }
 
-    prev_infowindow =false;
+    prev_infowindow = false;
     var campaigns_logs_map;
     map_campaigns_logs()
 
@@ -104,7 +104,193 @@
         campaigns_logs_map = new google.maps.Map(document.getElementById('map_campaigns_logs'), {
             zoom: 6,
             center: new google.maps.LatLng(24.079352, 48.0031405),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [
+                {
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#1a2537"
+                        }
+                    ]
+                },
+                {
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#757575"
+                        }
+                    ]
+                },
+                {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#212121"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#757575"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.country",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#9e9e9e"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.land_parcel",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.locality",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#bdbdbd"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#757575"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#181818"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#616161"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#1b1b1b"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#2c2c2c"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#8a8a8a"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#373737"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#3c3c3c"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#4e4e4e"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#616161"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#757575"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#3d3d3d"
+                        }
+                    ]
+                }
+            ],
         });
         var infowindow = new google.maps.InfoWindow();
         var marker, i;
@@ -116,25 +302,27 @@
                 icon: '{{asset('assets/media/logos/pin.png')}}'
             });
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                if( prev_infowindow ) {
+                if (prev_infowindow) {
                     prev_infowindow.close();
                     alert(1);
                 }
 
                 return function () {
                     $.ajax({
-                        url: '/{{(app()->getLocale())}}/map/' + locations[i][1] + '/'+locations[i][2] ,
+                        url: '/{{(app()->getLocale())}}/map/' + locations[i][1] + '/' + locations[i][2],
                         method: 'get',
                         success: function (data) {
-                             infowindow = new google.maps.InfoWindow({
-                                content:  data ,
+                            infowindow = new google.maps.InfoWindow({
+                                content: data,
                                 maxWidth: 1000,
-                                maxHeight:300,
+                                maxHeight: 300,
                             });
                             prev_infowindow = infowindow;
                         }
                     });
-                    setTimeout(function() { infowindow.open(campaigns_logs_map, marker) },200);
+                    setTimeout(function () {
+                        infowindow.open(campaigns_logs_map, marker)
+                    }, 200);
 
                 }
             })(marker, i));

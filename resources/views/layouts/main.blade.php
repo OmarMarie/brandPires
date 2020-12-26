@@ -32,7 +32,7 @@
     <!--begin::Layout Themes(used by all pages)-->
     <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/themes/layout/header/base/light7a4a.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('assets/css/themes/layout/aside/dark7a4a.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/themes/layout/aside/light7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle7a4a.css') }}" rel="stylesheet"
           type="text/css"/>
     <link href="{{ asset('assets/chart/dist/Chart.css') }}" rel="stylesheet" type="text/css"/>
@@ -88,7 +88,6 @@
 
         <!--begin::Content-->
             <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
-                @include('partials.subHeader')
                 @yield('content')
             </div>
             <!--end::Content-->
