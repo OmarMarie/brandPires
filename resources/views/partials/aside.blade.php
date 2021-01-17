@@ -109,7 +109,12 @@
                 @endcan
 
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='levels'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-level-up-alt left-icon-menu" style="margin-right: 5px;"></i>
                             <span class="menu-text">level's</span>
@@ -117,7 +122,12 @@
                     </li>
                 @endcan
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='tanks'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}} " aria-haspopup="true">
                         <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-hockey-puck left-icon-menu"></i>
                             <span class="menu-text">tank's </span>
@@ -125,19 +135,29 @@
                     </li>
                 @endcan
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='bulks'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('bulks.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-box left-icon-menu"></i>
                             <span class="menu-text">Bulk's</span>
                         </a>
                     </li>
                 @endcan
-                <li class="menu-section menu-item-active">
+                <li class="menu-section">
                     <h4 class="menu-text"> Manage Users</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='players'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-biking left-icon-menu"></i>
                             <span class="menu-text">Player's</span>
@@ -153,7 +173,12 @@
                        </li>
                   @endcan--}}
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='users'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('users.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-users left-icon-menu"></i>
                             <span class="menu-text">Users</span>
@@ -162,15 +187,24 @@
                 @endcan
 
                 @can('role-list')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='roles'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('roles.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fa fa-user-lock left-icon-menu"></i>
                             <span class="menu-text">Roles</span>
                         </a>
                     </li>
                 @endcan
-
-                <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"><a
+                    @if(((Request::segment(2))=='bubblesProcesses'|| (Request::segment(2))=='logUsers'||(Request::segment(2))=='logCampaigns'))
+                        <?php $menu_item_open = 'menu-item-open' ?>
+                    @else
+                        <?php $menu_item_open = null ?>
+                    @endif
+                <li class="menu-item  menu-item-submenu  {{$menu_item_open}}" aria-haspopup="true" data-menu-toggle="hover"><a
                         href="javascript:;" class="menu-link menu-toggle"><span class="svg-icon menu-icon"><!--begin::Svg Icon | path:/assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -186,12 +220,15 @@
                     <div class="menu-submenu "><i class="menu-arrow"></i>
                         <ul class="menu-subnav">
                             @can('admin')
-                                <li class="menu-item " aria-haspopup="true"><a
-                                        href="{{ route('bubblesProcesses.index', app()->getLocale()) }}"
-                                        class="menu-link "><i
-                                            class="menu-bullet menu-bullet-line"><span></span></i><span
-                                            class="menu-text">Bubbles Processes</span><span class="menu-label">{{--<span
-                                                    class="label label-danger label-inline">new</span>--}}</span></a>
+                                @if(((Request::segment(2))=='bubblesProcesses'))
+                                    <?php $menu_item_active = 'menu-item-active' ?>
+                                @else
+                                    <?php $menu_item_active = null ?>
+                                @endif
+                                <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
+                                    <a href="{{ route('bubblesProcesses.index', app()->getLocale()) }}"
+                                        class="menu-link "><i class="menu-bullet menu-bullet-line"><span></span></i>
+                                        <span class="menu-text">Bubbles Processes</span></a>
                                 </li>
                             @endcan
                             {{--  @can('admin')
@@ -205,7 +242,12 @@
                                    </li>
                               @endcan--}}
                             @can('admin')
-                                <li class="menu-item " aria-haspopup="true"><a
+                                    @if(((Request::segment(2))=='logUsers'))
+                                        <?php $menu_item_active = 'menu-item-active' ?>
+                                    @else
+                                        <?php $menu_item_active = null ?>
+                                    @endif
+                                <li class="menu-item {{$menu_item_active}}" aria-haspopup="true"><a
                                         href="{{ route('logUsers.index', app()->getLocale()) }}"
                                         class="menu-link "><i
                                             class="menu-bullet menu-bullet-line"><span></span></i><span
@@ -215,7 +257,12 @@
                                 </li>
                             @endcan
                             @can('admin')
-                                <li class="menu-item " aria-haspopup="true"><a
+                                    @if(((Request::segment(2))=='logCampaigns'))
+                                        <?php $menu_item_active = 'menu-item-active' ?>
+                                    @else
+                                        <?php $menu_item_active = null ?>
+                                    @endif
+                                <li class="menu-item {{$menu_item_active}}" aria-haspopup="true"><a
                                         href="{{ route('logCampaigns.index', app()->getLocale()) }}"
                                         class="menu-link "><i
                                             class="menu-bullet menu-bullet-line"><span></span></i><span
@@ -229,7 +276,12 @@
                 </li>
 
                 @can('admin')
-                    <li class="menu-item " aria-haspopup="true">
+                        @if(((Request::segment(2))=='countries'))
+                            <?php $menu_item_active = 'menu-item-active' ?>
+                        @else
+                            <?php $menu_item_active = null ?>
+                        @endif
+                    <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('countries.index', app()->getLocale()) }}" class="menu-link ">
                             <i class="fas fa-globe left-icon-menu"></i>
                             <span class="menu-text">Countries</span>

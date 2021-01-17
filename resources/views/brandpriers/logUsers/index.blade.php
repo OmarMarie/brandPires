@@ -8,8 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <b>Log User's</b>
-
+                <div class="card-header-title" >Log User's </div>
             </div>
 
             <div class="card-body">

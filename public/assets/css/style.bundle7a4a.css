@@ -197,25 +197,26 @@ svg {
 table {
     border-collapse: collapse
 }
-.menu-item
-{
+
+.menu-item {
     color: #000 !important;
 }
-.left-icon-menu{
+
+.left-icon-menu {
     padding-right: 15px;
     margin-top: 5px;
     color: #000;
     font-weight: 900;
 }
-.menu-item:hover .left-icon-menu
-{
-    color:red !important;
+
+.menu-item:hover .left-icon-menu {
+    color: red !important;
 }
 
-.menu-item-active .left-icon-menu
-{
-    color:red !important;
+.menu-item-active .left-icon-menu {
+    color: red !important;
 }
+
 .menu-item-active::before {
     content: "";
     width: 5px;
@@ -372,6 +373,11 @@ template {
 
 .h1, h1 {
     font-size: 2rem
+}
+
+.odd
+{
+    background:#eeeeee8c;
 }
 
 @media (max-width: 1200px) {
@@ -3959,7 +3965,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-group-sm > .btn, .btn-sm {
-    padding: .55rem .75rem;
+    padding: 5px 12px;
     font-size: .925rem;
     line-height: 1.35;
     border-radius: .42rem
@@ -4248,7 +4254,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #3699ff
+    background-color: #000;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -4852,7 +4858,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     padding: .95rem 1rem;
     line-height: 1.5;
     color: #747474;
-    font-size:20px;
+    font-size: 20px;
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     background-color: #f4f4f4;
@@ -5657,10 +5663,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #eef0f8;
     background-clip: border-box;
     border: 1px solid #ecf0f3;
-    border-radius: .42rem
+    border-radius: .42rem;
 }
 
 .card > hr {
@@ -5689,6 +5695,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
+    background-color: #fff;
+    border-radius: 10px;
     min-height: 1px;
     padding: 2.25rem
 }
@@ -5715,10 +5723,17 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .card-header {
-    padding: 2rem 2.25rem;
+    padding: 2rem 0rem;
     margin-bottom: 0;
-    background-color: #fff;
-    border-bottom: 1px solid #ecf0f3
+    background-color: #eef0f8;
+    border-bottom: 1px solid #ecf0f3;
+}
+
+.card-header-title {
+    display: inline-block;
+    padding: 5px 10px 5px 0px;
+    color: #000;
+    font-size: 20px;
 }
 
 .card-header:first-child {
@@ -51472,7 +51487,7 @@ a, button {
 }
 
 .btn.btn-clean i {
-    color: #b5b5c3
+    color: #00000073;
 }
 
 .btn.btn-clean .svg-icon svg g [fill] {
@@ -51491,19 +51506,19 @@ a, button {
 }
 
 .btn.btn-clean.focus:not(.btn-text), .btn.btn-clean:focus:not(.btn-text), .btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled) {
-    color: #3699ff;
+    color: #000;
     background-color: #f3f6f9;
     border-color: transparent
 }
 
 .btn.btn-clean.focus:not(.btn-text) i, .btn.btn-clean:focus:not(.btn-text) i, .btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled) i {
-    color: #3699ff
+    color: #000
 }
 
 .btn.btn-clean.focus:not(.btn-text) .svg-icon svg g [fill], .btn.btn-clean:focus:not(.btn-text) .svg-icon svg g [fill], .btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled) .svg-icon svg g [fill] {
     -webkit-transition: fill .3s ease;
     transition: fill .3s ease;
-    fill: #3699ff
+    fill: #000
 }
 
 .btn.btn-clean.focus:not(.btn-text) .svg-icon svg:hover g [fill], .btn.btn-clean:focus:not(.btn-text) .svg-icon svg:hover g [fill], .btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled) .svg-icon svg:hover g [fill] {
@@ -51512,7 +51527,7 @@ a, button {
 }
 
 .btn.btn-clean.focus:not(.btn-text).dropdown-toggle:after, .btn.btn-clean:focus:not(.btn-text).dropdown-toggle:after, .btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled).dropdown-toggle:after {
-    color: #3699ff
+    color: #000
 }
 
 .btn.btn-clean.disabled, .btn.btn-clean:disabled {
@@ -51541,19 +51556,19 @@ a, button {
 }
 
 .btn.btn-clean:not(:disabled):not(.disabled).active, .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text), .show .btn.btn-clean.btn-dropdown, .show > .btn.btn-clean.dropdown-toggle {
-    color: #3699ff;
+    color: #000;
     background-color: #f3f6f9;
     border-color: transparent
 }
 
 .btn.btn-clean:not(:disabled):not(.disabled).active i, .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text) i, .show .btn.btn-clean.btn-dropdown i, .show > .btn.btn-clean.dropdown-toggle i {
-    color: #3699ff
+    color: #000
 }
 
 .btn.btn-clean:not(:disabled):not(.disabled).active .svg-icon svg g [fill], .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text) .svg-icon svg g [fill], .show .btn.btn-clean.btn-dropdown .svg-icon svg g [fill], .show > .btn.btn-clean.dropdown-toggle .svg-icon svg g [fill] {
     -webkit-transition: fill .3s ease;
     transition: fill .3s ease;
-    fill: #3699ff
+    fill: #000
 }
 
 .btn.btn-clean:not(:disabled):not(.disabled).active .svg-icon svg:hover g [fill], .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text) .svg-icon svg:hover g [fill], .show .btn.btn-clean.btn-dropdown .svg-icon svg:hover g [fill], .show > .btn.btn-clean.dropdown-toggle .svg-icon svg:hover g [fill] {
@@ -51562,7 +51577,7 @@ a, button {
 }
 
 .btn.btn-clean:not(:disabled):not(.disabled).active.dropdown-toggle:after, .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text).dropdown-toggle:after, .show .btn.btn-clean.btn-dropdown.dropdown-toggle:after, .show > .btn.btn-clean.dropdown-toggle.dropdown-toggle:after {
-    color: #3699ff
+    color: #000
 }
 
 .btn.btn-default {
@@ -52423,8 +52438,11 @@ a, button {
 
 .btn.btn-secondary {
     color: #464e5f;
+    margin: 0px 5px 0px 0px;
+    border-radius: 25px !important;
+    padding: 5px 20px;
     background-color: #e5eaee;
-    border-color: #e5eaee
+    border-color: #e5eaee;
 }
 
 .btn.btn-secondary i {
@@ -52447,9 +52465,9 @@ a, button {
 }
 
 .btn.btn-secondary.focus:not(.btn-text), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled) {
-    color: #464e5f;
-    background-color: #d9e0e6;
-    border-color: #d9e0e6
+    color: #000;
+    background-color: #e5eaee;
+    border-color: #e5eaee;
 }
 
 .btn.btn-secondary.focus:not(.btn-text) i, .btn.btn-secondary:focus:not(.btn-text) i, .btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled) i {
@@ -52497,9 +52515,10 @@ a, button {
 }
 
 .btn.btn-secondary:not(:disabled):not(.disabled).active, .btn.btn-secondary:not(:disabled):not(.disabled):active:not(.btn-text), .show .btn.btn-secondary.btn-dropdown, .show > .btn.btn-secondary.dropdown-toggle {
-    color: #464e5f;
-    background-color: #d9e0e6;
-    border-color: #d9e0e6
+    color: #000;
+    background-color: #e5eaee;
+    border-color: #e5eaee;
+    border: 1px solid #b0b3b5;
 }
 
 .btn.btn-secondary:not(:disabled):not(.disabled).active i, .btn.btn-secondary:not(:disabled):not(.disabled):active:not(.btn-text) i, .show .btn.btn-secondary.btn-dropdown i, .show > .btn.btn-secondary.dropdown-toggle i {
@@ -53380,6 +53399,7 @@ a, button {
 .btn.btn-light-success {
     color: #1bc5bd;
     background-color: #c9f7f5;
+    width: 75px;
     border-color: transparent
 }
 
@@ -65602,7 +65622,7 @@ td > .radio.radio-single, th > .radio.radio-single {
 }
 
 .label.label-inline.label-lg {
-    padding: .9rem .75rem
+    padding: .8rem .75rem
 }
 
 .label.label-inline.label-xl {
@@ -65629,8 +65649,7 @@ td > .radio.radio-single, th > .radio.radio-single {
 }
 
 .label.label-inline {
-    width: auto
-}
+    width: auto}
 
 .label.label-dot {
     line-height: 6px;
@@ -65665,7 +65684,7 @@ td > .radio.radio-single, th > .radio.radio-single {
 }
 
 .label.label-lg.label-inline {
-    width: auto
+    width: 75px
 }
 
 .label.label-lg.label-dot {
@@ -78034,6 +78053,8 @@ td > .radio.radio-single, th > .radio.radio-single {
 
 .dataTables_wrapper .dataTable {
     width: 100% !important;
+    border: 2px solid #dbddde !important;
+    padding: 5px 10px;
     border-collapse: initial !important;
     border-spacing: 0 !important;
     margin: 1rem 0 !important;
@@ -78050,7 +78071,7 @@ td > .radio.radio-single, th > .radio.radio-single {
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, -webkit-box-shadow .15s ease;
     outline: 0 !important;
-    padding: 1rem 1rem
+
 }
 
 .dataTables_wrapper .dataTable td .checkbox, .dataTables_wrapper .dataTable th .checkbox {
@@ -78081,21 +78102,21 @@ td > .radio.radio-single, th > .radio.radio-single {
 }
 
 .dataTables_wrapper .dataTable td.sorting_asc, .dataTables_wrapper .dataTable th.sorting_asc {
-    color: #3699ff !important
+    color: #b5b5c3 !important
 }
 
 .dataTables_wrapper .dataTable td.sorting_asc:before, .dataTables_wrapper .dataTable th.sorting_asc:before {
     opacity: 1;
-    color: #3699ff !important
+    color: #b5b5c3 !important
 }
 
 .dataTables_wrapper .dataTable td.sorting_desc, .dataTables_wrapper .dataTable th.sorting_desc {
-    color: #3699ff !important
+    color: #b5b5c3 !important
 }
 
 .dataTables_wrapper .dataTable td.sorting_desc:after, .dataTables_wrapper .dataTable th.sorting_desc:after {
     opacity: 1;
-    color: #3699ff !important
+    color: #000 !important
 }
 
 .dataTables_wrapper .dataTable tfoot th, .dataTables_wrapper .dataTable thead th {
@@ -78227,7 +78248,7 @@ td > .radio.radio-single, th > .radio.radio-single {
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, -webkit-box-shadow .15s ease;
-    background-color: #3699ff;
+    background-color: #b5b5c3;
     color: #fff
 }
 
@@ -78244,7 +78265,7 @@ td > .radio.radio-single, th > .radio.radio-single {
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, -webkit-box-shadow .15s ease;
-    background-color: #3699ff;
+    background-color: #000;
     color: #fff
 }
 

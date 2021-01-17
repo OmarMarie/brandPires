@@ -40,7 +40,7 @@ class BrandController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('status', function ($data) {
-                    return $data->status == 0 ? 'False' : 'True';
+                    return $data->status == 0 ? 'Inactive' : 'Active';
                 })
                 ->editColumn('company_id', function ($data) {
                     $companyName = Company::where('id', $data->company_id)->value('name');

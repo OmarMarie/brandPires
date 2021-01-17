@@ -51,7 +51,7 @@ class CompanyController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('status', function ($data) {
-                    return $data->status == 0 ? 'False' : 'True';
+                    return $data->status == 0 ? 'Inactive' : 'Active';
                 })
                 ->make(true);
         }

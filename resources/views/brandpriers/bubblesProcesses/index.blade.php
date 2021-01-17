@@ -8,8 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <b>Bubbles Processes</b>
-
+                <div class="card-header-title" >Bubbles Processes </div>
             </div>
 
             <div class="card-body">

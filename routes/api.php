@@ -44,6 +44,9 @@ Route::group([
         Route::get('chatDetails', 'ChattingController@chatDetails');
         Route::get('friends', 'ChattingController@friends');
         Route::post('sendFriendRequest', 'ChattingController@sendFriendRequest');
+        Route::get('friendsRequest', 'ChattingController@friendRequest');
+        Route::post('approveRequest', 'ChattingController@approveRequest');
+        Route::post('disapproveRequest', 'ChattingController@disapproveRequest');
         Route::post('sendMessage', 'ChattingController@sendMessage');
         Route::post('contacts', 'AuthController@contacts');
         Route::post('getBubblesInLocation', 'FishingController@getBubblesInLocation');

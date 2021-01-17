@@ -357,6 +357,7 @@ class AuthController extends Controller
             foreach ($validator->messages()->all() as $item) {
                 $errors->push($item);
             }
+
             return $this->apiResponse(null, $errors, 422, 0);
         }
 
@@ -652,17 +653,17 @@ class AuthController extends Controller
 
     public function online(Request $request)
     {
-        $this->checkLang($request);
-        $validator = Validator::make($request->all(), [
-            'type' => 'required|numeric|min:0|max:1',
-        ]);
-        if ($validator->fails()) {
-            $errors = collect([]);
-            foreach ($validator->messages()->all() as $item) {
-                $errors->push($item);
+            $this->checkLang($request);
+            $validator = Validator::make($request->all(), [
+                'type' => 'required|numeric|min:0|max:1',
+            ]);
+            if ($validator->fails()) {
+                $errors = collect([]);
+                foreach ($validator->messages()->all() as $item) {
+                    $errors->push($item);
+                }
+                return $this->apiResponse(null, $errors, 422, 0);
             }
-            return $this->apiResponse(null, $errors, 422, 0);
-        }
 
         $playerId = $request->user()->id;
         $player = Player::where('id', $playerId)->first();

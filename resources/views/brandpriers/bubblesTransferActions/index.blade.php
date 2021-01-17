@@ -8,8 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <b>Bubbles Transfer Actions</b>
-
+                <div class="card-header-title" >Bubbles Transfer Actions </div>
             </div>
 
             <div class="card-body">

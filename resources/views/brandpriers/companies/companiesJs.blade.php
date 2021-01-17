@@ -4,6 +4,10 @@
         dom: 'Bfrtip',
         "columnDefs": [
             {"width": "30px", "targets": 6},
+            {
+                "targets": 0,
+                "className": "text-center",
+            }
         ],
         processing: true,
         serverSide: true,
@@ -31,10 +35,10 @@
             {data: 'email', title: 'email'},
             {data: 'phone', title: 'Phone'},
             {data: 'status', title: 'Status', "mRender": function (data, type, row) {
-                    if (row.status == 'False') {
-                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline">' + row.status + '</span>'
-                    } else if (row.status == 'True') {
-                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline">' + row.status + '</span>'
+                    if (row.status == 'Inactive') {
+                        return '<span class="label font-weight-bold label-lg  label-light-danger label-inline border border-danger">' + row.status + '</span>'
+                    } else if (row.status == 'Active') {
+                        return '<span class="label font-weight-bold label-lg  label-light-success label-inline border border-success">' + row.status + '</span>'
                     }
                 }
             },
@@ -46,8 +50,8 @@
 
             },
             {data: 'id',title: 'Actions', "mRender": function (data, type, row) {
-                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" style="color: #3699ff"></i></a>';
-                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt" style="color: #f64e60"></i></a>';
+                    var edit = '<a href="#" class="btn btn-sm btn-clean btn-icon edit-btn action-btn" id="' + row.id + '"  data-toggle="tooltip" data-placement="bottom" title="View & Edit"><i class="fas fa-edit" ></i></a>';
+                    var remove = '<a href="#" class="btn btn-sm btn-clean btn-icon action-btn remove-btn"  id="' + row.id + '" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="far fa-trash-alt"></i></a>';
                     return edit ;
 
                 }

@@ -8,8 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <b>Countries</b>
-
+                <div class="card-header-title" >Countries </div>
             </div>
 
             <div class="card-body">

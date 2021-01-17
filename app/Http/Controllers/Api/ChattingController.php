@@ -110,7 +110,7 @@ class ChattingController extends Controller
 
         foreach ($friends as $friend) {
 
-            $friend['online'] =$this->isOnline($friend->id);
+            $friend['online'] = $this->isOnline($friend->id);
 
         }
 
@@ -118,31 +118,56 @@ class ChattingController extends Controller
         return $this->apiResponse($friends, null, 200, 1);
     }
 
+    public function isOnline($id)
+    {
+        return Cache::has('user-is-online-' . $id);
+    }
+
     public function sendFriendRequest(Request $request)
     {
         $this->checkLang($request);
-        $player = Friend::where('player_id', $request->user()->id)->where('friend_id', $request->friend_id)->get();
 
-        if (count($player) > 0 || $request->user()->id == $request->friend_id) {
-            switch ($request->header('lang')) {
-                case 'en':
-                    $message = 'You were already friends';
-                    break;
-                case 'ar':
-                    $message = " أنتما صديقان بالفعل";
-                    break;
-                default:
-                    $message = 'You were already friends';
-                    break;
+        $player = Friend::where('player_id', $request->user()->id)->where('friend_id', $request->friend_id)->first();
+
+        if ($player != null) {
+            if ($player->status == Friend::APPROVED) {
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'You were already friends';
+                        break;
+                    case 'ar':
+                        $message = " أنتما صديقان بالفعل";
+                        break;
+                    default:
+                        $message = 'You were already friends';
+                        break;
+                }
+
+            } else {
+                $player->update(['status' => Friend::REQUEST_FRIEND]);
+
+                switch ($request->header('lang')) {
+                    case 'en':
+                        $message = 'Request sent successfully';
+                        break;
+                    case 'ar':
+                        $message = "تم إرسال الطلب بنجاح";
+                        break;
+                    default:
+                        $message = 'Request sent successfully';
+                        break;
+                }
             }
             return $this->apiResponse(null, $message, 200, 0);
         } else {
             try {
+
                 Friend::create([
                     'player_id' => $request->user()->id,
                     'friend_id' => $request->friend_id,
-                    'status' => 0
+                    'status' => Friend::REQUEST_FRIEND,
                 ]);
+
             } catch (QueryException $exception) {
                 switch ($request->header('lang')) {
                     case 'en':
@@ -172,8 +197,127 @@ class ChattingController extends Controller
         }
     }
 
-    public function isOnline($id)
+    public function friendRequest(Request $request)
     {
-        return Cache::has('user-is-online-' . $id) ;
+        $this->checkLang($request);
+
+        $requestNew['new'] = Friend::where('player_id', $request->user()->id)->where('status', Friend::REQUEST_FRIEND)->get();
+
+        $requestPending['pending'] = Friend::where('player_id', $request->user()->id)->where('status', Friend::SEEN_AND_PENDING)->get();
+
+        Friend::where('player_id', $request->user()->id)
+            ->where('status', Friend::REQUEST_FRIEND)
+            ->update(['status' => Friend::SEEN_AND_PENDING]);
+
+
+        return $this->apiResponse($requestNew + $requestPending, null, 200, 0);
+
     }
+
+    public function approveRequest(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'request_id' => 'required|numeric',
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $requestFriend = Friend::where('id', $request->request_id)
+            ->whereIn('status', [Friend::REQUEST_FRIEND, Friend::SEEN_AND_PENDING])
+            ->first();
+
+        if ($requestFriend != null) {
+
+            $requestFriend->update(['status' => Friend::APPROVED]);
+
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'The request has been approved';
+                    break;
+                case 'ar':
+                    $message = "تمت الموافقة على الطلب";
+                    break;
+                default:
+                    $message = 'The request has been approved';
+                    break;
+            }
+
+        } else {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Request not found or You were already friends';
+                    break;
+                case 'ar':
+                    $message = " لم يتم العثور على الطلب أو أنتما صديقان بالفعل";
+                    break;
+                default:
+                    $message = 'Request not found or You were already friends';
+                    break;
+            }
+        }
+
+
+        return $this->apiResponse(null, $message, 200, 0);
+
+    }
+
+    public function disapproveRequest(Request $request)
+    {
+        $this->checkLang($request);
+        $validator = Validator::make($request->all(), [
+            'request_id' => 'required|numeric',
+        ]);
+        if ($validator->fails()) {
+            $errors = collect([]);
+            foreach ($validator->messages()->all() as $item) {
+                $errors->push($item);
+            }
+            return $this->apiResponse(null, $errors, 422, 0);
+        }
+
+        $requestFriend = Friend::where('id', $request->request_id)
+            ->whereIn('status', [Friend::REQUEST_FRIEND, Friend::SEEN_AND_PENDING])
+            ->first();
+        if ($requestFriend != null) {
+
+            $requestFriend->update(['status' => Friend::DISAPPROVE]);
+
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'The request has been disapproved';
+                    break;
+                case 'ar':
+                    $message = "تم رفض الطلب";
+                    break;
+                default:
+                    $message = 'The request has been disapproved';
+                    break;
+            }
+
+        } else {
+            switch ($request->header('lang')) {
+                case 'en':
+                    $message = 'Request not found or You were already friends';
+                    break;
+                case 'ar':
+                    $message = " لم يتم العثور على الطلب أو أنتما صديقان بالفعل";
+                    break;
+                default:
+                    $message = 'Request not found or You were already friends';
+                    break;
+            }
+        }
+
+
+        return $this->apiResponse(null, $message, 200, 0);
+
+    }
+
+
 }

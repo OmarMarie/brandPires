@@ -8,8 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <b>Campaign's</b>
-
+                <div class="card-header-title" >Campaign's </div>
             </div>
 
             <div class="card-body">

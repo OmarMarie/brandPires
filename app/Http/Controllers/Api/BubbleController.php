@@ -67,6 +67,7 @@ class BubbleController extends Controller
             }
             return $this->apiResponse(null, $errors, 422, 0);
         }
+
         $gifts = GiftAction::where('player_id', $playerId)->where('action', 1)->with('gift:id,bubble_id')->get();
         $gift = $gifts->pluck('gift');
         $id_gift = $gift->pluck('id')->toArray();

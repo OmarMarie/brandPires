@@ -75,9 +75,13 @@ class HomeController extends Controller
             ->groupBy('month')
             ->get();
 
-        foreach ($data as $datum) {
-            $salesSum = +$datum->value;
+        $salesSum = 0;
+        if (count($data) > 0) {
+            foreach ($data as $datum) {
+                $salesSum = +$datum->value;
+            }
         }
+
 
         return view('brandpriers.dashboard.index',
             compact('brands', 'campaigns', 'players', 'bubbles_transfer'
