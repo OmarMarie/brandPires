@@ -1,15 +1,15 @@
 @extends('layouts.main')
 @section('content')
     <style>
-
         .card_info {
             display: inline-block !important;
-            height: 140px !important;
-            max-width: 22% !important;
+            width: 250px !important;
+            border-radius: 5px;
             margin-right: 10px;
+            padding: 10px;
             margin-bottom: 0px;
-            background: white !important;
-
+            background: #eef0f8 !important;
+            text-align: start;
         }
 
         .gm-style-iw-d {
@@ -24,34 +24,32 @@
         }
 
         .divs_fas {
-            position: absolute;
-            left: 4px;
-            top: -15px;
-            -webkit-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
-            -moz-box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
-            box-shadow: 10px 10px 22px 0px rgba(0, 0, 0, 0.75);
-            border-radius: 5px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            background: #fff;
+            border-radius: 50%;
+            height: 50px;
         }
 
         .divs_fas i {
-            font-size: 30px;
-            color: #fff;
-            padding-top: 13px;
+            font-size: 24px;
+            color: #000;
+            padding: 13px;
         }
 
         .divs_title {
-            padding: 10px 5px 10px 30px;
-            text-align: right;
+            padding: 10px 5px 5px 0px;
+            text-align: left;
             color: #00000070;
-            font-weight: bold;
             font-size: 12px;
+
         }
 
         .divs_number {
-            padding: 10px 5px 10px 30px;
-            text-align: right;
+            padding: 2px 5px 10px 0px;
+            text-align: left;
+            width: 110px;
+            color: #000;
+            display: inline-block;
             font-weight: bold;
             font-size: 16px;
         }
@@ -105,10 +103,6 @@
             border-radius: 5px;
         }
 
-        .background {
-            background: rgb(50, 79, 169);
-            background: linear-gradient(160deg, rgba(50, 79, 169, 1) 0%, rgba(57, 128, 199, 0.9724264705882353) 35%, rgba(64, 180, 236, 0.7903536414565826) 100%);
-        }
 
     </style>
     <div class="container animate__animated animate__fadeIn animate__slow">
@@ -116,91 +110,117 @@
         <!--begin::Row-->
         <div class="row">
             <div class="col-md-12"
-                 style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5 background" style="text-align: left;">
-                    <h3 class="card-title font-weight-bolder text-white">Reports</h3>
+                 style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; background: white">
+                <div class="card-header border-0  py-5" style="text-align: left; background: white;padding: 1.25rem !important;">
+                    <h3 class="card-title font-weight-bolder">Reports</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
 
                     <a href="{{ route('brands.index', app()->getLocale()) }}">
-                        <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                            <div class="divs_fas" style=" background:#4385f5;">
-                                <i class="far fa-copyright"></i>
-                            </div>
-                            <div class="divs_title">Brands</div>
-                            <div class="divs_number">{{$brands}}</div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar"
-                                     style="width: {{$percentageBrands}}%; background:#4385f5;"
-                                     aria-valuenow="{{ abs($percentageBrands)}}" aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                            <div class="divs_text">{{($percentageBrands > 0 ? 'Best' : 'Better')}} then last week
-                                ({{abs($percentageBrands)}}%)
+                        <div class="card_info">
+                                <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                                    <div class="divs_fas" style="">
+                                        <i class="far fa-copyright"></i>
+                                    </div>
+                                </div>
+                                <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                                    <div class="divs_title">Brands</div>
+                                    <div style="text-align: left;">
+                                        <div class="divs_number">{{$brands}}</div>
+                                        <div style="display: inline-block;">
+                                            @if($percentageBrands >= 0)
+                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
+                                            @else
+                                                <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
+                                            @endif
+                                            <div
+                                                style="display: inline-block; {{($percentageBrands >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                         </div>
                     </a>
                     <a href="#campaigns">
-                        <div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                            <div class="divs_fas" style=" background:#12827c;">
-                                <i class="fas fa-volleyball-ball"></i>
+                        <div class="card_info">
+                            <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                                <div class="divs_fas" style="">
+                                    <i class="fas fa-volleyball-ball"></i>
+                                </div>
                             </div>
-                            <div class="divs_title">Campaigns</div>
-                            <div class="divs_number">{{$campaigns}}</div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar"
-                                     style="width: {{$percentageCampaign}}%; background:#12827c;"
-                                     aria-valuenow="{{ abs($percentageCampaign)}}" aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                            <div class="divs_text"> {{($percentageCampaign > 0 ? 'Best' : 'Better')}} then last week
-                                ({{ abs($percentageCampaign)}}%)
+                            <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                                <div class="divs_title">Campaigns</div>
+                                <div style="text-align: left;">
+                                    <div class="divs_number">{{$campaigns}}</div>
+                                    <div style="display: inline-block;">
+                                        @if($percentageCampaign >= 0)
+                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
+                                        @else
+                                            <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
+                                        @endif
+                                        <div
+                                            style="display: inline-block; {{($percentageCampaign >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </a>
-                    {{--<div class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info">
-                        <div class="divs_fas" style=" background:#f6555e;">
-                            <i class="fas fa-soap"></i>
-                        </div>
-                        <div class="divs_title">Bubbles Transfer</div>
-                        <div class="divs_number">{{$bubbles_transfer}}</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar"
-                                 style="width: {{$percentageBubblesTransfer}}%; background:#f6555e;"
-                                 aria-valuenow="{{ abs($percentageBubblesTransfer)}}" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
-                        </div>
-                        <div class="divs_text"> {{($percentageBubblesTransfer > 0 ? 'Best' : 'Better')}} then last week
-                            ({{ abs($percentageBubblesTransfer)}}%)
-                        </div>
-                    </div>--}}
+                        <div class="card_info" id="add">
+                            <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                                <div class="divs_fas" style="">
+                                    <i class="fas fa-biking"></i>
+                                </div>
+                            </div>
+                            <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                                <div class="divs_title">Players</div>
+                                <div style="text-align: left;">
+                                    <div class="divs_number">{{$players}}</div>
+                                    <div style="display: inline-block;">
+                                        @if($percentageBubblesPlayer >= 0)
+                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
+                                        @else
+                                            <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
+                                        @endif
+                                        <div
+                                            style="display: inline-block; {{($percentageBubblesPlayer >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div id="add" class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info "
-                         style="cursor: pointer">
-                        <div class="divs_fas" style=" background:#f9b32f;">
-                            <i class="fas fa-biking "></i>
+                            </div>
                         </div>
-                        <div class="divs_title">Players</div>
-                        <div class="divs_number">{{$players}}</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar"
-                                 style="width: {{$percentageBubblesPlayer}}%; background:#f9b32f;"
-                                 aria-valuenow="{{ abs($percentageBubblesPlayer)}}" aria-valuemin="0"
-                                 aria-valuemax="100"></div>
-                        </div>
-                        <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week
-                            ({{ abs($percentageBubblesPlayer)}}%)
-                        </div>
-                    </div>
+
+                    {{--
+
+                       <div id="add" class="col-md-2  card card-custom bg-gray-100 card-stretch gutter-b card_info "
+                            style="cursor: pointer">
+                           <div class="divs_fas" style=" background:#f9b32f;">
+                               <i class="fas fa-biking "></i>
+                           </div>
+                           <div class="divs_title">Players</div>
+                           <div class="divs_number">{{$players}}</div>
+                           <div class="progress">
+                               <div class="progress-bar" role="progressbar"
+                                    style="width: {{$percentageBubblesPlayer}}%; background:#f9b32f;"
+                                    aria-valuenow="{{ abs($percentageBubblesPlayer)}}" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                           </div>
+                           <div class="divs_text"> {{($percentageBubblesPlayer > 0 ? 'Best' : 'Better')}} then last week
+                               ({{ abs($percentageBubblesPlayer)}}%)
+                           </div>
+                       </div>--}}
 
                 </div>
             </div>
-            <div class="col-md-12" id="campaigns"
-                 style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5 background" style="text-align: left;">
-                    <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
+
+            <div class="col-md-12" id="campaigns" style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
+                <div class="card-header border-0  py-5 " style="text-align: left;  background: white;padding: 1.25rem !important; ">
+                    <h3 class="card-title font-weight-bolder ">Campaigns</h3>
                 </div>
-                <div style="padding: 20px 20px;margin-top: -30px !important;">
+                <div style="padding: 20px 20px;margin-top: -30px !important; background: #fff">
                     <div id="map_campaigns_logs"
                          marker_code="var locations =[{{$marker_code}}]">
                     </div>
@@ -213,7 +233,7 @@
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
                     <div class="card-header border-0  py-5 background">
-                        <h3 class="card-title font-weight-bolder text-white">Campaigns</h3>
+                        <h3 class="card-title font-weight-bolder ">Campaigns</h3>
                     </div>
                     <!--end::Header-->
 
@@ -231,17 +251,17 @@
                             <div class="row m-0">
                                 <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2"><span
-                                                class="fa-count-chart"> {{$activeCampaigns}}</span><i
-                                                class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
-                                            href="#" class="text-warning font-weight-bold font-size-h6">
+                                            class="fa-count-chart"> {{$activeCampaigns}}</span><i
+                                            class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
+                                        href="#" class="text-warning font-weight-bold font-size-h6">
                                         Active
                                     </a>
                                 </div>
                                 <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2"><span
-                                                class="fa-count-chart"> {{$inActiveCampaigns}}</span><i
-                                                class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
-                                            href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
+                                            class="fa-count-chart"> {{$inActiveCampaigns}}</span><i
+                                            class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
+                                        href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                                         InActive
                                     </a>
                                 </div>
@@ -251,18 +271,18 @@
                             <div class="row m-0">
                                 <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"><span
-                                                class="fa-count-chart"> {{ $stoppedCampaigns}}</span><i
-                                                class="fa fa-phone fa-chart"
-                                                style="color: #ec0c24 "></i></span>
+                                            class="fa-count-chart"> {{ $stoppedCampaigns}}</span><i
+                                            class="fa fa-phone fa-chart"
+                                            style="color: #ec0c24 "></i></span>
                                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
                                         Stopped
                                     </a>
                                 </div>
                                 <div class="col bg-light-success px-6 py-8 rounded-xl">
                                     <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2"><span
-                                                class="fa-count-chart"> {{$finishedCampaigns}}</span><i
-                                                class="fa fa-check fa-chart"
-                                                style="color: #1bc5bd "></i></span>
+                                            class="fa-count-chart"> {{$finishedCampaigns}}</span><i
+                                            class="fa fa-check fa-chart"
+                                            style="color: #1bc5bd "></i></span>
                                     <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
                                         Finished
                                     </a>
@@ -287,7 +307,7 @@
                 <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                     <!--begin::Header-->
                     <div class="card-header border-0 py-5 background" style="">
-                        <h3 class="card-title font-weight-bolder text-white">Bubbles</h3>
+                        <h3 class="card-title font-weight-bolder ">Bubbles</h3>
                     </div>
                     <!--end::Header-->
 
@@ -305,17 +325,17 @@
                             <div class="row m-0">
                                 <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2"><span
-                                                class="fa-count-chart"> 1000</span><i
-                                                class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
-                                            href="#" class="text-warning font-weight-bold font-size-h6">
+                                            class="fa-count-chart"> 1000</span><i
+                                            class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
+                                        href="#" class="text-warning font-weight-bold font-size-h6">
                                         Active
                                     </a>
                                 </div>
                                 <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2"><span
-                                                class="fa-count-chart"> 1000</span><i
-                                                class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
-                                            href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
+                                            class="fa-count-chart"> 1000</span><i
+                                            class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
+                                        href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                                         InActive
                                     </a>
                                 </div>
@@ -325,16 +345,16 @@
                             <div class="row m-0">
                                 <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
                                     <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"><span
-                                                class="fa-count-chart"> 1000</span><i class="fa fa-phone fa-chart"
-                                                                                      style="color: #ec0c24 "></i></span>
+                                            class="fa-count-chart"> 1000</span><i class="fa fa-phone fa-chart"
+                                                                                  style="color: #ec0c24 "></i></span>
                                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
                                         Stopped
                                     </a>
                                 </div>
                                 <div class="col bg-light-success px-6 py-8 rounded-xl">
                                     <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2"><span
-                                                class="fa-count-chart"> 1000</span><i class="fa fa-check fa-chart"
-                                                                                      style="color: #1bc5bd "></i></span>
+                                            class="fa-count-chart"> 1000</span><i class="fa fa-check fa-chart"
+                                                                                  style="color: #1bc5bd "></i></span>
                                     <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
                                         Finished
                                     </a>
@@ -370,8 +390,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div style="padding-left: 10px; font-size: 16px;">Total Sales: <span
-                                            style="font-weight: bold;"><i class="fas fa-dollar-sign"
-                                                                          style="color: #82c91e;"></i> {{number_format($salesSum, 2)}} </span>
+                                        style="font-weight: bold;"><i class="fas fa-dollar-sign"
+                                                                      style="color: #82c91e;"></i> {{number_format($salesSum, 2)}} </span>
                                 </div>
                             </div>
                         </div>
@@ -385,8 +405,8 @@
                                     <div class="input-group-append">
                                                     <span class="input-group-text"
                                                           style="background: #f9b32f !important;"><i
-                                                                class="fa fa-ellipsis-h"
-                                                                style="color: #fff !important;"></i></span>
+                                                            class="fa fa-ellipsis-h"
+                                                            style="color: #fff !important;"></i></span>
                                     </div>
                                     <input type="text" class="form-control" name="end"
                                            placeholder="To Date" autocomplete="off">
@@ -449,35 +469,40 @@
                                         <li class="navi-item">
                                             <a href="#" class="navi-link">
 																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-success">Customer</span>
+																			<span
+                                                                                class="label label-xl label-inline label-light-success">Customer</span>
 																		</span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
                                             <a href="#" class="navi-link">
 																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-danger">Partner</span>
+																			<span
+                                                                                class="label label-xl label-inline label-light-danger">Partner</span>
 																		</span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
                                             <a href="#" class="navi-link">
 																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-warning">Suplier</span>
+																			<span
+                                                                                class="label label-xl label-inline label-light-warning">Suplier</span>
 																		</span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
                                             <a href="#" class="navi-link">
 																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-primary">Member</span>
+																			<span
+                                                                                class="label label-xl label-inline label-light-primary">Member</span>
 																		</span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
                                             <a href="#" class="navi-link">
 																		<span class="navi-text">
-																			<span class="label label-xl label-inline label-light-dark">Staff</span>
+																			<span
+                                                                                class="label label-xl label-inline label-light-dark">Staff</span>
 																		</span>
                                             </a>
                                         </li>
