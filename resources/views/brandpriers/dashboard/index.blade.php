@@ -61,8 +61,7 @@
         }
 
         #myChart {
-            background: rgb(50, 79, 169);
-            background: linear-gradient(207deg, rgba(50, 79, 169, 1) 0%, rgba(57, 128, 199, 0.9724264705882353) 35%, rgba(64, 180, 236, 0.7903536414565826) 100%);
+            background: rgb(121 121 121);;
             display: block;
             width: 750px;
             height: 400px;
@@ -71,8 +70,27 @@
             margin-top: -40px;
         }
 
+        #campaignsChart {
+            background: rgb(238 240 248);
+            display: block;
+            width: 750px;
+            height: 400px;
+            padding: 20px 20px;
+            border-radius: 5px;
+        }
+
+        #bubblesChart {
+            background: rgb(238 240 248);
+            display: block;
+            width: 750px;
+            height: 400px;
+            padding: 20px 20px;
+            border-radius: 5px;
+        }
+
+
         .sub_titel {
-            background: #7dd1ff;
+            background: #383838;
             font-weight: 600;
             color: #fff;
             padding: 5px 10px;
@@ -111,56 +129,67 @@
         <div class="row">
             <div class="col-md-12"
                  style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; background: white">
-                <div class="card-header border-0  py-5" style="text-align: left; background: white;padding: 1.25rem !important;">
+                <div class="card-header border-0  py-5"
+                     style="text-align: left; background: white;padding: 1.25rem !important;">
                     <h3 class="card-title font-weight-bolder">Reports</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important;">
 
                     <a href="{{ route('brands.index', app()->getLocale()) }}">
                         <div class="card_info">
-                                <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
-                                    <div class="divs_fas" style="">
-                                        <i class="far fa-copyright"></i>
-                                    </div>
+                            <div class=""
+                                 style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                                <div class="divs_fas" style="">
+                                    <i class="far fa-copyright"></i>
                                 </div>
-                                <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
-                                    <div class="divs_title">Brands</div>
-                                    <div style="text-align: left;">
-                                        <div class="divs_number">{{$brands}}</div>
-                                        <div style="display: inline-block;">
-                                            @if($percentageBrands >= 0)
-                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
-                                            @else
-                                                <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
-                                            @endif
-                                            <div
-                                                style="display: inline-block; {{($percentageBrands >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
-                                            </div>
+                            </div>
+                            <div class=""
+                                 style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                                <div class="divs_title">Brands</div>
+                                <div style="text-align: left;">
+                                    <div class="divs_number">{{$brands}}</div>
+                                    <div style="display: inline-block;">
+                                        @if($percentageBrands >= 0)
+                                            <i class="fas fa-level-up-alt"
+                                               style="display: inline-block; color: green;"></i>
+                                        @else
+                                            <i class="fas fa-level-down-alt"
+                                               style="display: inline-block; color: red;"></i>
+                                        @endif
+                                        <div
+                                            style="display: inline-block; {{($percentageBrands >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}
+                                            %
                                         </div>
                                     </div>
+                                </div>
 
                             </div>
                         </div>
                     </a>
                     <a href="#campaigns">
                         <div class="card_info">
-                            <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                            <div class=""
+                                 style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
                                 <div class="divs_fas" style="">
                                     <i class="fas fa-volleyball-ball"></i>
                                 </div>
                             </div>
-                            <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                            <div class=""
+                                 style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
                                 <div class="divs_title">Campaigns</div>
                                 <div style="text-align: left;">
                                     <div class="divs_number">{{$campaigns}}</div>
                                     <div style="display: inline-block;">
                                         @if($percentageCampaign >= 0)
-                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
+                                            <i class="fas fa-level-up-alt"
+                                               style="display: inline-block; color: green;"></i>
                                         @else
-                                            <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
+                                            <i class="fas fa-level-down-alt"
+                                               style="display: inline-block; color: red;"></i>
                                         @endif
                                         <div
-                                            style="display: inline-block; {{($percentageCampaign >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
+                                            style="display: inline-block; {{($percentageCampaign >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}
+                                            %
                                         </div>
                                     </div>
                                 </div>
@@ -168,30 +197,33 @@
                             </div>
                         </div>
                     </a>
-                        <div class="card_info" id="add">
-                            <div class="" style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
-                                <div class="divs_fas" style="">
-                                    <i class="fas fa-biking"></i>
-                                </div>
-                            </div>
-                            <div class="" style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
-                                <div class="divs_title">Players</div>
-                                <div style="text-align: left;">
-                                    <div class="divs_number">{{$players}}</div>
-                                    <div style="display: inline-block;">
-                                        @if($percentageBubblesPlayer >= 0)
-                                            <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
-                                        @else
-                                            <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
-                                        @endif
-                                        <div
-                                            style="display: inline-block; {{($percentageBubblesPlayer >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}%
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <div class="card_info" id="add">
+                        <div class=""
+                             style="max-width: 70px; vertical-align: top; display: inline-block; margin-top: 10px;padding-left: 5px; ">
+                            <div class="divs_fas" style="">
+                                <i class="fas fa-biking"></i>
                             </div>
                         </div>
+                        <div class=""
+                             style="display: inline-block; width: calc(100% - 60px); padding: 0px 0px 0px 15px;">
+                            <div class="divs_title">Players</div>
+                            <div style="text-align: left;">
+                                <div class="divs_number">{{$players}}</div>
+                                <div style="display: inline-block;">
+                                    @if($percentageBubblesPlayer >= 0)
+                                        <i class="fas fa-level-up-alt" style="display: inline-block; color: green;"></i>
+                                    @else
+                                        <i class="fas fa-level-down-alt" style="display: inline-block; color: red;"></i>
+                                    @endif
+                                    <div
+                                        style="display: inline-block; {{($percentageBubblesPlayer >= 0 ? 'color: green;' : 'color: red;')}}">{{$percentageBrands}}
+                                        %
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
                     {{--
 
@@ -215,9 +247,10 @@
 
                 </div>
             </div>
-
-            <div class="col-md-12" id="campaigns" style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
-                <div class="card-header border-0  py-5 " style="text-align: left;  background: white;padding: 1.25rem !important; ">
+            <div class="col-md-12" id="campaigns"
+                 style="margin: 20px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 0px !important;">
+                <div class="card-header border-0  py-5 "
+                     style="text-align: left;  background: white;padding: 1.25rem !important; ">
                     <h3 class="card-title font-weight-bolder ">Campaigns</h3>
                 </div>
                 <div style="padding: 20px 20px;margin-top: -30px !important; background: #fff">
@@ -227,162 +260,51 @@
 
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"
+                 style="margin: 20px 0px;  box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; background: white; text-align: center">
+                <div class="row">
+                    <div class="col-md-6 " style="padding-bottom: 20px;">
+                        <div class="card-header border-0  py-5" style="background: white; padding: 1.25rem !important;">
+                            <h3 class="card-title font-weight-bolder ">Campaigns</h3>
+                        </div>
+                        <div class="card-body p-0 position-relative overflow-hidden">
+                            <canvas id="campaignsChart" width="750" height="500"
+                                    class="chartjs-render-monitor"></canvas>
+                        </div>
 
-            <div class="col-lg-6 col-xxl-6">
-                <!--begin::Mixed Widget 1-->
-                <div class="card card-custom bg-gray-100 card-stretch gutter-b">
-                    <!--begin::Header-->
-                    <div class="card-header border-0  py-5 background">
-                        <h3 class="card-title font-weight-bolder ">Campaigns</h3>
                     </div>
-                    <!--end::Header-->
+                    <div class="col-md-6 " style="padding-bottom: 20px;">
+                        <div class="card-header border-0  py-5" style="background: white; padding: 1.25rem !important;">
+                            <h3 class="card-title font-weight-bolder ">Bubbles</h3>
+                        </div>
+                        <div class="card-body p-0 position-relative overflow-hidden">
+                            <canvas id="bubblesChart" width="750" height="500" class="chartjs-render-monitor"></canvas>
+                        </div>
 
-                    <!--begin::Body-->
-                    <div class="card-body p-0 position-relative overflow-hidden">
-                        <!--begin::Chart-->
-                        <div class="card-rounded-bottom background"
-                             style="height: 60px; min-height: 60px;">
-                        </div>
-                        <!--end::Chart-->
-
-                        <!--begin::Stats-->
-                        <div class="card-spacer mt-n25">
-                            <!--begin::Row-->
-                            <div class="row m-0">
-                                <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2"><span
-                                            class="fa-count-chart"> {{$activeCampaigns}}</span><i
-                                            class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
-                                        href="#" class="text-warning font-weight-bold font-size-h6">
-                                        Active
-                                    </a>
-                                </div>
-                                <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2"><span
-                                            class="fa-count-chart"> {{$inActiveCampaigns}}</span><i
-                                            class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
-                                        href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                                        InActive
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end::Row-->
-                            <!--begin::Row-->
-                            <div class="row m-0">
-                                <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"><span
-                                            class="fa-count-chart"> {{ $stoppedCampaigns}}</span><i
-                                            class="fa fa-phone fa-chart"
-                                            style="color: #ec0c24 "></i></span>
-                                    <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-                                        Stopped
-                                    </a>
-                                </div>
-                                <div class="col bg-light-success px-6 py-8 rounded-xl">
-                                    <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2"><span
-                                            class="fa-count-chart"> {{$finishedCampaigns}}</span><i
-                                            class="fa fa-check fa-chart"
-                                            style="color: #1bc5bd "></i></span>
-                                    <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
-                                        Finished
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end::Row-->
-                        </div>
-                        <!--end::Stats-->
-                        <div class="resize-triggers">
-                            <div class="expand-trigger">
-                                <div style="width: 414px; height: 461px;"></div>
-                            </div>
-                            <div class="contract-trigger"></div>
-                        </div>
                     </div>
-                    <!--end::Body-->
+
                 </div>
-                <!--end::Mixed Widget 1-->
             </div>
-            <div class="col-lg-6 col-xxl-6">
-                <!--begin::Mixed Widget 1-->
-                <div class="card card-custom bg-gray-100 card-stretch gutter-b">
-                    <!--begin::Header-->
-                    <div class="card-header border-0 py-5 background" style="">
-                        <h3 class="card-title font-weight-bolder ">Bubbles</h3>
-                    </div>
-                    <!--end::Header-->
 
-                    <!--begin::Body-->
-                    <div class="card-body p-0 position-relative overflow-hidden">
-                        <!--begin::Chart-->
-                        <div class="card-rounded-bottom background"
-                             style="height: 60px; min-height: 60px; ">
-                        </div>
-                        <!--end::Chart-->
 
-                        <!--begin::Stats-->
-                        <div class="card-spacer mt-n25">
-                            <!--begin::Row-->
-                            <div class="row m-0">
-                                <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2"><span
-                                            class="fa-count-chart"> 1000</span><i
-                                            class="fa fa-check fa-chart" style="color: #ffa800 "></i></span> <a
-                                        href="#" class="text-warning font-weight-bold font-size-h6">
-                                        Active
-                                    </a>
-                                </div>
-                                <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2"><span
-                                            class="fa-count-chart"> 1000</span><i
-                                            class="fa fa-pause fa-chart" style="color: #3699ff "></i></span> <a
-                                        href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                                        InActive
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end::Row-->
-                            <!--begin::Row-->
-                            <div class="row m-0">
-                                <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
-                                    <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"><span
-                                            class="fa-count-chart"> 1000</span><i class="fa fa-phone fa-chart"
-                                                                                  style="color: #ec0c24 "></i></span>
-                                    <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-                                        Stopped
-                                    </a>
-                                </div>
-                                <div class="col bg-light-success px-6 py-8 rounded-xl">
-                                    <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2"><span
-                                            class="fa-count-chart"> 1000</span><i class="fa fa-check fa-chart"
-                                                                                  style="color: #1bc5bd "></i></span>
-                                    <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
-                                        Finished
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end::Row-->
-                        </div>
-                        <!--end::Stats-->
-                        <div class="resize-triggers">
-                            <div class="expand-trigger">
-                                <div style="width: 414px; height: 461px;"></div>
-                            </div>
-                            <div class="contract-trigger"></div>
-                        </div>
-                    </div>
-                    <!--end::Body-->
-                </div>
-                <!--end::Mixed Widget 1-->
-            </div>
             <div class="col-md-12"
                  style=" margin: 30px 0px; text-align: center; box-shadow: 0 0 30px 0 rgba(82, 63, 105, .05); margin-left: 15px;  border-radius: 5px; padding: 20px !important; background: white;  ">
                 <div class="row">
                     <div class="col-md-6 ">
-                        <div class=" background" style="width:75%; display:block;  color: #fff;
-                         font-size: 20px; padding: 25px 0px; border-radius:5px;
-                         -webkit-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
-                         -moz-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
-                         box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75); margin-top: -40px">Sales
+                        <div class=" " style="width:75%; display:block;  width: 75%;
+    display: block;
+    background: #000000c7;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 25px 0px;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
+    box-shadow: 4px 13px 13px -11px rgba(0,0,0,0.75);
+    margin-top: -40px;">Sales
                         </div>
                         <div class="row" style="text-align: left; padding: 40px 30px;">
                             <div class="col-md-6 ">
@@ -390,8 +312,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div style="padding-left: 10px; font-size: 16px;">Total Sales: <span
-                                        style="font-weight: bold;"><i class="fas fa-dollar-sign"
-                                                                      style="color: #82c91e;"></i> {{number_format($salesSum, 2)}} </span>
+                                        style="font-weight: bold;"> {{number_format($salesSum, 2)}} <i class="fas fa-dollar-sign"
+                                                                                                       style="color: #82c91e;"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +326,7 @@
                                            placeholder="From Date" autocomplete="off">
                                     <div class="input-group-append">
                                                     <span class="input-group-text"
-                                                          style="background: #f9b32f !important;"><i
+                                                          style="background:#383838 !important"><i
                                                             class="fa fa-ellipsis-h"
                                                             style="color: #fff !important;"></i></span>
                                     </div>
@@ -422,9 +344,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
                 <!--begin::List Widget 3-->
-                <div class="card card-custom card-stretch gutter-b">
+                <div class="card card-custom card-stretch gutter-b" style="box-shadow: none;">
                     <!--begin::Header-->
                     <div class="card-header border-0">
                         <h3 class="card-title font-weight-bolder text-dark">Representative</h3>
@@ -432,7 +355,7 @@
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->
-                    <div class="card-body pt-2">
+                    <div class="card-body ">
                         <!--begin::Item-->
                         <div class="d-flex align-items-center mb-10">
                             <!--begin::Symbol-->
@@ -523,900 +446,17 @@
                 </div>
                 <!--end::List Widget 3-->
             </div>
-            {{-- <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
-                 <!--begin::List Widget 4-->
-                 <div class="card card-custom card-stretch gutter-b">
-                     <!--begin::Header-->
-                     <div class="card-header border-0">
-                         <h3 class="card-title font-weight-bolder text-dark">Todo</h3>
-                     </div>
-                     <!--end::Header-->
-                     <!--begin::Body-->
-                     <div class="card-body pt-2">
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-success align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" name="select" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Create
-                                     FireStone Logo</a>
-                                 <span class="text-muted font-weight-bold">Due in 2 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end:Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-primary align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Stakeholder
-                                     Meeting</a>
-                                 <span class="text-muted font-weight-bold">Due in 3 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-warning align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-warning checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#"
-                                    class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">Scoping
-                                     &amp; Estimations</a>
-                                 <span class="text-muted font-weight-bold">Due in 5 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin: Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-info align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-info checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Sprint
-                                     Showcase</a>
-                                 <span class="text-muted font-weight-bold">Due in 1 Day</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover py-5">
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-drop"></i>
-                                                                         </span>
-                                                 <span class="navi-text">New Group</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-list-3"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Contacts</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-rocket-1"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Groups</span>
-                                                 <span class="navi-link-badge">
-                                                                             <span class="label label-light-primary label-inline font-weight-bold">new</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-bell-2"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Calls</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-gear"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Settings</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator my-3"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-magnifier-tool"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Help</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-bell-2"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Privacy</span>
-                                                 <span class="navi-link-badge">
-                                                                             <span class="label label-light-danger label-rounded font-weight-bold">5</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-danger align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-danger checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox:-->
-                             <!--begin::Title-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Project
-                                     Retro</a>
-                                 <span class="text-muted font-weight-bold">Due in 12 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin: Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                     </div>
-                     <!--end::Body-->
-                 </div>
-                 <!--end:List Widget 4-->
-             </div>--}}
-            {{-- <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
-                 <!--begin::List Widget 4-->
-                 <div class="card card-custom card-stretch gutter-b">
-                     <!--begin::Header-->
-                     <div class="card-header border-0">
-                         <h3 class="card-title font-weight-bolder text-dark">Todo</h3>
-                     </div>
-                     <!--end::Header-->
-                     <!--begin::Body-->
-                     <div class="card-body pt-2">
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-success align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" name="select" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Create
-                                     FireStone Logo</a>
-                                 <span class="text-muted font-weight-bold">Due in 2 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end:Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-primary align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Stakeholder
-                                     Meeting</a>
-                                 <span class="text-muted font-weight-bold">Due in 3 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-warning align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-warning checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#"
-                                    class="text-dark-75 text-hover-primary font-size-sm font-weight-bold font-size-lg mb-1">Scoping
-                                     &amp; Estimations</a>
-                                 <span class="text-muted font-weight-bold">Due in 5 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin: Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-info align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-info checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox-->
-                             <!--begin::Text-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Sprint
-                                     Showcase</a>
-                                 <span class="text-muted font-weight-bold">Due in 1 Day</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin::Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover py-5">
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-drop"></i>
-                                                                         </span>
-                                                 <span class="navi-text">New Group</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-list-3"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Contacts</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-rocket-1"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Groups</span>
-                                                 <span class="navi-link-badge">
-                                                                             <span class="label label-light-primary label-inline font-weight-bold">new</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-bell-2"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Calls</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-gear"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Settings</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator my-3"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-magnifier-tool"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Help</span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-icon">
-                                                                             <i class="flaticon2-bell-2"></i>
-                                                                         </span>
-                                                 <span class="navi-text">Privacy</span>
-                                                 <span class="navi-link-badge">
-                                                                             <span class="label label-light-danger label-rounded font-weight-bold">5</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                         <!--begin::Item-->
-                         <div class="d-flex align-items-center mt-10">
-                             <!--begin::Bullet-->
-                             <span class="bullet bullet-bar bg-danger align-self-stretch"></span>
-                             <!--end::Bullet-->
-                             <!--begin::Checkbox-->
-                             <label class="checkbox checkbox-lg checkbox-light-danger checkbox-inline flex-shrink-0 m-0 mx-4">
-                                 <input type="checkbox" value="1">
-                                 <span></span>
-                             </label>
-                             <!--end::Checkbox:-->
-                             <!--begin::Title-->
-                             <div class="d-flex flex-column flex-grow-1">
-                                 <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">Project
-                                     Retro</a>
-                                 <span class="text-muted font-weight-bold">Due in 12 Days</span>
-                             </div>
-                             <!--end::Text-->
-                             <!--begin: Dropdown-->
-                             <div class="dropdown dropdown-inline ml-2" data-toggle="tooltip" title=""
-                                  data-placement="left" data-original-title="Quick actions">
-                                 <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                     <i class="ki ki-bold-more-hor"></i>
-                                 </a>
-                                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right" style="">
-                                     <!--begin::Navigation-->
-                                     <ul class="navi navi-hover">
-                                         <li class="navi-header font-weight-bold py-4">
-                                             <span class="font-size-lg">Choose Label:</span>
-                                             <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                data-placement="right" title=""
-                                                data-original-title="Click to learn more..."></i>
-                                         </li>
-                                         <li class="navi-separator mb-3 opacity-70"></li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-success">Customer</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-danger">Partner</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-primary">Member</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-item">
-                                             <a href="#" class="navi-link">
-                                                                         <span class="navi-text">
-                                                                             <span class="label label-xl label-inline label-light-dark">Staff</span>
-                                                                         </span>
-                                             </a>
-                                         </li>
-                                         <li class="navi-separator mt-3 opacity-70"></li>
-                                         <li class="navi-footer py-4">
-                                             <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                 <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                         </li>
-                                     </ul>
-                                     <!--end::Navigation-->
-                                 </div>
-                             </div>
-                             <!--end::Dropdown-->
-                         </div>
-                         <!--end::Item-->
-                     </div>
-                     <!--end::Body-->
-                 </div>
-                 <!--end:List Widget 4-->
-             </div>--}}
+
             <div class="col-lg-12 col-xxl-4 order-1 order-xxl-2">
                 <!--begin::List Widget 8-->
-                <div class="card card-custom card-stretch gutter-b">
+                <div class="card card-custom card-stretch gutter-b " style="box-shadow: none;">
                     <!--begin::Header-->
                     <div class="card-header border-0">
                         <h3 class="card-title font-weight-bolder text-dark">Brands</h3>
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->
-                    <div class="card-body pt-0">
+                    <div class="card-body">
                         <!--begin::Item-->
                         <div class="mb-10">
                             <!--begin::Section-->

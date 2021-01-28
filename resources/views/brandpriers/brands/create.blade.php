@@ -145,7 +145,7 @@
                     </div>--}}
                 </div>
                 <div class="col-md-12 form-group">
-                    <input type="submit" value="Submit" class="btn btn-success" style="float: right">
+                    <input type="submit" value="Submit" class="btn btn-dark" style="float: right">
                 </div>
             </form>
         </div>
@@ -189,7 +189,7 @@
 
 
             <div class="col-md-12 form-group">
-                <input type="submit" value="Submit" class="btn btn-success" style="float: right">
+                <input type="submit" value="Submit" class="btn btn-dark" style="float: right">
             </div>
         </div>
     </form>
@@ -238,8 +238,8 @@
                 showPreviousButton: false, // show/hide a Previous button
                /* toolbarExtraButtons: [
                     $('<button></button>').text('Finish')
-                        .addClass('btn btn-success sw-btn-group-extra')
-                        .attr('style', 'color: #fff;background-color: #5cb85c;border: 1px solid #5cb85c;')
+                        .addClass('btn btn-dark sw-btn-group-extra')
+
                         .attr('id', 'submitBtn')
                         .attr('type', 'submit')
                 ]*/ // Extra buttons to show on toolbar, array of jQuery input/buttons elements

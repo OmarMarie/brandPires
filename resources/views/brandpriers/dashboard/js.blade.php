@@ -95,6 +95,82 @@
         Chart.defaults.global.responsive = true;
     }
 
+    var ctx2 = $('#campaignsChart');
+    var campaignsChart = new Chart(ctx2, {
+        type: 'bar',
+
+        data: {
+            labels: ['Active', 'InActive', 'Stopped', 'Finished'],
+            datasets: [{
+                label: 'Campaigns',
+                data: [{{$activeCampaigns}}, {{$inActiveCampaigns}}, {{ $stoppedCampaigns}}, {{$finishedCampaigns}},0],
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+
+                ],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.1,
+                    gridLines: {
+                        offsetGridLines: true
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    var ctx3 = $('#bubblesChart');
+    var bubblesChart = new Chart(ctx3, {
+        type: 'bar',
+
+        data: {
+            labels: ['Available','Fished', 'Replacement', 'Recovery'],
+            datasets: [{
+                label: 'Bubbles',
+                data: [1000,500,300 ,200 ,0],
+                backgroundColor: [
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+
+                ],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.1,
+                }]
+            }
+        }
+    });
+
     prev_infowindow = false;
     var campaigns_logs_map;
     map_campaigns_logs()

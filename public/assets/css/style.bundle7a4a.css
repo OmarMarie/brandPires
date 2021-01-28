@@ -2766,7 +2766,7 @@ pre code {
 .form-control:focus {
     color: #464e5f;
     background-color: #fff;
-    border-color: #69b3ff;
+    border-color: #000000;
     outline: 0
 }
 
@@ -57700,7 +57700,12 @@ a, button {
 
 .btn.btn-bg-dark {
     background-color: #212121;
-    border-color: #212121
+    border-color: #212121;
+    color: #fff;
+}
+
+.btn.btn-dark:hover {
+    background-color: #737373;
 }
 
 .btn.btn-bg-dark.disabled, .btn.btn-bg-dark:disabled {

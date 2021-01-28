@@ -379,8 +379,8 @@
 
 .sw-theme-dots .toolbar > .btn {
     color: #fff;
-    background-color: #17a2b8;
-    border: 1px solid #17a2b8;
+    background-color: #000;
+    border: 1px solid #000;
     padding: .375rem .75rem;
     border-radius: .25rem;
     font-weight: 400;
@@ -452,21 +452,21 @@
 }
 
 .sw-theme-dots > .nav .nav-link.active {
-    color: #5bc0de !important;
+    color: #000 !important;
     cursor: pointer;
 }
 
 .sw-theme-dots > .nav .nav-link.active::after {
-    background-color: #5bc0de !important;
+    background-color: #000 !important;
 }
 
 .sw-theme-dots > .nav .nav-link.done {
-    color: #5cb85c;
+    color: #000;
     cursor: pointer;
 }
 
 .sw-theme-dots > .nav .nav-link.done::after {
-    background-color: #5cb85c;
+    background-color: #000;
 }
 
 .sw-theme-dots > .nav .nav-link.disabled {

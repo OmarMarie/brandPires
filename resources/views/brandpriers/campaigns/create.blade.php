@@ -242,8 +242,8 @@
                 showPreviousButton: true, // show/hide a Previous button
                 toolbarExtraButtons: [
                     $('<button></button>').text('Finish')
-                        .addClass('btn btn-success sw-btn-group-extra')
-                        .attr('style', 'color: #fff;background-color: #5cb85c;border: 1px solid #5cb85c;')
+                        .addClass('btn btn-dark sw-btn-group-extra')
+
                         .attr('id', 'submitBtn')
                         .attr('type', 'submit')
                 ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements

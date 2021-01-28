@@ -10,7 +10,7 @@
             <input type="text" class="form-control" name="point_add" placeholder="Point Add">
         </div>
         <div class="col-md-12 form-group">
-            <input type="submit" value="Submit" class="btn btn-success" style="float: right">
+            <input type="submit" value="Submit" class="btn btn-dark" style="float: right">
         </div>
     </div>
 </form>
