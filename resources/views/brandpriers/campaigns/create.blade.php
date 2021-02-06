@@ -192,7 +192,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function () {
+        $(document).ready(function () {
         $("#btn_add_bulk").click(function () {
             $('.tab-content').height($(".tab-content").height() + 60);
             div_add = '<div id="div_bulk' + '" class="col-md-6 form-group div_bulk"> ' +
