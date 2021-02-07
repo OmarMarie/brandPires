@@ -23,6 +23,7 @@
 
 
     <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="{{ asset('assets/font-awesome/all.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/global/plugins.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/style.bundle7a4a.css') }}" rel="stylesheet" type="text/css"/>
@@ -166,6 +167,7 @@
 <!--end::Global Config-->
 
 <!--begin::Global Theme Bundle(used by all pages)-->
+<script src="{{ asset('assets/font-awesome/fontawesome.js') }}"></script>
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnpiNImmRHQBxmLIn5o_zTBufGgXzZBko&language=en&region=SA&libraries=places"></script>
 <script src="{{ asset('assets/plugins/global/plugins.bundle7a4a.js') }}"></script>

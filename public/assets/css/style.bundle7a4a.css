@@ -62,7 +62,8 @@ body {
     line-height: 1.5;
     color: #464e5f;
     text-align: left;
-    background-color: #fff
+    background: rgb(38, 38, 38);
+    background: linear-gradient(315deg, rgba(38, 38, 38, 1) 0%, rgba(38, 38, 38, 1) 10%, rgba(37, 37, 37, 1) 10%, rgba(37, 37, 37, 1) 20%, rgba(38, 38, 38, 1) 20%, rgba(38, 38, 38, 1) 30%, rgba(37, 37, 37, 1) 30%, rgba(37, 37, 37, 1) 40%, rgba(38, 38, 38, 1) 40%, rgba(38, 38, 38, 1) 50%, rgba(37, 37, 37, 1) 50%, rgba(37, 37, 37, 1) 60%, rgba(38, 38, 38, 1) 60%, rgba(38, 38, 38, 1) 70%, rgba(37, 37, 37, 1) 70%, rgba(37, 37, 37, 1) 80%, rgba(38, 38, 38, 1) 80%, rgba(38, 38, 38, 1) 90%, rgba(37, 37, 37, 1) 90%, rgba(37, 37, 37, 1) 100%);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -201,11 +202,22 @@ table {
 .menu-item {
     color: #000 !important;
 }
-
+.icon-menu {
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    background: #000;
+    border-radius: 50%;
+    background: rgb(48, 48, 48);
+    background: linear-gradient(
+        130deg, rgba(48, 48, 48, 1) 0%, rgba(15, 15, 15, 1) 100%);
+    -webkit-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    -moz-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+}
 .left-icon-menu {
-    padding-right: 15px;
-    margin-top: 5px;
-    color: #000;
+    margin: 12px auto;
+    color: #fff;
     font-weight: 900;
 }
 
@@ -217,16 +229,6 @@ table {
     color: red !important;
 }
 
-.menu-item-active::before {
-    content: "";
-    width: 5px;
-    height: 34px;
-    position: absolute;
-    z-index: 1;
-    bottom: 6px;
-    background: red;
-    border-radius: 0px 10px 10px 0px;
-}
 
 caption {
     padding-top: .75rem;
@@ -375,9 +377,8 @@ template {
     font-size: 2rem
 }
 
-.odd
-{
-    background:#eeeeee8c;
+.odd {
+    background: #eeeeee14;
 }
 
 @media (max-width: 1200px) {
@@ -483,6 +484,8 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, .1)
 }
+
+
 
 .small, small {
     font-size: 80%;
@@ -2418,12 +2421,10 @@ pre code {
 .table td, .table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #ecf0f3
 }
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ecf0f3
 }
 
 .table tbody + tbody {
@@ -5663,10 +5664,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #eef0f8;
-    background-clip: border-box;
-    border: 1px solid #ecf0f3;
-    border-radius: .42rem;
 }
 
 .card > hr {
@@ -5695,8 +5692,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    background-color: #fff;
-    border-radius: 10px;
     min-height: 1px;
     padding: 2.25rem
 }
@@ -5725,14 +5720,13 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .card-header {
     padding: 2rem 0rem;
     margin-bottom: 0;
-    background-color: #eef0f8;
-    border-bottom: 1px solid #ecf0f3;
+    border-bottom: 2px solid #353535;
 }
 
 .card-header-title {
     display: inline-block;
     padding: 5px 10px 5px 0px;
-    color: #000;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -28845,7 +28839,7 @@ a.text-white:focus, a.text-white:hover {
 
 @media screen and (min-width: 1200px) and (-ms-high-contrast: active),(min-width: 1200px) and (-ms-high-contrast: none) {
     .flex-xl-row-fluid {
-        min-width: none
+        min-width: none;
     }
 }
 
@@ -52437,12 +52431,21 @@ a, button {
 }
 
 .btn.btn-secondary {
-    color: #464e5f;
+    color: #fff;
     margin: 0px 5px 0px 0px;
     border-radius: 25px !important;
+    border-color: #303030 !important;
     padding: 5px 20px;
-    background-color: #e5eaee;
-    border-color: #e5eaee;
+    background: #000;
+    background: rgb(48, 48, 48);
+    background: linear-gradient(
+        130deg
+        , rgba(48, 48, 48, 1) 0%, rgba(15, 15, 15, 1) 100%);
+    border-radius: 10px;
+    -webkit-box-shadow: -5px -5px 20px -7px rgb(179 179 179,.4);
+    -moz-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    box-shadow:  -5px -5px 10px -7px rgb(179 179 179 / 40%);
+
 }
 
 .btn.btn-secondary i {
@@ -52465,9 +52468,9 @@ a, button {
 }
 
 .btn.btn-secondary.focus:not(.btn-text), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled) {
-    color: #000;
-    background-color: #e5eaee;
-    border-color: #e5eaee;
+    color: #fff;
+    background: #ff001b !important;
+    border-color: #ff001b;
 }
 
 .btn.btn-secondary.focus:not(.btn-text) i, .btn.btn-secondary:focus:not(.btn-text) i, .btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled) i {
@@ -52515,7 +52518,7 @@ a, button {
 }
 
 .btn.btn-secondary:not(:disabled):not(.disabled).active, .btn.btn-secondary:not(:disabled):not(.disabled):active:not(.btn-text), .show .btn.btn-secondary.btn-dropdown, .show > .btn.btn-secondary.dropdown-toggle {
-    color: #000;
+    color: #fff;
     background-color: #e5eaee;
     border-color: #e5eaee;
     border: 1px solid #b0b3b5;
@@ -55467,8 +55470,11 @@ a, button {
 
 .btn.btn-danger {
     color: #fff;
-    background-color: #f64e60;
-    border-color: #f64e60
+    background-color: #ff001b;
+    border-color: #ff001b;
+    -webkit-box-shadow: -5px -5px 20px -7px rgb(179 179 179,.4);
+    -moz-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    box-shadow: -5px -5px 10px -7px rgb(179 179 179 / 40%);
 }
 
 .btn.btn-danger i {
@@ -65654,7 +65660,8 @@ td > .radio.radio-single, th > .radio.radio-single {
 }
 
 .label.label-inline {
-    width: auto}
+    width: auto
+}
 
 .label.label-dot {
     line-height: 6px;
@@ -78058,8 +78065,8 @@ td > .radio.radio-single, th > .radio.radio-single {
 
 .dataTables_wrapper .dataTable {
     width: 100% !important;
-    border: 2px solid #dbddde !important;
-    padding: 5px 10px;
+    -webkit-box-shadow: 0px 0px 5px 2px #000000;
+    box-shadow: 0px 0px 5px 2px #00000096;
     border-collapse: initial !important;
     border-spacing: 0 !important;
     margin: 1rem 0 !important;
@@ -78070,7 +78077,7 @@ td > .radio.radio-single, th > .radio.radio-single {
     font-weight: 400;
     font-size: 1rem;
     vertical-align: middle;
-    color: #464e5f;
+    color: #adadad;
     -webkit-transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
@@ -78126,7 +78133,7 @@ td > .radio.radio-single, th > .radio.radio-single {
 
 .dataTables_wrapper .dataTable tfoot th, .dataTables_wrapper .dataTable thead th {
     font-weight: 500;
-    color: #212121
+    color: #fff
 }
 
 .dataTables_wrapper .dataTable thead th {
@@ -82416,9 +82423,6 @@ canvas {
     -ms-user-select: none
 }
 
-body {
-    background: #eef0f8
-}
 
 @media (min-width: 992px) {
     .header-fixed .wrapper {
@@ -82477,7 +82481,7 @@ body {
 
     .aside-enabled .header.header-fixed {
         left: 0px;
-        background: #000;
+        background: none;
     }
 
     .header-fixed.aside-minimize .header, .header-fixed.aside-minimize-hover .header {

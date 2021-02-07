@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="card-header-title" >Companies </div>
                 <div class="card-toolbar" style="float: right">
-                    <a id="add" class="btn btn-dark"> <i class="fa fa-plus"> </i> New Player</a>
+                    <a id="add" class="btn btn-danger"> <i class="fa fa-plus"> </i> New Player</a>
                 </div>
 
             </div>

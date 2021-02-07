@@ -25,7 +25,7 @@
                    @if(isset($company)) value="{{ $company->phone}}" @endif>
         </div>
         <div class="col-md-12 form-group">
-            <input type="submit" value="Submit" class="btn btn-dark" style="float: right">
+            <input type="submit" value="Submit" class="btn btn-danger" style="float: right">
         </div>
     </div>
 </form>

@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="card-header-title" >Contacts </div>
                 <div class="card-toolbar" style="float: right">
-                    <a id="add" class="btn btn-dark"> <i class="fa fa-plus"> </i>New Contacts</a>
+                    <a id="add" class="btn btn-danger"> <i class="fa fa-plus"> </i>New Contacts</a>
                 </div>
 
             </div>

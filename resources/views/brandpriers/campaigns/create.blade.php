@@ -242,7 +242,7 @@
                 showPreviousButton: true, // show/hide a Previous button
                 toolbarExtraButtons: [
                     $('<button></button>').text('Finish')
-                        .addClass('btn btn-dark sw-btn-group-extra')
+                        .addClass('btn btn-danger sw-btn-group-extra')
 
                         .attr('id', 'submitBtn')
                         .attr('type', 'submit')

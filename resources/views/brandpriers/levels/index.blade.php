@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="card-header-title" >Level's </div>
                 <div class="card-toolbar" style="float: right">
-                    <a id="addLevel" class="btn btn-dark"> <i class="fa fa-plus"> </i> New Level</a>
+                    <a id="addLevel" class="btn btn-danger"> <i class="fa fa-plus"> </i> New Level</a>
                 </div>
 
             </div>

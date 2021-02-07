@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="card-header-title" >Packages </div>
                 <div class="card-toolbar" style="float: right">
-                    <a id="add" class="btn btn-dark"> <i class="fa fa-plus"> </i> New Packages</a>
+                    <a id="add" class="btn btn-danger"> <i class="fa fa-plus"> </i> New Packages</a>
                 </div>
             </div>
             <input type="hidden" id="brand_id" name="brand_id" value="{{ $brand_id }}">

@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="card-header-title" >Roles </div>
                 <div class="card-toolbar" style="float: right">
-                    <a id="addUser" class="btn btn-dark"> <i class="fa fa-plus"> </i> New Roles</a>
+                    <a id="addUser" class="btn btn-danger"> <i class="fa fa-plus"> </i> New Roles</a>
                 </div>
             </div>
 

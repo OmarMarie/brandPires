@@ -191,7 +191,7 @@
 
 
             <div class="col-md-12 form-group">
-                <input type="submit" value="Submit" class="btn btn-dark" style="float: right">
+                <input type="submit" value="Submit" class="btn btn-danger" style="float: right">
             </div>
         </div>
     </form>
@@ -240,7 +240,7 @@
                 showPreviousButton: true, // show/hide a Previous button
                 toolbarExtraButtons: [
                     $('<button></button>').text('Finish')
-                        .addClass('btn btn-dark sw-btn-group-extra')
+                        .addClass('btn btn-danger sw-btn-group-extra')
 
                         .attr('id', 'submitBtn')
                         .attr('type', 'submit')
