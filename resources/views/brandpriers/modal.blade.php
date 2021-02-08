@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"> </h5>
-                <a href="#" class="far fa-times-circle" data-dismiss="modal" style="font-size: 20px; color: #000"></a>
+                <a href="#" class="far fa-times-circle" data-dismiss="modal" style="font-size: 20px; color: #fff"></a>
 
             </div>
             <div class="modal-body">

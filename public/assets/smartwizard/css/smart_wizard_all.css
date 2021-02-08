@@ -377,6 +377,18 @@
     padding: 10px;
 }
 
+.sw-theme-dots .toolbar > .sw-btn-next {
+    color: #fff !important;
+    background-color: #f00 !important;
+    border: 1px solid #f00 !important;;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    font-weight: 400;
+    -webkit-box-shadow: -5px -5px 20px -7px rgb(179 179 179,.4);
+    -moz-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    box-shadow: -5px -5px 10px -7px rgb(179 179 179 / 40%);
+}
+
 .sw-theme-dots .toolbar > .btn {
     color: #fff;
     background-color: #000;
@@ -384,6 +396,9 @@
     padding: .375rem .75rem;
     border-radius: .25rem;
     font-weight: 400;
+    -webkit-box-shadow: -5px -5px 20px -7px rgb(179 179 179,.4);
+    -moz-box-shadow: -5px -5px 20px -7px rgba(179,179,179,.4);
+    box-shadow: -5px -5px 10px -7px rgb(179 179 179 / 40%);
 }
 
 .sw-theme-dots > .nav {
@@ -452,21 +467,21 @@
 }
 
 .sw-theme-dots > .nav .nav-link.active {
-    color: #000 !important;
+    color:#fff !important;
     cursor: pointer;
 }
 
 .sw-theme-dots > .nav .nav-link.active::after {
-    background-color: #000 !important;
+    background-color: #f00 !important;
 }
 
 .sw-theme-dots > .nav .nav-link.done {
-    color: #000;
+    color: #fff;
     cursor: pointer;
 }
 
 .sw-theme-dots > .nav .nav-link.done::after {
-    background-color: #000;
+    background-color: #f00;
 }
 
 .sw-theme-dots > .nav .nav-link.disabled {

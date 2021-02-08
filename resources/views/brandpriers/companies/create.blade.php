@@ -4,15 +4,14 @@
         width: 170px;
         height: 150px;
         background-position: center center;
-        background: url('{{asset('/assets/images/default/default-img.jpg')}}');
-        background-color: #fff;
+        background: url(http://127.0.0.1:8000/assets/images/default/default-img.jpg);
+        background-color: #262626;
         background-size: 100% 150px;
         background-repeat: no-repeat;
         border-radius: 10px;
         display: inline-block;
         webkit-box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, .075);
-        box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, .075);
-        border: 3px solid #fff;
+        box-shadow: inset 1px 1rem 2rem 0.5rem rgb(0 0 0 / 8%);
     }
 
     .btn_edit_img {
@@ -87,7 +86,7 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Status</label>
-                                <select name="status" class="form-control">
+                                <select name="status" class="form-control ">
                                     <option value="0"  >
                                         False
                                     </option>
@@ -96,7 +95,6 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-6 form-group"></div>
                             <div class="col-sm-2 imgUp">
                                 <label>Company Icon </label>
                                 <div class="imagePreview" style="@if( isset($company))
@@ -170,15 +168,9 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label> Password</label>
-                                <div class="input-group" id="show_hide_password">
-                                    <input type="password" autocomplete="off" class="form-control"
-                                           name="password" placeholder="Password">
-                                    <div class="input-group-addon"
-                                         style="padding: .5rem .75rem; padding-top: 18px; width: 50px; margin-bottom: 0; font-size: 1rem; font-weight: 400; line-height: 10px; color: #495057 !important; text-align: center; background-color: #bec0c670; border: 1px solid rgba(0, 0, 0, .15); border-radius: 0px .25rem .25rem 0px;">
-                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
+                                <input style="background-image: auto !important;" type="Password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
+
                         </div>
                     </div>
                 </div>

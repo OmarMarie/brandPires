@@ -4,52 +4,33 @@
     <list default="true" id="1c7fb3ab-f500-4d29-8495-5ec68eb7044e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/themes/layout/aside/light7a4a.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/themes/layout/aside/light7a4a.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/font-awesome/all.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/font-awesome/all.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/font-awesome/all.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/font-awesome/js/all.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/font-awesome/js/all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/media/logos/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/media/logos/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/media/svg/login-visual-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/media/svg/login-visual-2.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/plugins/custom/datatables/datatables.bundle7a4a.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/plugins/custom/datatables/datatables.bundle7a4a.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brands/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brands/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brands/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brands/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bulks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bulks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bulks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bulks/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bubblesProcesses/bubblesProcessesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bubblesProcesses/bubblesProcessesJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bubblesTransferActions/bubblesTransferActionsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bubblesTransferActions/bubblesTransferActionsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companies/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companies/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/countries/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/countries/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/employees/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/employees/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/gifts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/gifts/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/gifts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/gifts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/levels/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/levels/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/levels/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/levels/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/packages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/packages/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/packages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/packages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/pointCreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/pointCreate.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/roles/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/roles/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/roles/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/employees/employeesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/employees/employeesJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/gifts/giftsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/gifts/giftsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/logCampaignsJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/logCampaignsJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/logUsers/logUsersJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/logUsers/logUsersJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/roles/rolesJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/roles/rolesJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/tanks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/tanks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/tanks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/tanks/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,17 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="3114">
               <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/plugins/custom/datatables/datatables.bundle7a4a.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -88,23 +60,73 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/aside.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-              <folding>
-                <element signature="e#112#2371#0#Blade" />
-                <element signature="n#ul#0;n#div#0;n#li#10;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="e#0#19276#0#Blade" />
-                <element signature="n#li#11;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="475">
+              <caret line="66" column="71" selection-start-line="66" selection-start-column="71" selection-end-line="66" selection-end-column="71" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="217" selection-start-line="217" selection-end-line="217" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/media/logos/logo.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="78079" column="12" selection-start-line="78079" selection-start-column="12" selection-end-line="78079" selection-end-column="12" />
+            <state relative-caret-position="378">
+              <caret line="66" column="34" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="70" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="88" column="74" selection-start-line="88" selection-start-column="74" selection-end-line="88" selection-end-column="74" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="400" column="59" selection-start-line="400" selection-start-column="59" selection-end-line="400" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,7 +134,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/css/themes/layout/aside/light7a4a.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="3546">
               <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
             </state>
           </provider>
@@ -122,28 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.attr('style', 'color: #fff;background-color: #5cb85c;border: 1px solid #5cb85c;')</find>
-      <find>form-control</find>
-      <find>btn-bg-dark</find>
-      <find>btn-bg-success</find>
-      <find>btn-success</find>
-      <find>button, input, optgroup, select, textarea {</find>
-      <find>fas fa-dollar-sign</find>
-      <find>datepicker</find>
-      <find>body</find>
-      <find>.aside-menu</find>
-      <find>background-color:#fff</find>
-      <find>card-header</find>
-      <find>.card</find>
-      <find>menu-item-active</find>
-      <find>left-icon-menu</find>
-      <find>menu-section</find>
-      <find>hover</find>
-      <find>#f3f6f9</find>
-      <find>.aside-menu .menu-nav &gt; .menu-item .menu-submenu .menu-item &gt; .menu-heading .menu-text, .aside-menu .menu-nav &gt; .menu-item .menu-submenu .menu-item &gt; .menu-link .menu-text</find>
-      <find>.card-header-title</find>
-      <find>btn-dark</find>
-      <find>.btn.btn-danger {</find>
       <find>logs</find>
       <find>btn-secondary</find>
       <find>.btn.btn-secondary</find>
@@ -152,6 +152,28 @@
       <find>div.dataTables_wrapper div.dataTables_info</find>
       <find>#000</find>
       <find>.odd {</find>
+      <find>rgb(179 179 179,.4)</find>
+      <find>.btn.btn-clean:not(:disabled):not(.disabled).active i, .btn.btn-clean:not(:disabled):not(.disabled):active:not(.btn-text) i, .show .btn.btn-clean.btn-dropdown i, .show &gt; .btn.btn-clean.dropdown-toggle i {</find>
+      <find>.dataTables_wrapper .dataTables_paginate .pagination .page-item.first &gt; .page-link, .dataTables_wrapper .dataTables_paginate .pagination .page-item.last &gt; .page-link, .dataTables_wrapper .dataTables_paginate .pagination .page-item.next &gt; .page-link, .dataTables_wrapper .dataTables_paginate .pagination .page-item.previous &gt; .page-link {</find>
+      <find>.btn.btn-light-danger</find>
+      <find>.modal-content</find>
+      <find>div.dataTables_wrapper div.dataTables_processing</find>
+      <find>.modal .modal-header .modal-title</find>
+      <find>sw-theme-dots</find>
+      <find>.sw-theme-dots .toolbar &gt; .btn</find>
+      <find>.form-group label</find>
+      <find>.form-control:focs {</find>
+      <find>.text-muted</find>
+      <find>#3699ff</find>
+      <find>.custom-file-input</find>
+      <find>.custom-file-input:focus ~ .custom-file-label {</find>
+      <find>.select</find>
+      <find>password</find>
+      <find>.form-control</find>
+      <find>select</find>
+      <find>select option</find>
+      <find>.badge-success</find>
+      <find>Sign in with Google</find>
     </findStrings>
     <replaceStrings>
       <replace>#ff3636</replace>
@@ -169,6 +191,7 @@
       <dir>$PROJECT_DIR$/public/assets/css/themes/layout/aside</dir>
       <dir>$PROJECT_DIR$/public</dir>
       <dir>$PROJECT_DIR$/resources/views/brandpriers</dir>
+      <dir>$PROJECT_DIR$/app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -177,32 +200,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/partials/subHeader.blade.php" />
-        <option value="$PROJECT_DIR$/public/assets/css/themes/layout/aside/light8c19.css" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/brands/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/bubblesProcesses/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/bubblesTransferActions/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/bulks/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/countries/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/employees/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/gifts/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/levels/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/logUsers/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/packages/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/player/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/roles/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/tanks/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/users/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Web/CountryController.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/brands/brandsJs.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/BubbleController.php" />
         <option value="$PROJECT_DIR$/app/Traits/ApiResponser.php" />
@@ -213,21 +217,40 @@
         <option value="$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/js.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/dashboard/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php" />
-        <option value="$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/brands/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/create.blade.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/footer.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/themes/layout/aside/light7a4a.css" />
-        <option value="$PROJECT_DIR$/resources/views/partials/aside.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/index.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/plugins/custom/datatables/datatables.bundle7a4a.css" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/bubblesProcesses/bubblesProcessesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/bubblesTransferActions/bubblesTransferActionsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/employees/employeesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/gifts/giftsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/logCampaignsJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/logUsers/logUsersJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/roles/rolesJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php" />
+        <option value="$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css" />
+        <option value="$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/aside.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
       </list>
     </option>
   </component>
@@ -392,71 +415,23 @@
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="aside" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-              <item name="datatables" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
@@ -474,22 +449,7 @@
               <item name="brandPires" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="brandpriers" type="462c0819:PsiDirectoryNode" />
-              <item name="campaigns" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="brandPires" type="b2602c69:ProjectViewProjectNode" />
-              <item name="brandPires" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -500,11 +460,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../new/canadaCar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/media/logos" />
+      <recent name="$PROJECT_DIR$/public/assets/media" />
+      <recent name="$PROJECT_DIR$/public/assets" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/error" />
       <recent name="$PROJECT_DIR$/resources/views/brandpriers" />
@@ -631,18 +596,20 @@
       <workItem from="1612618067388" duration="3898000" />
       <workItem from="1612647225601" duration="44000" />
       <workItem from="1612683245955" duration="13924000" />
-      <workItem from="1612702830984" duration="7992000" />
+      <workItem from="1612702830984" duration="8092000" />
+      <workItem from="1612725978941" duration="623000" />
+      <workItem from="1612772847852" duration="16302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="494497000" />
+    <option name="totallyTimeSpent" value="511522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="1920" height="983" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36072573" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36926362" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -654,7 +621,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32963374" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49944505" visible="true" weight="0.37898466" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49944505" visible="true" weight="0.22904368" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005549" side_tool="true" weight="0.28244275" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -691,146 +658,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Brand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/ChattingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1018">
-          <caret line="201" column="35" lean-forward="true" selection-start-line="201" selection-start-column="6" selection-end-line="201" selection-end-column="35" />
-          <folding>
-            <element signature="e#393#1165#0#PHP" />
-            <element signature="e#1171#1967#0#PHP" />
-            <element signature="e#1973#3191#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Traits/ApiResponser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="88" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/BrandController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/LevelController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="261" column="42" selection-start-line="261" selection-start-column="42" selection-end-line="261" selection-end-column="42" />
-          <folding>
-            <element signature="e#44#84#0#PHP" expanded="true" />
-            <element signature="e#1165#4197#0#PHP" />
-            <element signature="e#4531#7904#0#PHP" />
-            <element signature="e#8848#11063#0#PHP" />
-            <element signature="e#11069#12042#0#PHP" />
-            <element signature="e#12048#12621#0#PHP" />
-            <element signature="e#12627#13185#0#PHP" />
-            <element signature="e#13191#13751#0#PHP" />
-            <element signature="e#13757#15556#0#PHP" />
-            <element signature="e#15562#18535#0#PHP" />
-            <element signature="e#18541#20326#0#PHP" />
-            <element signature="e#20332#22081#0#PHP" />
-            <element signature="e#22087#22375#0#PHP" />
-            <element signature="e#22381#22988#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="21" />
-          <folding>
-            <element signature="e#1394#2804#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/TankController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="e#375#1398#0#PHP" />
-            <element signature="e#1404#3152#0#PHP" />
-            <element signature="e#3158#3837#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/packages/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-553" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brandPackages/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1674" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/bulks/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-535" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/CampaignController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2088">
-          <caret line="128" column="35" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1494">
-          <caret line="83" column="7" selection-start-line="3" selection-start-column="4" selection-end-line="83" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/CompanyPackagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="142" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/PlayerController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/PlayerBubbles.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -848,41 +675,10 @@
     <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/create.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="204" column="26" selection-start-line="204" selection-start-column="26" selection-end-line="204" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/companyAttachmentsJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/brandAttachmentsJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#575#2756#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brands/brandsJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -930,33 +726,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_dots.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2160" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6930">
-          <caret line="385" column="21" selection-start-line="385" selection-start-column="21" selection-end-line="385" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="9" selection-end-column="13" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/users/index.blade.php">
@@ -970,13 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2538">
           <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -994,20 +759,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/font-awesome/all.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/font-awesome/all.css" />
     <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/campaigns/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1019,26 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="25" column="98" selection-start-line="25" selection-start-column="98" selection-end-line="25" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/aside.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding>
-            <element signature="e#112#2371#0#Blade" />
-            <element signature="n#ul#0;n#div#0;n#li#10;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="e#0#19276#0#Blade" />
-            <element signature="n#li#11;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,29 +790,245 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
+        <state relative-caret-position="3114">
           <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/themes/layout/aside/light7a4a.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="3546">
           <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/bubblesProcesses/bubblesProcessesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brandAttachments/brandAttachmentsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brandPackages/brandPackagesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/brands/brandsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/bubblesTransferActions/bubblesTransferActionsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/bulks/bulksJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/campaigns/campaignsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/companiesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" selection-start-line="6" selection-start-column="11" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companyAttachments/companyAttachmentsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1278">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companyContacts/companyContactsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/countries/countriesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/employees/employeesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/gifts/giftsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/levels/levelsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/logCampaingns/logCampaignsJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/logUsers/logUsersJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/packages/packagesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/player/playerJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/roles/rolesJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/tanks/tanksJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/users/usersJs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/plugins/custom/datatables/datatables.bundle7a4a.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        <state relative-caret-position="424">
+          <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="95" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_dark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4079" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/smartwizard/css/smart_wizard_all.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="400" column="59" selection-start-line="400" selection-start-column="59" selection-end-line="400" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/brandpriers/companies/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="88" column="74" selection-start-line="88" selection-start-column="74" selection-end-line="88" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/media/logos/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/aside.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="66" column="71" selection-start-line="66" selection-start-column="71" selection-end-line="66" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/style.bundle7a4a.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="78079" column="12" selection-start-line="78079" selection-start-column="12" selection-end-line="78079" selection-end-column="12" />
+        <state relative-caret-position="378">
+          <caret line="66" column="34" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="70" selection-end-column="55" />
         </state>
       </provider>
     </entry>

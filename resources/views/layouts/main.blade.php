@@ -8,7 +8,9 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8"/>
-    <title>BrandPires | Dashboard</title>
+    <title> Brandpires | Dashboard</title>
+    <link rel="icon" href="{{asset('assets/media/logos/logo.png')}}">
+
     <meta name="description" content="Updates and statistics"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 

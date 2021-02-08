@@ -5,6 +5,10 @@
         dom: 'Bfrtip',
         "columnDefs": [
             {"width": "100px", "targets": 5},
+            {
+                "targets": 0,
+                "className": "text-center",
+            }
         ],
         processing: true,
         serverSide: true,

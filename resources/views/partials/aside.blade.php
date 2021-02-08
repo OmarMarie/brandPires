@@ -64,7 +64,7 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('companies.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-building left-icon-menu"></i></div>
+                            <div class="icon-menu"><i class="fad fa-city left-icon-menu"></i></div>
                             <span class="menu-text">Companies</span>
                         </a>
                     </li>
@@ -77,7 +77,7 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('brands.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fa fa-university left-icon-menu"></i></div>
+                            <div class="icon-menu"><i class="fad fa-tags left-icon-menu"></i></div>
                             <span class="menu-text">Brands</span>
                         </a>
                     </li>
@@ -91,7 +91,7 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('packages.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-cubes left-icon-menu"></i></div>
+                            <div class="icon-menu"><i class="fad fa-box-alt left-icon-menu"></i></div>
                             <span class="menu-text">Packages</span>
                         </a>
                     </li>
@@ -105,8 +105,8 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('levels.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-level-up-alt left-icon-menu"></i></div>
-                            <span class="menu-text">level's</span>
+                            <div class="icon-menu"><i class="fad fa-signal-3 left-icon-menu"></i></div>
+                            <span class="menu-text">levels</span>
                         </a>
                     </li>
                 @endcan
@@ -118,8 +118,8 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}} " aria-haspopup="true">
                         <a href="{{ route('tanks.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-hockey-puck left-icon-menu"></i></div>
-                            <span class="menu-text">tank's </span>
+                            <div class="icon-menu"><i class="fad fa-crosshairs left-icon-menu"></i></div>
+                            <span class="menu-text">tanks </span>
                         </a>
                     </li>
                 @endcan
@@ -131,8 +131,8 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('bulks.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-box left-icon-menu"></i></div>
-                            <span class="menu-text">Bulk's</span>
+                            <div class="icon-menu"><i class="fad fa-cubes left-icon-menu"></i></div>
+                            <span class="menu-text">Bulks</span>
                         </a>
                     </li>
                 @endcan
@@ -144,8 +144,8 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('players.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-biking left-icon-menu"></i></div>
-                            <span class="menu-text">Player's</span>
+                            <div class="icon-menu"><i class="fad fa-gamepad left-icon-menu"></i></div>
+                            <span class="menu-text">Players</span>
                         </a>
                     </li>
                 @endcan
@@ -193,7 +193,7 @@
                     data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
-                            <div class="icon-menu"><i class="fad fa-archive left-icon-menu"></i></div>
+                            <div class="icon-menu"><i class="fad fa-cabinet-filing left-icon-menu"></i></div>
                         </span>
                         <span class="menu-text">Logs</span>
                         <i class="menu-arrow"></i>
@@ -264,7 +264,7 @@
                     @endif
                     <li class="menu-item {{$menu_item_active}}" aria-haspopup="true">
                         <a href="{{ route('countries.index', app()->getLocale()) }}" class="menu-link ">
-                            <div class="icon-menu"><i class="fad fa-globe left-icon-menu"></i></div>
+                            <div class="icon-menu"><i class="fad fa-globe-asia left-icon-menu"></i></div>
                             <span class="menu-text">Countries</span>
                         </a>
                     </li>

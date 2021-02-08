@@ -10,6 +10,7 @@
             //{"width": "160px", "targets": 7},
             {"width": "50px", "targets": 2},
             {"width": "50px", "targets": 0},
+            {"targets": 0, "className": "text-center",}
         ],
         processing: true,
         serverSide: true,

@@ -7,6 +7,7 @@
         "columnDefs": [
 
             {"width": "170px", "targets": 6},
+            {"targets": 0, "className": "text-center",}
         ],
         processing: true,
         serverSide: true,
