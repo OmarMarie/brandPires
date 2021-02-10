@@ -2788,7 +2788,7 @@ pre code {
 .form-control:focus {
     color: #fff;
     background-color: #fff;
-    border-color: #000000;
+    border-color: #787878;
     outline: 0
 }
 
@@ -24791,11 +24791,11 @@ a.text-warning:focus, a.text-warning:hover {
 }
 
 .text-danger {
-    color: #f64e60 !important
+    color: #f00 !important;
 }
 
 a.text-danger:focus, a.text-danger:hover {
-    color: #ec0c24 !important
+    color: #f64e60 !important;
 }
 
 .text-light {
@@ -47019,7 +47019,7 @@ a.text-white:focus, a.text-white:hover {
 }
 
 .text-muted {
-    color: #0c0c0c !important
+    color: #f9f9f9 !important
 }
 
 .text-hover-muted, a.text-hover-muted {
@@ -56281,7 +56281,7 @@ a, button {
 }
 
 .btn.btn-light i {
-    color: #80808f
+    color: #0c0c0c !important;
 }
 
 .btn.btn-light .svg-icon svg g [fill] {
@@ -58992,7 +58992,7 @@ a, button {
 }
 
 .btn.btn-text-danger {
-    color: #f64e60
+    color: #f00000
 }
 
 .btn.btn-text-danger.disabled, .btn.btn-text-danger:disabled {
@@ -61081,14 +61081,21 @@ code {
 }
 
 .form-control.form-control-solid {
-    background-color: #f3f6f9;
-    border-color: #f3f6f9;
-    color: #464e5f;
+    color: #ffffff;
+    border: #ffffff54 solid;
+    background: rgb(48, 48, 48);
+    background: linear-gradient(
+        6deg
+        , #303030 0%, rgba(15, 15, 15, 1) 100%);
+    -webkit-box-shadow: -6px -5px 20px -7px #b3b3b361 !important;
+    -moz-box-shadow: -5px -5px 20px -7px #b3b3b361;
+    box-shadow: inset 0px 0px 0px -7px #303030 !important;
     -webkit-transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
-    transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, -webkit-box-shadow .15s ease
+    transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, -webkit-box-shadow .15s ease;
 }
+
 
 .form-control.form-control-solid::-moz-placeholder {
     color: #b5b5c3;
@@ -61104,9 +61111,9 @@ code {
 }
 
 .form-control.form-control-solid.active, .form-control.form-control-solid.focus, .form-control.form-control-solid:active, .form-control.form-control-solid:focus {
-    background-color: #ecf0f3;
+    background-color: #ecf0f340;
     border-color: #ecf0f3;
-    color: #464e5f;
+    color: #ffffff;
     -webkit-transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, -webkit-box-shadow .15s ease;
     transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
@@ -82468,7 +82475,7 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    color: #464e5f
+    color: #fff
 }
 
 router-outlet {
@@ -85596,6 +85603,14 @@ canvas {
 
 .offcanvas {
     background-color: #fff;
+    background: linear-gradient(
+        315deg, rgba(38, 38, 38, 1) 0%, rgba(38, 38, 38, 1) 10%, rgba(37, 37, 37, 1) 10%,
+        rgba(37, 37, 37, 1) 20%, rgba(38, 38, 38, 1) 20%, rgba(38, 38, 38, 1) 30%,
+        rgba(37, 37, 37, 1) 30%, rgba(37, 37, 37, 1) 40%, rgba(38, 38, 38, 1) 40%,
+        rgba(38, 38, 38, 1) 50%, rgba(37, 37, 37, 1) 50%, rgba(37, 37, 37, 1) 60%,
+        rgba(38, 38, 38, 1) 60%, rgba(38, 38, 38, 1) 70%, rgba(37, 37, 37, 1) 70%,
+        rgba(37, 37, 37, 1) 80%, rgba(38, 38, 38, 1) 80%, rgba(38, 38, 38, 1) 90%,
+        rgba(37, 37, 37, 1) 90%, rgba(37, 37, 37, 1) 100%);
     -webkit-box-shadow: 0 1px 9px -3px rgba(0, 0, 0, .25);
     box-shadow: 0 1px 9px -3px rgba(0, 0, 0, .25)
 }
@@ -85677,7 +85692,15 @@ canvas {
 .offcanvas {
     background: #fff;
     -webkit-box-shadow: 0 1px 9px -3px rgba(0, 0, 0, .25);
-    box-shadow: 0 1px 9px -3px rgba(0, 0, 0, .25)
+    box-shadow: 0 1px 9px -3px rgba(0, 0, 0, .25);
+    background: linear-gradient(
+        315deg, rgba(38, 38, 38, 1) 0%, rgba(38, 38, 38, 1) 10%, rgba(37, 37, 37, 1) 10%,
+        rgba(37, 37, 37, 1) 20%, rgba(38, 38, 38, 1) 20%, rgba(38, 38, 38, 1) 30%,
+        rgba(37, 37, 37, 1) 30%, rgba(37, 37, 37, 1) 40%, rgba(38, 38, 38, 1) 40%,
+        rgba(38, 38, 38, 1) 50%, rgba(37, 37, 37, 1) 50%, rgba(37, 37, 37, 1) 60%,
+        rgba(38, 38, 38, 1) 60%, rgba(38, 38, 38, 1) 70%, rgba(37, 37, 37, 1) 70%,
+        rgba(37, 37, 37, 1) 80%, rgba(38, 38, 38, 1) 80%, rgba(38, 38, 38, 1) 90%,
+        rgba(37, 37, 37, 1) 90%, rgba(37, 37, 37, 1) 100%);
 }
 
 .offcanvas-overlay {

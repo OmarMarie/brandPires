@@ -15,7 +15,7 @@
             <div class="dropdown">
                 <!--begin::Toggle-->
                 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg btn-hover-dark mr-1">
                         <img class="h-20px w-20px rounded-sm"
                              @if (app()->getLocale() == 'en')
                              src="{{ asset('assets/media/svg/226-united-states.svg') }}"
@@ -33,12 +33,12 @@
                         <!--begin::Item-->
                         <li class="navi-item">
                             <a href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), 'en') }}"
-                            class="navi-link">
+                               class="navi-link">
                             <span class="symbol symbol-20 mr-3">
                 <img src="{{ asset('assets/media/svg/226-united-states.svg') }}"
                      alt=""/>
             </span>
-                            <span class="navi-text">English</span>
+                                <span class="navi-text">English</span>
                             </a>
                         </li>
                         <!--end::Item-->
@@ -66,12 +66,17 @@
 
             <!--begin::User-->
             <div class="topbar-item">
-                <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2"
+                <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg btn-hover-dark px-2"
                      id="kt_quick_user_toggle">
-                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi, {{ auth()->user()->name }}</span>
-                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{-- auth()->user()->name --}}</span>
-                    <span class="symbol symbol-35 symbol-light-success">
-		                        <span class="symbol-label font-size-h5 font-weight-bold">S</span>
+                    <span
+                        class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi, {{ auth()->user()->name }}</span>
+                    <span
+                        class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{-- auth()->user()->name --}}</span>
+                    <span class="symbol symbol-35 symbol-danger">
+		                        <span class="symbol-label font-size-h5 font-weight-bold "
+                                      style="box-shadow: -5px -5px 9px 2px #b3b3b366">
+                                    {{ucwords(substr(auth()->user()->name, 0, 1))}}
+                                </span>
 		                    </span>
                 </div>
             </div>

@@ -6,7 +6,7 @@
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted font-weight-bold mr-2">{{date("Y") == 2020 ?date("Y") : '2020 - '. date("Y") }} &copy;</span>
             <a href="#" target="_blank"
-               class="text-dark-75 text-hover-primary">BrandPires
+               class="text-dark-75 text-hover-danger">BrandPires
             </a>
         </div>
         <!--end::Copyright-->

@@ -5,7 +5,7 @@
         <h3 class="font-weight-bold m-0">
             User Profile
         </h3>
-        <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+        <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-danger" id="kt_quick_user_close">
             <i class="ki ki-close icon-xs text-muted"></i>
         </a>
     </div>
@@ -27,7 +27,7 @@
                     <a href="#" class="navi-item">
                         <span class="navi-link p-0 pb-2">
                             <span class="navi-icon mr-1">
-								<span class="svg-icon svg-icon-lg svg-icon-primary"><!--begin::Svg Icon | path:/metronic/themes/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Mail-notification.svg--><svg
+								<span class="svg-icon svg-icon-lg svg-icon-danger"><!--begin::Svg Icon | path:/metronic/themes/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Mail-notification.svg--><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                             viewBox="0 0 24 24" version="1.1">
@@ -42,7 +42,7 @@
                         </span>
                     </a>
 
-                    <a href="{{ route('logout', app()->getLocale()) }}" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5"
+                    <a href="{{ route('logout', app()->getLocale()) }}" class="btn btn-sm btn-light-danger font-weight-bolder py-2 px-5"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Sign Out
                     </a>
